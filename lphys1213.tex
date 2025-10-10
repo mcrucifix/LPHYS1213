@@ -1,0 +1,51 @@
+%%& -shell-escape
+\directlua{dofile("config/load_metadata.lua")}
+\documentclass[fleqn, 11pt]{tools/mc}
+% Load fontspec for OpenType fonts
+% Load unicode-math to select math fonts
+\usepackage{fontspec}
+% \usepackage{unicode-math}
+
+% Set the main (text) font
+
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmonofont{Libertinus Mono}
+
+\usepackage{imakeidx}
+\makeindex
+
+
+% Set the math font (currently deactivated)
+% 
+%\setmathfont{XITS Math}        % math, includes bold Greek
+%
+\usepackage{tabularx}
+\usepackage[style=authoryear]{biblatex}
+\addbibresource{bibtex.bib}
+\usepackage{silence}
+\WarningFilter{hyperref}{removing}
+% Define a custom environment for student investigation topics
+\title{\TITLE \\ \COURSECODE \\ \ACADEMICYEAR}
+\author{\AUTHOR}
+\school{\SCHOOL}
+\documenttype{\DOCUMENTTYPE}
+\academicyear{\ACADEMICYEAR}
+\coursecode{\COURSECODE}
+\coursetitle{\COURSETITLE}
+
+%\usepackage{siunitx}
+%\includeonly{Session_1_Elementary_Notions}
+%\includeonly{Session_2_Gravity_Waves}
+%\includeonly{Session_3_Poincare_and_Kelvin_Waves}
+\begin{document}
+%\raggedright
+\titlepage
+\tableofcontents
+
+this is a template project 
+
+\printindex 
+\end{document}
+
+
