@@ -4,6 +4,8 @@
 % Load fontspec for OpenType fonts
 % Load unicode-math to select math fonts
 \usepackage{fontspec}
+\usepackage{amsfonts}
+\usepackage{dutchcal}
 % \usepackage{unicode-math}
 
 % Set the main (text) font
@@ -18,7 +20,7 @@
 
 % Set the math font (currently deactivated)
 % 
-%\setmathfont{XITS Math}        % math, includes bold Greek
+%\setmathfont{STIX}        % math, includes bold Greek
 %
 \usepackage{tabularx}
 \usepackage[style=authoryear]{biblatex}
@@ -42,8 +44,7 @@
 %\raggedright
 \titlepage
 \tableofcontents
-
-this is a template project 
+\include{01_Milieu_Continu}
 
 \printindex 
 \end{document}

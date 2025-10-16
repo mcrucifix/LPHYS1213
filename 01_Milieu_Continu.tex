@@ -1,0 +1,241 @@
+\newcommand{\umass}{e}
+\newcommand{\smass}{s}
+\newcommand{\vol}{\mathcal{V}}
+\newcommand{\Vol}{V}  % finite volume
+
+\section{Cours 1 - Equations de conservation}
+
+\subsection{L'hypothèse du milieu continu}
+
+Chères étudiantes, chers étudiants qui abordez ce cours de \cindex{physique des fluides},
+
+Vous êtes maintenant des experts de la \cindex{mécanique du point}. Vous connaissez les équations de la \cindex{mécanique classique} et vous savez que la somme des \cindex{forces} appliquées à un objet produit une \cindex{accélération}. Vous avez également bénéficié d’un cours de \cindex{thermodynamique}. Vous savez qu’à un volume de \cindex{gaz} ou de \cindex{liquide}, on peut attribuer une \cindex{température}, une \cindex{pression} et même une \cindex{entropie}, si ce gaz est à l’\cindex{équilibre thermodynamique}. Cette notion d’\cindex{équilibre thermodynamique} suppose qu’on a affaire à un très grand nombre de \cindex{molécules}, qui échangent de l’\cindex{énergie} et du \cindex{moment cinétique} entre elles tellement fréquemment qu’on peut se contenter d’une description \cindex{statistique} de l’ensemble.
+
+Nous allons maintenant rassembler ces deux types de raisonnement. L’objet de notre étude est un \cindex{milieu continu} qui n’est pas nécessairement à l’\cindex{équilibre thermodynamique}. Les notions de \cindex{température}, \cindex{pression}, \cindex{masse volumique} et même de \cindex{vitesse} doivent être adaptées de telle façon qu’on puisse exprimer leurs \cindex{variations} en fonction de la \cindex{position} et du \cindex{temps}.
+
+Ces propriétés deviennent des \cindex{champs} : $T = T(\vec{x},t)$.
+
+Il faut bien comprendre ce que cela implique. Les outils conceptuels que nous avons à notre disposition font référence à un corps \cindex{homogène}, \cindex{isotrope}, à l’\cindex{équilibre} ; et nous voulons décrire un \cindex{milieu} qui ne l’est pas. Lorsque nous parlons des variations d’une fonction, mathématiquement, nous faisons référence à sa \cindex{dérivée}. L’incrément différentiel d’une propriété $T$ s’écrit (avec $\vec{x} = (x,y,z)$) :
+
+\begin{equation}
+\dif T = \frac{\partial T}{\partial x} \dif x + 
+ \frac{\partial T}{\partial y} \dif y + 
+ \frac{\partial T}{\partial z} \dif z + 
+ \frac{\partial T}{\partial t} \dif t 
+\label{eq:increment_temperature}
+\end{equation}
+
+Mathématiquement, il est entendu que les variations d’\cindex{espace} et de \cindex{temps} qui apparaissent dans cette équation sont aussi petites que l’on veut. Ce sont des «~$\varepsilon$~» dont on prend la limite tendant vers zéro. Or, on sait ce qu’il advient dans la nature : si vous considérez des volumes de plus en plus petits, vous commencez à voir apparaître la \cindex{granularité moléculaire}. Les \cindex{molécules} et les \cindex{atomes} s’entrechoquent, et à cette échelle aussi petite, le milieu n’est plus \cindex{continu} et ne peut peut-être pas être traité comme tel.
+
+En faisant l’hypothèse d’un \cindex{milieu continu}, nous allons utiliser des fonctions continues de l’\cindex{espace}, mais en faisant la promesse de ne jamais chercher à interpréter les variations des \cindex{champs} à une échelle trop petite. Nous voulons limiter notre description à des volumes compatibles avec une description \cindex{statistique} de l’ensemble des \cindex{molécules} qui les contiennent. Concrètement, il faut que le volume considéré soit un ordre de grandeur plus grand que le \cindex{trajet libre moyen}, c’est-à-dire la distance moyenne parcourue par une molécule entre deux \cindex{chocs}, typiquement de l’ordre de $10^{-8}\,\mathrm{m}$.
+
+On peut donc faire l’hypothèse du \cindex{milieu continu} si l’on peut attribuer à des petites parcelles de \cindex{fluide} (de taille $\varepsilon$) des propriétés \cindex{mécaniques} et \cindex{thermodynamiques} d’un point de vue \cindex{statistique} (vitesse, température, pression, etc.), et si ces quantités varient suffisamment peu d’une parcelle à l’autre pour que l’on puisse considérer que ces parcelles sont en \cindex{équilibre thermodynamique} avec leur environnement. Ce tour de passe-passe nous permet de définir des \cindex{températures}, \cindex{pressions} ou \cindex{entropies locales} (à l’échelle de la parcelle, l’\cindex{équilibre thermodynamique} est atteint), tout en considérant que ces propriétés varient continûment à une échelle $L \gg \varepsilon$.
+
+
+\subsection{Description de la parcelle}
+
+Nous avons donc déjà rencontré deux notions qui charpentent la \cindex{physique des fluides} : celle de \cindex{parcelle}, et celle de \cindex{champ}.
+Nous pouvons visualiser la parcelle comme un parallélépipède rectangle défini dans un repère orthonormé. On peut, sans perte de généralité, considérer que ses arêtes ont des longueurs $\delta x$, $\delta y$ et $\delta z$ selon les trois axes du repère.
+La force de l’hypothèse du \cindex{milieu continu} est de considérer que ses arêtes peuvent être « aussi petites que l’on veut ». Dire cela revient à les identifier à des incréments différentiels dans le monde continu. En pratique, on sait que ses arêtes ne peuvent pas être aussi petites que l’on veut : elles doivent avoir une longueur au moins un ordre de grandeur au-dessus du \cindex{trajet libre moyen}. Comme nous nous engageons à ne jamais regarder le champ sur des distances aussi petites, on peut se permettre d’identifier ces arêtes à des incréments différentiels.
+Une parcelle est donc caractérisée par les moyennes statistiques de toutes les molécules ou atomes qui la composent : on peut parler de sa \cindex{vitesse} (moyenne de toutes les molécules), et de toutes les propriétés thermodynamiques que l’on peut conférer à un ensemble suffisamment grand de particules.
+
+Ainsi, par exemple, si l’on s’intéresse à la masse de la parcelle, on peut écrire :
+\begin{equation}
+\delta M = \rho \, \delta x \, \delta y \, \delta z = \rho \, \delta V
+\label{eq:mass_element}
+\end{equation}
+mais en pratique on s’autorisera à travailler à la limite d’une parcelle définie par des incréments différentiels :
+\begin{equation}
+\dif M = \rho \, \dif V
+\label{eq:diff_mass}
+\end{equation}
+Du point de vue des mathématiques, cette écriture, qui met en relation un incrément de masse avec un incrément de volume, peut sembler informelle. On peut se rassurer en la voyant comme un raccourci de ce qui doit être une expression intégrale :
+\begin{equation}
+M(t) = \iiint_V \rho(\vec{x}, t) \, \dif V
+\label{eq:integral_mass}
+\end{equation}
+La masse d’un volume est bien l’intégrale de la masse volumique prise sur ce volume.  
+
+\subsection{Le premier principe de la thermodynamique à la hussarde}
+
+Ainsi, même si notre écriture utilisant des incréments différentielle peut apparaître comme un peu informelle, elle permet d’établir des relations de façon très commode. 
+On va d'abord se permettre quelques libertés en travaillant de façon en peu informelle. On  se montrera ensuite plus rigoureux mathématiquement et reformuler ces relations dans un formalisme intégral. Ce sera l'objet de la section XXX. 
+
+
+Considérons une parcelle de température $T$, de position $\vec{x}=(x,y,z)$ et de vitesse $\vec{v}=(u,v,w)$.  
+On voudrait quantifier l’évolution de la température de la parcelle, en la conceptualisant comme un objet en mouvement. Le fait que la parcelle soit en mouvement implique que ses coordonnées $x,y,z$ sont elles-mêmes des fonctions du temps, que l’on peut déduire du champ de vitesse.
+
+En appliquant la règle de dérivation en chaîne, on obtient la \cindex{dérivée matérielle} (ou \cindex{dérivée lagrangienne}) :
+\begin{equation}
+\frac{\Dif T}{\Dif t} = 
+\frac{\partial T}{\partial t} +
+u \frac{\partial T}{\partial x} +
+v \frac{\partial T}{\partial y} +
+w \frac{\partial T}{\partial z}
+\label{eq:material_derivative}
+\end{equation}
+
+Cette équation est l’une des relations les plus fondamentales de la \cindex{mécanique des fluides}.  
+En utilisant la notation du \cindex{gradient}, on peut aussi l’écrire :
+\begin{equation}
+\frac{\Dif T}{\Dif t} = \frac{\partial T}{\partial t} + \vec{v} \cdot \nabla T
+\label{eq:material_derivative_gradient}
+\end{equation}
+
+Au membre de gauche, nous avons la dérivée matérielle (ou lagrangienne) de la propriété $T$.  
+À droite, nous voyons apparaître deux termes :  
+- le premier, $\partial T / \partial t$, est la variation locale du champ $T$ mesurée par un observateur fixe par rapport au champ. C’est la \cindex{dérivée eulérienne} ;  
+- le second, $\vec{v} \cdot \nabla T$, exprime la variation due au transport du champ par le mouvement du fluide : c’est le terme d’\cindex{advection}.  
+
+On peut donc écrire la relation entre les deux dérivées comme :
+\begin{equation}
+\frac{\partial T}{\partial t} = \frac{\Dif T}{\Dif t} - \vec{v} \cdot \nabla T
+\label{eq:eulerianagrangian}
+\end{equation}
+Ainsi, la dérivée eulérienne est égale à la dérivée lagrangienne moins le terme d’advection.
+
+On peut conceptualiser, comme nous l’avons dit, la dérivée eulérienne comme la variation du champ mesurée par un observateur fixe. La dérivée lagrangienne correspondrait à ce qu’observerait un passager « emporté par le fluide », comme un observateur dans une montgolfière. Le terme d’advection exprime la variation du champ mesurée par l’observateur causée par le transport des propriétés : il est nul si la vitesse du fluide est nulle.
+
+On en a une illustration parlante en \cindex{météorologie} : supposons qu’un observateur à Louvain-la-Neuve mesure d’un jour à l’autre une chute de température (description eulérienne). On peut décrire deux situations limites:
+\begin{itemize}
+\item soit nous sommes dans le cas d’une masse d’air stagnante (par exemple en situation anticyclonique) qui subit une transformation physique, typiquement une perte d’énergie interne par rayonnement. C’est donc une transformation qui s’applique sur la parcelle d’air, et qui se traduit par une variation mesurée localement par l’observateur : le premier terme du membre de droite domine ;
+\item soit les parcelles d’air sont en mouvement et ne subissent pas de transformation physique notable, mais le vent transporte des masses d’air froides vers l’observateur. Celui-ci mesure alors le remplacement d’une masse d’air chaude par une masse d’air froide. La tendance est donc causée par le mouvement ($\vec{v} \neq 0$) dans un champ inhomogène ($\nabla T \neq 0$). Le terme d’advection traduit bien ce « venir avec » : le vent amène de nouvelles masses d’air, ce qui est mesuré par l’observateur eulérien.
+\end{itemize}
+
+
+Toute la force théorique du concept de \cindex{dérivée lagrangienne} réside dans le fait qu’on peut l’utiliser pour décrire les lois physiques de conservation que nous connaissons déjà. Il en sera ainsi de la conservation de la quantité de mouvement et de l'énergie interne. Il y a quand même quelques pièges --- notamment s'agissant de l'exemple thermodynamique que nous venons évoquer --- et nous allons procéder avec prudence. 
+
+Commençons par illustrer le propos un exemple qui fonctionne plutôt bien: la conservation de la masse. 
+Imaginons une parcelle, pas nécessairement petite, de volume fini $\Vol$ et de masse $M$ qui évolue au gré du temps. 
+
+\begin{equation}
+   \frac{\dif M}{\dif t} = \frac{\dif}{\dif t} \iiint_\Vol \rho(\vec{x},t). 
+\label{eq:finite_volume_conservation}
+\end{equation}
+
+Nous voyons apparaître une intégrale dont les bornes évoluent en fonction du temps. Il faut s'en méfier. C’est un objet que vous avez déjà rencontré lorsque vous avez découvert la \cindex{relation de Leibniz}, mais dans un cas à une dimension: 
+\begin{equation}
+\frac{\dif}{\dif t} \int_{a(t)}^{b(t)} f(x,t)\, \dif x
+=
+\int_{a(t)}^{b(t)} \frac{\partial f}{\partial t}(x,t)\, \dif x
++
+f\bigl(b(t),t\bigr)\,\frac{\dif b}{\dif t}
+-
+f\bigl(a(t),t\bigr)\,\frac{\dif a}{\dif t}
+\label{eq:leibniz_general}
+\end{equation}
+
+\subsection{Analogie du trafic routier}
+
+Pour pouvoir nous baser sur l'équation de Leibniz, nous allons faire l'effort d'imaginer un fluide à une dimension. On pourrait considérer un fin tuyau dans lequel circule un fluide compressible mais nous allons tenter une analogie automobile. 
+
+Considérons une route droite (que nous mesurerons sur la droite $\mathbb{R}$) qui soutient d'un trafic automobile. Ce qui va tenir lieu de masse volumique est le nombre de véhicules par unité de longueur (disons, par kilomètre). 
+
+Ce qui tient lieu de "parcelle" est un convoi de véhicules. Si on veut qu'elle soit de "masse constante", on dira simplement que le nombre de véhicules est fixe. Imaginons donc un convoi de, par exemple, cinq véhicules. Le premier véhicule est en position $x_1(t)$, et le dernier, en position $x_2(t)$. 
+
+Reprenons alors l'intégrale de Leibniz. Les bornes $a$ et $b$ sont les positions $x_1(t)$ et $x_2(t)$ des extrémités de notre convoi automobile. 
+$\frac{\dif{x_2}}{\dif t}$ est la vitesse du véhicule le plus à droite, et 
+$\frac{\dif{x_1}}{\dif t}$ celle de celui  le plus à gauche. 
+
+Commençons simplement, et substituons à $f$ la variable $\rho$, 
+le nombre de véhicules par unité de longueur. 
+
+On a : 
+
+\begin{equation}
+\frac{\dif}{\dif t} \int_{x_1(t)}^{x_2(t)} \rho(x,t)\, \dif x
+=
+\int_{x_1(t)}^{x_2(t)} \frac{\partial \rho}{\partial t}(x,t)\, \dif x
++
+\rho\bigl(x_2(t),t\bigr)\,\frac{\dif x_2}{\dif t}
+-
+\rho\bigl(x_1(t),t\bigr)\,\frac{\dif x_1}{\dif t}
+\label{eq:leibniz_rho}
+\end{equation}
+
+On peut retravailler le dernier terme, par exemple en faisant référence aux intégrales par parties: 
+
+\begin{equation}
+  \begin{split}
+\rho\bigl(x_2(t),t\bigr)\,\frac{\dif x_2}{\dif t}
+-
+\rho\bigl(x_1(t),t\bigr)\,\frac{\dif x_1}{\dif t}
+&= 
+    \left. (\rho u\right)|_{x_1(t)}^{x_2(t)}\\ &=
+    \int_{x_1(t)}^{x_2(t)}\frac{\partial}{\partial x} \bigl(\rho(x,t) u(x,t)\bigr)\,\dif x
+\label{eq:leibniz_rho2}
+  \end{split}
+\end{equation}
+
+Notre forme intégrale de la conservation de la masse prend donc la forme: 
+
+\begin{equation}
+\frac{\dif}{\dif t} \int_{x_1(t)}^{x_2(t)} \rho(x,t)\, \dif x
+=
+\int_{x_1(t)}^{x_2(t)} \frac{\partial \rho}{\partial t}(x,t)\, \dif x
++ \int_{x_1(t)}^{x_2(t)} \frac{\partial}{\partial x} \bigl(\rho(x,t) u(x,t)\bigr)\,\dif x
+\label{eq:cons_massineique_integrale}
+\end{equation}
+
+Maintenant que nous avons une écriture bien homogène, on peut se permettre de dire que la forme doit être valable \emph{pour tout segment défini par $x_1(t)$ et $x_2(t)$}, et c'est exactement cela que l'on entend lorsqu'on exprime la forme différentielle: 
+
+\begin{equation}
+  \frac{\dif (\delta M)}{\dif t}
+=
+\frac{\partial \rho}{\partial t}(x,t)
++ \frac{\partial \rho(x,t) u(x,t)}{\partial x}
+\label{eq:cons_massineique_diff}
+\end{equation}
+
+A vrai dire, tant l'expression intégrale \eqref{eq:cons_massineique_integrale} et l'expression différentielle s'interprètent assez aisément. Plaçons nous dans le cas de figure sans doute le plus commun où la masse est \emph{conservée} (nous n'assistons pas à des véhicules qui s'autodétruisent). Le membre de gauche s'annule. Il reste: 
+
+\begin{equation}
+\frac{\partial \rho}{\partial t}(x,t)
+= - \frac{\partial \rho(x,t) u(x,t)}{\partial x}
+\label{eq:cons_continuite_lineique}
+\end{equation}
+
+C'est l'\cindex{équation de continuité}. Pour aboutir à cette expression nous avons juste du faire l'hypothèse que les véhicules ne s'autodétruisent pas, mais maintenant qu'on a fait cette hypothèse, nous pouvons la réintégrer l'expression comme bon nous semble et cela va nous offrir deux interprétations de l'équation de continuité : une forme eulérienne, et une forme lagrangienne. 
+
+\begin{itemize}
+  \item
+La forme eulérienne d'abord. Pour conserver l'\cindex{analogie routière}, plaçons deux points de péages $x_a$ et $x_b$, cette fois, fixes. On intègre \eqref{eq:cons_massineique_integrale} et on voit que la variation du nombre de véhicules entre les deux poins de péage, par unité de temps,  exactement égale au flux de véhicules passant par par le péage $x_b$ (le flux est donné par une densité multipliée par une vitesse), auquel on retranche le flux de véhicules entrant par le péage de gauche $x_a$. 
+
+\item La forme lagrangienne maintenant. Observons que
+
+\begin{displaymath}
+\frac{\partial \rho(x,t) u(x,t)}{\partial x} = 
+\rho \frac{\partial u(x,t)}{\partial x} + 
+u  \frac{\partial \rho(x,t)}{\partial x} 
+\end{displaymath}
+
+On réassemble l'équation \eqref{eq:cons_continuite_lineique}:
+
+\begin{displaymath}
+\frac{\partial \rho}{\partial t}(x,t) + 
+u  \frac{\partial \rho}{\partial x} (x,t)  =  -
+\rho \frac{\partial u}{\partial x}(x,t) 
+\end{displaymath}
+
+Cette fois, dans le membre de gauche, nous retrouvons notre la dérivée lagrangienne, mais à la sauce 1-D
+
+\begin{displaymath}
+\Dif_t \rho = \rho \frac{\partial u}{\partial x} (x,t)
+\label{eq:cons_continuite_lineique_lagrange}
+\end{displaymath}
+
+et cette équation se prête à une interprétation toute lagrangienne: la variation de densité d'une parcelle en mouvement est causée par le mouvement de ces frontières: $\frac{\partial u}{\partial x}(x,t)$ n'est autre que la version 1-D de la divergence. 
+\end{itemize} 
+
+Finalement, notre bravoure s'est avérée bien placée. On peut se permettre  d'utiliser la dérivée lagrangienne pour exprimer une loi de conservation de façon somme toute assez intuitive. Nous allons progressivement remplacer la fonction $f$ par d'autres propriétés du fluide et construire d'autres lois de conservation. 
+
+Avant cela, nous devons faire l'effort de repasser, proprement, à trois dimensions. 
+
+ICI : THEOREME DE CIRCULATION DE REYNOLDS ET MONTRER LA FORME CONSERVATIVE ET LA FORME ADVECTIVE. KUNDU CHAP. 7. 
+
+dans la partie conservation du moment: il faudra être soigneux et définir la pression. Sans doute commencer par un fluide parfait. 
+
+
+
+
+
