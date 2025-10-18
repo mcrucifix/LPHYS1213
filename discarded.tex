@@ -1,0 +1,36 @@
+Prenons par exemple le \cindex{premier principe de la thermodynamique}. Il nous dit que la variation d’énergie interne d’un parcelle de masse $M$ (de volume $\Vol$ variable) peut se produire soit par le \cindex{travail} exercé par cette parcelle sur son environnement, soit par un \cindex{échange de chaleur}. Si la transformation est \cindex{réversible}, on écrira simplement :
+\begin{equation}
+\Delta U = - p \, \Delta \Vol + T \, \Delta S, 
+\label{eq:firstaw_discrete}
+\end{equation}
+
+où $U$ et $S$ sont l'énergie interne exprimées comme des variables extensives : c'est le total pour toute la parcelle. 
+Ici, le prédicat \(\Delta\), majuscule indique une variation au cours du temps, et non un incrément dans l’espace (que nous avions noté \(\delta\)).  
+
+Dans notre monde du \cindex{milieu continu}, où l’on conçoit la parcelle comme étant suffisamment petite dans un milieu suffisamment homogène, on considérera que les transformations sont réversibles. 
+
+Vu la façon dont nous avons écrit le premier principe, nous devons faire référence à une parcelle de masse constante, mais de volume variable. C'est tout à fait envisageable. 
+Toujours un peu à la hussarde, une parcelle de volume $\Vol$, de masse $M$ peut changer de volume au cours du temps : la variation $\Delta V = M \Delta (\frac{1}{\rho})$. 
+
+Réécrivons notre équation \eqref{eq:firstaw_discrete}, mais en utilisant des variables intensives, exprimées par unité de masse plutôt que de volume, $U=M \umass$; $S=\rho\smass$, puis nous simplifions en divisant par $M$ tous les membres:
+
+\begin{equation}
+\Delta \umass = - p \, \Delta (\frac{1}{\rho}) + T \, \Delta s, 
+\label{eq:firstaw_discrete2}
+\end{equation}
+
+C'est ici que la magie opère. Cette équation de conservation, que nous avons obtenue en raisonnant sur une parcelle en mouvement, et  que nous voulons \emph{aussi petite que l'on veut}, aboutit à une forme différentielle impliquant la dérivée \emph{matérielle}: 
+
+
+\begin{equation}
+\Dif_t \umass = - p \, \Dif_t \left(\frac{1}{\rho}\right) + T \, \Dif_t \smass
+\label{eq:firstaw_continuous}
+\end{equation}
+avec
+\begin{equation}
+  \Dif_t \umass = \frac{\partial \umass}{\partial t} + \vec{u} \cdot \grad \umass\textrm{, etc.}
+\label{eq:material_derivative_U}
+\end{equation}
+Félicitations ! Nous venons de décrire le premier principe de la thermodynamique en mécanique des fluides. Comme nous l’avons dérivé de façon un peu cavalière, nous devons nous rassurer en vérifiant la cohérence de l’écriture. 
+
+

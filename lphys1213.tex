@@ -4,6 +4,8 @@
 % Load fontspec for OpenType fonts
 % Load unicode-math to select math fonts
 \usepackage{fontspec}
+\usepackage{amsfonts}
+\usepackage{dutchcal}
 % \usepackage{unicode-math}
 
 % Set the main (text) font
@@ -15,10 +17,18 @@
 \usepackage{imakeidx}
 \makeindex
 
+% specify language
+\usepackage{polyglossia}  % gestion des langues
+\setmainlanguage{french}  % langue principale du document
+
+
+% better display of volume integrals
+\usepackage{esint}
+
 
 % Set the math font (currently deactivated)
 % 
-%\setmathfont{XITS Math}        % math, includes bold Greek
+%\setmathfont{STIX}        % math, includes bold Greek
 %
 \usepackage{tabularx}
 \usepackage[style=authoryear]{biblatex}
@@ -42,21 +52,22 @@
 %\raggedright
 \titlepage
 \tableofcontents
+\include{01_Milieu_Continu}
+%% template
+% hypothese des milieux continus
+% theoreme de Reynolds = extension de Leibniz
+% description eulerenne et lagrangienne
+% tenseur pour vv
+% hypothese de Bousinesq
+% thermodynamique 
+% onde de pression
+% diffusion / friction
+% equation de Navier Stokes
+% couche limite (aile d'avion ? ) cf. notes
+% adimensionalisation des equations
+% nombres caracteristiques
 
-- hypothese des milieux continus
-- theoreme de Reynolds = extension de Leibniz
-- description eulerenne et lagrangienne
-- tenseur pour vv
-- hypothese de Bousinesq
-- thermodynamique 
-- onde de pression
-- diffusion / friction
-- equation de Navier Stokes
-- couche limite (aile d'avion ? ) cf. notes
-- adimensionalisation des equations
-- nombres caracteristiques
 
-
 
 
 \printindex 
