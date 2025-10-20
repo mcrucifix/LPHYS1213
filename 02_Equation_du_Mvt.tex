@@ -1,0 +1,27 @@
+\chapter{Equation du mouvement}
+\section{Pression}
+%- definition
+% - principe de pascal dans le cas hydrostatique
+% - force de pression
+% - theoreme de Gausse pour un gradient
+\subsection{Théorème de Gauss - Ostrogradsky pour un gradient}
+
+Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section XX, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde se volume: 
+\begin{equation*}
+  \iiint_V \Div F = \iint_A \vec{n}\cdot F\, \dif A. 
+\end{equation*}
+Si on l'applique au cas particulier d'un champ $F(\vec{x})=f(\vec{x})\vec{c}$, où $f$ est un champ scalaire, et $\vec{c}$ un vecteur constant sur le domaine, on obtient
+\begin{equation*}
+  \iiint_V \grad f\cdot\vec{c} = \iiint_V \Div f\vec{c} = \iint_A f \vec{n}\cdot \vec{c}\, \dif A. 
+\end{equation*}
+Comme cette équation demeure valable quel que soit $\vec{c}$, on obtient plus généralement:
+\begin{equation}
+ \iiint_V \grad f = \iint_A f \vec{n}\, \dif A. 
+ \label{eq:integral_of_gradient}
+\end{equation}
+
+Cette équation peut être vue comme une généralisation du théorème de intégral de Leibniz $\int_a^b \odd{f}{x} = f(b)-f(a)$. Le terme de gauche est l'intégrale d'une dérivée (sur la droie dans le cas 1D, dans l'espace dans le cas 3D); le terme  de droite est une généralisation de la "différence" de $f$ évaluée aux bornes du domaine intégré. 
+
+
+
+
