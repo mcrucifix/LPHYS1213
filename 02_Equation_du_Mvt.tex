@@ -1,5 +1,5 @@
 \chapter{Equation du mouvement}
-\section{Pression}
+% \section{Pression}
 %- definition
 % - principe de pascal dans le cas hydrostatique
 % - force de pression
@@ -23,5 +23,77 @@ Comme cette équation demeure valable quel que soit $\vec{c}$, on obtient plus g
 Cette équation peut être vue comme une généralisation du théorème de intégral de Leibniz $\int_a^b \odd{f}{x} = f(b)-f(a)$. Le terme de gauche est l'intégrale d'une dérivée (sur la droie dans le cas 1D, dans l'espace dans le cas 3D); le terme  de droite est une généralisation de la "différence" de $f$ évaluée aux bornes du domaine intégré. 
 
 
+\section{Première équation du mouvement}
 
+Nous allons dans cette section établir notre première \cindex{équation du mouvement}. C’est l’expression, dans un \cindex{milieu continu}, de la \cindex{seconde loi de Newton} : 
+\[
+\vec{F} = m \vec{a}.
+\]
+
+Considérons un \cindex{volume de fluide}. Deux types de \cindex{forces externes} peuvent s’exercer sur ce fluide et générer une \cindex{accélération} de son centre de masse :
+\begin{itemize}
+  \item les forces qui dérivent d’un \cindex{potentiel}, comme les forces gravitationnelles ou magnétiques, et qui s’expriment comme un \cindex{gradient de potentiel}. Ainsi, pour chaque élément de fluide \(\rho \, \dif V\), nous avons un élément de force \(-\rho \, \grad \phi\). Dans la majorité des cas, le seul potentiel dont on tiendra compte est le \cindex{géopotentiel}, qui exprime la combinaison de l’attraction terrestre et de la (pseudo-)force centrifuge. Le gradient \(\grad \phi\) définit la verticale ;
+  \item les forces qui s’exercent à l’\cindex{interface} du volume et de son environnement. Lorsqu’elles travaillent, ces forces génèrent un transfert de \cindex{moment cinétique} entre l’environnement et le volume considéré.
+\end{itemize}
+
+Nous verrons au chapitre~XX que les forces exercées à l’interface d’un volume et de son environnement se modélisent au moyen d’un \cindex{tenseur}, le \cindex{tenseur des contraintes}. Dans un premier temps, nous allons utiliser un concept plus simple et déjà connu : la \cindex{pression statique}. 
+
+Lorsqu’un fluide est à l’\cindex{équilibre statique}, on observe qu’une \cindex{force} s’exerce perpendiculairement sur chaque élément de \cindex{surface}, quelle que soit sa direction. Cette force mesure l’effet macroscopique d’un grand nombre de \cindex{collisions} entre les \cindex{molécules} du fluide et la surface témoin.  
+
+Sur cette base, on peut aisément exprimer la première loi de Newton pour établir la relation hydrostatique :
+\begin{equation}
+\int_V - \rho \, \grad \phi \, \dif V \; - \; \int_A p \, \vec{n} \, \dif A = 0
+\label{eq:hydrostat_int}
+\end{equation}
+La somme des forces dues au \cindex{potentiel} et à la \cindex{pression} à la surface du volume est égale à zéro dans le cas statique.  
+
+En utilisant le \cindex{théorème de Gauss}, on simplifie la relation :
+\begin{equation}
+\int_V - \rho \, \grad \phi \, \dif V \; - \; \int_V \grad p \, \dif V = 0
+\label{eq:hydrostat_gauss}
+\end{equation}
+Comme l’expression est valable pour tout volume, on peut la réduire à sa forme différentielle :
+\begin{equation}
+- \rho \, \grad \phi = \grad p
+\label{eq:hydrostat_diff}
+\end{equation}
+C’est la relation bien connue de l’\cindex{équilibre hydrostatique}.  
+
+Si le seul potentiel de force de volume considéré est le \cindex{géopotentiel}, alors $-\grad \phi = - g \, \ez$ : le gradient du géopotentiel est vertical. On remarque que, dans cet équilibre hydrostatique, le gradient de pression sera strictement vertical pour autant que la \cindex{masse volumique} ne varie que selon la verticale, donc selon la pression.  
+
+De façon plus générale, on démontre (exercice) que si \(\rho = \rho(p)\), alors :
+\begin{equation}
+\grad p \times \grad \phi = 0,
+\label{eq:barotrope}
+\end{equation}
+c’est-à-dire que les isobares sont horizontales. Le fluide est dit \cindex{barotrope}.  
+
+Supposons maintenant que le fluide est suffisamment lent pour que le gradient de pression continue à décrire correctement les forces internes au fluide. En pratique, cela implique qu’il n’y a pas d’effets de \cindex{compression élastique}, ni de \cindex{friction}.  
+
+Dans ce cas, nous pouvons généraliser. L’\cindex{accélération} de du volume matériel fini vaut :
+\begin{equation}
+\od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{v}(\vec{x},t) \, \dif \vol,
+\label{eq:momentum_balance}
+\end{equation}
+et doit être égale à la somme des forces externes (les forces internes s’annulant par le principe d’\cindex{action-réaction}). Or, nous avons vu que :
+\begin{equation}
+\od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{v}(\vec{x},t) \, \dif V
+= \int_V \rho(\vec{x},t) \, \Dt \vec{v}(\vec{x},t) \, \dif \vol
+\label{eq:material_acceleration}
+\end{equation}
+On obtient donc :
+\begin{equation}
+  \int_\vol \rho \, \Dt{\vec{v}} \, \dif \vol 
+= \int_\vol - \rho \, \grad \phi \, \dif \vol \; - \; \int_\vol \grad p \, \dif \vol
+\label{eq:euler_integral}
+\end{equation}
+L’intégrale étant valable pour tout volume matériel fini, on peut la réduire à sa forme différentielle :
+\begin{equation}
+  \rho \, \Dt{\vec{v}} = - \rho \, \grad \phi - \grad p. 
+\label{eq:euler}
+\end{equation}
+C’est la célèbre \cindex{équation d’Euler}. 
+
+%% expliquer le tenseur
+%% expliquer fluide laminaire incompressible: conserve vorticié + Bernouilli
 
