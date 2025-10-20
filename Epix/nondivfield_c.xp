@@ -1,0 +1,144 @@
+
+#define DELTAT 0.001
+#include "epix.h"
+using namespace ePiX;
+
+
+// potentiel scalaire
+P vectfield(P X){
+    const double S = 0.0;
+
+    const double vortices[][4] = {
+        { -0.6,  0.2,  2.0, 0.15 },
+        {  0.5, -0.3, -1.5, 0.18 },
+        {  0.2,  0.1,  1.0, 0.50 }
+    };
+    const int N_v = 3;
+
+    const double A_hf   = 0.2;
+    const double phi_x  = 0.4;
+    const double phi_y  = -0.7;
+    const double phi_x2 = 1.0;
+    const double phi_y2 = 0.3;
+
+    double x = X.x1();
+    double y = X.x2();
+    double u = S * y;
+    double v = 0.0;
+
+    for(int k = 1; k < N_v; ++k)
+    {
+        double xk = vortices[k][0];
+        double yk = vortices[k][1];
+        double Gk = vortices[k][2];
+        double sig = vortices[k][3];
+
+        double dx = x - xk;
+        double dy = y - yk;
+        double r2 = dx*dx + dy*dy;
+        double inv = 1.0 / (2.0 * sig * sig);
+
+        double e = Gk * std::exp(-r2 * inv);
+        double factor = e * inv * 2.0;
+
+        u += + factor * dy;
+        v += - factor * dx;
+    }
+
+    // double X1 = 4.0 * M_PI * x + phi_x;
+    // double Y1 = 2.0 * M_PI * y + phi_y;
+    // double X2 = 6.0 * M_PI * x + phi_x2;
+    // double Y2 = 4.0 * M_PI * y + phi_y2;
+    //
+    // double sinX1 = std::sin(X1), sinY1 = std::sin(Y1), cosX1 = std::cos(X1), cosY1 = std::cos(Y1);
+    // double sinX2 = std::sin(X2), sinY2 = std::sin(Y2), cosX2 = std::cos(X2), cosY2 = std::cos(Y2);
+    //
+    // u += A_hf * ( (2.0 * M_PI * cosY1) * sinX1 + 0.5 * (4.0 * M_PI * cosY2) * sinX2 );
+    // v += - A_hf * ( (4.0 * M_PI * cosX1) * sinY1 + 0.5 * (6.0 * M_PI * cosX2) * sinY2 );
+    return(P(u,v));
+}
+
+
+
+P flow(P X0, double t){
+  P X = X0;
+  int n = int ( t / DELTAT );
+  // int n = 10;
+  for (int i = 1; i < n; i++){
+       X = X +  DELTAT * vectfield(X) ;
+       // X = X - 0.01 * P(0.1, 0.1);
+    }
+
+  double lasttimestep = t - n * DELTAT;
+  X = X + lasttimestep * vectfield(X) ;
+  return (X);
+}
+
+path projetline(P left, P right, double t, int n = 50){
+    path myline;
+    for (int i = 0 ; i < (n+1) ; i++){
+         double xcoord ;
+         double ycoord ;
+         xcoord = left.x1() + double(i)/double(n) * (right.x1() - left.x1());
+         ycoord = left.x2() + double(i)/double(n) * (right.x2() - left.x2());
+         P X0 = P(xcoord, ycoord);
+         P XT = flow(X0, t);
+         myline.pt(XT);
+    }
+    return(myline);
+}
+
+path projetsquare(P downleft, P upright, double t, int n = 50){
+    path mysquare;
+    path templine;
+    P downright = P(upright.x1(), downleft.x2());
+    P upleft    = P(downleft.x1(), upright.x2());
+    mysquare += projetline(downleft, downright, t, n);
+    mysquare += projetline(downright, upright, t, n);
+    mysquare += projetline(upright, upleft, t, n);
+    mysquare += projetline(upleft, downleft, t, n); 
+    mysquare.close();
+    return(mysquare);
+}
+
+
+int main() {
+    revolutions();
+    picture(P(-1.2,-1.2), P(1.2,1.2), "8x8cm");
+    P downleft = P(0,0);
+    P upright = P(1,1);
+    path mysquare ; 
+    int flag = 1;
+    begin();
+    for (int i = 0; i < 5; i++){
+        for (int j = 0; j < 5; j++){
+            flag = (i+j) % 2;
+
+            if (flag == 0){
+                fill(Black(1.0));
+            } else {
+                fill(Black(0.0));
+            }
+
+            downleft = P(double(i) / 1. - 2.5, double(j)/1. -2.5 );
+            upright = P((double(i) + 1.) / 1. -2.5, (double(j) + 1. )/ 1. -2.5 );
+
+            mysquare = projetsquare(downleft, upright, 0.730, 250);
+            mysquare.fill();
+            mysquare.draw();
+        };
+    };
+
+    path traj; 
+    downleft = P(0,0);
+    pen(Red(1.0));
+    for (int i = 0; i < 10; i++){
+        traj.pt(flow(downleft, double(i) / 50.));
+    }
+    traj.draw();
+    
+    
+    tikz_format();
+    end();
+}
+

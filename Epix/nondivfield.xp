@@ -1,0 +1,114 @@
+/* -*-ePiX-*- */
+#define DELTAT 0.01
+#include "epix.h"
+using namespace ePiX;
+
+
+// potentiel scalaire
+double psi(P X) {
+  double x = X.x1();
+  double y = X.x2();
+  return ( Sin(x) * Cos(y));
+}
+
+double dpsidx (P X){
+  double x = X.x1();
+  double y = X.x2();
+  return( Cos(x) * Cos(y));
+}
+
+double dpsidy (P X){
+
+  double x = X.x1();
+  double y = X.x2();
+  return( - Sin(x) * Sin(y));
+}
+
+P vectfield(P X){
+    return(P(-dpsidy(X), dpsidx(X)));
+}
+
+
+
+P flow(P X0, double t){
+  P X = X0;
+  int n = int ( t / DELTAT );
+  // int n = 10;
+  for (int i = 1; i < n; i++){
+       X = X +  0.01 * vectfield(X) ;
+       // X = X - 0.01 * P(0.1, 0.1);
+    }
+
+  double lasttimestep = t - n * DELTAT;
+  X = X + lasttimestep * vectfield(X) ;
+  return (X);
+}
+
+path projetline(P left, P right, double t, int n = 10){
+    path myline;
+    for (int i = 0 ; i < (n+1) ; i++){
+         double xcoord ;
+         double ycoord ;
+         xcoord = left.x1() + double(i)/double(n) * (right.x1() - left.x1());
+         ycoord = left.x2() + double(i)/double(n) * (right.x2() - left.x2());
+         P X0 = P(xcoord, ycoord);
+         P XT = flow(X0, t);
+         myline.pt(XT);
+    }
+    return(myline);
+}
+
+path projetsquare(P downleft, P upright, double t, int n = 10){
+    path mysquare;
+    path templine;
+    P downright = P(upright.x1(), downleft.x2());
+    P upleft    = P(downleft.x1(), upright.x2());
+    mysquare += projetline(downleft, downright, t, n);
+    mysquare += projetline(downright, upright, t, n);
+    mysquare += projetline(upright, upleft, t, n);
+    mysquare += projetline(upleft, downleft, t, n); 
+    mysquare.close();
+    return(mysquare);
+}
+
+
+int main() {
+    revolutions();
+    picture(P(-1.2,-1.2), P(1.2,1.2), "8x8cm");
+    P downleft = P(0,0);
+    P upright = P(1,1);
+    path mysquare ; 
+    int flag = 1;
+    begin();
+    for (int i = -9; i < 8; i++){
+        for (int j = -9; j < 8; j++){
+            if (flag == 1){
+                flag = 0;
+                fill(Black(1.0));
+            } else {
+                flag = 1;
+                fill(Black(0.0));
+            }
+
+            downleft = P(double(i) / 20., double(j)/20. );
+            upright = P((double(i) + 1.) / 20. , (double(j) + 1. )/ 20. );
+
+            mysquare = projetsquare(downleft, upright, 0.3);
+            mysquare.fill();
+            mysquare.draw();
+        };
+    };
+
+    path traj; 
+    downleft = P(0,0);
+    pen(Red(1.0));
+    for (int i = 0; i < 10; i++){
+        traj.pt(flow(downleft, double(i) / 10.));
+    }
+    traj.draw();
+    
+    
+    tikz_format();
+    end();
+}
+
