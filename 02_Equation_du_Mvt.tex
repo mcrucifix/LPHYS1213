@@ -96,4 +96,260 @@ C’est la célèbre \cindex{équation d’Euler}.
 
 %% expliquer le tenseur
 %% expliquer fluide laminaire incompressible: conserve vorticié + Bernouilli
+Nous retrouvons ici la pleine puissance de notion de \cindex{particule Lagrangienne}: en élément infinitésimal de fluide soumis aux équations du mouvement. L'équation \ref{eq:euler} met en scène une particle matériel, c'est à dire un volume élémentaire de masse volume $\rho$, soumis à la résultante des forces de pression $-\grad p$, et aux forces de volume extérieures $\-rho\grad \phi$. 
+\section{L'advection de la vitesse génère un tenseur}
+
+Nous devons décortiquer l'expression $\Dt{\vec{v}}$ pour comprendre ce qu'elle implique.  
+La dérivée matérielle de la vitesse d'une particule fluide correspond à son \cindex{accélération}.  
+Le plus simple est de considérer les composantes selon les trois axes séparément :
+
+\begin{displaymath}
+  \begin{split}
+    \Dt{u} &= \pdt{u} +  \grad u \cdot\vec{v},\\ 
+    \Dt{v} &= \pdt{v} +  \grad v \cdot\vec{v},\\ 
+    \Dt{w} &= \pdt{w} +  \grad w \cdot\vec{v}.\\ 
+  \end{split}
+\end{displaymath}
+
+Nous pouvons regrouper ces équations sous une forme vectorielle, en introduisant le \cindex{gradient du champ de vitesse} $\grad\vec{v}$ :
+
+\begin{displaymath}
+  \begin{pmatrix}
+    \Dt{u} \\
+    \Dt{v} \\
+    \Dt{w} 
+   \end{pmatrix} = 
+  \begin{pmatrix}
+    \pdt{u} \\
+    \pdt{v} \\
+    \pdt{w} 
+   \end{pmatrix} +
+   \underbrace{
+ \begin{pmatrix}
+    \pd{u}{x} & \pd{u}{y} & \pd{u}{z} \\
+    \pd{v}{x} & \pd{v}{y} & \pd{v}{z} \\
+    \pd{w}{x} & \pd{w}{y} & \pd{w}{z} 
+\end{pmatrix}}_{\grad\vec{v}} 
+\cdot 
+  \begin{pmatrix}
+    {u} \\
+    {v} \\
+    {w} 
+   \end{pmatrix}.
+\end{displaymath}
+
+La notation $\grad\vec{v}$ peut paraître inhabituelle : vous êtes plus familiers du gradient appliqué à un scalaire.  
+Lorsqu’on généralise la notion de gradient à un champ vectoriel, on obtient un \cindex{tenseur} de rang~2.  
+De la même façon qu’un vecteur peut être représenté par ses coordonnées dans une base (sous forme de matrice colonne), un tenseur de rang~2 est représenté par une matrice $n \times n$, avec $n=3$ en trois dimensions. 
+
+Le tenseur est une notion d’importance fondamentale en mécanique des milieux continus.  
+Ses composantes obéissent à des règles de transformation lorsqu’on change la base de référence (voir annexe~XX).  
+Dans ce cours, nous supposerons que les bases sont orthonormées, ce qui nous dispense d’introduire les notions de coordonnées covariantes et contravariantes. 
+
+En revanche, il est essentiel d’introduire dès maintenant la notion d’\cindex{invariant scalaire}.  
+Il s’agit de propriétés de la matrice associée au tenseur qui ne dépendent pas du système de coordonnées.  
+En particulier, la \emph{trace} et le \emph{déterminant} sont des invariants scalaires.  
+Nous verrons plus tard que ces invariants peuvent être associés à des grandeurs physiques bien connues.
+
+
+
+\section{Lignes de flux, chemins et streakline (ligne de traînée)}
+
+\subsection{Hypothèse de l'écoulement laminaire}
+
+Nous allons un instant laisser en suspens les développement de l'équation du mouvement pour aborder la description du champ de vitesse. 
+
+Considérons un champ de vitesse qui, en toute généralité, dépend du temps : $\vec{v}(\vec{x}, t)$. 
+Tout d'abord, précisons que la notion même d'un champ de vitesse implique que nous pouvons définir, sans ambiguïté, une et une seule vitess pour une position donnée, à tout moment. Or, nous avons vu que cette approche suppose d'une part une hypothèse de milieu continu, et l'existence de particules matérielles qui son suffisament à l'équilibre avec leur environnement pour être considéers comme homogènes. En particulier, nous sommes amenés à appliquer des opérateurs différentiel au champ de vitesse, ce qui exige que le champ de vitesse soit continûment dérivable. 
+
+Ces hypothèses nous amènent à considérer un écoulement suffisament régulier que l'on qualifie d'\cindex{écoulement laminaire}, par opposition à l'écoulement turbulent. Les notions que nous allons développer ici supposent un écoulement laminaire. 
+
+
+\subsection{Ligne du flux}
+
+À chaque temps $t$, nous pouvons définir un ensemble de courbes paramétriques $\vec{x}_{\vec{x}_0}$ définies par 
+
+\begin{equation}
+  \od{\vec{x}}{s} = \vec{u}(\vec{x},t)\text{, avec $\vec{x}(0)=\vec{x}_0$}. 
+  \label{eq:ligne_flux}
+\end{equation}
+
+Il faut bien comprendre cette écriture car elle est piégeuse. $s$ est un paramètre qui permet de tracer toute une courbe partant de $\vec{x}_0$, à un instant $t$ donné. La courbe est donc tracée en parcourant les valeurs de $s$ sur la droite réelle, en utiliant le champ $\vec{v}(x,t)$ à ce temps $t$ déterminé. 
+
+Supposons pour fixer les idées que le champ $\vec{v}$ soit invariant au cours du temps. Il est donc \cindex{stationnaire}. Réécrivons dans ce cas particulier: 
+
+\begin{displaymath}
+  \od{\vec{x}}{s} = u(\vec{x})\text{, avec $\vec{x}(0)=\vec{x}_0$}. 
+\end{displaymath}
+
+Si on remplace, pour s'aider, le symbole $s$ par le symbole $t$, on voit immédiatement que la courbe $\vec{x}(s)$ se superpose au chemin suivi par d'une particule de fluide au cours du temps, avec condition initiale $\vec{x}_0$ au temps $t=0$. 
+
+La courbe paramétrique définie par \eqref{eq:ligne_flux} porte le nom de \cindex{ligne de flux}. Dans le cas particulier d'un champ de vitesse stationnaire, elle se superpose à la trajectoire de toute particule passant à un moment donné par $\vec{x}_0$. 
+
+\subsubsection{Les lignes de flux sont tangeantes à la vitesse en tout point}
+
+Exprimons l'équation \eqref{eq:ligne_flux} selon ses composantes cartésiennes: 
+
+\begin{align*}
+  \od{{x}}{s} &= u({x},t) & 
+  \od{{y}}{s} &= v({x},t) & 
+  \od{{z}}{s} &= w({x},t) 
+\end{align*}
+
+On peut exprimer les incréments différentiels:
+
+\begin{align*}
+  \dif{x} &= u({x},t) \dif s & 
+  \dif{y} &= v({x},t) \dif s & 
+  \dif{z} &= w({x},t) \dif s. 
+\end{align*}
+
+Ou encore: 
+
+\begin{align*}
+  \frac{\dif{x}}{\dif{y}}  &= \frac{u({x},t)}{v({x},t)} & 
+  \frac{\dif{x}}{\dif{z}}  &= \frac{u({x},t)}{w({x},t)} & 
+  \frac{\dif{y}}{\dif{z}}  &= \frac{v({x},t)}{w({x},t)} 
+\end{align*}
+
+ce qui revient simplement à écrire que la courbe décrite pas $\vec{x}(s)$ est tangeante, en tout point, au vecteur vitesse. 
+
+
+\subsubsection{Les lignes de flux ne peuvent pas se croiser}
+
+Par l'absurde, cela impliquerait qu'un un point et à un instant $t$, la vitesse peut prendre deux directions différentes, alors que l'hypothèse du milieu continu nous impose une vitesse bien définie en tout point. 
+
+
+
+
+\subsubsection{Section de lignes de flux dans un écoulement à deux dimensions}
+
+Pour un champ de vitesse bidimensionnel $\vec{v}(x,y)$, considérons un ensemble de conditions initiales $\mathcal{S}_{ab}(0)$ reliant deux points $a$ et $b$ de façon continue, et tel qu’il intercepte les lignes de flux de manière à ce que les vitesses soient toutes dans la même direction (par exemple, de gauche à droite).
+
+On dit que $\mathcal{S}_{ab}(0)$ constitue une \emph{section}, et plus précisément une \cindex{section connexe}, car elle ne contient pas de trou.
+
+En construisant l’ensemble des lignes de flux associées à chacune de ces conditions initiales, on obtient une figure géométrique généralement bidimensionnelle. Pour tout paramètre $s$ (le temps restant figé), les ensembles $\mathcal{S}_{ab}(s)$ constituent des sections correspondant à la projection continue des conditions initiales en fonction de $s$. Cette surface ainsi construite ne contiendra pas de trou non plus.
+
+Pour le voir, introduisons la notion de \cindex{fonction de flot}, notée $\phi^s$, qui renvoie l’advection de la section initiale selon les lignes de flux :
+
+\begin{equation}
+  \phi^s(\mathcal{S}_{ab}(0)) = \mathcal{S}_{ab}(s)
+  \label{eq:flot_2d}
+\end{equation}
+
+Comme le champ de vitesse est continu, la fonction de flot $\phi^s$ est elle aussi continue. Dans ce cas, un résultat standard de topologie nous dit que l’image continue d’un ensemble connexe est connexe.
+
+Par conséquent, l’advection d’une section connexe par un flot continu reste connexe : \textbf{aucun trou n’est créé}.
+
+\subsubsection{Tubes de flux dans un écoulement à trois dimensions}
+
+Pour un champ de vitesse tridimensionnel $\vec{v}(x,y,z)$, nous pouvons cette fois définir un anneau $\mathcal{S}_{ab}(0)$, c’est-à-dire une courbe fermée, dite \emph{simplement connexe}. L’advection de cette courbe selon le flot $\phi^s$ définit alors un \cindex{tube de flux} dont la paroi est continue. 
+
+De manière informelle, aucune ligne de flux ne peut s’échapper du tube : toutes restent confinées à l’intérieur de sa paroi.
+
+\subsubsection{Implications pour un flux stationnaire}
+
+Dans le cas stationnaire, nous avons vu que les lignes de flux se confondent avec les trajectoires. Le paramètre $s$ qui définit les lignes de flux, ainsi que la fonction de flot $\phi^s$, peuvent alors être réinterprétés comme le temps.
+
+Nous en déduisons une conséquence importante :
+
+\begin{quote}
+Dans un écoulement fluide laminaire et stationnaire, une particule fluide piégée dans un tube de flux ne peut jamais s’en échapper.
+\end{quote}
+
+\begin{key}{Tube de flux}
+On appelle \emph{tube de flux} la surface formée par l’ensemble des lignes de flux issues d’une courbe fermée $\mathcal{S}_{ab}(0)$ dans un champ de vitesse $\vec{v}(x,y,z)$.
+
+Autrement dit, si chaque point de $\mathcal{S}_{ab}(0)$ est advecté selon le flot $\phi^s$, la surface latérale engendrée par l’ensemble des trajectoires forme un tube dont les lignes de flux constituent l’intérieur.
+
+Les propriétés topologiques du flot garantissent la continuité de la paroi du tube : aucune ligne de flux ne traverse cette paroi, et donc aucun échange de matière ne se produit entre l’intérieur et l’extérieur du tube.
+\end{key}
+
+\subsection{Écoulement non stationnaire}
+
+Nous devons introduire deux nouvelles notations, qui traduisent toutes deux la \cindex{description lagrangienne} du champ de vitesse.
+
+\subsubsection{Ligne de chemin}
+
+La \cindex{ligne de chemin} (\emph{pathline}) est la courbe paramétrique décrivant la trajectoire d’une particule fluide dans un champ de vitesse, possiblement non stationnaire. Elle est définie par :
+
+\begin{equation}
+  \od{\vec{p}}{t} = \vec{v}(\vec{p},t), \qquad \vec{p}(t_0) = \vec{p}_0.
+  \label{eq:ligne_chemin}
+\end{equation}
+
+On peut également l’exprimer à l’aide de la \cindex{fonction de flot} :
+\begin{equation}
+  \vec{p}(t) = \phi^{t-t_0}(\vec{x}_0, t_0),
+  \label{eq:ligne_chemin_flot}
+\end{equation}
+où le paramètre de la courbe, $t$, représente le temps écoulé depuis le lâcher de la particule.
+
+Chaque ligne de chemin correspond donc à la trajectoire d’une particule donnée, définie par sa position initiale $\vec{x}_0$ et son temps initial $t_0$.  
+À chaque instant $t$, la tangente à la ligne de chemin coïncide avec la direction du champ de vitesse $\vec{v}(\vec{x},t)$ en ce point.  
+
+Dans un écoulement laminaire, deux particules lâchées au même instant $t_0$ ne peuvent jamais se collisionner : une telle collision impliquerait qu’en un même point et à un même instant, deux vitesses différentes sont possibles, ce qui contredirait l’hypothèse de continuité du milieu.
+
+La ligne de chemin peut donc être interprétée comme une courbe qui se construit dynamiquement au fur et à mesure de l’évolution du temps.
+
+\subsubsection{Ligne de trace (streakline)}
+
+La \cindex{ligne de trace} (\emph{streakline}) est définie à un instant donné $t$ comme l’ensemble des positions atteintes à cet instant par des particules lâchées à différents instants $t_0$, mais depuis une même position initiale $\vec{x}_0$.
+
+Autrement dit, le paramètre qui permet de se déplacer le long de la courbe est le temps de lâcher $t_0$. En reprenant le formalisme du flot, on écrit :
+
+\begin{equation}
+  \vec{s}(t_0) = \phi^{\,t - t_0}(\vec{x}_0, t_0),
+  \label{eq:streakline_flot}
+\end{equation}
+
+Les lignes de trace sont donc des ensembles observés à un temps fixé $t$. En parcourant la courbe, on explore les positions actuelles des particules émises successivement depuis la source $\vec{x}_0$ à différents instants passés.
+
+\medskip
+Ainsi, dans un écoulement non stationnaire, les lignes de flux, les lignes de chemin et les lignes de trace ne coïncident pas nécessairement : chacune décrit un aspect distinct du mouvement du fluide.
+
+TODO: ICI: ajouter des commentaires sur le caractère non-linéaire de l'équation du mouvement. 
+
+\subsection{Décomposition de Helmholtz d'un champ stationnaire}
+
+Soit un champ de vitesse stationnaire $\vec{u}(\vec{x})$ défini dans $\mathbb{R}^3$ ou dans un domaine borné suffisamment régulier.  
+Le \cindex{théorème de Helmholtz} stipule que ce champ peut toujours se décomposer de manière unique (à une constante près) en la somme de trois composantes :
+
+\begin{equation}
+\vec{u} = - \grad \phi + \grad \times \vec{\psi} + \vec{c},
+\label{eq:helmholtz_decomposition}
+\end{equation}
+
+où : 
+
+\begin{itemize}
+  \item $\phi(\vec{x})$ est un \cindex{potentiel scalaire}, de sorte que $-\grad \phi$ est \emph{irrotationnel} :
+        \[
+          \grad \times (-\grad \phi) = \vec{0}, \qquad 
+          \grad \cdot (-\grad \phi) = - \nabla^2 \phi \neq 0 \text{ en général};
+        \]
+
+  \item $\vec{\psi}(\vec{x})$ est un \cindex{potentiel vectoriel}, de sorte que $\grad \times \vec{\psi}$ est \emph{solénoïdal} (divergence nulle) :
+        \[
+          \grad \cdot (\grad \times \vec{\psi}) = 0, \qquad
+          \grad \times (\grad \times \vec{\psi}) \neq 0 \text{ en général};
+        \]
+
+  \item $\vec{c}$ est une \cindex{composante constante} du champ, qui n’est ni divergente ni rotationnelle.
+\end{itemize}
+
+\paragraph{Interprétation physique.}
+\begin{itemize}
+  \item La composante $-\grad \phi$ transporte toute la divergence du champ : elle décrit la partie \emph{non rotationnelle}.  
+  \item La composante $\grad \times \vec{\psi}$ transporte toute la rotation du champ : elle décrit la partie \emph{non divergente}.  
+  \item La constante $\vec{c}$ représente une composante uniforme du champ.
+\end{itemize}
+
+\paragraph{Cas particuliers.}
+\begin{itemize}
+  \item Dans un écoulement incompressible ($\grad \cdot \vec{u} = 0$), la composante $-\grad \phi$ est nulle, et le champ est purement solénoïdal.  
+  \item Dans un écoulement potentiel ($\grad \times \vec{u} = 0$), la composante $\grad \times \vec{\psi}$ est nulle, et le champ est purement irrotationnel.
+\end{itemize}
+
+
 
