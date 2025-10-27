@@ -74,7 +74,7 @@ c’est-à-dire que les isobares sont horizontales. Le fluide est dit \cindex{ba
 
 Supposons maintenant que le fluide est suffisamment lent pour que le gradient de pression continue à décrire correctement les forces internes au fluide. En pratique, cela implique qu’il n’y a pas d’effets de \cindex{compression élastique}, ni de \cindex{friction}.  
 
-Dans ce cas, nous pouvons généraliser. L’\cindex{accélération} de du volume matériel fini vaut :
+Dans ce cas, nous pouvons généraliser. L’\cindex{accélération} du volume matériel fini vaut :
 \begin{equation}
 \od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{v}(\vec{x},t) \, \dif \vol,
 \label{eq:momentum_balance}
@@ -372,7 +372,7 @@ Reprenons la décomposition de Helmholtz, mais adapté au cas bi-dimensionnel. L
 
 \begin{equation}
   \begin{split}
-     \curl aa % \vec{\sfn} %
+     \curl \vec{\sfn} %
                      &= \curl ( \sfn_x \ex  + \sfn_y \ey + \sfn_z \ez ) \\
                      &= \grad \sfn_x \cross \ex + 
                         \grad \sfn_y \cross \ey + 
@@ -406,11 +406,13 @@ La fonction $\sfn_z$ porte le nom de \cindex{fonction de courant}, en Anglais \e
     \rho \int_a^b \uh\, \dif \mathcal{S}\, 
   \end{displaymath}
 
-  On sait que $\int_a^b \uh = \int_a^b \grad \sfn_z \times \ez \dif \mathcal{S}$, et on peut se convaincre de multiples façons que cette intégrale vaut $\psi(b)-\psi(a)$, par exemple en créant une boucle fermée et appliquant le théorème de Green. 
+  On sait que $\int_a^b \uh = \int_a^b \grad \sfn_z \times \ez \dif \mathcal{S}$, et on peut se convaincre de multiples façons que cette intégrale vaut $\psi(b)-\psi(a)$, par exemple en créant une boucle fermée et en appliquant le théorème de Green. 
 
 \end{key} 
 
-Par ailleurs, dans un fluide stationnaire, une particule fluide conserve $\sfn_z$ le long de son mouvement. 
+Par ailleurs, 
+
+\begin{key}{Dans un fluide stationnaire, une particule fluide conserve $\sfn_z$ le long de son mouvement.}
 
 En effet, puisque $\pdt{\psi_z}=0$ (hypothèse stationnaire), 
 
@@ -420,8 +422,9 @@ En effet, puisque $\pdt{\psi_z}=0$ (hypothèse stationnaire),
 
 On remplace alors $\Dif x = u_x \dif t = \pdy {\sfn_z}  \dif t $ et 
 $\Dif y = u_y \dif t = - \pdx {\sfn_z} \dif t $ pour démontrer que $\Dif \psi_z = 0$. 
+\end{key}
 
-Ainsi, dans un écoulement dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ prêt) le flux de masse entre les deux iso-contours. 
+Ainsi, dans un écoulement dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ près) le flux de masse entre les deux iso-contours. 
 
 
 \section{Description Lagrangienne d'un écoulement non-stationnaire}
