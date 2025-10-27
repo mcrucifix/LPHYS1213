@@ -5,6 +5,7 @@
 % Load unicode-math to select math fonts
 \usepackage{fontspec}
 \usepackage{amsfonts}
+\usepackage{nomencl}
 \usepackage{dutchcal}
 % \usepackage{unicode-math}
 
@@ -25,6 +26,10 @@
 % better display of volume integrals
 \usepackage{esint}
 
+
+\newcommand{\rh}{\ensuremath{\vec{r}_h}}
+\newcommand{\gpot}{\ensuremath{\Phi}}
+\newcommand{\sfn}{\ensuremath{\psi}}
 
 % Set the math font (currently deactivated)
 % 
@@ -48,13 +53,18 @@
 %\includeonly{Session_1_Elementary_Notions}
 %\includeonly{Session_2_Gravity_Waves}
 %\includeonly{Session_3_Poincare_and_Kelvin_Waves}
+
+\makenomenclature
+\input{nomenclature.tex}
+
 \begin{document}
 %\raggedright
 \titlepage
 \tableofcontents
+\printnomenclature
 \include{01_Milieu_Continu}
 \include{02_Equation_du_Mvt}
-include{03_Ecoulements_incompressibles}
+%\include{03_Ecoulements_incompressibles}
 %\include{03_Le_tenseur_des_Contraintes}
 %\include{04_Conservation_de_lenergie}
 

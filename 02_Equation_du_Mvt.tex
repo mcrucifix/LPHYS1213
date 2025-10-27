@@ -4,6 +4,10 @@
 % - principe de pascal dans le cas hydrostatique
 % - force de pression
 % - theoreme de Gausse pour un gradient
+
+
+\section{Équation d'Euler}
+
 \subsection{Théorème de Gauss - Ostrogradsky pour un gradient}
 
 Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section XX, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde se volume: 
@@ -23,7 +27,7 @@ Comme cette équation demeure valable quel que soit $\vec{c}$, on obtient plus g
 Cette équation peut être vue comme une généralisation du théorème de intégral de Leibniz $\int_a^b \odd{f}{x} = f(b)-f(a)$. Le terme de gauche est l'intégrale d'une dérivée (sur la droie dans le cas 1D, dans l'espace dans le cas 3D); le terme  de droite est une généralisation de la "différence" de $f$ évaluée aux bornes du domaine intégré. 
 
 
-\section{Première équation du mouvement}
+\subsection{Expression de la seconde loi de Newton}
 
 Nous allons dans cette section établir notre première \cindex{équation du mouvement}. C’est l’expression, dans un \cindex{milieu continu}, de la \cindex{seconde loi de Newton} : 
 \[
@@ -32,7 +36,7 @@ Nous allons dans cette section établir notre première \cindex{équation du mou
 
 Considérons un \cindex{volume de fluide}. Deux types de \cindex{forces externes} peuvent s’exercer sur ce fluide et générer une \cindex{accélération} de son centre de masse :
 \begin{itemize}
-  \item les forces qui dérivent d’un \cindex{potentiel}, comme les forces gravitationnelles ou magnétiques, et qui s’expriment comme un \cindex{gradient de potentiel}. Ainsi, pour chaque élément de fluide \(\rho \, \dif V\), nous avons un élément de force \(-\rho \, \grad \phi\). Dans la majorité des cas, le seul potentiel dont on tiendra compte est le \cindex{géopotentiel}, qui exprime la combinaison de l’attraction terrestre et de la (pseudo-)force centrifuge. Le gradient \(\grad \phi\) définit la verticale ;
+  \item les forces qui dérivent d’un \cindex{potentiel}, comme les forces gravitationnelles ou magnétiques, et qui s’expriment comme un \cindex{gradient de potentiel}. Ainsi, pour chaque élément de fluide \(\rho \, \dif V\), nous avons un élément de force \(-\rho \, \grad \varphi\). Dans la majorité des cas, le seul potentiel dont on tiendra compte est le \cindex{géopotentiel}, qui exprime la combinaison de l’attraction terrestre et de la (pseudo-)force centrifuge. Le gradient \(\grad \gpot\) définit la verticale ;
   \item les forces qui s’exercent à l’\cindex{interface} du volume et de son environnement. Lorsqu’elles travaillent, ces forces génèrent un transfert de \cindex{moment cinétique} entre l’environnement et le volume considéré.
 \end{itemize}
 
@@ -42,28 +46,28 @@ Lorsqu’un fluide est à l’\cindex{équilibre statique}, on observe qu’une 
 
 Sur cette base, on peut aisément exprimer la première loi de Newton pour établir la relation hydrostatique :
 \begin{equation}
-\int_V - \rho \, \grad \phi \, \dif V \; - \; \int_A p \, \vec{n} \, \dif A = 0
+\int_V - \rho \, \grad \gpot \, \dif V \; - \; \int_A p \, \vec{n} \, \dif A = 0
 \label{eq:hydrostat_int}
 \end{equation}
 La somme des forces dues au \cindex{potentiel} et à la \cindex{pression} à la surface du volume est égale à zéro dans le cas statique.  
 
 En utilisant le \cindex{théorème de Gauss}, on simplifie la relation :
 \begin{equation}
-\int_V - \rho \, \grad \phi \, \dif V \; - \; \int_V \grad p \, \dif V = 0
+\int_V - \rho \, \grad \gpot \, \dif V \; - \; \int_V \grad p \, \dif V = 0
 \label{eq:hydrostat_gauss}
 \end{equation}
 Comme l’expression est valable pour tout volume, on peut la réduire à sa forme différentielle :
 \begin{equation}
-- \rho \, \grad \phi = \grad p
+- \rho \, \grad \gpot = \grad p
 \label{eq:hydrostat_diff}
 \end{equation}
 C’est la relation bien connue de l’\cindex{équilibre hydrostatique}.  
 
-Si le seul potentiel de force de volume considéré est le \cindex{géopotentiel}, alors $-\grad \phi = - g \, \ez$ : le gradient du géopotentiel est vertical. On remarque que, dans cet équilibre hydrostatique, le gradient de pression sera strictement vertical pour autant que la \cindex{masse volumique} ne varie que selon la verticale, donc selon la pression.  
+Si le seul potentiel de force de volume considéré est le \cindex{géopotentiel}, alors $-\grad \gpot = - g \, \ez$ : le gradient du géopotentiel est vertical. On remarque que, dans cet équilibre hydrostatique, le gradient de pression sera strictement vertical pour autant que la \cindex{masse volumique} ne varie que selon la verticale, donc selon la pression.  
 
 De façon plus générale, on démontre (exercice) que si \(\rho = \rho(p)\), alors :
 \begin{equation}
-\grad p \times \grad \phi = 0,
+\grad p \times \grad \gpot = 0,
 \label{eq:barotrope}
 \end{equation}
 c’est-à-dire que les isobares sont horizontales. Le fluide est dit \cindex{barotrope}.  
@@ -84,20 +88,21 @@ et doit être égale à la somme des forces externes (les forces internes s’an
 On obtient donc :
 \begin{equation}
   \int_\vol \rho \, \Dt{\vec{v}} \, \dif \vol 
-= \int_\vol - \rho \, \grad \phi \, \dif \vol \; - \; \int_\vol \grad p \, \dif \vol
+= \int_\vol - \rho \, \grad \gpot \, \dif \vol \; - \; \int_\vol \grad p \, \dif \vol
 \label{eq:euler_integral}
 \end{equation}
 L’intégrale étant valable pour tout volume matériel fini, on peut la réduire à sa forme différentielle :
 \begin{equation}
-  \rho \, \Dt{\vec{v}} = - \rho \, \grad \phi - \grad p. 
+  \rho \, \Dt{\vec{v}} = - \rho \, \grad \gpot - \grad p. 
 \label{eq:euler}
 \end{equation}
 C’est la célèbre \cindex{équation d’Euler}. 
 
 %% expliquer le tenseur
 %% expliquer fluide laminaire incompressible: conserve vorticié + Bernouilli
-Nous retrouvons ici la pleine puissance de notion de \cindex{particule Lagrangienne}: en élément infinitésimal de fluide soumis aux équations du mouvement. L'équation \ref{eq:euler} met en scène une particle matériel, c'est à dire un volume élémentaire de masse volume $\rho$, soumis à la résultante des forces de pression $-\grad p$, et aux forces de volume extérieures $\-rho\grad \phi$. 
-\section{L'advection de la vitesse génère un tenseur}
+Nous retrouvons ici la pleine puissance de notion de \cindex{particule Lagrangienne}: en élément infinitésimal de fluide soumis aux équations du mouvement. L'équation \ref{eq:euler} met en scène une particle matériel, c'est à dire un volume élémentaire de masse volume $\rho$, soumis à la résultante des forces de pression $-\grad p$, et aux forces de volume extérieures $\-rho\grad \gpot$. 
+
+\begin{key}{L'advection de la vitesse génère un tenseul}
 
 Nous devons décortiquer l'expression $\Dt{\vec{v}}$ pour comprendre ce qu'elle implique.  
 La dérivée matérielle de la vitesse d'une particule fluide correspond à son \cindex{accélération}.  
@@ -151,9 +156,22 @@ Il s’agit de propriétés de la matrice associée au tenseur qui ne dépendent
 En particulier, la \emph{trace} et le \emph{déterminant} sont des invariants scalaires.  
 Nous verrons plus tard que ces invariants peuvent être associés à des grandeurs physiques bien connues.
 
+\end{key}
+
+\begin{key}{L'équation du mouvement est non-linéaire}
+
+Reprenons l'équation d'Euler \eqref{eq:euler}. Vérifiez en exercice qu'elle est non-linéaire: la somme de deux solutions généralement pas une solution de l'équation; une solution multipliée par un facteur constant (autre que $1$ ou $-1$) n'est généralement pas une solution. 
+
+Cette propriété est due au terme d'advection. On peut donc espérer que tant que l'advection est relativement \emph{faible} --- c'est une notion qu'il faudra préciser --- l'écoulement sera raisonnablement linéaire. Lorsqu'il est plus important, l'écoulement peut devenir turbulent \index{écoulement turbulent} et la recherche d'une solution particulière à l'équation du mouvement n'est généralement plus possible voire pertinente. 
 
 
-\section{Lignes de flux, chemins et streakline (ligne de traînée)}
+\end{key}
+
+% TODO: ICI: ajouter des commentaires sur le caractère non-linéaire de l'équation du mouvement. 
+
+\section{Description eulérienne du champ des vitesses}
+
+% \section{Lignes de flux, chemins et streakline (ligne de traînée)}
 
 \subsection{Hypothèse de l'écoulement laminaire}
 
@@ -165,7 +183,8 @@ Tout d'abord, précisons que la notion même d'un champ de vitesse implique que 
 Ces hypothèses nous amènent à considérer un écoulement suffisament régulier que l'on qualifie d'\cindex{écoulement laminaire}, par opposition à l'écoulement turbulent. Les notions que nous allons développer ici supposent un écoulement laminaire. 
 
 
-\subsection{Ligne du flux}
+\subsection{Lignes de flux}
+
 
 À chaque temps $t$, nous pouvons définir un ensemble de courbes paramétriques $\vec{x}_{\vec{x}_0}$ définies par 
 
@@ -174,19 +193,19 @@ Ces hypothèses nous amènent à considérer un écoulement suffisament régulie
   \label{eq:ligne_flux}
 \end{equation}
 
-Il faut bien comprendre cette écriture car elle est piégeuse. $s$ est un paramètre qui permet de tracer toute une courbe partant de $\vec{x}_0$, à un instant $t$ donné. La courbe est donc tracée en parcourant les valeurs de $s$ sur la droite réelle, en utiliant le champ $\vec{v}(x,t)$ à ce temps $t$ déterminé. 
+Il faut bien comprendre cette écriture car elle est piégeuse. Le paramètre $s$ est celui qui permet de tracer toute une courbe partant de $\vec{x}_0$, à un instant $t$ donné. La courbe est donc tracée en parcourant les valeurs de $s$ sur la droite réelle, en utilisant le champ $\vec{v}(x,t)$ à ce temps $t$ déterminé. 
 
-Supposons pour fixer les idées que le champ $\vec{v}$ soit invariant au cours du temps. Il est donc \cindex{stationnaire}. Réécrivons dans ce cas particulier: 
+Supposons, pour fixer les idées que le champ $\vec{v}$ soit invariant au cours du temps. Il s'agit donc d'un \cindex{écoulement stationnaire}. Réécrivons dans ce cas particulier: 
 
 \begin{displaymath}
   \od{\vec{x}}{s} = u(\vec{x})\text{, avec $\vec{x}(0)=\vec{x}_0$}. 
 \end{displaymath}
 
-Si on remplace, pour s'aider, le symbole $s$ par le symbole $t$, on voit immédiatement que la courbe $\vec{x}(s)$ se superpose au chemin suivi par d'une particule de fluide au cours du temps, avec condition initiale $\vec{x}_0$ au temps $t=0$. 
+Si on remplace, pour s'aider, le symbole $s$ par le symbole $t$, on voit immédiatement que la courbe $\vec{x}(s)$ répond à la même équation que celle qui détermine le chemin d'une particule de fluide au cours du temps, avec condition initiale $\vec{x}_0$ au temps $t=0$. 
 
-La courbe paramétrique définie par \eqref{eq:ligne_flux} porte le nom de \cindex{ligne de flux}. Dans le cas particulier d'un champ de vitesse stationnaire, elle se superpose à la trajectoire de toute particule passant à un moment donné par $\vec{x}_0$. 
+La courbe paramétrique définie par \eqref{eq:ligne_flux} porte le nom de \cindex{ligne de flux}. Dans le cas particulier d'un champ de vitesse stationnaire, elle se superpose à la trajectoire ou chemin de toute particule passant à un moment donné par $\vec{x}_0$. 
 
-\subsubsection{Les lignes de flux sont tangeantes à la vitesse en tout point}
+\begin{key}{Les lignes de flux sont tangentes à la vitesse en tout point}
 
 Exprimons l'équation \eqref{eq:ligne_flux} selon ses composantes cartésiennes: 
 
@@ -212,17 +231,17 @@ Ou encore:
   \frac{\dif{y}}{\dif{z}}  &= \frac{v({x},t)}{w({x},t)} 
 \end{align*}
 
-ce qui revient simplement à écrire que la courbe décrite pas $\vec{x}(s)$ est tangeante, en tout point, au vecteur vitesse. 
+ce qui revient simplement à écrire que la courbe décrite pas $\vec{x}(s)$ est tangente, en tout point, au vecteur vitesse. 
 
+\end{key}
 
-\subsubsection{Les lignes de flux ne peuvent pas se croiser}
+\begin{key}{Les lignes de flux ne peuvent pas se croiser}
 
-Par l'absurde, cela impliquerait qu'un un point et à un instant $t$, la vitesse peut prendre deux directions différentes, alors que l'hypothèse du milieu continu nous impose une vitesse bien définie en tout point. 
+Par l'absurde, cela impliquerait en effet qu'un un point et à un instant $t$, la vitesse peut prendre deux directions différentes, alors que l'hypothèse du milieu continu nous impose une vitesse bien définie en tout point. 
 
+\end{key}
 
-
-
-\subsubsection{Section de lignes de flux dans un écoulement à deux dimensions}
+\subsection{Section de lignes de flux dans un écoulement}
 
 Pour un champ de vitesse bidimensionnel $\vec{v}(x,y)$, considérons un ensemble de conditions initiales $\mathcal{S}_{ab}(0)$ reliant deux points $a$ et $b$ de façon continue, et tel qu’il intercepte les lignes de flux de manière à ce que les vitesses soient toutes dans la même direction (par exemple, de gauche à droite).
 
@@ -241,35 +260,175 @@ Comme le champ de vitesse est continu, la fonction de flot $\phi^s$ est elle aus
 
 Par conséquent, l’advection d’une section connexe par un flot continu reste connexe : \textbf{aucun trou n’est créé}.
 
-\subsubsection{Tubes de flux dans un écoulement à trois dimensions}
+\subsection{Ecoulement tri-dimensionnel : tubes de flux}
 
 Pour un champ de vitesse tridimensionnel $\vec{v}(x,y,z)$, nous pouvons cette fois définir un anneau $\mathcal{S}_{ab}(0)$, c’est-à-dire une courbe fermée, dite \emph{simplement connexe}. L’advection de cette courbe selon le flot $\phi^s$ définit alors un \cindex{tube de flux} dont la paroi est continue. 
 
-De manière informelle, aucune ligne de flux ne peut s’échapper du tube : toutes restent confinées à l’intérieur de sa paroi.
-
-\subsubsection{Implications pour un flux stationnaire}
-
-Dans le cas stationnaire, nous avons vu que les lignes de flux se confondent avec les trajectoires. Le paramètre $s$ qui définit les lignes de flux, ainsi que la fonction de flot $\phi^s$, peuvent alors être réinterprétés comme le temps.
-
-Nous en déduisons une conséquence importante :
-
-\begin{quote}
-Dans un écoulement fluide laminaire et stationnaire, une particule fluide piégée dans un tube de flux ne peut jamais s’en échapper.
-\end{quote}
-
-\begin{key}{Tube de flux}
 On appelle \emph{tube de flux} la surface formée par l’ensemble des lignes de flux issues d’une courbe fermée $\mathcal{S}_{ab}(0)$ dans un champ de vitesse $\vec{v}(x,y,z)$.
 
 Autrement dit, si chaque point de $\mathcal{S}_{ab}(0)$ est advecté selon le flot $\phi^s$, la surface latérale engendrée par l’ensemble des trajectoires forme un tube dont les lignes de flux constituent l’intérieur.
 
 Les propriétés topologiques du flot garantissent la continuité de la paroi du tube : aucune ligne de flux ne traverse cette paroi, et donc aucun échange de matière ne se produit entre l’intérieur et l’extérieur du tube.
+
+
+De manière informelle, aucune ligne de flux ne peut s’échapper du tube : toutes restent confinées à l’intérieur de sa paroi.
+
+Nous en déduisons une conséquence importante :
+
+\begin{key}{Dans un écoulement fluide laminaire et stationnaire, une particule fluide piégée dans un tube de flux ne peut jamais s’en échapper.}
+En effet, dans  le cas stationnaire, nous avons vu que les lignes de flux se confondent avec les trajectoires. Le paramètre $s$ qui définit les lignes de flux, ainsi que la fonction de flot $\phi^s$, peuvent alors être réinterprétés comme le temps.
 \end{key}
 
-\subsection{Écoulement non stationnaire}
 
-Nous devons introduire deux nouvelles notations, qui traduisent toutes deux la \cindex{description lagrangienne} du champ de vitesse.
+\subsection{Décomposition de Helmholtz d'un champ stationnaire}
 
-\subsubsection{Ligne de chemin}
+Soit un champ de vitesse stationnaire $\vec{u}(\vec{x})$ défini dans $\mathbb{R}^3$ ou dans un domaine borné suffisamment régulier.  
+Le \cindex{théorème de Helmholtz} stipule que ce champ peut toujours se décomposer de manière unique (à une constante près) en la somme de trois composantes :
+
+\begin{equation}
+\vec{u} = - \grad \vpot + \grad \times \vec{\sfn} + \vec{c},
+\label{eq:helmholtz_decomposition}
+\end{equation}
+
+où : 
+
+\begin{itemize}
+  \item $\vpot(\vec{x})$ est un \cindex{potentiel scalaire}, de sorte que $-\grad \vpot$ est \emph{irrotationnel} :
+        \[
+          \grad \times (-\grad \vpot) = \vec{0}, \qquad 
+          \grad \cdot (-\grad \vpot) = - \nabla^2 \vpot \neq 0 \text{ en général};
+        \]
+
+  \item $\vec{\psi}(\vec{x})$ est un \cindex{potentiel vectoriel}, de sorte que $\grad \times \vec{\psi}$ est \emph{solénoïdal} (divergence nulle) :
+        \[
+          \grad \cdot (\grad \times \vec{\psi}) = 0, \qquad
+          \grad \times (\grad \times \vec{\psi}) \neq 0 \text{ en général};
+        \]
+
+  \item $\vec{c}$ est une \cindex{composante constante} du champ, qui n’est ni divergente ni rotationnelle.
+\end{itemize}
+
+\paragraph{Interprétation physique.}
+\begin{itemize}
+  \item La composante $-\grad \vpot$ transporte toute la divergence du champ : elle décrit la partie \emph{non rotationnelle}.  
+  \item La composante $\grad \times \vec{\psi}$ transporte toute la rotation du champ : elle décrit la partie \emph{non divergente}.  
+  \item La constante $\vec{c}$ représente une composante uniforme du champ.
+\end{itemize}
+
+\paragraph{Cas particuliers.}
+\begin{itemize}
+  \item Dans un écoulement incompressible ($\grad \cdot \vec{u} = 0$), la composante $-\grad \vpot$ est nulle, et le champ est purement non-divergent ou encore dit \index{écoulement solénoïdal}{solénoïdal}.  
+  \item Dans un écoulement potentiel ($\grad \times \vec{u} = 0$), la composante $\grad \times \vec{\psi}$ est nulle, et le champ est purement irrotationnel.
+\end{itemize}
+
+
+\subsection{Écoulement bi-dimensionnels}
+
+Bien que nous vivions dans un monde tri-dimensionnel, beaucoup d'écoulements se décrivent très bien dans espace à deux dimensions: les éléments de l'écoulement qui nous intéressent se trouvent dans un plan. 
+
+Ce sera typiquement le cas lorsque l'écoulement est confiné dans un domaine qui présente des dimensions très différentes selon l'horizontale est la verticale. C'est le cas des mers, des océans, ou dans certaines expériences de laboratoire comme celle de \cindex{Rayleigh-Bénard}\footnote{\url{https://www.youtube.com/watch?v=Eud7uG5JHng}}. De tels écoulements sont dits à coefficient d'Aspect élevé. 
+
+L'existence même d'écoulements à coefficient d'aspect élevé est lui-même lié à des facteurs extérieurs qui renforcent la pertinence d'une description à deux dimensions: la force de gravité induit une forte asymmétrie entre l'horizontale et la verticale. On démontre par ailleurs que dans un fluide stationnaire bartrope en rotation (section Deleersnijder), le mouvement est invariant selon l'axe de rotation (\cindex{théorème de Taylor-Proudman}. 
+
+Nous utiliserons la notation $\uh$ pour signifier la composant horizontale du mouvement. 
+
+
+\subsection{Écoulements 2-D typiques}
+
+On peut appréhender le monde bi-dimensionnel en se familiarisant avec des écoulements typiques. 
+
+\paragraph{Écoulement de translation}
+
+Il s'agit d'une écoulement trivial, $uh=\vec{c}$. 
+
+
+\paragraph{Écoulement divergent}
+
+On peut modéliser un écoulement globalement divergent par $\uh=c\rh$, où \rh est la composante horizontale du vecteur position, depuis l'origine. 
+
+En vérifie (exercice) que $\Div\uh$ vaut dans ce cas $2c$, le facteur~2 étant associé aux deux dimensions de l'écoulement. Cet écoulemet implique une divergence sur tout le champ et des vitesses croissant indéfiniment au fur et à mesure que l'on s'éloigne du centre. On peut localiser la structure divergente et lui donner une dimesion typique $L$ en imposant: $\uh=ce^{-r_h/L}\rh$. On vérifie aussi que ces écoulement sont irrotationnels. 
+
+\paragraph{Vortex}
+
+Par anologie à l'écoulement divergent, on modélise un \cindex{écoulement rotationnel}  $\uh=\vec{\Omega} \cross \rh$. Dans l'écoulement 2-D, le vecteur $\Omega$ qui induit la rotation est orthogonal au plan de l'ecoulement. On retrouve le vecteur instantanné de rotation en appliquant l'opérateur rotationnel: $\curl\uh=2\Omega$. Ce modèle de rotation globale implique des vitesses croissant indéfiniment à mesure que l'on s'éloigne de l'origine. Si l'on applique un facteur exponentiel décroissant, on génère une rotation différentielle typique d'un vortex. 
+
+\begin{displaymath}
+  \vec{u}_h = e^{-r_h/L} \vec\Omega\cross\rh
+\end{displaymath}
+
+On vérifie que cet écoulement est non-divergent. 
+
+
+
+\paragraph{Cisaillement}
+
+Le cisaillement $\vec{u}_h = (0,Lx)$ constitue un autre exemple d'écoulement rotationnel, non-divergent (plus généralement, toute forme ($(g(y), f(x)$) sera non-divergente). 
+
+TODO: FIGURE 
+
+\subsection{Potentiels scalaires et vecteurs}
+
+Reprenons la décomposition de Helmholtz, mais adapté au cas bi-dimensionnel. Le potentiel vecteur $\vpot$ est défini dans le plan et on ne prend que son gradient horizontal. Le potentiel vecteur $\vec{\sfn}$ est un principe à trois dimensions. On peut manipuler l'opérateur rotationnel pour extraire trois composantes: 
+
+\begin{equation}
+  \begin{split}
+     \curl aa % \vec{\sfn} %
+                     &= \curl ( \sfn_x \ex  + \sfn_y \ey + \sfn_z \ez ) \\
+                     &= \grad \sfn_x \cross \ex + 
+                        \grad \sfn_y \cross \ey + 
+                        \grad \sfn_z \cross \ez 
+   \end{split}
+\end{equation}
+
+Chaque composante produit un champ vectoriel dans les trois plans orthogonaux aux vecteurs de base. Si on considère un écoulement horizontal, dans le plan $(\ex, \ey)$, alors il ne faut retenir que le troisième terme. 
+
+\subsection{Écoulement bi-dimensionnel stationnaire incompressible}
+
+Si l'écoulement est incompressible, sa composante divergente est nulle; ne demeure que la composante rotationnelle et la constante (que l'on peut éliminer par une transformation galiléenne). 
+
+Sout cette dernière hypothèse, la décomposition de Helmholtz se réduit à
+
+\begin{displaymath}
+  \uh = \grad \sfn_z \cross \ez = - \ez \cross \grad \sfn_z, 
+\end{displaymath}
+%
+l'expression à droite étant la plus courante. On a également, dans la base choisie
+%
+\begin{displaymath}
+  \uh = \pdy{\sfn_z} \ex - \pdx{\psi_z}\ey
+\end{displaymath}
+
+La fonction $\sfn_z$ porte le nom de \cindex{fonction de courant}, en Anglais \emph{streamfunction}, pour les deux raisons suivantes: 
+
+\begin{key}{Le flux entre deux points est donné par la différence de la fonction de courant entre ces deux points}
+  Sous l'hypothèse d'une masse volumique $\rho$ constante, le flux à travers une section quelconque entre deux points vaut
+  \begin{displaymath}
+    \rho \int_a^b \uh\, \dif \mathcal{S}\, 
+  \end{displaymath}
+
+  On sait que $\int_a^b \uh = \int_a^b \grad \sfn_z \times \ez \dif \mathcal{S}$, et on peut se convaincre de multiples façons que cette intégrale vaut $\psi(b)-\psi(a)$, par exemple en créant une boucle fermée et appliquant le théorème de Green. 
+
+\end{key} 
+
+Par ailleurs, dans un fluide stationnaire, une particule fluide conserve $\sfn_z$ le long de son mouvement. 
+
+En effet, puisque $\pdt{\psi_z}=0$ (hypothèse stationnaire), 
+
+\begin{displaymath}
+  \Dif \psi_z = \pdx {\psi_z} \Dif x + \pdy {\psi_z} \Dif y. 
+\end{displaymath}
+
+On remplace alors $\Dif x = u_x \dif t = \pdy {\sfn_z}  \dif t $ et 
+$\Dif y = u_y \dif t = - \pdx {\sfn_z} \dif t $ pour démontrer que $\Dif \psi_z = 0$. 
+
+Ainsi, dans un écoulement dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ prêt) le flux de masse entre les deux iso-contours. 
+
+
+\section{Description Lagrangienne d'un écoulement non-stationnaire}
+
+Nous devons introduire deux nouvelles notions, qui traduisent toutes deux la \cindex{description lagrangienne} du champ de vitesse.
+
+\subsection{Ligne de chemin}
 
 La \cindex{ligne de chemin} (\emph{pathline}) est la courbe paramétrique décrivant la trajectoire d’une particule fluide dans un champ de vitesse, possiblement non stationnaire. Elle est définie par :
 
@@ -288,11 +447,11 @@ où le paramètre de la courbe, $t$, représente le temps écoulé depuis le lâ
 Chaque ligne de chemin correspond donc à la trajectoire d’une particule donnée, définie par sa position initiale $\vec{x}_0$ et son temps initial $t_0$.  
 À chaque instant $t$, la tangente à la ligne de chemin coïncide avec la direction du champ de vitesse $\vec{v}(\vec{x},t)$ en ce point.  
 
-Dans un écoulement laminaire, deux particules lâchées au même instant $t_0$ ne peuvent jamais se collisionner : une telle collision impliquerait qu’en un même point et à un même instant, deux vitesses différentes sont possibles, ce qui contredirait l’hypothèse de continuité du milieu.
+Dans un écoulement laminaire, deux particules lâchées au même instant $t_0$ ne peuvent jamais se collisionner : une telle collision impliquerait qu’en un même point et à un même instant, deux vitesses différentes sont possibles, ce qui contredirait l’hypothèse de continuité du milieu. En revanche, deux lignes de chemins associées à des temps initiaux différents peuvent très bien se croiser. 
 
 La ligne de chemin peut donc être interprétée comme une courbe qui se construit dynamiquement au fur et à mesure de l’évolution du temps.
 
-\subsubsection{Ligne de trace (streakline)}
+\subsection{Ligne de trace (streakline)}
 
 La \cindex{ligne de trace} (\emph{streakline}) est définie à un instant donné $t$ comme l’ensemble des positions atteintes à cet instant par des particules lâchées à différents instants $t_0$, mais depuis une même position initiale $\vec{x}_0$.
 
@@ -307,49 +466,5 @@ Les lignes de trace sont donc des ensembles observés à un temps fixé $t$. En 
 
 \medskip
 Ainsi, dans un écoulement non stationnaire, les lignes de flux, les lignes de chemin et les lignes de trace ne coïncident pas nécessairement : chacune décrit un aspect distinct du mouvement du fluide.
-
-TODO: ICI: ajouter des commentaires sur le caractère non-linéaire de l'équation du mouvement. 
-
-\subsection{Décomposition de Helmholtz d'un champ stationnaire}
-
-Soit un champ de vitesse stationnaire $\vec{u}(\vec{x})$ défini dans $\mathbb{R}^3$ ou dans un domaine borné suffisamment régulier.  
-Le \cindex{théorème de Helmholtz} stipule que ce champ peut toujours se décomposer de manière unique (à une constante près) en la somme de trois composantes :
-
-\begin{equation}
-\vec{u} = - \grad \phi + \grad \times \vec{\psi} + \vec{c},
-\label{eq:helmholtz_decomposition}
-\end{equation}
-
-où : 
-
-\begin{itemize}
-  \item $\phi(\vec{x})$ est un \cindex{potentiel scalaire}, de sorte que $-\grad \phi$ est \emph{irrotationnel} :
-        \[
-          \grad \times (-\grad \phi) = \vec{0}, \qquad 
-          \grad \cdot (-\grad \phi) = - \nabla^2 \phi \neq 0 \text{ en général};
-        \]
-
-  \item $\vec{\psi}(\vec{x})$ est un \cindex{potentiel vectoriel}, de sorte que $\grad \times \vec{\psi}$ est \emph{solénoïdal} (divergence nulle) :
-        \[
-          \grad \cdot (\grad \times \vec{\psi}) = 0, \qquad
-          \grad \times (\grad \times \vec{\psi}) \neq 0 \text{ en général};
-        \]
-
-  \item $\vec{c}$ est une \cindex{composante constante} du champ, qui n’est ni divergente ni rotationnelle.
-\end{itemize}
-
-\paragraph{Interprétation physique.}
-\begin{itemize}
-  \item La composante $-\grad \phi$ transporte toute la divergence du champ : elle décrit la partie \emph{non rotationnelle}.  
-  \item La composante $\grad \times \vec{\psi}$ transporte toute la rotation du champ : elle décrit la partie \emph{non divergente}.  
-  \item La constante $\vec{c}$ représente une composante uniforme du champ.
-\end{itemize}
-
-\paragraph{Cas particuliers.}
-\begin{itemize}
-  \item Dans un écoulement incompressible ($\grad \cdot \vec{u} = 0$), la composante $-\grad \phi$ est nulle, et le champ est purement solénoïdal.  
-  \item Dans un écoulement potentiel ($\grad \times \vec{u} = 0$), la composante $\grad \times \vec{\psi}$ est nulle, et le champ est purement irrotationnel.
-\end{itemize}
-
 
 

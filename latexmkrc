@@ -17,6 +17,9 @@ $mainfile .= '.tex' unless $mainfile =~ /\.tex$/;
 # Debug message
 print ">> Using main file: $mainfile\n";
 
+
+add_cus_dep('nlo', 'nls', 0, '/usr/bin/makeindex -s nomencl.ist -o "$root.nls" "$root.nlo"');
+
 @default_files = ($mainfile);
 $root_filename = $mainfile;
 
@@ -24,3 +27,5 @@ $biber = 'python3 makebib.py && biber %O %S';
 # Use LuaLaTeX instead of pdfLaTeX
 $pdflatex = 'lualatex --synctex=1 %O %S';
 $pdf_mode = 1;    # produce PDF
+
+
