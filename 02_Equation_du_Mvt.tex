@@ -62,24 +62,24 @@ Supposons maintenant que le fluide est suffisamment lent pour que le gradient de
 
 Dans ce cas, nous pouvons généraliser. L’\cindex{accélération} du volume matériel fini vaut :
 \begin{equation}
-\od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{v}(\vec{x},t) \, \dif \vol,
+\od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{u}(\vec{x},t) \, \dif \vol,
 \label{eq:momentum_balance}
 \end{equation}
 et doit être égale à la somme des forces externes (les forces internes s’annulant par le principe d’\cindex{action-réaction}). Or, nous avons vu que :
 \begin{equation}
-\od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{v}(\vec{x},t) \, \dif V
-= \int_V \rho(\vec{x},t) \, \Dt \vec{v}(\vec{x},t) \, \dif \vol
+\od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{u}(\vec{x},t) \, \dif V
+= \int_V \rho(\vec{x},t) \, \Dt \vec{u}(\vec{x},t) \, \dif \vol
 \label{eq:material_acceleration}
 \end{equation}
 On obtient donc :
 \begin{equation}
-  \int_\vol \rho \, \Dt{\vec{v}} \, \dif \vol
+  \int_\vol \rho \, \Dt{\vec{u}} \, \dif \vol
 = \int_\vol - \rho \, \grad \gpot \, \dif \vol \; - \; \int_\vol \grad p \, \dif \vol
 \label{eq:euler_integral}
 \end{equation}
 L’intégrale étant valable pour tout volume matériel fini, on peut la réduire à sa forme différentielle :
 \begin{equation}
-  \rho \, \Dt{\vec{v}} = - \rho \, \grad \gpot - \grad p.
+  \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \grad p.
 \label{eq:euler}
 \end{equation}
 C’est la célèbre \cindex{équation d’Euler}.
@@ -87,17 +87,17 @@ C’est la célèbre \cindex{équation d’Euler}.
 Nous retrouvons ici la pleine puissance de la notion de \cindex{particule Lagrangienne} : un élément infinitésimal de fluide soumis aux équations du mouvement. L'équation~\eqref{eq:euler} met en scène une particule matérielle, c'est-à-dire un volume élémentaire de masse volumique $\rho$, soumis à la résultante des forces de pression $-\grad p$, et aux forces de volume extérieures $-\rho\grad \gpot$.
 
 \begin{key}{L'advection de la vitesse génère un tenseur}
-Nous devons décortiquer l'expression $\Dt{\vec{v}}$ pour comprendre ce qu'elle implique.
+Nous devons décortiquer l'expression $\Dt{\vec{u}}$ pour comprendre ce qu'elle implique.
 La dérivée matérielle de la vitesse d'une particule fluide correspond à son \cindex{accélération}.
 Le plus simple est de considérer les composantes selon les trois axes séparément :
 \begin{displaymath}
   \begin{split}
-    \Dt{u} &= \pdt{u} +  \grad u \cdot\vec{v},\\
-    \Dt{v} &= \pdt{v} +  \grad v \cdot\vec{v},\\
-    \Dt{w} &= \pdt{w} +  \grad w \cdot\vec{v}.
+    \Dt{u} &= \pdt{u} +  \grad u \cdot\vec{u},\\
+    \Dt{v} &= \pdt{v} +  \grad v \cdot\vec{u},\\
+    \Dt{w} &= \pdt{w} +  \grad w \cdot\vec{u}.
   \end{split}
 \end{displaymath}
-Nous pouvons regrouper ces équations sous une forme vectorielle, en introduisant le \cindex{gradient du champ de vitesse} $\grad\vec{v}$ :
+Nous pouvons regrouper ces équations sous une forme vectorielle, en introduisant le \cindex{gradient du champ de vitesse} $\grad\vec{u}$ :
 \begin{displaymath}
   \begin{pmatrix}
     \Dt{u} \\
@@ -114,7 +114,7 @@ Nous pouvons regrouper ces équations sous une forme vectorielle, en introduisan
     \pd{u}{x} & \pd{u}{y} & \pd{u}{z} \\
     \pd{v}{x} & \pd{v}{y} & \pd{v}{z} \\
     \pd{w}{x} & \pd{w}{y} & \pd{w}{z}
-\end{pmatrix}}_{\grad\vec{v}}
+\end{pmatrix}}_{\grad\vec{u}}
 \cdot
   \begin{pmatrix}
     {u} \\
@@ -122,7 +122,7 @@ Nous pouvons regrouper ces équations sous une forme vectorielle, en introduisan
     {w}
    \end{pmatrix}.
 \end{displaymath}
-La notation $\grad\vec{v}$ peut paraître inhabituelle : vous êtes plus familiers du gradient appliqué à un champ scalaire.
+La notation $\grad\vec{u}$ peut paraître inhabituelle : vous êtes plus familiers du gradient appliqué à un champ scalaire.
 Lorsqu’on généralise la notion de gradient à un champ vectoriel, on obtient un \cindex{tenseur} de rang~2.
 De la même façon qu’un vecteur peut être représenté par ses coordonnées dans une base (sous forme de matrice colonne), un tenseur de rang~2 est représenté par une matrice $n \times n$, avec $n=3$ en trois dimensions.
 Le tenseur est une notion d’importance fondamentale en mécanique des milieux continus.
@@ -142,21 +142,21 @@ Cette propriété est due au terme d'advection. On peut donc espérer que tant q
 \section{Description eulérienne du champ de vitesse}
 \subsection{Hypothèse de l'écoulement laminaire}
 Nous allons un instant laisser en suspens les développements de l'équation du mouvement pour aborder la description du champ de vitesse.
-Considérons un champ de vitesse qui, en toute généralité, dépend du temps : $\vec{v}(\vec{x}, t)$.
+Considérons un champ de vitesse qui, en toute généralité, dépend du temps : $\vec{u}(\vec{x}, t)$.
 Tout d'abord, précisons que la notion même d'un champ de vitesse implique que nous pouvons définir, sans ambiguïté, une et une seule vitesse pour une position donnée, à tout moment. Or, nous avons vu que cette approche suppose d'une part une hypothèse de milieu continu, et l'existence de particules matérielles qui sont suffisamment à l'équilibre avec leur environnement pour être considérées comme homogènes. En particulier, nous sommes amenés à appliquer des opérateurs différentiels au champ de vitesse, ce qui exige que le champ de vitesse soit continûment dérivable.
 Ces hypothèses nous amènent à considérer un écoulement suffisamment régulier que l'on qualifie d'\cindex{écoulement laminaire}, par opposition à l'écoulement turbulent. Les notions que nous allons développer ici supposent un écoulement laminaire.
 
 \subsection{Lignes de courant}
 À chaque temps $t$, nous pouvons définir un ensemble de courbes paramétriques $\vec{x}_{\vec{x}_0}$ définies par
 \begin{equation}
-  \od{\vec{x}}{s} = \vec{v}(\vec{x},t)\text{, avec $\vec{x}(0)=\vec{x}_0$}.
+  \od{\vec{x}}{s} = \vec{u}(\vec{x},t)\text{, avec $\vec{x}(0)=\vec{x}_0$}.
   \label{eq:ligne_courant}
 \end{equation}
-Il faut bien comprendre cette écriture car elle est piégeuse. Le paramètre $s$ est celui qui permet de tracer toute une courbe partant de $\vec{x}_0$, à un instant $t$ donné. La courbe est donc tracée en parcourant les valeurs de $s$ sur la droite réelle, en utilisant le champ $\vec{v}(\vec{x},t)$ à cet instant $t$ déterminé.
+Il faut bien comprendre cette écriture car elle est piégeuse. Le paramètre $s$ est celui qui permet de tracer toute une courbe partant de $\vec{x}_0$, à un instant $t$ donné. La courbe est donc tracée en parcourant les valeurs de $s$ sur la droite réelle, en utilisant le champ $\vec{u}(\vec{x},t)$ à cet instant $t$ déterminé.
 
-Supposons, pour fixer les idées, que le champ $\vec{v}$ soit invariant au cours du temps. Il s'agit donc d'un \cindex{écoulement stationnaire}. Réécrivons dans ce cas particulier :
+Supposons, pour fixer les idées, que le champ $\vec{u}$ soit invariant au cours du temps. Il s'agit donc d'un \cindex{écoulement stationnaire}. Réécrivons dans ce cas particulier :
 \begin{displaymath}
-  \od{\vec{x}}{s} = \vec{v}(\vec{x})\text{, avec $\vec{x}(0)=\vec{x}_0$}.
+  \od{\vec{x}}{s} = \vec{u}(\vec{x})\text{, avec $\vec{x}(0)=\vec{x}_0$}.
 \end{displaymath}
 Si on remplace, pour s'aider, le symbole $s$ par le symbole $t$, on voit immédiatement que la courbe $\vec{x}(s)$ répond à la même équation que celle qui détermine le chemin d'une particule de fluide au cours du temps, avec condition initiale $\vec{x}_0$ au temps $t=0$.
 La courbe paramétrique définie par~\eqref{eq:ligne_courant} porte le nom de \cindex{ligne de courant}. Dans le cas particulier d'un champ de vitesse stationnaire, elle se superpose à la trajectoire ou chemin de toute particule passant à un moment donné par $\vec{x}_0$.
@@ -188,7 +188,7 @@ Par l'absurde, cela impliquerait en effet qu'en un point et à un instant $t$, l
 \end{key}
 
 \subsection{Section de lignes de courant dans un écoulement}
-Pour un champ de vitesse bidimensionnel $\vec{v}(x,y)$, considérons un ensemble de conditions initiales $\mathcal{S}_{ab}(0)$ reliant deux points $a$ et $b$ de façon continue, et tel qu’il intercepte les lignes de courant de manière à ce que les vitesses soient toutes dans la même direction (par exemple, de gauche à droite).
+Pour un champ de vitesse bidimensionnel $\vec{u}(x,y)$, considérons un ensemble de conditions initiales $\mathcal{S}_{ab}(0)$ reliant deux points $a$ et $b$ de façon continue, et tel qu’il intercepte les lignes de courant de manière à ce que les vitesses soient toutes dans la même direction (par exemple, de gauche à droite).
 On dit que $\mathcal{S}_{ab}(0)$ constitue une \emph{section}, et plus précisément une \cindex{section connexe}, car elle ne contient pas de trou.
 En construisant l’ensemble des lignes de courant associées à chacune de ces conditions initiales, on obtient une figure géométrique généralement bidimensionnelle. Pour tout paramètre $s$ (le temps restant figé), les ensembles $\mathcal{S}_{ab}(s)$ constituent des sections correspondant à la projection continue des conditions initiales en fonction de $s$. Cette surface ainsi construite ne contiendra pas de trou non plus.
 Pour le voir, introduisons la notion de \cindex{fonction de flot}, notée $\phi^s$, qui renvoie l’advection de la section initiale selon les lignes de courant :
@@ -200,8 +200,8 @@ Comme le champ de vitesse est continu, la fonction de flot $\phi^s$ est elle aus
 Par conséquent, l’advection d’une section connexe par un flot continu reste connexe : \textbf{aucun trou n’est créé}.
 
 \subsection{Écoulement tri-dimensionnel : tubes de courant}
-Pour un champ de vitesse tridimensionnel $\vec{v}(x,y,z)$, nous pouvons cette fois définir un anneau $\mathcal{S}_{ab}(0)$, c’est-à-dire une courbe fermée, dite \emph{simplement connexe}. L’advection de cette courbe selon le flot $\phi^s$ définit alors un \cindex{tube de courant} dont la paroi est continue.
-On appelle \emph{tube de courant} la surface formée par l’ensemble des lignes de courant issues d’une courbe fermée $\mathcal{S}_{ab}(0)$ dans un champ de vitesse $\vec{v}(x,y,z)$.
+Pour un champ de vitesse tridimensionnel $\vec{u}(x,y,z)$, nous pouvons cette fois définir un anneau $\mathcal{S}_{ab}(0)$, c’est-à-dire une courbe fermée, dite \emph{simplement connexe}. L’advection de cette courbe selon le flot $\phi^s$ définit alors un \cindex{tube de courant} dont la paroi est continue.
+On appelle \emph{tube de courant} la surface formée par l’ensemble des lignes de courant issues d’une courbe fermée $\mathcal{S}_{ab}(0)$ dans un champ de vitesse $\vec{u}(x,y,z)$.
 Autrement dit, si chaque point de $\mathcal{S}_{ab}(0)$ est advecté selon le flot $\phi^s$, la surface latérale engendrée par l’ensemble des trajectoires forme un tube dont les lignes de courant constituent l’intérieur.
 Les propriétés topologiques du flot garantissent la continuité de la paroi du tube : aucune ligne de courant ne traverse cette paroi, et donc aucun échange de matière ne se produit entre l’intérieur et l’extérieur du tube.
 De manière informelle, aucune ligne de courant ne peut s’échapper du tube : toutes restent confinées à l’intérieur de sa paroi.
@@ -320,7 +320,7 @@ Nous devons introduire deux nouvelles notions, qui traduisent toutes deux la \ci
 \subsection{Ligne de chemin}
 La \cindex{ligne de chemin} (\emph{pathline}) est la courbe paramétrique décrivant la trajectoire d’une particule fluide dans un champ de vitesse, possiblement non stationnaire. Elle est définie par :
 \begin{equation}
-  \od{\vec{p}}{t} = \vec{v}(\vec{p},t), \qquad \vec{p}(t_0) = \vec{p}_0.
+  \od{\vec{p}}{t} = \vec{u}(\vec{p},t), \qquad \vec{p}(t_0) = \vec{p}_0.
   \label{eq:ligne_chemin}
 \end{equation}
 On peut également l’exprimer à l’aide de la \cindex{fonction de flot} :
@@ -330,7 +330,7 @@ On peut également l’exprimer à l’aide de la \cindex{fonction de flot} :
 \end{equation}
 où le paramètre de la courbe, $t$, représente le temps écoulé depuis le lâcher de la particule.
 Chaque ligne de chemin correspond donc à la trajectoire d’une particule donnée, définie par sa position initiale $\vec{x}_0$ et son temps initial $t_0$.
-À chaque instant $t$, la tangente à la ligne de chemin coïncide avec la direction du champ de vitesse $\vec{v}(\vec{x},t)$ en ce point.
+À chaque instant $t$, la tangente à la ligne de chemin coïncide avec la direction du champ de vitesse $\vec{u}(\vec{x},t)$ en ce point.
 Dans un écoulement laminaire, deux particules lâchées au même instant $t_0$ ne peuvent jamais se collisionner : une telle collision impliquerait qu’en un même point et à un même instant, deux vitesses différentes sont possibles, ce qui contredirait l’hypothèse de continuité du milieu. En revanche, deux lignes de chemins associées à des temps initiaux différents peuvent très bien se croiser.
 La ligne de chemin peut donc être interprétée comme une courbe qui se construit dynamiquement au fur et à mesure de l’évolution du temps.
 
