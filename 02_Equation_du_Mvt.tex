@@ -1,6 +1,5 @@
-\chapter{Equation du mouvement}
+\chapter{Equation d'Euler\label{ch:euler}}
 
-\section{Équation d'Euler}
 \subsection{Théorème de Gauss - Ostrogradsky pour un gradient}
 Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section~XX, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde \textbf{ce} volume :
 \begin{equation*}
@@ -139,7 +138,7 @@ Nous verrons plus tard que ces invariants peuvent être associés à des grandeu
 En travaillant la forme du tenseur d'advection, on peut le ré-écrire de la façon suivante \cite{acheson01aa}, p. 9:
 
 \begin{equation}
-  (\u \cdot \grad)\u = (\curl \u)\curl u + \grad(\frac{1}{2}\u^2)
+  (\u \cdot \grad)\u = (\curl \u)\cross u + \grad(\frac{1}{2}\u^2)
   \label{eq:euler_conserv}
 \end{equation}
 
@@ -272,7 +271,7 @@ Il s'agit d'un écoulement trivial, $\uh=\vec{c}$.
 On peut modéliser un écoulement globalement divergent par $\uh=c\rh$, où $\rh$ est la composante horizontale du vecteur position, depuis l'origine.
 On vérifie (exercice) que $\Div\uh$ vaut dans ce cas $2c$, le facteur~2 étant associé aux deux dimensions de l'écoulement. Cet écoulement implique une divergence sur tout le champ et des vitesses croissant indéfiniment au fur et à mesure que l'on s'éloigne du centre. On peut localiser la structure divergente et lui donner une dimension typique $L$ en imposant : $\uh=ce^{-r_h/L}\rh$. On vérifie aussi que ces écoulements sont irrotationnels.
 
-\paragraph{Vortex}
+\paragraph{Vortex\label{para:Vortex}}
 Par analogie à l'écoulement divergent, on modélise un \cindex{écoulement rotationnel} par $\uh=\vec{\Omega} \cross \rh$. Dans l'écoulement 2-D, le vecteur $\Omega$ qui induit la rotation est orthogonal au plan de l'écoulement. On retrouve le vecteur instantané de rotation en appliquant l'opérateur rotationnel : $\curl\uh=2\Omega$. Ce modèle de rotation globale implique des vitesses croissant indéfiniment à mesure que l'on s'éloigne de l'origine. Si l'on applique un facteur exponentiel décroissant, on génère une rotation différentielle typique d'un vortex.
 \begin{displaymath}
   \vec{u}_h = e^{-r_h/L} \vec{\Omega}\cross\rh
@@ -294,6 +293,7 @@ Reprenons la décomposition de Helmholtz, mais adaptée au cas bi-dimensionnel. 
 Chaque composante produit un champ vectoriel dans les trois plans orthogonaux aux vecteurs de base. Si on considère un écoulement horizontal, dans le plan $(\ex, \ey)$, alors il ne faut retenir que le troisième terme.
 
 \subsection{Écoulement bi-dimensionnel stationnaire incompressible}
+\subsubsection{Fonction de courant}
 Si l'écoulement est incompressible, sa composante divergente est nulle ; ne demeure que la composante rotationnelle et la constante (que l'on peut éliminer par une transformation galiléenne).
 Sous cette dernière hypothèse, la décomposition de Helmholtz se réduit à
 \begin{displaymath}
@@ -324,6 +324,7 @@ $\Dif y = u_y \dif t = - \pdx {\sfn_z} \dif t $ pour démontrer que $\Dif \psi_z
 \end{key}
 
 Ainsi, dans un écoulement bi-dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ près) le flux de masse entre les deux iso-contours.
+
 
 \section{Description Lagrangienne d'un écoulement non-stationnaire}
 Nous devons introduire deux nouvelles notions, qui traduisent toutes deux la \cindex{description lagrangienne} du champ de vitesse.

@@ -6,4 +6,94 @@ Si la masse volumique $\rho$ est une constante du mouvement, alors par l'équati
   \Div \vec{u} = 0\text{ pour un écoulement incompressible}
 \end{equation}
 
+\section{Écoulement laminaire non-visqueux (fluide parfait)}
+
+\subsection{Théorème de Bernouilli}
+
+Plaçons nous dans les conditions du chapitre \ref{ch:euler}: écoulement laminaire, non-visqueux, dans lequel la seule force interne est la force de pression telles que nous l'avons définie pour établir l'équation d'Euler. 
+\begin{equation*}
+  \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \grad p.
+\label{eq:euler*}
+
+Nous utilisons deux hypothèse supplémentaires: l'écoulement est stationnaire ($\pdt{}=0$) et incompressible. On utilise par ailleurs la forme alternative du tenseur d'advection (eq: \ref{eq:euler_conserv}):
+
+\begin{equation}
+  \rho (\curl \u)\cross u + \grad(\frac{1}{2}\u^2) = - \rho \, \grad \gpot - \grad p.
+\end{equation}
+
+Comme $\rho$ est constant et non-nul, nous pouvons nous autoriser à diviser tous les termes par $\rho$ et l'introduire sous la dérivée spatiale: 
+\begin{equation}
+  (\curl \u)\cross u = - \grad (\gpot + \grad \frac{p}{\rho} - \frac{1}{2}\u^2) \eqdef - \grad H
+\end{equation}\label{eq:Bernouilli}
+
+La quantité $H$ a les dimensions d'une énergie massique, et on y reconnaît les termes évoquant une énergie cinétique par unité de masse, le géopotentiel, et la pression. L'ensemble forme une quantité conservée le long du mouvement. En effet: 
+
+\begin{equation}
+  (\u \cdot \grad) H = \u \cdot  (\curl \u)\cross u  = 0
+\end{equation}
+
+\begin{key}{Théorème de Bernouilli}
+  Si un fluide idéal est en écoulement stationnaire, alors $H$ est constant le long d'une ligne de courant (\cite{achesion01aa}, p. 10).
+\end{key}
+
+Ce théorème a des applications bien connues :
+
+\begin{itemize}
+  \item Effet Magnus: déviation de la trajectoire d'une ballon en rotation du fait de la vitesse de l'air générée par enraînement
+  \item Écoulement libre non-turbulent : soit une cuve à l'air libre et un orifice au bas de la cuve, également à pression atmosphérique : la vitesse du fluide en sortie est alors directement déterminée par la différence d'énergie potentielle : $\Delta u/2 = \Delta \Phi$. 
+\end{itemize}
+
+On évoque souvent la portance d'une aile d'avion comme application du théorème de Bernouilli. C'est abusif. L'écoulement autour d'une aile n'est pas laminaire. On peut cependant proposer un modèle de flux laminaire autour d'une aile d'avion, mais cela demande quelques hypothèses supplémentaires. 
+
+
+\subsection{Équation de la vorticité}
+
+Reprenons l'équation de Bernouilli dans sa version non-stationnaire: 
+
+\begin{equation}
+ \pdt u +  (\curl \u)\cross u = - \grad H
+\end{equation}\label{eq:Bernouilli}
+
+Nous définisson la \cindex{vorticité} comme le rotationnel de la vitesse (cf. ch. \ref{ch:euler}, section \ref{para:Vortex}): $\omega \eqdef \curl \u$. En prenant le rotationnel de part et d'autre de l'équation de Bernouilli  on obtient: 
+
+\begin{equation}
+ \pdt \vort +  \curl (\vort \cross u) = 0, 
+\end{equation}
+%
+car le rotationnel d'un gradient est toujours nul. 
+
+On utilise les identités connues en calculus pour développer le rotationnel du produit vectoriel: 
+
+\begin{equation}
+ \pdt \vort (\u\cdot \grad)\vort - (\vort\cdot\grad)\u + \vort\Div \u - \u \Div \vort
+\end{equation}
+%
+Si l'écoulement est non-divergent, $\Div u=0$ et de plus $\Div \vort$ est toujours nul par construction de la vorticité. On trouve: 
+
+\begin{equation*}
+ \pdt \vort (\u\cdot \grad)\vort = \vort \cdot \grad \u
+\end{equation*}
+%
+ou encore
+\begin{equation}
+ \Dt\vort = \vort \cdot \grad \u
+\end{equation\label{eq:vort}}
+%
+C'est l'équation de la vorticité écrite ici pour un écoulement incompressible. Il est remarquable que la vorticité évolue, le long de l'écoulement, indépendamment de la pression et du géopotentiel ! 
+
+Plus fort encore, si l'écoulement est bi-dimensionnel (par exemple, dans le plan $x,y$, alons $\vort = \omega \ez$ et
+
+\begin{equation}
+ \Dt\omega = 0. 
+\end{equation\label{eq:vort2d}}
+%
+
+\subsection{Écoulement autour d'une aile d'avion}
+
+
+
+
+
+
+
 
