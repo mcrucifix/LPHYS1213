@@ -1,4 +1,4 @@
-\chapter{Ecoulements incompressibles}
+\chapter{Ecoulements incompressibles et irrotationnels}
 
 Si la masse volumique $\rho$ est une constante du mouvement, alors par l'équation de continuité \eqref{eq:cons_continuite_lineique}, le champ de vitesse est non-divergent
 
@@ -19,12 +19,14 @@ Nous utilisons deux hypothèse supplémentaires: l'écoulement est stationnaire 
 
 \begin{equation}
   \rho (\curl \u)\cross u + \grad(\frac{1}{2}\u^2) = - \rho \, \grad \gpot - \grad p.
+\label{eq:Bernouilli0}
 \end{equation}
 
 Comme $\rho$ est constant et non-nul, nous pouvons nous autoriser à diviser tous les termes par $\rho$ et l'introduire sous la dérivée spatiale: 
 \begin{equation}
   (\curl \u)\cross u = - \grad (\gpot + \grad \frac{p}{\rho} - \frac{1}{2}\u^2) \eqdef - \grad H
-\end{equation}\label{eq:Bernouilli}
+\label{eq:Bernouilli}
+\end{equation}
 
 La quantité $H$ a les dimensions d'une énergie massique, et on y reconnaît les termes évoquant une énergie cinétique par unité de masse, le géopotentiel, et la pression. L'ensemble forme une quantité conservée le long du mouvement. En effet: 
 
@@ -35,16 +37,6 @@ La quantité $H$ a les dimensions d'une énergie massique, et on y reconnaît le
 \begin{key}{Théorème de Bernouilli}
   Si un fluide idéal est en écoulement stationnaire, alors $H$ est constant le long d'une ligne de courant (\cite{achesion01aa}, p. 10).
 \end{key}
-
-Ce théorème a des applications bien connues :
-
-\begin{itemize}
-  \item Effet Magnus: déviation de la trajectoire d'une ballon en rotation du fait de la vitesse de l'air générée par enraînement
-  \item Écoulement libre non-turbulent : soit une cuve à l'air libre et un orifice au bas de la cuve, également à pression atmosphérique : la vitesse du fluide en sortie est alors directement déterminée par la différence d'énergie potentielle : $\Delta u/2 = \Delta \Phi$. 
-\end{itemize}
-
-On évoque souvent la portance d'une aile d'avion comme application du théorème de Bernouilli. C'est abusif. L'écoulement autour d'une aile n'est pas laminaire. On peut cependant proposer un modèle de flux laminaire autour d'une aile d'avion, mais cela demande quelques hypothèses supplémentaires. 
-
 
 \subsection{Équation de la vorticité}
 
@@ -85,15 +77,85 @@ Plus fort encore, si l'écoulement est bi-dimensionnel (par exemple, dans le pla
 
 \begin{equation}
  \Dt\omega = 0. 
-\end{equation\label{eq:vort2d}}
-%
-
-\subsection{Écoulement autour d'une aile d'avion}
+\label{eq:vort2d}
+\end{equation}
 
 
+Cette équation justifie l'existence de particules  de vorticité. Les 'petits' vortex sont advectés avec le flux moyen, comme s'il s'agissait de particules dans un champ 2D. 
+
+Si, d'autre part, l'écoulement est tri-dimensionnel, laminaire est stable, avec une vorticité nulle en condition initiale $\vort=0$, aucune vorticité ne sera créée. Reprenons alors l'équation \eqref{eq:Bernouilli0} qui nous a servi à établir le théorème de Bernouilli: 
+
+\begin{displaymath}
+  \rho (\curl \u)\cross u + \grad(\frac{1}{2}\u^2) = - \rho \, \grad \gpot - \grad p.
+\label{eq:Bernouilli0}
+\end{displaymath}
+
+Comme $\vort = \curl \u =0$, on a 
+
+\begin{displaymath}
+  \grad(\frac{1}{2}\u^2) = - \grad \gpot - \grad {p}{\rho}.
+\end{displaymath}
+
+Ceci nous donne un "Bernouilli plus": si le flot est non-rotationnel, alors la quantité $H$ est constante, non-seulement le long d'une ligne de courant, mais absolument partout dans le fluide. 
+
+\begin{key}{Bernouilli PLUS}
+  Dans un fluide parfait, irrotationnel, la quantité $\gpot + \frac{p}{\rho} + \frac{u^2}{2}$ est constante
+\end{key}
 
 
 
+Ce théorème a des applications bien connues :
+
+\begin{itemize}
+  \item Écoulement libre non-turbulent : soit une cuve à l'air libre et un orifice au bas de la cuve, également à pression atmosphérique : la vitesse du fluide en sortie est alors directement déterminée par la différence d'énergie potentielle : $\Delta u/2 = \Delta \Phi$. 
+\end{itemize}
 
 
+On évoque souvent l'effet Magnus ou encore la portance d'une aile d'avion comme application du théorème de Bernouilli. 
 
+Le raisonnement est qu'à géopotentiel égal, le long d'une ligne de flux, la pression diminue quand la vitesse augmente. Si la vitesse \emph{au dessus} de l'aile d'avion est plus grande qu'en dessous, alors la différence de pression associée au théorème de Bernouilli génère une portance. 
+
+L'effet Magnus porte sur un objet en rotation (par exemple un ballon). Ici encore, si l'on peut prouver que la vitesse du fluide diffère de part et d'autre du ballon, on explique une force résultante. 
+
+Cependant, il n'est pas trivial de prouver cette différence de vitesse. Nous allons esquisser le raisonnement formel. 
+
+\subsection{Équation de Laplace}
+
+TODO: NON. REINTRODUIRE TOUS LES POTENTIELS ICI. SFN ET VPOT. ET DONNER LA CONDITION DE CAUCHY RIEMANN. 
+
+Reprennons la décomposition de Helmholz pour un champ stationnaire: \eqref{eq:helmholtz_decomposition}
+
+\begin{equation}
+\vec{u} = - \grad \vpot + \curl  \vec{\sfn} + \vec{c},
+\end{equation}
+
+Si le flux est \emph{non_divergent}: $\Div\u = - \Delta \vpot = 0$. 
+Si le flux est \emph{irrotationnel}: $\curl\u = \curl\curl\vec{\sfn} = \grad\Div\sfn - \Delta \sfn = 0$. 
+
+THEOREME DE BLASIUS
+
+TWO DIMENSIONAL
+
+dD = -pdy
+dL = pdx
+
+dD - idL = -pdy - ipdx = -ipdz*
+
+D - iL = -i \cint p dz*
+
+on definit dw/dz = u - iv
+
+D - iL = i/2 rho \cint (dw/dz)^2 dz 
+
+fonctionne sur _tout_ contour de l'obstacle. 
+
+Mais on peut aussi utiliser l'argument heuristique avec Bernouilli, ça marche aussi. 
+
+
+DIRE QUELQUE PART QUE VORTICITE N'EST CREE QUE PAR DRAG * 
+CREATION DE VORTICITE = ECHANGE DE MOMENT ANGULAIRE
+
+Ce qui est important, c'est que la singulartié de l'aile produit un point 'source' de vorticité. 
+
+Point de stagnation: en pratique: point de rencontre entre streamline et objet. Mais je ne sais pas bien pourquoi
+https://www.av8n.com/irro/profilo_e.html

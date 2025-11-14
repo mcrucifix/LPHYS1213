@@ -193,9 +193,11 @@ Ou encore :
 ce qui revient simplement à écrire que la courbe décrite par $\vec{x}(s)$ est tangente, en tout point, au vecteur vitesse.
 \end{key}
 
-\begin{key}{Les lignes de courant ne peuvent pas se croiser}
+\begin{key}{Les lignes de courant ne peuvent se croiser que si la vitesse y est nulle}
 Par l'absurde, cela impliquerait en effet qu'en un point et à un instant $t$, la vitesse peut prendre deux directions différentes, alors que l'hypothèse du milieu continu nous impose une vitesse bien définie en tout point.
 \end{key}
+
+Le cas de vitesse nulle est particulier: une particule de fluide n'atteindra jamais le point de vitesse nulle dans un écoulement stationnaire. Ces points sont des \cindex{points de stagnation}. 
 
 \subsection{Section de lignes de courant dans un écoulement}
 Pour un champ de vitesse bidimensionnel $\vec{u}(x,y)$, considérons un ensemble de conditions initiales $\mathcal{S}_{ab}(0)$ reliant deux points $a$ et $b$ de façon continue, et tel qu’il intercepte les lignes de courant de manière à ce que les vitesses soient toutes dans la même direction (par exemple, de gauche à droite).
@@ -220,46 +222,61 @@ Nous en déduisons une conséquence importante :
 En effet, dans le cas stationnaire, nous avons vu que les lignes de courant se confondent avec les trajectoires. Le paramètre $s$ qui définit les lignes de courant, ainsi que la fonction de flot $\phi^s$, peuvent alors être réinterprétés comme le temps.
 \end{key}
 
-\subsection{Décomposition de Helmholtz d'un champ stationnaire}
-Soit un champ de vitesse stationnaire $\vec{u}(\vec{x})$ défini dans $\mathbb{R}^3$ ou dans un domaine borné suffisamment régulier.
-Le \cindex{théorème de Helmholtz} stipule que ce champ peut toujours se décomposer de manière unique (à une constante près) en la somme de trois composantes :
-\begin{equation}
-\vec{u} = - \grad \vpot + \grad \times \vec{\sfn} + \vec{c},
-\label{eq:helmholtz_decomposition}
-\end{equation}
-où :
-\begin{itemize}
-  \item $\vpot(\vec{x})$ est un \cindex{potentiel scalaire}, de sorte que $-\grad \vpot$ est \emph{irrotationnel} :
-        \[
-          \grad \times (-\grad \vpot) = \vec{0}, \qquad
-          \grad \cdot (-\grad \vpot) = - \nabla^2 \vpot \neq 0 \text{ en général};
-        \]
-  \item $\vec{\sfn}(\vec{x})$ est un \cindex{potentiel vectoriel}, de sorte que $\grad \times \vec{\sfn}$ est \emph{solénoïdal} (divergence nulle) :
-        \[
-          \grad \cdot (\grad \times \vec{\sfn}) = 0, \qquad
-          \grad \times (\grad \times \vec{\sfn}) \neq 0 \text{ en général};
-        \]
-  \item $\vec{c}$ est une \cindex{composante constante} du champ, qui n’est ni divergente ni rotationnelle.
-\end{itemize}
-
-\paragraph{Interprétation physique.}
-\begin{itemize}
-  \item La composante $-\grad \vpot$ transporte toute la divergence du champ : elle décrit la partie \emph{non rotationnelle}.
-  \item La composante $\grad \times \vec{\sfn}$ transporte toute la rotation du champ : elle décrit la partie \emph{non divergente}.
-  \item La constante $\vec{c}$ représente une composante uniforme du champ.
-\end{itemize}
-
-\paragraph{Cas particuliers.}
-\begin{itemize}
-  \item Dans un écoulement incompressible ($\grad \cdot \vec{u} = 0$), la composante $-\grad \vpot$ est nulle, et le champ est purement non-divergent ou encore dit \index{écoulement solénoïdal}{solénoïdal}.
-  \item Dans un écoulement potentiel ($\grad \times \vec{u} = 0$), la composante $\grad \times \vec{\sfn}$ est nulle, et le champ est purement irrotationnel.
-\end{itemize}
+% \subsection{Décomposition de Helmholtz d'un champ stationnaire}
+% Soit un champ de vitesse stationnaire $\vec{u}(\vec{x})$ défini dans $\mathbb{R}^3$ ou dans un domaine borné suffisamment régulier.
+% Le \cindex{théorème de Helmholtz} stipule que ce champ peut toujours se décomposer de manière unique (à une constante près) en la somme de trois composantes :
+% \begin{equation}
+% \vec{u} = - \grad \vpot + \curl \vec{\sfn} + \vec{c},
+% \label{eq:helmholtz_decomposition}
+% \end{equation}
+% Où :
+% \begin{itemize}
+%   \item $\vpot(\vec{x})$ est un \cindex{potentiel scalaire}, de sorte que $-\grad \vpot$ est \emph{irrotationnel} :
+%         \[
+%           \grad \times (-\grad \vpot) = \vec{0}, \qquad
+%           \grad \cdot (-\grad \vpot) = - \nabla^2 \vpot \neq 0 \text{ en général};
+%         \]
+%   \item $\vec{\sfn}(\vec{x})$ est un \cindex{potentiel vectoriel}, de sorte que $\grad \times \vec{\sfn}$ est \emph{solénoïdal} (divergence nulle) :
+%         \[
+%           \grad \cdot (\grad \times \vec{\sfn}) = 0, \qquad
+%           \grad \times (\grad \times \vec{\sfn}) \neq 0 \text{ en général};
+%         \]
+%   \item $\vec{c}$ est une \cindex{composante constante} du champ, qui n’est ni divergente ni rotationnelle.
+% \end{itemize}
+%
+% \paragraph{Interprétation physique.}
+% \begin{itemize}
+%   \item La composante $-\grad \vpot$ transporte toute la divergence du champ : elle décrit la partie \emph{non rotationnelle}.
+%   \item La composante $\grad \times \vec{\sfn}$ transporte toute la rotation du champ : elle décrit la partie \emph{non divergente}.
+%   \item La constante $\vec{c}$ représente une composante uniforme du champ.
+% \end{itemize}
+%
+% \paragraph{Cas particuliers.}
+% \begin{itemize}
+%   \item Dans un écoulement incompressible ($\grad \cdot \vec{u} = 0$), la composante $-\grad \vpot$ est nulle, et le champ est purement non-divergent ou encore dit \index{écoulement solénoïdal}{solénoïdal}.
+%   \item Si la composante $\curl \vec{\sfn}$ est nulle, le champ est purement irrotationnel. Il reste décrit cependant par la composante $-\grad\vpot$, si bien qu'on parle parfois d'\cindex{écoulement potentiel} (\emph{potential flow}). 
+% \end{itemize}
+%
+% Nous verrons qu'il existe une classe importante d'ecoulements qui sont à la fois non-divergents et presque partout irrotationnels. 
+%
 
 \subsection{Écoulements bi-dimensionnels}
 Bien que nous vivions dans un monde tri-dimensionnel, beaucoup d'écoulements se décrivent très bien dans un espace à deux dimensions : les éléments de l'écoulement qui nous intéressent se trouvent dans un plan.
 Ce sera typiquement le cas lorsque l'écoulement est confiné dans un domaine qui présente des dimensions très différentes selon l'horizontale et la verticale. C'est le cas des mers, des océans, ou dans certaines expériences de laboratoire comme celle de \cindex{Rayleigh-Bénard}\footnote{\url{https://www.youtube.com/watch?v=Eud7uG5JHng}}. De tels écoulements sont dits à coefficient d'aspect élevé.
-L'existence même d'écoulements à coefficient d'aspect élevé est elle-même liée à des facteurs extérieurs qui renforcent la pertinence d'une description à deux dimensions : la force de gravité induit une forte asymétrie entre l'horizontale et la verticale. On démontre par ailleurs que dans un fluide stationnaire barotrope en rotation (section Deleersnijder), le mouvement est invariant selon l'axe de rotation (\cindex{théorème de Taylor-Proudman}).
+L'existence d'écoulements à coefficient d'aspect élevé est elle-même liée à des facteurs extérieurs qui renforcent la pertinence d'une description à deux dimensions : la force de gravité induit une forte asymétrie entre l'horizontale et la verticale. On démontre par ailleurs que dans un fluide stationnaire barotrope en rotation (section Deleersnijder), le mouvement est invariant selon l'axe de rotation (\cindex{théorème de Taylor-Proudman}).
 Nous utiliserons la notation $\uh$ pour signifier la composante horizontale du mouvement.
+%
+% \subsection{Potentiels scalaires et vecteurs}
+% Reprenons la décomposition de Helmholtz, mais adaptée au cas bi-dimensionnel. Le potentiel scalaire $\vpot$ est défini dans le plan et on ne prend que son gradient horizontal. Le potentiel vectoriel $\vec{\sfn}$ est un principe à trois dimensions. On peut manipuler l'opérateur rotationnel pour extraire trois composantes :
+% \begin{equation}
+%   \begin{split}
+%      \curl \vec{\sfn} %
+%                      &= \curl ( \sfn_x \ex  + \sfn_y \ey + \sfn_z \ez ) \\
+%                      &= \grad \sfn_x \cross \ex +  \grad \sfn_y \cross \ey +  \grad \sfn_z \cross \ez
+%    \end{split}
+% \end{equation}
+% Chaque composante produit un champ vectoriel dans les trois plans orthogonaux aux vecteurs de base. Si on considère un écoulement horizontal, dans le plan $(\ex, \ey)$, alors il ne faut retenir que le troisième terme.
+%
 
 \subsection{Écoulements 2-D typiques}
 On peut appréhender le monde bi-dimensionnel en se familiarisant avec des écoulements typiques.
@@ -271,29 +288,76 @@ Il s'agit d'un écoulement trivial, $\uh=\vec{c}$.
 On peut modéliser un écoulement globalement divergent par $\uh=c\rh$, où $\rh$ est la composante horizontale du vecteur position, depuis l'origine.
 On vérifie (exercice) que $\Div\uh$ vaut dans ce cas $2c$, le facteur~2 étant associé aux deux dimensions de l'écoulement. Cet écoulement implique une divergence sur tout le champ et des vitesses croissant indéfiniment au fur et à mesure que l'on s'éloigne du centre. On peut localiser la structure divergente et lui donner une dimension typique $L$ en imposant : $\uh=ce^{-r_h/L}\rh$. On vérifie aussi que ces écoulements sont irrotationnels.
 
-\paragraph{Vortex\label{para:Vortex}}
-Par analogie à l'écoulement divergent, on modélise un \cindex{écoulement rotationnel} par $\uh=\vec{\Omega} \cross \rh$. Dans l'écoulement 2-D, le vecteur $\Omega$ qui induit la rotation est orthogonal au plan de l'écoulement. On retrouve le vecteur instantané de rotation en appliquant l'opérateur rotationnel : $\curl\uh=2\Omega$. Ce modèle de rotation globale implique des vitesses croissant indéfiniment à mesure que l'on s'éloigne de l'origine. Si l'on applique un facteur exponentiel décroissant, on génère une rotation différentielle typique d'un vortex.
+\paragraph{Rotation solide\label{para:Vortex}}
+Par analogie à l'écoulement divergent, on modélise un \cindex{écoulement rotationnel} par $\uh=\vec{\Omega} \cross \rh$.
+
+En coordonnées polaires, cet écoulement s'écrit simplement: 
+
+\begin{displaymath}
+  u_\theta = \Omega r
+\end{displaymath}
+
+Dans l'écoulement 2-D, le vecteur $\vec\Omega$ qui induit la rotation est orthogonal au plan de l'écoulement. On retrouve le vecteur instantané de rotation (la \cindex{vorticité}) en appliquant l'opérateur rotationnel : $\vec\vort \eqdef \curl\uh=2\vec\Omega$. 
+
+On note la composante verticale de vorticité
+
+\begin{displaymath}
+  \vort_z = 2 \Omega
+\end{displaymath}
+
+Ce modèle de rotation solide implique des vitesses croissant indéfiniment à mesure que l'on s'éloigne de l'origine.
+
+
+\paragraph{Vortex irrotationel} 
+
+Il est possible de créer un flux circulaire qui est non-rotationnel presque partout! 
+
+Considérons le mouvement dans le plan, en coordonnées cylindriques
+
+\begin{displaymath}
+  u_\theta = \frac \Gamma / (2\pi r)
+\end{displaymath}
+
+
+Cette fois, la vitesse angulaire de rotation n'est plus constante: elle diminue selon une loi de proportionalité inverse. 
+
+Pour calculer le rotationnel, on peut utiliser son expression en coordonnées polaires (seule la composante verticale est non-nulle, puisqu'il s'agit d'un mouvement dans le plan): 
+
+\begin{displaymath}
+  \zeta_z =%
+  \frac{1}{r}%
+  \left(\pd{(\r u_\theta)}{r} - \pd{u_r}{r}\right)
+\end{displaymath}
+
+On vérifie que la vorticité est nulle partout.... excepté au centtre où il y a une singularité. Si on applique le théorème de la circulation: 
+
+\begin{displaymath}
+  \cint u_\theta\,r\dif \theta = \Gamma = \iint \vort_z \dif A
+\end{displaymath}
+
+La vorticité est donc nulle partout, sauf au centre où elle se comporte comme un pic de Dirac. 
+
+Bien que ce type de vortex semble tiré par les cheveux, il est en réalité assez fréquent. Il se développe, nous le verrons, assez courament autour d'un obstactle. 
+
+
+TODO: faire des schémas pour les différents types de vortex. 
+
+\paragraph{Vortex exponentiel} 
+Si l'on applique un facteur exponentiel décroissant, on génère une rotation différentielle typique d'un vortex.
 \begin{displaymath}
   \vec{u}_h = e^{-r_h/L} \vec{\Omega}\cross\rh
 \end{displaymath}
 On vérifie que cet écoulement est non-divergent.
 
+
 \paragraph{Cisaillement}
 Le cisaillement $\vec{u}_h = (0,Lx)$ constitue un autre exemple d'écoulement rotationnel, non-divergent (plus généralement, toute forme $(g(y), f(x))$ sera non-divergente).
 
-\subsection{Potentiels scalaires et vecteurs}
-Reprenons la décomposition de Helmholtz, mais adaptée au cas bi-dimensionnel. Le potentiel scalaire $\vpot$ est défini dans le plan et on ne prend que son gradient horizontal. Le potentiel vectoriel $\vec{\sfn}$ est un principe à trois dimensions. On peut manipuler l'opérateur rotationnel pour extraire trois composantes :
-\begin{equation}
-  \begin{split}
-     \curl \vec{\sfn} %
-                     &= \curl ( \sfn_x \ex  + \sfn_y \ey + \sfn_z \ez ) \\
-                     &= \grad \sfn_x \cross \ex +  \grad \sfn_y \cross \ey +  \grad \sfn_z \cross \ez
-   \end{split}
-\end{equation}
-Chaque composante produit un champ vectoriel dans les trois plans orthogonaux aux vecteurs de base. Si on considère un écoulement horizontal, dans le plan $(\ex, \ey)$, alors il ne faut retenir que le troisième terme.
-
 \subsection{Écoulement bi-dimensionnel stationnaire incompressible}
 \subsubsection{Fonction de courant}
+
+TODO : EDITER ICI. REJUSIFIER !!! ON VA REINTRODUIRE SFN ET VPOT VIENDRA PLUS TARD
+
 Si l'écoulement est incompressible, sa composante divergente est nulle ; ne demeure que la composante rotationnelle et la constante (que l'on peut éliminer par une transformation galiléenne).
 Sous cette dernière hypothèse, la décomposition de Helmholtz se réduit à
 \begin{displaymath}
@@ -357,5 +421,6 @@ Les lignes de trace sont donc des ensembles observés à un temps fixé $t$. En 
 
 \medskip
 Ainsi, dans un écoulement non stationnaire, les lignes de courant, les lignes de chemin et les lignes de trace ne coïncident pas nécessairement : chacune décrit un aspect distinct du mouvement du fluide.
+
 
 
