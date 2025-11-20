@@ -207,8 +207,8 @@ Pour le voir, introduisons la notion de \cindex{fonction de flot}, notée $\phi^
 \begin{equation}
   \phi^s(\mathcal{S}_{ab}(0)) = \mathcal{S}_{ab}(s)
   \label{eq:flot_2d}
-\end{equation}
-Comme le champ de vitesse est continu, la fonction de flot $\phi^s$ est elle aussi continue. Dans ce cas, un résultat standard de topologie nous dit que l’image continue d’un ensemble connexe est connexe.
+\end{equation} 
+
 Par conséquent, l’advection d’une section connexe par un flot continu reste connexe : \textbf{aucun trou n’est créé}.
 
 \subsection{Écoulement tri-dimensionnel : tubes de courant}
@@ -229,7 +229,7 @@ En effet, dans le cas stationnaire, nous avons vu que les lignes de courant se c
 % \vec{u} = - \grad \vpot + \curl \vec{\sfn} + \vec{c},
 % \label{eq:helmholtz_decomposition}
 % \end{equation}
-% Où :
+% où :
 % \begin{itemize}
 %   \item $\vpot(\vec{x})$ est un \cindex{potentiel scalaire}, de sorte que $-\grad \vpot$ est \emph{irrotationnel} :
 %         \[
@@ -254,7 +254,9 @@ En effet, dans le cas stationnaire, nous avons vu que les lignes de courant se c
 % \paragraph{Cas particuliers.}
 % \begin{itemize}
 %   \item Dans un écoulement incompressible ($\grad \cdot \vec{u} = 0$), la composante $-\grad \vpot$ est nulle, et le champ est purement non-divergent ou encore dit \index{écoulement solénoïdal}{solénoïdal}.
-%   \item Si la composante $\curl \vec{\sfn}$ est nulle, le champ est purement irrotationnel. Il reste décrit cependant par la composante $-\grad\vpot$, si bien qu'on parle parfois d'\cindex{écoulement potentiel} (\emph{potential flow}). 
+%   \item Si la composante $\grad \times \vec{\sfn}$ est nulle, le champ est purement irrotationnel.
+% \end{itemize}
+%
 % \end{itemize}
 %
 % Nous verrons qu'il existe une classe importante d'ecoulements qui sont à la fois non-divergents et presque partout irrotationnels. 
@@ -312,7 +314,7 @@ Ce modèle de rotation solide implique des vitesses croissant indéfiniment à m
 
 Il est possible de créer un flux circulaire qui est non-rotationnel presque partout! 
 
-Considérons le mouvement dans le plan, en coordonnées cylindriques
+Considérons le mouvement dans le plan, en coordonnées polaires:
 
 \begin{displaymath}
   u_\theta = \frac \Gamma / (2\pi r)
@@ -329,7 +331,7 @@ Pour calculer le rotationnel, on peut utiliser son expression en coordonnées po
   \left(\pd{(\r u_\theta)}{r} - \pd{u_r}{r}\right)
 \end{displaymath}
 
-On vérifie que la vorticité est nulle partout.... excepté au centtre où il y a une singularité. Si on applique le théorème de la circulation: 
+Si on applique le théorème de la circulation: 
 
 \begin{displaymath}
   \cint u_\theta\,r\dif \theta = \Gamma = \iint \vort_z \dif A
@@ -337,8 +339,7 @@ On vérifie que la vorticité est nulle partout.... excepté au centtre où il y
 
 La vorticité est donc nulle partout, sauf au centre où elle se comporte comme un pic de Dirac. 
 
-Bien que ce type de vortex semble tiré par les cheveux, il est en réalité assez fréquent. Il se développe, nous le verrons, assez courament autour d'un obstactle. 
-
+Bien que ce type de vortex semble tiré par les cheveux, il est en fait très commade car il permet de créer une circulation tout en étant irrotationnel presque partout. 
 
 TODO: faire des schémas pour les différents types de vortex. 
 
@@ -354,19 +355,22 @@ On vérifie que cet écoulement est non-divergent.
 Le cisaillement $\vec{u}_h = (0,Lx)$ constitue un autre exemple d'écoulement rotationnel, non-divergent (plus généralement, toute forme $(g(y), f(x))$ sera non-divergente).
 
 \subsection{Écoulement bi-dimensionnel stationnaire incompressible}
-\subsubsection{Fonction de courant}
+\subsubsection{Fonction de courant \label{sect:courant}
 
-TODO : EDITER ICI. REJUSIFIER !!! ON VA REINTRODUIRE SFN ET VPOT VIENDRA PLUS TARD
+Si le flux est non-divergent $\Div\u_h = 0$ soit, en développant 
 
-Si l'écoulement est incompressible, sa composante divergente est nulle ; ne demeure que la composante rotationnelle et la constante (que l'on peut éliminer par une transformation galiléenne).
-Sous cette dernière hypothèse, la décomposition de Helmholtz se réduit à
 \begin{displaymath}
-  \uh = \grad \sfn_z \cross \ez = - \ez \cross \grad \sfn_z,
+  \pd{u}{x} + \pd{u}{y} = 0, 
 \end{displaymath}
-l'expression à droite étant la plus courante. On a également, dans la base choisie,
+
+où l'on a posé $\uh=u\ex + v\ey$. Cette équation est automatiquement rencontrée si $\u_h$ dérive d'un \cindex{potentiel vecteur}. Soit: $\uh = \curl (\sfn_z \ez) = \grad \sfn_z \times \ez$, on a: 
+
 \begin{displaymath}
-  \uh = \pdy{\sfn_z} \ex - \pdx{\sfn_z}\ey
+  u = \pd{\sfn_z}{y}\quad et v = -\pd{\sfn_z}{x}. 
 \end{displaymath}
+
+L'équation de continuité est satisfaite par $\pd[2]{\sfn_z}{xy} = \pd[2]{\sfn_z}{yx}$. 
+
 La fonction $\sfn_z$ porte le nom de \cindex{fonction de courant}, en anglais \emph{streamfunction}, pour les deux raisons suivantes :
 
 \begin{key}{Le flux entre deux points est donné par la différence de la fonction de courant entre ces deux points}
@@ -382,11 +386,6 @@ Par ailleurs,
 En effet, puisque $\pdt{\psi_z}=0$ (hypothèse stationnaire),
 \begin{displaymath}
   \Dif \psi_z = \pdx {\psi_z} \Dif x + \pdy {\psi_z} \Dif y.
-\end{displaymath}
-On remplace alors $\Dif x = u_x \dif t = \pdy {\sfn_z}  \dif t $ et
-$\Dif y = u_y \dif t = - \pdx {\sfn_z} \dif t $ pour démontrer que $\Dif \psi_z = 0$.
-\end{key}
-
 Ainsi, dans un écoulement bi-dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ près) le flux de masse entre les deux iso-contours.
 
 
@@ -419,8 +418,6 @@ Autrement dit, le paramètre qui permet de se déplacer le long de la courbe est
 \end{equation}
 Les lignes de trace sont donc des ensembles observés à un temps fixé $t$. En parcourant la courbe, on explore les positions actuelles des particules émises successivement depuis la source $\vec{x}_0$ à différents instants passés.
 
-\medskip
 Ainsi, dans un écoulement non stationnaire, les lignes de courant, les lignes de chemin et les lignes de trace ne coïncident pas nécessairement : chacune décrit un aspect distinct du mouvement du fluide.
-
 
 

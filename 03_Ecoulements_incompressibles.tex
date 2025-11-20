@@ -10,12 +10,13 @@ Si la masse volumique $\rho$ est une constante du mouvement, alors par l'équati
 
 \subsection{Théorème de Bernouilli}
 
-Plaçons nous dans les conditions du chapitre \ref{ch:euler}: écoulement laminaire, non-visqueux, dans lequel la seule force interne est la force de pression telles que nous l'avons définie pour établir l'équation d'Euler. 
+Plaçons nous dans les conditions du chapitre \ref{ch:euler}: écoulement laminaire, non-visqueux, dans lequel la seule force interne est la force de pression telle que nous l'avons définie pour établir l'équation d'Euler. 
 \begin{equation*}
   \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \grad p.
 \label{eq:euler*}
+\end{equation}
 
-Nous utilisons deux hypothèse supplémentaires: l'écoulement est stationnaire ($\pdt{}=0$) et incompressible. On utilise par ailleurs la forme alternative du tenseur d'advection (eq: \ref{eq:euler_conserv}):
+Nous utilisons deux hypothèses supplémentaires: l'écoulement est stationnaire ($\pdt{}=0$) et incompressible. On utilise par ailleurs la forme alternative du tenseur d'advection (eq: \ref{eq:euler_conserv}):
 
 \begin{equation}
   \rho (\curl \u)\cross u + \grad(\frac{1}{2}\u^2) = - \rho \, \grad \gpot - \grad p.
@@ -119,43 +120,68 @@ L'effet Magnus porte sur un objet en rotation (par exemple un ballon). Ici encor
 
 Cependant, il n'est pas trivial de prouver cette différence de vitesse. Nous allons esquisser le raisonnement formel. 
 
-\subsection{Équation de Laplace}
+\subsection{Équation de Laplace complexe et conditions de Cauchy-Rieman}
 
-TODO: NON. REINTRODUIRE TOUS LES POTENTIELS ICI. SFN ET VPOT. ET DONNER LA CONDITION DE CAUCHY RIEMANN. 
+\subsubsection{Écoulement potentiel complexe}
 
-Reprennons la décomposition de Helmholz pour un champ stationnaire: \eqref{eq:helmholtz_decomposition}
+Plaçons nous dans le cas particulier d'un écoulement bi-dimensionel.  Nous avons vu dans la section \ref{sect:courant} que si la vitesse dérive d'une fonction de courant, $\uh = \curl \sfn \ez$, alors l'équation de continuité est automatiquement satisfaite. 
+
+Si, par ailleurs, le flux $\uh$ dérive d'un potentiel scalaire $\phi$ définit tel que: 
+
+\begin{displaymath}
+  u = \pd{\vpot}{x}, \quad \text{et}\quad u = \pd{\vpot}{y}, 
+\end{displaymath}
+
+il est automatiquement irrotationnel. Ainsi, si un écoulement dérive à la fois d'une fonction de courant et d'un potentiel scalaire, il est à la fois irrotationel \emph{et} incompressible. 
+
+Ainsi, si on applique la condition de non-divergence à l'expression dérivée de la fonction de courant, on a $\lapl\sfn=0$, et la condition de champ irrotationel à l'expréssion dérivée du potentiel scalaire: $\lapl\vpot=0$. Il s'agit de deux équations de Laplace, qui peuvent aussi s'exprimer en coordonnées polaires:
 
 \begin{equation}
-\vec{u} = - \grad \vpot + \curl  \vec{\sfn} + \vec{c},
+\lapl \vcomp = \frac{1}{r}\pd{}{r}\left(r\pd{\vcomp}{r}\right) + \frac{1}{r^2}\pd[2]{\vcomp}{\theta^2}} = 0. 
+  \label{eq:laplace_cp}
 \end{equation}
 
-Si le flux est \emph{non_divergent}: $\Div\u = - \Delta \vpot = 0$. 
-Si le flux est \emph{irrotationnel}: $\curl\u = \curl\curl\vec{\sfn} = \grad\Div\sfn - \Delta \sfn = 0$. 
+Pour qu'un écoulement puisse dériver à la fois d'un potenties scalaire et d'une fonction de courant, il faut
+que les vitesses associées aux deux définitions soient identiques, soit: 
 
-THEOREME DE BLASIUS
+\begin{equation}
+  \pd{\vpot}{x} = \pd{\sfn}{y}\quad\text{et}
+  \pd{\vpot}{y} = -\pd{\sfn}{x}. 
+  \label{eq:cauchy-riemann}
+\end{equation}
 
-TWO DIMENSIONAL
+Ces équations sont l'expression des \cindex{conditions de Cauchy-Riemann}, qui garantissent l'existence d'une dérivée spatiale à la quantité complexe $\vcomp =\vpot + i \sfn$ (cf. e.g. \cite[sect. 6.2, p. 399]{arfken01aa}. 
 
-dD = -pdy
-dL = pdx
+Ainsi, si l'on exprime la position avec une variable complexe $z = u + i\,v$, une fonction est qualifiée de \cindex{fonction analytique} lorsque sa dérivée spatiale ne dépend pas de l'orientation de l'incrément.  Concrètement: 
 
-dD - idL = -pdy - ipdx = -ipdz*
+\begin{displaymath}
+  \begin{split}
+    \od{\vcomp}{z} &= \lim_{\delta x \rightarrow 0}\frac{\delta \vcomp}{\delta x} = \pd{\vcomp}{x} = \pd{\vpot + i\,\sfn}{x} \\
+                   &= \lim_{\delta y \rightarrow 0}\frac{\delta \vcomp}{\delta y} = \pd{\vcomp}{y} = \pd{\vpot + i\,\sfn}{y}, 
+  \end{split}
+\end{displaymath}
 
-D - iL = -i \cint p dz*
+On vérifie que les deux expressions sont équivalentes et satisfont: 
 
-on definit dw/dz = u - iv
+\begin{displaymath}
+    \od{\vcomp}{z} = u - iv
+\end{displaymath}
 
-D - iL = i/2 rho \cint (dw/dz)^2 dz 
+Nous aboutissons donc à un résultat remarquable et fondamental: toute fonction  qui soit au moins deux fois dérivable dans le plan complexe, satisfait les équations de Laplace dans le plan complexe. 
 
-fonctionne sur _tout_ contour de l'obstacle. 
-
-Mais on peut aussi utiliser l'argument heuristique avec Bernouilli, ça marche aussi. 
+Ce résultat nous permet de construire quelques écoulements types qui vont nous servir pour construire des écoulements satisfaisant à des conditions frontières et de symmétrie spécifiques. 
 
 
-DIRE QUELQUE PART QUE VORTICITE N'EST CREE QUE PAR DRAG * 
-CREATION DE VORTICITE = ECHANGE DE MOMENT ANGULAIRE
+\subsubsection{Écoulements complexes potentiels type}
 
-Ce qui est important, c'est que la singulartié de l'aile produit un point 'source' de vorticité. 
+\paragraph{Écoulement constant}
 
-Point de stagnation: en pratique: point de rencontre entre streamline et objet. Mais je ne sais pas bien pourquoi
-https://www.av8n.com/irro/profilo_e.html
+L'écoulement associé à $\vcomp = U\,z$ a pour vitesse $U\ex$. 
+
+
+\paragraph{Source}
+\paragraph{Circulation}
+
+
+
+
