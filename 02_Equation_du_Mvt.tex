@@ -170,7 +170,7 @@ Supposons, pour fixer les idées, que le champ $\vec{u}$ soit invariant au cours
   \od{\vec{x}}{s} = \vec{u}(\vec{x})\text{, avec $\vec{x}(0)=\vec{x}_0$}.
 \end{displaymath}
 Si on remplace, pour s'aider, le symbole $s$ par le symbole $t$, on voit immédiatement que la courbe $\vec{x}(s)$ répond à la même équation que celle qui détermine le chemin d'une particule de fluide au cours du temps, avec condition initiale $\vec{x}_0$ au temps $t=0$.
-La courbe paramétrique définie par~\eqref{eq:ligne_courant} porte le nom de \cindex{ligne de courant}. Dans le cas particulier d'un champ de vitesse stationnaire, elle se superpose à la trajectoire ou chemin de toute particule passant à un moment donné par $\vec{x}_0$.
+La courbe paramétrique définie par~\eqref{eq:ligne_courant} porte le nom de \cindex{ligne de courant}. Dans le cas particulier d'un champ de vitesse stationnaire, elle se superpose à la trajectoire ou chemin de toute particule passant à un moment donné par $\vec{x}_0$. \todo{dire qu'on en reparlera mais insister pour dire que la ligne de courant est toujours définie}. 
 
 \begin{key}{Les lignes de courant sont tangentes à la vitesse en tout point}
 Exprimons l'équation~\eqref{eq:ligne_courant} selon ses composantes cartésiennes :
@@ -198,7 +198,7 @@ ce qui revient simplement à écrire que la courbe décrite par $\vec{x}(s)$ est
 Par l'absurde, cela impliquerait en effet qu'en un point et à un instant $t$, la vitesse peut prendre deux directions différentes, alors que l'hypothèse du milieu continu nous impose une vitesse bien définie en tout point.
 \end{key}
 
-\subsection{Section de lignes de courant dans un écoulement}
+\subsection{Section de lignes de courant dans un champ bi-dimensionnel}
 Pour un champ de vitesse bidimensionnel $\vec{u}(x,y)$, considérons un ensemble de conditions initiales $\mathcal{S}_{ab}(0)$ reliant deux points $a$ et $b$ de façon continue, et tel qu’il intercepte les lignes de courant de manière à ce que les vitesses soient toutes dans la même direction (par exemple, de gauche à droite).
 On dit que $\mathcal{S}_{ab}(0)$ constitue une \emph{section}, et plus précisément une \cindex{section connexe}, car elle ne contient pas de trou.
 En construisant l’ensemble des lignes de courant associées à chacune de ces conditions initiales, on obtient une figure géométrique généralement bidimensionnelle. Pour tout paramètre $s$ (le temps restant figé), les ensembles $\mathcal{S}_{ab}(s)$ constituent des sections correspondant à la projection continue des conditions initiales en fonction de $s$. Cette surface ainsi construite ne contiendra pas de trou non plus.
@@ -217,13 +217,10 @@ Autrement dit, si chaque point de $\mathcal{S}_{ab}(0)$ est advecté selon le fl
 Les propriétés topologiques du flot garantissent la continuité de la paroi du tube : aucune ligne de courant ne traverse cette paroi, et donc aucun échange de matière ne se produit entre l’intérieur et l’extérieur du tube.
 De manière informelle, aucune ligne de courant ne peut s’échapper du tube : toutes restent confinées à l’intérieur de sa paroi.
 Nous en déduisons une conséquence importante :
-\begin{key}{Dans un écoulement fluide laminaire et stationnaire, une particule fluide piégée dans un tube de courant ne peut jamais s’en échapper.}
-En effet, dans le cas stationnaire, nous avons vu que les lignes de courant se confondent avec les trajectoires. Le paramètre $s$ qui définit les lignes de courant, ainsi que la fonction de flot $\phi^s$, peuvent alors être réinterprétés comme le temps.
-\end{key}
 
-\subsection{Décomposition de Helmholtz d'un champ stationnaire}
+\subsection{Décomposition de Helmholtz d'un champ}
 Soit un champ de vitesse stationnaire $\vec{u}(\vec{x})$ défini dans $\mathbb{R}^3$ ou dans un domaine borné suffisamment régulier.
-Le \cindex{théorème de Helmholtz} stipule que ce champ peut toujours se décomposer de manière unique (à une constante près) en la somme de trois composantes :
+Le \cindex{théorème de Helmholtz} stipule que ce champ peut toujours se décomposer de manière unique en la somme de trois composantes :
 \begin{equation}
 \vec{u} = - \grad \vpot + \grad \times \vec{\sfn} + \vec{c},
 \label{eq:helmholtz_decomposition}
@@ -293,37 +290,7 @@ Reprenons la décomposition de Helmholtz, mais adaptée au cas bi-dimensionnel. 
 \end{equation}
 Chaque composante produit un champ vectoriel dans les trois plans orthogonaux aux vecteurs de base. Si on considère un écoulement horizontal, dans le plan $(\ex, \ey)$, alors il ne faut retenir que le troisième terme.
 
-\subsection{Écoulement bi-dimensionnel stationnaire incompressible}
-Si l'écoulement est incompressible, sa composante divergente est nulle ; ne demeure que la composante rotationnelle et la constante (que l'on peut éliminer par une transformation galiléenne).
-Sous cette dernière hypothèse, la décomposition de Helmholtz se réduit à
-\begin{displaymath}
-  \uh = \grad \sfn_z \cross \ez = - \ez \cross \grad \sfn_z,
-\end{displaymath}
-l'expression à droite étant la plus courante. On a également, dans la base choisie,
-\begin{displaymath}
-  \uh = \pdy{\sfn_z} \ex - \pdx{\sfn_z}\ey
-\end{displaymath}
-La fonction $\sfn_z$ porte le nom de \cindex{fonction de courant}, en anglais \emph{streamfunction}, pour les deux raisons suivantes :
 
-\begin{key}{Le flux entre deux points est donné par la différence de la fonction de courant entre ces deux points}
-  Sous l'hypothèse d'une masse volumique $\rho$ constante, le flux à travers une section quelconque entre deux points vaut
-  \begin{displaymath}
-    \rho \int_a^b \uh\, \dif \mathcal{S}
-  \end{displaymath}
-  On sait que $\int_a^b \uh = \int_a^b \grad \sfn_z \times \ez \dif \mathcal{S}$, et on peut se convaincre de multiples façons que cette intégrale vaut $\psi(b)-\psi(a)$, par exemple en créant une boucle fermée et en appliquant le théorème de Green.
-\end{key}
-
-Par ailleurs,
-\begin{key}{Dans un fluide stationnaire, une particule fluide conserve $\sfn_z$ le long de son mouvement.}
-En effet, puisque $\pdt{\psi_z}=0$ (hypothèse stationnaire),
-\begin{displaymath}
-  \Dif \psi_z = \pdx {\psi_z} \Dif x + \pdy {\psi_z} \Dif y.
-\end{displaymath}
-On remplace alors $\Dif x = u_x \dif t = \pdy {\sfn_z}  \dif t $ et
-$\Dif y = u_y \dif t = - \pdx {\sfn_z} \dif t $ pour démontrer que $\Dif \psi_z = 0$.
-\end{key}
-
-Ainsi, dans un écoulement bi-dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ près) le flux de masse entre les deux iso-contours.
 
 \section{Description Lagrangienne d'un écoulement non-stationnaire}
 Nous devons introduire deux nouvelles notions, qui traduisent toutes deux la \cindex{description lagrangienne} du champ de vitesse.
@@ -334,12 +301,13 @@ La \cindex{ligne de chemin} (\emph{pathline}) est la courbe paramétrique décri
   \od{\vec{p}}{t} = \vec{u}(\vec{p},t), \qquad \vec{p}(t_0) = \vec{p}_0.
   \label{eq:ligne_chemin}
 \end{equation}
-On peut également l’exprimer à l’aide de la \cindex{fonction de flot} :
+On peut également l’exprimer à l’aide de la \cindex{fonction de flot}. Dans sa version non-stationnaire, la fonction flot est
+indexée par deux paramètres, le temps initial ($t_0$) et le temps cible ($t$), et exprime l'advection d'un domaine pris au temps $t_0$, tel qu'il apparaît au temps $t$. 
 \begin{equation}
-  \vec{p}(t) = \phi^{t-t_0}(\vec{x}_0, t_0),
+  \vec{p}(t) = \phi^{t_0, t }(\vec{x}_0),
   \label{eq:ligne_chemin_flot}
 \end{equation}
-où le paramètre de la courbe, $t$, représente le temps écoulé depuis le lâcher de la particule.
+Le paramètre de la courbe est $t$. 
 Chaque ligne de chemin correspond donc à la trajectoire d’une particule donnée, définie par sa position initiale $\vec{x}_0$ et son temps initial $t_0$.
 À chaque instant $t$, la tangente à la ligne de chemin coïncide avec la direction du champ de vitesse $\vec{u}(\vec{x},t)$ en ce point.
 Dans un écoulement laminaire, deux particules lâchées au même instant $t_0$ ne peuvent jamais se collisionner : une telle collision impliquerait qu’en un même point et à un même instant, deux vitesses différentes sont possibles, ce qui contredirait l’hypothèse de continuité du milieu. En revanche, deux lignes de chemins associées à des temps initiaux différents peuvent très bien se croiser.
@@ -349,10 +317,11 @@ La ligne de chemin peut donc être interprétée comme une courbe qui se constru
 La \cindex{ligne de trace} (\emph{streakline}) est définie à un instant donné $t$ comme l’ensemble des positions atteintes à cet instant par des particules lâchées à différents instants $t_0$, mais depuis une même position initiale $\vec{x}_0$.
 Autrement dit, le paramètre qui permet de se déplacer le long de la courbe est le temps de lâcher $t_0$. En reprenant le formalisme du flot, on écrit :
 \begin{equation}
-  \vec{s}(t_0) = \phi^{\,t - t_0}(\vec{x}_0, t_0),
+  \vec{s}(t_0) = \phi^{t_0, t}(\vec{x}_0),
   \label{eq:streakline_flot}
 \end{equation}
-Les lignes de trace sont donc des ensembles observés à un temps fixé $t$. En parcourant la courbe, on explore les positions actuelles des particules émises successivement depuis la source $\vec{x}_0$ à différents instants passés.
+Le paramètrè de la courbe est cette fois $t_0$, et non $t$. 
+En parcourant la courbe, on explore les positions actuelles des particules émises successivement depuis la source $\vec{x}_0$ à différents instants passés.
 
 \medskip
 Ainsi, dans un écoulement non stationnaire, les lignes de courant, les lignes de chemin et les lignes de trace ne coïncident pas nécessairement : chacune décrit un aspect distinct du mouvement du fluide.

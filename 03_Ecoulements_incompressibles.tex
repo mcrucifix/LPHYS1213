@@ -1,4 +1,47 @@
-\chapter{Ecoulements incompressibles}
+\chapter{Ecoulements laminaires stationnaires}
+
+REEXPLIQUE l'hypothèse de stationnarité et ce que ça implique pour la fonction flot. 
+
+\begin{key}{Dans un écoulement fluide laminaire et stationnaire, une particule fluide piégée dans un tube de courant ne peut jamais s’en échapper.}
+En effet, dans le cas stationnaire, nous avons vu que les lignes de courant se confondent avec les trajectoires. Le paramètre $s$ qui définit les lignes de courant, ainsi que la fonction de flot $\phi^s$, peuvent alors être réinterprétés comme le temps.
+\end{key}
+
+
+
+
+\subsection{Écoulement bi-dimensionnel stationnaire incompressible}
+Si l'écoulement est incompressible, sa composante divergente est nulle ; ne demeure que la composante rotationnelle et la constante (que l'on peut éliminer par une transformation galiléenne).
+Sous cette dernière hypothèse, la décomposition de Helmholtz se réduit à
+\begin{displaymath}
+  \uh = \grad \sfn_z \cross \ez = - \ez \cross \grad \sfn_z,
+\end{displaymath}
+l'expression à droite étant la plus courante. On a également, dans la base choisie,
+\begin{displaymath}
+  \uh = \pdy{\sfn_z} \ex - \pdx{\sfn_z}\ey
+\end{displaymath}
+La fonction $\sfn_z$ porte le nom de \cindex{fonction de courant}, en anglais \emph{streamfunction}, pour les deux raisons suivantes :
+
+\begin{key}{Le flux entre deux points est donné par la différence de la fonction de courant entre ces deux points}
+  Sous l'hypothèse d'une masse volumique $\rho$ constante, le flux à travers une section quelconque entre deux points vaut
+  \begin{displaymath}
+    \rho \int_a^b \uh\, \dif \mathcal{S}
+  \end{displaymath}
+  On sait que $\int_a^b \uh = \int_a^b \grad \sfn_z \times \ez \dif \mathcal{S}$, et on peut se convaincre de multiples façons que cette intégrale vaut $\psi(b)-\psi(a)$, par exemple en créant une boucle fermée et en appliquant le théorème de Green.
+\end{key}
+
+Par ailleurs,
+\begin{key}{Dans un fluide stationnaire, une particule fluide conserve $\sfn_z$ le long de son mouvement.}
+En effet, puisque $\pdt{\psi_z}=0$ (hypothèse stationnaire),
+\begin{displaymath}
+  \Dif \psi_z = \pdx {\psi_z} \Dif x + \pdy {\psi_z} \Dif y.
+\end{displaymath}
+On remplace alors $\Dif x = u_x \dif t = \pdy {\sfn_z}  \dif t $ et
+$\Dif y = u_y \dif t = - \pdx {\sfn_z} \dif t $ pour démontrer que $\Dif \psi_z = 0$.
+\end{key}
+
+Ainsi, dans un écoulement bi-dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ près) le flux de masse entre les deux iso-contours.
+
+
 
 Si la masse volumique $\rho$ est une constante du mouvement, alors par l'équation de continuité \eqref{eq:cons_continuite_lineique}, le champ de vitesse est non-divergent
 
