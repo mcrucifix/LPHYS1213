@@ -13,7 +13,6 @@ Si la masse volumique $\rho$ est une constante du mouvement, alors par l'équati
 Plaçons nous dans les conditions du chapitre \ref{ch:euler}: écoulement laminaire, non-visqueux, dans lequel la seule force interne est la force de pression telle que nous l'avons définie pour établir l'équation d'Euler. 
 \begin{equation}
   \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \grad p.
-\label{eq:euler*}
 \end{equation}
 
 Nous utilisons deux hypothèses supplémentaires: l'écoulement est stationnaire ($\pdt{}=0$) et incompressible. On utilise par ailleurs la forme alternative du tenseur d'advection (eq: \ref{eq:euler_conserv}):
@@ -36,7 +35,7 @@ La quantité $H$ a les dimensions d'une énergie massique, et on y reconnaît le
 \end{equation}
 
 \begin{key}{Théorème de Bernouilli}
-  Si un fluide idéal est en écoulement stationnaire, alors $H$ est constant le long d'une ligne de courant (\cite{achesion01aa}, p. 10).
+  Si un fluide idéal est en écoulement stationnaire, alors $H$ est constant le long d'une ligne de courant (\cite{acheson90aa}, p. 10).
 \end{key}
 
 \subsection{Équation de la vorticité}
@@ -70,7 +69,8 @@ Si l'écoulement est non-divergent, $\Div u=0$ et de plus $\Div \vort$ est toujo
 ou encore
 \begin{equation}
  \Dt\vort = \vort \cdot \grad \u
-\end{equation\label{eq:vort}}
+\label{eq:vort}
+\end{equation}
 %
 C'est l'équation de la vorticité écrite ici pour un écoulement incompressible. Il est remarquable que la vorticité évolue, le long de l'écoulement, indépendamment de la pression et du géopotentiel ! 
 
@@ -124,7 +124,7 @@ Cependant, il n'est pas trivial de prouver cette différence de vitesse. Nous al
 
 \subsubsection{Écoulement potentiel complexe}
 
-Plaçons nous dans le cas particulier d'un écoulement bi-dimensionel.  Nous avons vu dans la section \ref{sect:courant} que si la vitesse dérive d'une fonction de courant, $\uh = \curl \sfn \ez$, alors l'équation de continuité est automatiquement satisfaite. 
+Plaçons-nous dans le cas particulier d'un écoulement bi-dimensionel.  Nous avons vu dans la section \ref{sect:courant} que si la vitesse dérive d'une fonction de courant, $\uh = \curl \sfn \ez$, alors l'équation de continuité est automatiquement satisfaite. 
 
 Si, par ailleurs, le flux $\uh$ dérive d'un potentiel scalaire $\phi$ définit tel que: 
 
@@ -137,148 +137,7 @@ il est automatiquement irrotationnel. Ainsi, si un écoulement dérive à la foi
 Ainsi, si on applique la condition de non-divergence à l'expression dérivée de la fonction de courant, on a $\lapl\sfn=0$, et la condition de champ irrotationel à l'expréssion dérivée du potentiel scalaire: $\lapl\vpot=0$. Il s'agit de deux équations de Laplace, qui peuvent aussi s'exprimer en coordonnées polaires:
 
 \begin{equation}
-\lapl \vcomp = \frac{1}{r}\pd{}{r}\left(r\pd{\vcomp}{r}\right) + \frac{1}{r^2}\pd[2]{\vcomp}{\theta^2}} = 0. 
-  \label{eq:laplace_cp}
-\end{equation}
-
-Si la masse volumique $\rho$ est une constante du mouvement, alors par l'équation de continuité \eqref{eq:cons_continuite_lineique}, le champ de vitesse est non-divergent
-
-\begin{equation}
-  \Div \vec{u} = 0\text{ pour un écoulement incompressible}
-\end{equation}
-
-\section{Écoulement laminaire non-visqueux (fluide parfait)}
-
-\subsection{Théorème de Bernouilli}
-
-Plaçons nous dans les conditions du chapitre \ref{ch:euler}: écoulement laminaire, non-visqueux, dans lequel la seule force interne est la force de pression telle que nous l'avons définie pour établir l'équation d'Euler. 
-\begin{equation*}
-  \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \grad p.
-\label{eq:euler*}
-\end{equation}
-
-Nous utilisons deux hypothèses supplémentaires: l'écoulement est stationnaire ($\pdt{}=0$) et incompressible. On utilise par ailleurs la forme alternative du tenseur d'advection (eq: \ref{eq:euler_conserv}):
-
-\begin{equation}
-  \rho (\curl \u)\cross u + \grad(\frac{1}{2}\u^2) = - \rho \, \grad \gpot - \grad p.
-\label{eq:Bernouilli0}
-\end{equation}
-
-Comme $\rho$ est constant et non-nul, nous pouvons nous autoriser à diviser tous les termes par $\rho$ et l'introduire sous la dérivée spatiale: 
-\begin{equation}
-  (\curl \u)\cross u = - \grad (\gpot + \grad \frac{p}{\rho} - \frac{1}{2}\u^2) \eqdef - \grad H
-\label{eq:Bernouilli}
-\end{equation}
-
-La quantité $H$ a les dimensions d'une énergie massique, et on y reconnaît les termes évoquant une énergie cinétique par unité de masse, le géopotentiel, et la pression. L'ensemble forme une quantité conservée le long du mouvement. En effet: 
-
-\begin{equation}
-  (\u \cdot \grad) H = \u \cdot  (\curl \u)\cross u  = 0
-\end{equation}
-
-\begin{key}{Théorème de Bernouilli}
-  Si un fluide idéal est en écoulement stationnaire, alors $H$ est constant le long d'une ligne de courant (\cite{achesion01aa}, p. 10).
-\end{key}
-
-\subsection{Équation de la vorticité}
-
-Reprenons l'équation de Bernouilli dans sa version non-stationnaire: 
-
-\begin{equation}
- \pdt u +  (\curl \u)\cross u = - \grad H
-\end{equation}\label{eq:Bernouilli}
-
-Nous définisson la \cindex{vorticité} comme le rotationnel de la vitesse (cf. ch. \ref{ch:euler}, section \ref{para:Vortex}): $\omega \eqdef \curl \u$. En prenant le rotationnel de part et d'autre de l'équation de Bernouilli  on obtient: 
-
-\begin{equation}
- \pdt \vort +  \curl (\vort \cross u) = 0, 
-\end{equation}
-%
-car le rotationnel d'un gradient est toujours nul. 
-
-On utilise les identités connues en calculus pour développer le rotationnel du produit vectoriel: 
-
-\begin{equation}
- \pdt \vort (\u\cdot \grad)\vort - (\vort\cdot\grad)\u + \vort\Div \u - \u \Div \vort
-\end{equation}
-%
-Si l'écoulement est non-divergent, $\Div u=0$ et de plus $\Div \vort$ est toujours nul par construction de la vorticité. On trouve: 
-
-\begin{equation*}
- \pdt \vort (\u\cdot \grad)\vort = \vort \cdot \grad \u
-\end{equation*}
-%
-ou encore
-\begin{equation}
- \Dt\vort = \vort \cdot \grad \u
-\end{equation\label{eq:vort}}
-%
-C'est l'équation de la vorticité écrite ici pour un écoulement incompressible. Il est remarquable que la vorticité évolue, le long de l'écoulement, indépendamment de la pression et du géopotentiel ! 
-
-Plus fort encore, si l'écoulement est bi-dimensionnel (par exemple, dans le plan $x,y$, alons $\vort = \omega \ez$ et
-
-\begin{equation}
- \Dt\omega = 0. 
-\label{eq:vort2d}
-\end{equation}
-
-
-Cette équation justifie l'existence de particules  de vorticité. Les 'petits' vortex sont advectés avec le flux moyen, comme s'il s'agissait de particules dans un champ 2D. 
-
-Si, d'autre part, l'écoulement est tri-dimensionnel, laminaire est stable, avec une vorticité nulle en condition initiale $\vort=0$, aucune vorticité ne sera créée. Reprenons alors l'équation \eqref{eq:Bernouilli0} qui nous a servi à établir le théorème de Bernouilli: 
-
-\begin{displaymath}
-  \rho (\curl \u)\cross u + \grad(\frac{1}{2}\u^2) = - \rho \, \grad \gpot - \grad p.
-\label{eq:Bernouilli0}
-\end{displaymath}
-
-Comme $\vort = \curl \u =0$, on a 
-
-\begin{displaymath}
-  \grad(\frac{1}{2}\u^2) = - \grad \gpot - \grad {p}{\rho}.
-\end{displaymath}
-
-Ceci nous donne un "Bernouilli plus": si le flot est non-rotationnel, alors la quantité $H$ est constante, non-seulement le long d'une ligne de courant, mais absolument partout dans le fluide. 
-
-\begin{key}{Bernouilli PLUS}
-  Dans un fluide parfait, irrotationnel, la quantité $\gpot + \frac{p}{\rho} + \frac{u^2}{2}$ est constante
-\end{key}
-
-
-
-Ce théorème a des applications bien connues :
-
-\begin{itemize}
-  \item Écoulement libre non-turbulent : soit une cuve à l'air libre et un orifice au bas de la cuve, également à pression atmosphérique : la vitesse du fluide en sortie est alors directement déterminée par la différence d'énergie potentielle : $\Delta u/2 = \Delta \Phi$. 
-\end{itemize}
-
-
-On évoque souvent l'effet Magnus ou encore la portance d'une aile d'avion comme application du théorème de Bernouilli. 
-
-Le raisonnement est qu'à géopotentiel égal, le long d'une ligne de flux, la pression diminue quand la vitesse augmente. Si la vitesse \emph{au dessus} de l'aile d'avion est plus grande qu'en dessous, alors la différence de pression associée au théorème de Bernouilli génère une portance. 
-
-L'effet Magnus porte sur un objet en rotation (par exemple un ballon). Ici encore, si l'on peut prouver que la vitesse du fluide diffère de part et d'autre du ballon, on explique une force résultante. 
-
-Cependant, il n'est pas trivial de prouver cette différence de vitesse. Nous allons esquisser le raisonnement formel. 
-
-\subsection{Équation de Laplace complexe et conditions de Cauchy-Rieman}
-
-\subsubsection{Écoulement potentiel complexe}
-
-Plaçons nous dans le cas particulier d'un écoulement bi-dimensionel.  Nous avons vu dans la section \ref{sect:courant} que si la vitesse dérive d'une fonction de courant, $\uh = \curl \sfn \ez$, alors l'équation de continuité est automatiquement satisfaite. 
-
-Si, par ailleurs, le flux $\uh$ dérive d'un potentiel scalaire $\phi$ définit tel que: 
-
-\begin{displaymath}
-  u = \pd{\vpot}{x}, \quad \text{et}\quad u = \pd{\vpot}{y}, 
-\end{displaymath}
-
-il est automatiquement irrotationnel. Ainsi, si un écoulement dérive à la fois d'une fonction de courant et d'un potentiel scalaire, il est à la fois irrotationel \emph{et} incompressible. 
-
-Ainsi, si on applique la condition de non-divergence à l'expression dérivée de la fonction de courant, on a $\lapl\sfn=0$, et la condition de champ irrotationel à l'expréssion dérivée du potentiel scalaire: $\lapl\vpot=0$. Il s'agit de deux équations de Laplace, qui peuvent aussi s'exprimer en coordonnées polaires:
-
-\begin{equation}
-\lapl \vcomp = \frac{1}{r}\pd{}{r}\left(r\pd{\vcomp}{r}\right) + \frac{1}{r^2}\pd[2]{\vcomp}{\theta^2}} = 0. 
+\lapl \sfn = \frac{1}{r}\pd{}{r}\left(r\pd{\sfn}{r}\right) + \frac{1}{r^2}\pd[2]{\sfn}{\theta} = 0. 
   \label{eq:laplace_cp}
 \end{equation}
 
@@ -291,7 +150,7 @@ que les vitesses associées aux deux définitions soient identiques, soit:
   \label{eq:cauchy-riemann}
 \end{equation}
 
-Ces équations sont l'expression des \cindex{conditions de Cauchy-Riemann}, qui garantissent l'existence d'une dérivée spatiale à la quantité complexe $\vcomp =\vpot + i \sfn$ (cf. e.g. \cite[sect. 6.2, p. 399]{arfken01aa}. 
+Ces équations sont l'expression des \cindex{conditions de Cauchy-Riemann}, qui garantissent l'existence d'une dérivée spatiale à la quantité complexe $\vcomp =\vpot + i \sfn$ (cf. e.g. \cite[sect. 6.2, p. 399]{arfken01aa}). 
 
 Ainsi, si l'on exprime la position avec une variable complexe $z = u + i\,v$, une fonction est qualifiée de \cindex{fonction analytique} lorsque sa dérivée spatiale ne dépend pas de l'orientation de l'incrément.  Concrètement: 
 
@@ -308,7 +167,10 @@ On vérifie que les deux expressions sont équivalentes et satisfont:
     \od{\vcomp}{z} = u - iv
 \end{displaymath}
 
-Nous aboutissons donc à un résultat remarquable et fondamental: toute fonction  qui soit au moins deux fois dérivable dans le plan complexe, satisfait les équations de Laplace dans le plan complexe. 
+Nous aboutissons donc à un résultat remarquable et fondamental
+\begin{key}{Condition suffisante pour un écoulement potentiel}
+toute fonction  qui soit au moins deux fois dérivable dans le plan complexe, satisfait les équations de Laplace dans le plan complexe. 
+\end{key}
 
 Ce résultat nous permet de construire quelques écoulements types qui vont nous servir pour construire des écoulements satisfaisant à des conditions frontières et de symmétrie spécifiques. 
 
@@ -321,8 +183,73 @@ L'écoulement associé à $\vcomp = U\,z$ a pour vitesse $U\ex$.
 
 
 \paragraph{Source}
-\paragraph{Circulation}
+
+On génère une source ponctuelle d'amplitude $m$ avec le champ potentiel
+
+\begin{displaymath}
+  U = \frac{m}{2\pi}\ln z. 
+\end{displaymath}
+
+Le logarithme complex $z$ peut s'estimer en écrivant $z$ sous la forme d'un phaseur complexe $z=re^{i\theta}$. On voit alors que 
 
 
+\begin{displaymath}
+  \ln z = \ln (re^{i\theta}) = \underbrace{ln r}{\vpot} + i\underbrace{\theta}{\sfn}. 
+\end{displaymath}
+
+On vérifie qu'il s'agit d'un champ divergent, symmétrique autour de l'origine, telque pour tout contour autour de l'origine, le flux net s'échappant du contour est $m$. L'écoulement est donc non-divergent et irrotationnel en tout point, sauf à l'origine où une singularité permet la création d'un fluide. 
 
 
+\paragraph{Vortex ponctuel}
+
+Nous avons déjà rencontré le vortex ponctuel, de circulation $\Gamma$, dans la section \label{para:vortex_ponctuel}. Il répond au potentiel complex
+
+\begin{displaymath}
+  U = \frac{i\Gamma}{2\pi}\ln z. 
+\end{displaymath}
+
+En en prenant la partie imaginaire, on crée un flux dual par rapport à la source ponctuelle. Ici encore, la singularité est concentrée à l'origine. 
+
+
+%
+% \begin{displaymath}
+% U_\text{dipole} =  \lim_{\varepsilon \rightarrow 0) 
+%   \frac{m}{2\pi}\left( \ln(z*\varepsilon) - \ln(z-\varepsilon) \right)
+% \end{displaymath}
+%
+%
+% \paragraph{Circulation}
+%
+
+Nous allons voir comment utiliser la puissance des potentiels complexes pour trouver des solutions d'écoulements dans des cas particuliers. 
+
+\subsection{Écoulement autour d'un cylindre}
+
+Considérons un écoulement horizontal laminaire, de vitesse $U$. Nous savons qu'il répond au potentiel complex $U\,z$. 
+
+Nous exigeons maintenant qu'il contourne un cylindre de rayon $R$ placé à l'origine. Le potentiel doit donc être adapté en appliquant un perturbation dont la forme doit répondre à des exigences de symmetries:
+
+\begin{itemize}
+  \item elle implique la seule dimension $R$
+  \item symmétrique par rapport à l'origine
+  \item s'annule loin du centre
+\end{itemize}
+
+La perturbation doit par ailleurs être telle que le potentiel complexe s'annule (ou soit constant) à la frontière du cylindre. Cela va générer par construction un ligne de courant tout au long du cylindre, qui interdit tout flux à travers la paroi du cylindre. 
+
+La fonction
+
+\begin{displaymath}
+  \vpot(z) = U ( z - \frac{R}{z})
+\end{displaymath}
+
+respecte toutes ces conditions. Elle présente une singularité en $0$ mais comme c'est à l'intérieur du cylindre l'écoulement reste bien définit dans tout le domaine. 
+
+Pour mémoire, la fonction complexe $\frac{1}{z}=\frac{\conj{z}}{|z|^2}. 
+
+
+\includegraphics{Python/one_circulation_quiver.pdf}
+
+\subsection{Écoulement avec circulation}
+
+\includegraphics{Python/three_circulation_quivers.pdf}

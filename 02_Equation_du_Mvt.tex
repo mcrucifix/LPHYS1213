@@ -1,4 +1,5 @@
-\chapter{Equation d'Euler\label{ch:euler}}
+\chapter{Equation d'Euler}
+\label{ch:euler}
 
 \subsection{Théorème de Gauss - Ostrogradsky pour un gradient}
 Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section~XX, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde \textbf{ce} volume :
@@ -331,7 +332,7 @@ Pour calculer le rotationnel, on peut utiliser son expression en coordonnées po
 Si on applique le théorème de la circulation: 
 
 \begin{displaymath}
-  \cint u_\theta\,r\dif \theta = \Gamma = \iint \vort_z \dif A
+  \oint u_\theta\,r\dif \theta = \Gamma = \iint \vort_z \dif A
 \end{displaymath}
 
 La vorticité est donc nulle partout, sauf au centre où elle se comporte comme un pic de Dirac. 
@@ -362,10 +363,8 @@ Reprenons la décomposition de Helmholtz, mais adaptée au cas bi-dimensionnel. 
 \end{equation}
 Chaque composante produit un champ vectoriel dans les trois plans orthogonaux aux vecteurs de base. Si on considère un écoulement horizontal, dans le plan $(\ex, \ey)$, alors il ne faut retenir que le troisième terme.
 
-
-=======
 \subsection{Écoulement bi-dimensionnel stationnaire incompressible}
-\subsubsection{Fonction de courant \label{sect:courant}
+\subsubsection{Fonction de courant \label{sect:courant}}
 
 Si le flux est non-divergent $\Div\u_h = 0$ soit, en développant 
 
@@ -396,9 +395,10 @@ Par ailleurs,
 En effet, puisque $\pdt{\psi_z}=0$ (hypothèse stationnaire),
 \begin{displaymath}
   \Dif \psi_z = \pdx {\psi_z} \Dif x + \pdy {\psi_z} \Dif y.
-Ainsi, dans un écoulement bi-dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ près) le flux de masse entre les deux iso-contours.
->>>>>>> 52f4092c6c83f5ba0f65ce2c4a68004e4ad2b922
+\end{displaymath}
+\end{key}
 
+Ainsi, dans un écoulement bi-dimensionnel incompressible, les iso-contours de la fonction de courant sont des lignes de courant. Dans ces conditions, deux iso-contours bordent et "piègent" le flux qui ne peut jamais les croiser. La différence entre les valeurs prises par la fonction de courant indique (à un facteur $\rho$ près) le flux de masse entre les deux iso-contours.
 
 \section{Description Lagrangienne d'un écoulement non-stationnaire}
 Nous devons introduire deux nouvelles notions, qui traduisent toutes deux la \cindex{description lagrangienne} du champ de vitesse.
@@ -432,5 +432,4 @@ Le paramètrè de la courbe est cette fois $t_0$, et non $t$.
 En parcourant la courbe, on explore les positions actuelles des particules émises successivement depuis la source $\vec{x}_0$ à différents instants passés.
 
 Ainsi, dans un écoulement non stationnaire, les lignes de courant, les lignes de chemin et les lignes de trace ne coïncident pas nécessairement : chacune décrit un aspect distinct du mouvement du fluide.
-
 

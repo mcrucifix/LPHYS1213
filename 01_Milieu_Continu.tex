@@ -3,9 +3,9 @@
 \newcommand{\vol}{\mathcal{V}}
 \newcommand{\Vol}{V}  % finite volume
 
-\section{Cours 1 - Equations de conservation}
+\chapter{Cours 1 - Equations de conservation}
 
-\subsection{L'hypothèse du milieu continu}
+\section{L'hypothèse du milieu continu}
 
 Chères étudiantes, chers étudiants qui abordez ce cours de \cindex{physique des fluides},
 
@@ -31,7 +31,7 @@ En faisant l’hypothèse d’un \cindex{milieu continu}, nous allons utiliser d
 
 On peut donc faire l’hypothèse du \cindex{milieu continu} si l’on peut attribuer à des petites parcelles ou éléments de \cindex{fluide} des propriétés mécaniques et thermodynamiques d’un \cindex{point de vue statistique} (vitesse, température, pression, etc.), et si ces quantités varient suffisamment peu d’une élément à l’autre pour que l’on puisse considérer que ces éléments sont en \cindex{équilibre thermodynamique} avec leur environnement. Ce tour de passe-passe nous permet de définir des \index{température}{températures}, \cindex{pression} ou \index{entropie}{entropies locales} (à l’échelle de la parcelle, l’équilibre thermodynamique est atteint), tout en considérant que ces propriétés varient continûment à une échelle $L \gg \varepsilon$.
 
-\subsection{L'élément de fluide comme élément différentiel}
+\section{L'élément de fluide comme élément différentiel}
 
 Nous avons donc déjà rencontré deux notions qui charpentent la physique des fluides : celle de parcelle ou élément de fluide, et celle de \cindex{champ}.
 Bien que ce ne soit pas obligatoire, nous pouvons visualiser l'élément comme un parallélépipède rectangle défini dans un repère orthonormé. On peut, sans perte de généralité, considérer que ses arêtes ont des longueurs $\delta x$, $\delta y$ et $\delta z$ selon les trois axes du repère.
@@ -54,7 +54,7 @@ M(t) = \iiint_V \rho(\vec{x}, t) \, \dif V
 \end{equation}
 La masse d’un volume est bien l’intégrale de la masse volumique prise sur ce volume.  
 
-\subsection{Dérivées eulérienne et lagrangiennne}
+\section{Dérivées eulérienne et lagrangiennne}
 
 Considérons un élément de fluide de température $T$, de position $\vec{x}=(x,y,z)$ et de vitesse $\vec{u}=(u,v,w)$.  
 On voudrait quantifier l’évolution de la température de l'élément, en la conceptualisant comme un objet en mouvement. Dans ce cas particulier, on peut le qualifier d'\cindex{élément matériel} ou parfois de particule fluide. 
@@ -99,7 +99,7 @@ On en a une illustration parlante en \cindex{météorologie} : supposons qu’un
 \item soit les parcelles d’air sont en mouvement et ne subissent pas de transformation physique notable, mais le vent transporte des masses d’air froides vers l’observateur. Celui-ci mesure alors le remplacement d’une masse d’air chaude par une masse d’air froide. La tendance est donc causée par le mouvement ($\vec{u} \neq 0$) dans un champ inhomogène ($\nabla T \neq 0$). Le terme d’advection traduit bien ce « venir avec » : le vent amène de nouvelles masses d’air, ce qui est mesuré par l’observateur eulérien.
 \end{itemize}
 
-\subsection{La vitesse comme dérivée matérielle des coordonnées}
+\section{La vitesse comme dérivée matérielle des coordonnées}
 
 Nous allons, tout au long du cours, retrouver le concept de \cindex{particule fluide}: un volume élémentaire, formalisé en faisant référence à des infinitésimaux, de masse volume $\rho$. Une description lagrangienne du mouvement consiste à analyser le mouvement de ces particules fluides. 
 
@@ -112,7 +112,7 @@ Par exemple, la dérivée matérielle de la position d'une particle fluide n'est
 
 La démonstration est laissée en exercice. Le mieux est de chercher la dérivée matérielle de chacune des trois coordonnées, en se rappelant que les dérivées partielles de coordonnéest indépendantes sont nullles, i.e.,  $\pd{x_i}{x_j}=\delta_{ij}$ et $\pd{x_i}{t}=0$. 
 
-\subsection{Volume matériel}
+\section{Volume matériel}
 
 Toute la force théorique du concept de \cindex{dérivée lagrangienne} réside dans le fait qu’on peut l’utiliser pour décrire les lois physiques de conservation que nous connaissons déjà. Il en sera ainsi de la conservation de la quantité de mouvement et de l'énergie interne. Il y a quand même quelques pièges et il faut évoluer avec prudence. 
 
@@ -138,7 +138,7 @@ F\bigl(a(t),t\bigr)\,\frac{\dif a}{\dif t}
 \label{eq:leibniz_general}
 \end{equation}
 
-\subsection{Analogie du trafic routier}
+\section{Analogie du trafic routier}
 
 Pour pouvoir utiliser sur l'équation de Leibniz telle quelle, nous allons faire l'effort d'imaginer un fluide à une dimension. On pourrait considérer un fin tuyau dans lequel circule un fluide compressible mais nous allons tenter une analogie automobile. 
 
