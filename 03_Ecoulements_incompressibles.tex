@@ -1,4 +1,4 @@
-\chapter{Ecoulements incompressibles et irrotationnels}
+\chapter{Ecoulements incompressibles et irrotationnels non visqueux}
 
 Si la masse volumique $\rho$ est une constante du mouvement, alors par l'équation de continuité \eqref{eq:cons_continuite_lineique}, le champ de vitesse est non-divergent
 
@@ -6,9 +6,8 @@ Si la masse volumique $\rho$ est une constante du mouvement, alors par l'équati
   \Div \vec{u} = 0\text{ pour un écoulement incompressible}
 \end{equation}
 
-\section{Écoulement laminaire non-visqueux (fluide parfait)}
 
-\subsection{Théorème de Bernouilli}
+\section{Théorème de Bernouilli}
 
 Plaçons nous dans les conditions du chapitre \ref{ch:euler}: écoulement laminaire, non-visqueux, dans lequel la seule force interne est la force de pression telle que nous l'avons définie pour établir l'équation d'Euler. 
 \begin{equation}
@@ -38,13 +37,13 @@ La quantité $H$ a les dimensions d'une énergie massique, et on y reconnaît le
   Si un fluide idéal est en écoulement stationnaire, alors $H$ est constant le long d'une ligne de courant (\cite{acheson90aa}, p. 10).
 \end{key}
 
-\subsection{Équation de la vorticité}
+\section{Équation de la vorticité}
 
 Reprenons l'équation de Bernouilli dans sa version non-stationnaire: 
 
 \begin{equation}
  \pdt u +  (\curl \u)\cross u = - \grad H
-\end{equation}\label{eq:Bernouilli}
+\end{equation}
 
 Nous définisson la \cindex{vorticité} comme le rotationnel de la vitesse (cf. ch. \ref{ch:euler}, section \ref{para:Vortex}): $\omega \eqdef \curl \u$. En prenant le rotationnel de part et d'autre de l'équation de Bernouilli  on obtient: 
 
@@ -73,6 +72,8 @@ ou encore
 \end{equation}
 %
 C'est l'équation de la vorticité écrite ici pour un écoulement incompressible. Il est remarquable que la vorticité évolue, le long de l'écoulement, indépendamment de la pression et du géopotentiel ! 
+
+TODO: dire qu'elle exprime la conservation du moment angulaire. Sans moment de force externe, pas de génération de vorticité nette à l'intérieur du fluide. 
 
 Plus fort encore, si l'écoulement est bi-dimensionnel (par exemple, dans le plan $x,y$, alons $\vort = \omega \ez$ et
 
@@ -105,12 +106,15 @@ Ceci nous donne un "Bernouilli plus": si le flot est non-rotationnel, alors la q
 
 
 
-Ce théorème a des applications bien connues :
+\begin{application}{Écoulement libre non-turbulent}
+Soit une cuve à l'air libre et un orifice au bas de la cuve, également à pression atmosphérique : la vitesse du fluide en sortie est alors directement déterminée par la différence d'énergie potentielle : $\Delta u/2 = \Delta \Phi$. 
 
-\begin{itemize}
-  \item Écoulement libre non-turbulent : soit une cuve à l'air libre et un orifice au bas de la cuve, également à pression atmosphérique : la vitesse du fluide en sortie est alors directement déterminée par la différence d'énergie potentielle : $\Delta u/2 = \Delta \Phi$. 
-\end{itemize}
-
+\centering
+    \input{Pdftex/02_ecoulement_libre.pdf_tex}
+    % Use \captionof to generate the figure number and caption
+    \raisebox{1em}{
+    \parbox{5cm}{\captionof{figure}{Schéma de la cuve et de l'écoulement libre non-turbulent à travers l'orifice.} \label{fig:ecoulement-libre-application}}}
+\end{application}
 
 On évoque souvent l'effet Magnus ou encore la portance d'une aile d'avion comme application du théorème de Bernouilli. 
 
@@ -118,11 +122,11 @@ Le raisonnement est qu'à géopotentiel égal, le long d'une ligne de flux, la p
 
 L'effet Magnus porte sur un objet en rotation (par exemple un ballon). Ici encore, si l'on peut prouver que la vitesse du fluide diffère de part et d'autre du ballon, on explique une force résultante. 
 
-Cependant, il n'est pas trivial de prouver cette différence de vitesse. Nous allons esquisser le raisonnement formel. 
+Cependant, il n'est pas trivial de prouver cette différence de vitesse. Nous allons esquisser le raisonnement formel et ensuit réexaminer le cas du ballon (d'abord) et de l'aile d'avion ensuite. 
 
-\subsection{Équation de Laplace complexe et conditions de Cauchy-Rieman}
+\section{Équation de Laplace complexe et conditions de Cauchy-Rieman}
 
-\subsubsection{Écoulement potentiel complexe}
+\subsection{Écoulement potentiel complexe}
 
 Plaçons-nous dans le cas particulier d'un écoulement bi-dimensionel.  Nous avons vu dans la section \ref{sect:courant} que si la vitesse dérive d'une fonction de courant, $\uh = \curl \sfn \ez$, alors l'équation de continuité est automatiquement satisfaite. 
 
@@ -175,7 +179,7 @@ toute fonction  qui soit au moins deux fois dérivable dans le plan complexe, sa
 Ce résultat nous permet de construire quelques écoulements types qui vont nous servir pour construire des écoulements satisfaisant à des conditions frontières et de symmétrie spécifiques. 
 
 
-\subsubsection{Écoulements complexes potentiels type}
+\subsection{Écoulements complexes potentiels type}
 
 \paragraph{Écoulement constant}
 
@@ -192,23 +196,47 @@ On génère une source ponctuelle d'amplitude $m$ avec le champ potentiel
 
 Le logarithme complex $z$ peut s'estimer en écrivant $z$ sous la forme d'un phaseur complexe $z=re^{i\theta}$. On voit alors que 
 
-
 \begin{displaymath}
-  \ln z = \ln (re^{i\theta}) = \underbrace{ln r}{\vpot} + i\underbrace{\theta}{\sfn}. 
+  \ln z = \ln (re^{i(\theta + 2\pi k)}) = \underbrace{ln r}{\vpot} + i\underbrace{\theta + 2\pi k}{\sfn}. 
 \end{displaymath}
+
+Attention cependant: l'angle n'est défini qu'à un terme $2\pi k$ près, et c'est crucial. 
 
 On vérifie qu'il s'agit d'un champ divergent, symmétrique autour de l'origine, telque pour tout contour autour de l'origine, le flux net s'échappant du contour est $m$. L'écoulement est donc non-divergent et irrotationnel en tout point, sauf à l'origine où une singularité permet la création d'un fluide. 
 
+\begin{figure}[h!]
+    \centering
+    
+    % --- Figure 1 : Source ---
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \input{Figures/potential_flow_source.eepic}
+        \caption{Potentiel d'écoulement généré par une unique source (débit massique positif). Les lignes de courant (streamlines) sont indiquées par des traits pleins et représentent la fonction de courant $\sfn$ (Streamfunction). Les lignes de potentiel de vitesse (équipotentielles) sont tracées en rouge tiretés et représentent le potentiel de vitesse $\vpot$.}
+        \label{fig:potential-source}
+    \end{minipage}%
+    \hfill%
+    %
+    % --- Figure 2 : Circulation ---
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \input{Figures/potential_flow_circulation.eepic}
+        \caption{Potentiel d'écoulement généré par une unique circulation (vortex ponctuel). Les lignes de courant sont indiquées par des traits pleins ($\sfn$). Les lignes de potentiel de vitesse (équipotentielles) sont tracées en rouge tireté ($\vpot$) et sont ici explicitement étiquetées pour identification, mais exprimées en degrés. .}
+        \label{fig:potential-circulation}
+    \end{minipage}
+\end{figure}
+
+
+Sur la figure \ref{fig:potential source}, on repère les lignes de courant en train plain. On se rappelle que le débit volumique est donné par la différence entre deux valeurs de la fonction de courant. C'est ici que le terme $2\pi k$  est important, et crée une ambiguité sur la valeur de la fonction de courant. $k$ doit être choisi de façon à ne pas créer d'anomalie lorsqu'on passe de 359 à 360 degrés. Cela explicite le fait que la fonciton $\ln z$ n'est pas définie de façon unique sur tout le domaine. Ce qui est défini est sa différence entre deux points du domaine (c'est un cas de \cindex{spirale de Riemann}). 
 
 \paragraph{Vortex ponctuel}
 
-Nous avons déjà rencontré le vortex ponctuel, de circulation $\Gamma$, dans la section \label{para:vortex_ponctuel}. Il répond au potentiel complex
+Nous avons déjà rencontré le vortex ponctuel, de circulation $\Gamma$, dans la section \label{para:vortex_ponctuel}. Il répond au potentiel complexe 
 
 \begin{displaymath}
   U = \frac{i\Gamma}{2\pi}\ln z. 
 \end{displaymath}
 
-En en prenant la partie imaginaire, on crée un flux dual par rapport à la source ponctuelle. Ici encore, la singularité est concentrée à l'origine. 
+Il génère un diagramme similaire à celui de la source ponctuelle (Figure \ref{fig:potential-circulation}, mais les rôles de la fonction de courant et du potentiel de vitesse sont échangés, avec la même attention à apporter à l'ambiguité de la valeur, cette fois, du potentiel de vitesse. 
 
 
 %
@@ -223,7 +251,7 @@ En en prenant la partie imaginaire, on crée un flux dual par rapport à la sour
 
 Nous allons voir comment utiliser la puissance des potentiels complexes pour trouver des solutions d'écoulements dans des cas particuliers. 
 
-\subsection{Écoulement autour d'un cylindre}
+\subsection{Écoulement autour d'un cylindre (sans circulation)}
 
 Considérons un écoulement horizontal laminaire, de vitesse $U$. Nous savons qu'il répond au potentiel complex $U\,z$. 
 
@@ -237,19 +265,84 @@ Nous exigeons maintenant qu'il contourne un cylindre de rayon $R$ placé à l'or
 
 La perturbation doit par ailleurs être telle que le potentiel complexe s'annule (ou soit constant) à la frontière du cylindre. Cela va générer par construction un ligne de courant tout au long du cylindre, qui interdit tout flux à travers la paroi du cylindre. 
 
-La fonction
+La fonction $\vcomp(z) = U ( z + \frac{R^2}{z})$ respecte toutes ces conditions. Elle présente une singularité en $0$ mais comme c'est à l'intérieur du cylindre l'écoulement reste bien défini dans tout le domaine. 
+
+Les composantes horizontales et verticales de la vitesse sont fournies par les parties réelles et imaginaires de la dérivée de $\vcomp(z)$:
+
+\begin{equation}
+  \begin{split}
+    u + iv = U (1 - \frac{R^2}{z z} &= U(1 - R^2\frac{ {z^\star}^2}{|z|^4})
+                               &= U (1 - R^2\frac{ (x^2 - y^2 - 2i xy )}{r^4} )
+  \end{split}
+\end{equation}
+
+On trouve deux points de stagnation (vitesse nulle) sur l'axe $y=0$, pour $x\pm R$. 
+
+\begin{figure}
+\includegraphics{Figures/zero_circulation.pdf}
+\label{fig:zero_circulation}
+\caption{Fonction de courant (traits pleins) et lignes de potentiel de vitesse (pontillés) pour un fluide parfait rencontrant un obstacle cylindrique ($\vcomp(z) = U ( z + \frac{R^2}{z})$)}
+\end{figure}
+
+TODO: expliquer que c'est une transformation conforme. 
+
+
+\section{Analyse de l'écoulement autour d'un cylindre avec circulation}
+
+On peut étudier la position des points de stagnation dans ces conditions, comme illustré sur la figure~\ref{fig:cylindre_with_circulation}. Bien que l'analyse algébrique ne soit pas excessivement complexe, nous n'en fournisson ici que les conclusions. Pour $\Gamma > 0$, les deux points de stagnation, initialement situés de part et d'autre du cylindre lorsque $\Gamma = 0$, migrent progressivement vers le bas. Ils finissent par se rencontrer et se détachent du cylindre dès que $\Gamma$ dépasse $4\pi UR$.
+
+Bien qu'il y ait une circulation, l'écoulement, dans tout son domaine, demeure irrotationnel et incompressible. Il respecte ainsi toutes les conditions du théorème de Bernoulli généralisé. Nous savons donc qu'en tout point,
 
 \begin{displaymath}
-  \vpot(z) = U ( z - \frac{R}{z})
+\gpot + \frac{p}{\rho} + \frac{u_h^2}{2} \quad \text{est constant,}
 \end{displaymath}
 
-respecte toutes ces conditions. Elle présente une singularité en $0$ mais comme c'est à l'intérieur du cylindre l'écoulement reste bien définit dans tout le domaine. 
+où nous utilisons la notation $u_h$ pour désigner le vecteur $(u,v)$ à deux dimensions.
 
-Pour mémoire, la fonction complexe $\frac{1}{z}=\frac{\conj{z}}{|z|^2}. 
+Supposons ici que $\gpot$ est constant, ainsi que $\rho$. Le carré de la vitesse $u_h^2$ nous est donné par $|\od{\vcomp}{z}|^2$, si bien que
+\[
+p - \rho \frac{1}{2}|\od{\vcomp}{z}|^2 = p_\infty - \rho \frac{U^2}{2}.
+\]
+Il est donc tout à fait possible de calculer la force de pression résultante (par unité de hauteur du cylindre) :
+\[
+\vec{F_r} = \oint p\, \vec{n} \, \dif s.
+\]
 
+La suite du calcul, bien que technique, peut être esquissée comme suit. La méthode consiste à exprimer la force résultante d'abord comme un vecteur $(D,L)$, où $D$ représente la \cindex{traînée} (\emph{drag}) et $L$ la \cindex{portance} (\emph{lift}). On calcule le nombre complexe $D - iL$ en voyant que, lors de l'intégrale sur le contour :
+\[
+\dif D = -p \dif y \quad \text{et} \quad \dif L = p \dif x.
+\]
+On montre alors (référence à Kundu, p. 171) que
+\[
+D - iL = \oint p \, \dif z^\star = \frac{1}{2} \left(\od{\vpot}{z}\right)^2 \dif z.
+\]
+Cette première expression correspond au \cindex{théorème de Blasius}.
 
-\includegraphics{Python/one_circulation_quiver.pdf}
+La dérivée $\left(\od{\vpot}{z}\right)$ est connue et vaut :
+\[
+U - \frac{R^2}{z^2} + \frac{i\Gamma}{2\pi z}.
+\]
+L'intégrale fait intervenir cette dérivée au carré et se calcule par la méthode des résidus (référence à Arfken). Après calcul, on aboutit au \cindex{théorème de Kutta-Zhukovsky} :
 
-\subsection{Écoulement avec circulation}
+\begin{key}{Théorème de Kutta-Zhukovsky}
+Pour un écoulement incompressible, irrotationnel, autour d'un obstacle, avec circulation, les valeurs de traînée et de portance sont données par :
+\[
+D = 0, \quad L = \rho U \Gamma.
+\]
+\end{key}
 
-\includegraphics{Python/three_circulation_quivers.pdf}
+On en déduit deux enseignements importants :
+\begin{itemize}
+    \item Dans cet écoulement parfait, il n'y a pas de traînée (pas de force horizontale). C'est le \cindex{paradoxe de d'Alembert} en mécanique des fluides.
+    \item Sans circulation, il n'y a pas de portance : pas de force perpendiculaire à l'écoulement.
+\end{itemize}
+
+Ce théorème est très général et ne nécessite pas de supposer un obstacle cylindrique. Il est possible de calculer la portance pour des profils d'ailes obtenus par une technique connue sous le nom de \cindex{transformation conforme}. Ici, nous avons simplement résolu numériquement l'équation de Laplace pour obtenir un profil d'aile d'avion, mais le problème reste le même : sans circulation, il n'y a pas de portance.
+
+REF FIGURE
+
+Il faut donc créer une circulation. C'est l'intérêt de l'aspect anguleux à l'arrière de l'aile. On crée artificiellement un point de stagnation. La seule façon de satisfaire la condition du point de stagnation est de déplacer les points de stagnation, initialement situés de part et d'autre de l'aile, en créant une circulation. C'est cette circulation qui est nécessaire à la portance.
+
+Mais comment induire cette circulation ? Dans l'\cindex{effet Magnus}, c'est le ballon qui cède du moment angulaire au fluide. Mais ici, il n'y a pas de force extérieure : l'aile ne tourne pas. La circulation est donc créée à l'interface aile-fluide par des frottements, mais doit être compensée (pour conserver le moment angulaire) par un contre-vortex qui se développe à l'arrière de l'aile.
+
+FIGURE

@@ -28,4 +28,13 @@ $biber = 'python3 makebib.py && biber %O %S';
 $pdflatex = 'lualatex --synctex=1 %O %S';
 $pdf_mode = 1;    # produce PDF
 
+# Custom dependency to run the Python script to generate figures
+add_cus_dep('py', 'pdf', 0, 'python3 Python/04_SF_with_circulation.py');
+add_cus_dep('xp', 'eepic', 0, 'cd Xp && epix -o ../Figures/"$root.eepic" "$root.xp"');
 
+# Tell latexmk that the generated figures (PDFs) are targets of the 'py' extension
+$clean_ext = 'py pdf';
+
+# Custom dependency to convert SVG files in Pdftex/ to PDF and PDF_TEX
+# The command uses modern Inkscape syntax and includes the full path to the source SVG.
+add_cus_dep('svg', 'pdf_tex', 0, 'inkscape --export-filename="Pdftex/$root.pdf" --export-latex Pdftex/"$root.svg"');

@@ -1,12 +1,14 @@
-%%& -shell-escape
+%& -shell-escape
 \directlua{dofile("config/load_metadata.lua")}
 \documentclass[fleqn, 11pt]{tools/mc}
 % Load fontspec for OpenType fonts
 % Load unicode-math to select math fonts
 \usepackage{fontspec}
+\usepackage{todo}
 \usepackage{amsfonts}
 \usepackage{nomencl}
 \usepackage{dutchcal}
+\usepackage{caption}
 % \usepackage{unicode-math}
 
 % Set the main (text) font
@@ -26,6 +28,8 @@
 % better display of volume integrals
 \usepackage{esint}
 
+% pdf_tex integration
+\graphicspath{{Pdftex/}{Figures/}}
 
 \newcommand{\rh}{\ensuremath{\vec{r}_h}}
 \newcommand{\gpot}{\ensuremath{\Phi}}
