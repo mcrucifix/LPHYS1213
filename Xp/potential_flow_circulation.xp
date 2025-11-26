@@ -1,0 +1,59 @@
+
+#include "epix.h"
+#include "stdio.h"
+using namespace ePiX;
+
+
+
+int main() {
+
+  char str_buffer[5];
+
+  bounding_box(P(-1.2,-1.5), P(1.2,1.5));
+  picture(2.4,3);
+  unitlength("90pt");
+
+  begin();
+ 
+  dot(P(0,0));
+  degrees();
+  /* SOURCE potential flow */
+
+  /* potential velocity */
+
+  plain(Red(0.7));
+  dashed();
+  for (double theta = 0; theta < 360; theta += 30){
+        line(polar(0.1, theta), polar(0.7, theta));
+        sprintf(str_buffer, "%.f", theta);
+        label_color(Red(1.0));
+        label(polar(0.8, theta+5), P(0,0), str_buffer, c);
+        sprintf(str_buffer, "%.f", theta + 360);
+        if (theta < 120) {
+        label_color(Red(0.6));
+        sprintf(str_buffer, "%.f", theta + 360);
+        label(polar(1.0, theta+5), P(0,0), str_buffer, c);
+        } else if (theta < 150) {
+        label_color(Red(0.6));
+        label(polar(1.0, theta+10), P(0,0), "...", c);
+        }
+        label_color(Black(1.0));
+    }
+
+  /* potential velocity */
+  plain(Black(1.0));
+  solid();
+  for (double lnr=-2 ; lnr< 0 ; lnr += 0.5){
+       circle(P(0,0), exp(lnr));
+       arrow(polar(expl(lnr),  50), polar(expl(lnr),58));
+    }
+  solid();
+
+  plain(Black(0.4));
+  label_color(Black(0.4));
+  arrow(P(0,0), P(1,0));  label(P(1,0), P(10, 0), "Re", c);
+  arrow(P(0,0), P(0,1));  label(P(0,1), P( 0, 10), "Im", c);
+  tikz_format();
+
+  end();
+}
