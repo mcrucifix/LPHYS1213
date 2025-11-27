@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/%20git@github.com:mcrucifix/lphys1213.git/HEAD?urlpath=%2Fdoc%2Ftree%2F03_SF_with_circulation.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mcrucifix/lphys1213.git/HEAD?urlpath=%2Fdoc%2Ftree%2FIPynb%2F03_SF_with_circulation.ipynb)
 
 # LPHYS1213 — Physique des fluides (template)
 
