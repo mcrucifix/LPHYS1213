@@ -1,6 +1,7 @@
-- approximation de Bousinesq
+- approximation de Bousinesq... et ses conséquences perverses sur l'équation de conservation d'énergie
 - Nombre de péclet
 - Nombres adimensionels
 - Thermodynamique
 - Autres nombres adimensionels
 - referencer les binder
+
