@@ -1,7 +1,7 @@
 \chapter{Equation d'Euler}
 \label{ch:euler}
 
-\subsection{Théorème de Gauss - Ostrogradsky pour un gradient}
+\section{Théorème de Gauss - Ostrogradsky pour un gradient}
 Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section~XX, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde \textbf{ce} volume :
 \begin{equation*}
   \iiint_V \Div F = \iint_A \vec{n}\cdot F\, \dif A.
@@ -16,6 +16,8 @@ Comme cette équation demeure valable quel que soit $\vec{c}$, on obtient plus g
  \label{eq:integral_of_gradient}
 \end{equation}
 Cette équation peut être vue comme une généralisation du théorème intégral de Leibniz $\int_a^b \odd{f}{x} = f(b)-f(a)$. Le terme de gauche est l'intégrale d'une dérivée (sur la \textbf{droite} dans le cas 1D, dans l'espace dans le cas 3D) ; le terme de droite est une généralisation de la "différence" de $f$ évaluée aux bornes du domaine intégré.
+
+\section{Hydrostatique}
 
 \subsection{Expression de la seconde loi de Newton}
 Nous allons dans cette section établir notre première \cindex{équation du mouvement}. C’est l’expression, dans un \cindex{milieu continu}, de la \cindex{seconde loi de Newton} :
@@ -57,6 +59,14 @@ De façon plus générale, on démontre (exercice) que si $\rho = \rho(p)$, alor
 \label{eq:barotrope}
 \end{equation}
 c’est-à-dire que les isobares sont horizontales. Le fluide est dit \cindex{barotrope}.
+
+\subsection{Poussée d'Archimède}
+
+TODO: integrale du gradient de pression : poussée d'archimèe égale au poids du volume déplacé
+TODO: raisonner sur le moment de force. On démontre la position centroïde du centre de possée
+TODO: illustrer avec bateau et intéret d'avoir un centre de poussée en dessous du centre de gravité. 
+
+\section{Equation d'Euler}
 
 Supposons maintenant que le fluide est suffisamment lent pour que le gradient de pression continue à décrire correctement les forces internes au fluide. En pratique, cela implique qu’il n’y a pas d’effets de \cindex{compression élastique}, ni de \cindex{friction}.
 
@@ -134,7 +144,7 @@ En particulier, la \emph{trace} et le \emph{déterminant} sont des invariants sc
 Nous verrons plus tard que ces invariants peuvent être associés à des grandeurs physiques bien connues.
 \end{key}
 
-\subsection{Réecriture de l'équation du mouvement sous forme conservative}
+\subsection{Équation du mouvement sous forme conservative}
 
 En travaillant la forme du tenseur d'advection, on peut le ré-écrire de la façon suivante \cite{acheson01aa}, p. 9:
 
