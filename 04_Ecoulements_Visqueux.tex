@@ -1,3 +1,95 @@
-\chapter{Écoulements visqeux}
+\chapter{Écoulement laminaire dans un fluide newtonien}
+\label{ch:newtonien}
+
+Dans le chapitre~\ref{ch:euler}, nous avons établi l'équation d'Euler pour un fluide parfait, en négligeant les effets de la viscosité. Cependant, dans la réalité, les fluides réels (comme l'eau ou l'air) présentent une résistance interne au mouvement, due aux frottements entre couches de fluide. Cette résistance se manifeste comme une diffusion de la quantité de mouvement, analogue à la diffusion de la chaleur dans un solide. En ajoutant ce terme diffusif à l'équation d'Euler, on obtient immédiatement l'\cindex{équation de Navier-Stokes} pour un fluide incompressible :
+\begin{displaymath}
+  \rho \Dt{\u} = -\grad p - \rho \grad \gpot + \mu \lapl \u,
+\end{displaymath}
+où $\lapl \u = (\lapl u_x, \lapl u_y, \lapl u_z)$ est le \cindex{laplacien} du champ de vitesse, et $\mu$ le \cindex{coefficient de viscosité dynamique}. Ce coefficient caractérise la résistance du fluide au cisaillement. Voici quelques valeurs typiques pour différents fluides à température ambiante :
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Fluide & $\mu$ (Pa$\cdot$s) & Conditions \\
+\hline
+Eau & $10^{-3}$ & 20$^\circ$C \\
+\hline
+Air & $1.8 \times 10^{-5}$ & 20$^\circ$C, 1 atm \\
+\hline
+Huile moteur & $0.1$ & 20$^\circ$C \\
+\hline
+Miel & $10$ & 20$^\circ$C \\
+\hline
+\end{tabular}
+\end{center}
+Cette équation sera suffisante pour décrire la plupart des écoulements étudiés dans ce cours, y compris l'\cindex{écoulement de Poiseuille}.
+
+Cependant, pour une compréhension plus profonde, nous allons maintenant dériver cette équation de manière rigoureuse, en partant des principes fondamentaux de la mécanique des milieux continus.
+
+---
+
+Dans le chapitre~\ref{ch:euler}, nous avons utilisé la \cindex{pression statique} pour décrire les forces normales s'exerçant sur un élément de volume de fluide. Nous avions écrit explicitement :
+\begin{displaymath}
+  \dif\vec{f} = p \vec{n} \dif A.
+\end{displaymath}
+Cette expression suppose que la force est purement normale à la surface, ce qui est valable pour un fluide parfait. Pour un fluide visqueux, il faut généraliser cette expression en introduisant un \cindex{tenseur des contraintes} $\tensor{\tau}$, tel que :
+\begin{displaymath}
+  \dif\vec{f} = \tensor{\tau} \vec{n} \dif A.
+\end{displaymath}
+Ce tenseur permet de prendre en compte non seulement les forces normales (pression), mais aussi les forces tangentielles (cisaillement). Le cas particulier du fluide parfait est retrouvé pour $\tau_{ij} = -p \delta_{ij}$, soit $\tensor{\tau} = -p \tensor{\delta}$.
+
+---
+
+Pour paramétrer $\tensor{\tau}$, nous partons du \cindex{tenseur des déformations} $\tensor{e}$, défini comme la partie symétrique du gradient de vitesse :
+\begin{displaymath}
+  e_{ij} = \frac{1}{2}\left( \pd{u_i}{x_j} + \pd{u_j}{x_i} \right).
+\end{displaymath}
+Ce tenseur capture les effets de compression, dilatation et cisaillement du fluide. En supposant que le fluide est newtonien (c'est-à-dire que les contraintes sont proportionnelles aux déformations) et isotrope (les propriétés sont indépendantes de la direction), on montre que le tenseur des contraintes visqueuses s'écrit :
+\begin{displaymath}
+  \tau_{ij} = 2 \mu e_{ij} + \lambda \delta_{ij} \sum_{m} e_{mm},
+\end{displaymath}
+où $\mu$ est le coefficient de viscosité dynamique et $\lambda$ le second coefficient de viscosité. La somme $\sum_{m} e_{mm}$ n'est autre que la divergence du champ de vitesse, $\Div \u$.
+
+En combinant ce résultat avec la pression statique, on obtient le tenseur des contraintes total :
+\begin{equation}
+  T_{ij} = - \left( p + \frac{2}{3} \mu \Div \u \right) \delta_{ij} + 2\mu e_{ij}.
+  \label{eq:stress_tensor}
+\end{equation}
+La trace de ce tenseur, $\sum_i T_{ii}$, donne accès à la pression dynamique $\bar{p}$ :
+\begin{displaymath}
+  \bar{p} = -\frac{1}{3} \text{Tr}(\tensor{T}) = p + \left( \frac{2}{3}\mu + \lambda \right) \Div \u.
+\end{displaymath}
+La partie déviatorique du tenseur (de trace nulle) est associée au cisaillement :
+\begin{displaymath}
+  T_{ij} = - \bar{p} \delta_{ij} + \left( 2 \mu e_{ij} - \frac{2}{3}\mu \Div \u \delta_{ij} \right).
+\end{displaymath}
+L'\cindex{approximation de Stokes} suppose que $p = \bar{p}$, ce qui implique $\lambda = -\frac{2}{3}\mu$. Dans ce cas, le tenseur des contraintes se simplifie en :
+\begin{equation}
+  T_{ij} = - p \delta_{ij} + 2\mu e_{ij} - \frac{2}{3}\mu \Div \u \delta_{ij}.
+  \label{eq:tenseur_contraintes_stokes}
+\end{equation}
+Pour un fluide incompressible ($\Div \u = 0$), cette expression se réduit à :
+\begin{equation}
+  \tensor{T} = - p \tensor{\delta} + 2 \mu \tensor{e}.
+  \label{eq:tenseur_contraintes_stokes_incompressible}
+\end{equation}
+
+---
+
+En insérant cette expression dans l'équation du mouvement, on remplace la force de pression par la divergence du tenseur des contraintes :
+\begin{equation}
+  \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \Div{\tensor{T}}.
+  \label{eq:ns}
+\end{equation}
+La divergence du tenseur $\tensor{T}$ est définie par :
+\begin{displaymath}
+  \Div{\tensor{T}}_i = \sum_j \pd{T_{ij}}{x_j}.
+\end{displaymath}
+En développant ce terme pour un fluide incompressible et en utilisant l'approximation de Stokes, on retrouve l'équation de Navier-Stokes incompressible :
+\begin{equation}
+  \rho \Dt{\u} = -\grad p - \rho \grad \gpot + \mu \lapl \u.
+  \label{eq:ns_incompressible}
+\end{equation}
+Cette équation décrit la dynamique des fluides visqueux et sera la base de nos prochains développements, notamment pour l'étude des écoulements laminaires comme celui de Poiseuille.
+
 
 
