@@ -120,11 +120,11 @@ Commençons par illustrer le propos un exemple qui fonctionne plutôt bien: la c
 Imaginons un volume fini $\Vol$ de masse $M$ qui évolue au gré du temps. 
 
 \begin{equation}
-   \frac{\dif M}{\dif t} = \frac{\dif}{\dif t} \iiint_\Vol(t) \rho(\vec{x},t). 
+  \frac{\dif M}{\dif t} = \frac{\dif}{\dif t} \iiint_{\Vol(t)} \rho(\vec{x},t). 
 \label{eq:finite_volume_conservation}
 \end{equation}
 
-A priori nous notons le volume $\Vol(t)$. Dans le cas particulier ou les frontières du volume évoluent selon la vitesse du fluide, nous avons affaire à de \cindex{volume matériel} (il n'est pas nécessairement petit), et nous le noterons de façon spécifique en utilisant un lettre cursive $\vol(t)$. 
+A priori nous notons le volume: $\Vol(t)$. Dans le cas particulier ou les frontières du volume évoluent selon la vitesse du fluide, nous avons affaire à de \cindex{volume matériel} (il n'est pas nécessairement petit), et nous le noterons de façon spécifique en utilisant un lettre cursive $\vol(t)$. 
 
 Nous voyons apparaître dans l'équation \eqref{eq:finite_volume_conservation} une dérivée temporelle d'une intégrale dont les bornes évoluent en fonction du temps. Il faut s'en méfier. C’est un objet que vous avez déjà rencontré lorsque vous avez découvert la \cindex{relation de Leibniz}, mais dans un cas à une dimension: 
 \begin{equation}

@@ -34,7 +34,7 @@ La quantité $H$ a les dimensions d'une énergie massique, et on y reconnaît le
 \end{equation}
 
 \begin{key}{Théorème de Bernouilli}
-  Si un fluide idéal est en écoulement stationnaire, alors $H$ est constant le long d'une ligne de courant (\cite{acheson90aa}, p. 10).
+  Si un fluide idéal est en écoulement stationnaire, alors $H$ est constant le long d'une ligne de courant (\cite{acheson01aa}, p. 10).
 \end{key}
 
 \section{Équation de la vorticité}
@@ -281,15 +281,18 @@ On trouve deux points de stagnation (vitesse nulle) sur l'axe $y=0$, pour $x\pm 
 \begin{figure}
 \includegraphics{Figures/zero_circulation.pdf}
 \label{fig:zero_circulation}
-\caption{Fonction de courant (traits pleins) et lignes de potentiel de vitesse (pontillés) pour un fluide parfait rencontrant un obstacle cylindrique ($\vcomp(z) = U ( z + \frac{R^2}{z})$)}
+\caption{Fonction de courant (traits pleins) et lignes de potentiel de vitesse (pontillés) pour un fluide parfait rencontrant un obstacle cylindrique, en l'absence de circulation autour de l'obstactle ($\vcomp(z) = U ( z + \frac{R^2}{z})$)}
 \end{figure}
 
 TODO: expliquer que c'est une transformation conforme. 
 
 
+
 \section{Analyse de l'écoulement autour d'un cylindre avec circulation}
 
 On peut étudier la position des points de stagnation dans ces conditions, comme illustré sur la figure~\ref{fig:cylindre_with_circulation}. Bien que l'analyse algébrique ne soit pas excessivement complexe, nous n'en fournisson ici que les conclusions. Pour $\Gamma > 0$, les deux points de stagnation, initialement situés de part et d'autre du cylindre lorsque $\Gamma = 0$, migrent progressivement vers le bas. Ils finissent par se rencontrer et se détachent du cylindre dès que $\Gamma$ dépasse $4\pi UR$.
+
+TODO: ajouter figure avec circulation. 
 
 Bien qu'il y ait une circulation, l'écoulement, dans tout son domaine, demeure irrotationnel et incompressible. Il respecte ainsi toutes les conditions du théorème de Bernoulli généralisé. Nous savons donc qu'en tout point,
 
@@ -325,7 +328,7 @@ U - \frac{R^2}{z^2} + \frac{i\Gamma}{2\pi z}.
 L'intégrale fait intervenir cette dérivée au carré et se calcule par la méthode des résidus (référence à Arfken). Après calcul, on aboutit au \cindex{théorème de Kutta-Zhukovsky} :
 
 \begin{key}{Théorème de Kutta-Zhukovsky}
-Pour un écoulement incompressible, irrotationnel, autour d'un obstacle, avec circulation, les valeurs de traînée et de portance sont données par :
+Pour un écoulement incompressible, irrotationnel (fluide parfait), autour d'un obstacle, avec circulation, les valeurs de traînée et de portance sont données par :
 \[
 D = 0, \quad L = \rho U \Gamma.
 \]
@@ -339,10 +342,34 @@ On en déduit deux enseignements importants :
 
 Ce théorème est très général et ne nécessite pas de supposer un obstacle cylindrique. Il est possible de calculer la portance pour des profils d'ailes obtenus par une technique connue sous le nom de \cindex{transformation conforme}. Ici, nous avons simplement résolu numériquement l'équation de Laplace pour obtenir un profil d'aile d'avion, mais le problème reste le même : sans circulation, il n'y a pas de portance.
 
-REF FIGURE
+\begin{figure}
+    % --- Figure 1 : Source ---
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Python/02_ellipse_streamfunction.pdf}
+        \caption{Résolution numérique de l'équation de Laplace autour d'un obstacle cylindrique, en supposant aucune circulation autour de l'obstacle. Observez les points de stagnation (intersection entre obstactle et obstactle) de part et d'autre de l'obstacle}
+        \label{fig:ellipse}
+    \end{minipage}%
+    \hfill%
+    %
+    % --- Figure 2 : Circulation ---
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Python/05_airfoil_without_circulation.pdf}
+        \caption{Même figure, mais pour un obstacle ayant la forme d'une aile d'avion. Ici encore, nous avons fait l'hypothèse de l'absence de circulation. La solution est irréaliste, car elle impose à l'écoulement de contourner la pointe de l'aile d'avion. L'hypothèse est que ce contournement sera, en pratique, rendu impossible par des effets de friction}
+        \label{fig:airfoil_without_circulation}
+    \end{minipage}
+\end{figure}
+
+
 
 Il faut donc créer une circulation. C'est l'intérêt de l'aspect anguleux à l'arrière de l'aile. On crée artificiellement un point de stagnation. La seule façon de satisfaire la condition du point de stagnation est de déplacer les points de stagnation, initialement situés de part et d'autre de l'aile, en créant une circulation. C'est cette circulation qui est nécessaire à la portance.
 
 Mais comment induire cette circulation ? Dans l'\cindex{effet Magnus}, c'est le ballon qui cède du moment angulaire au fluide. Mais ici, il n'y a pas de force extérieure : l'aile ne tourne pas. La circulation est donc créée à l'interface aile-fluide par des frottements, mais doit être compensée (pour conserver le moment angulaire) par un contre-vortex qui se développe à l'arrière de l'aile.
 
-FIGURE
+\begin{figure}
+    % --- Figure 1 : Source ---
+  \scalebox{0.7}{\input{Pdftex/04_aile_avion.pdf_tex}}
+   \caption{Schéma de l'écoulement attendu autour d'une aile d'avion. En bleu, nous avons représenté schématiquement la solution sans circulation. La circulation réelle sera plus proche de la solution noire, ou à la solution bleue s'ajoute une circulation (en rouge), telle que le point de stagnation arrière est déplacé sur la pointe de l'aile d'avion. Cette circulation nette explique la portance. }
+   \label{fig:airfoil_schematic}
+\end{figure}

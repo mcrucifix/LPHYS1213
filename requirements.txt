@@ -1,0 +1,10 @@
+# for binder
+# Essential libraries for the core simulation and mathematics
+numpy
+scipy
+
+# Core library for plotting and visualization
+matplotlib
+
+# Libraries required for interactive elements (sliders) in Jupyter Notebooks
+ipywidgets
