@@ -1,6 +1,8 @@
 \chapter{Écoulement laminaire dans un fluide newtonien}
 \label{ch:newtonien}
 
+\section{Equation de Navier-Stokes pour fluide Newtonien, incompressible}
+
 Dans le chapitre~\ref{ch:euler}, nous avons établi l'équation d'Euler pour un fluide parfait, en négligeant les effets de la viscosité. Cependant, dans la réalité, les fluides réels (comme l'eau ou l'air) présentent une résistance interne au mouvement, due aux frottements entre couches de fluide. Cette résistance se manifeste comme une diffusion de la quantité de mouvement, analogue à la diffusion de la chaleur dans un solide. En ajoutant ce terme diffusif à l'équation d'Euler, on obtient immédiatement l'\cindex{équation de Navier-Stokes} pour un fluide incompressible :
 \begin{displaymath}
   \rho \Dt{\u} = -\grad p - \rho \grad \gpot + \mu \lapl \u,
@@ -25,7 +27,7 @@ Cette équation sera suffisante pour décrire la plupart des écoulements étudi
 
 Cependant, pour une compréhension plus profonde, nous allons maintenant dériver cette équation de manière rigoureuse, en partant des principes fondamentaux de la mécanique des milieux continus.
 
----
+\section{Dérivation formelle de l'équation de Navier-Stokes}
 
 Dans le chapitre~\ref{ch:euler}, nous avons utilisé la \cindex{pression statique} pour décrire les forces normales s'exerçant sur un élément de volume de fluide. Nous avions écrit explicitement :
 \begin{displaymath}
@@ -37,7 +39,6 @@ Cette expression suppose que la force est purement normale à la surface, ce qui
 \end{displaymath}
 Ce tenseur permet de prendre en compte non seulement les forces normales (pression), mais aussi les forces tangentielles (cisaillement). Le cas particulier du fluide parfait est retrouvé pour $\tau_{ij} = -p \delta_{ij}$, soit $\tensor{\tau} = -p \tensor{\delta}$.
 
----
 
 Pour paramétrer $\tensor{\tau}$, nous partons du \cindex{tenseur des déformations} $\tensor{e}$, défini comme la partie symétrique du gradient de vitesse :
 \begin{displaymath}
@@ -73,7 +74,6 @@ Pour un fluide incompressible ($\Div \u = 0$), cette expression se réduit à :
   \label{eq:tenseur_contraintes_stokes_incompressible}
 \end{equation}
 
----
 
 En insérant cette expression dans l'équation du mouvement, on remplace la force de pression par la divergence du tenseur des contraintes :
 \begin{equation}
@@ -92,4 +92,4 @@ En développant ce terme pour un fluide incompressible et en utilisant l'approxi
 Cette équation décrit la dynamique des fluides visqueux et sera la base de nos prochains développements, notamment pour l'étude des écoulements laminaires comme celui de Poiseuille.
 
 
-
+\section{Ecoulement de Poiseuille}

@@ -145,7 +145,7 @@ Ainsi, si on applique la condition de non-divergence à l'expression dérivée d
   \label{eq:laplace_cp}
 \end{equation}
 
-Pour qu'un écoulement puisse dériver à la fois d'un potenties scalaire et d'une fonction de courant, il faut
+Pour qu'un écoulement puisse dériver à la fois d'un potentiel scalaire et d'une fonction de courant, il faut
 que les vitesses associées aux deux définitions soient identiques, soit: 
 
 \begin{equation}
@@ -197,7 +197,7 @@ On génère une source ponctuelle d'amplitude $m$ avec le champ potentiel
 Le logarithme complex $z$ peut s'estimer en écrivant $z$ sous la forme d'un phaseur complexe $z=re^{i\theta}$. On voit alors que 
 
 \begin{displaymath}
-  \ln z = \ln (re^{i(\theta + 2\pi k)}) = \underbrace{ln r}{\vpot} + i\underbrace{\theta + 2\pi k}{\sfn}. 
+  \ln z = \ln (re^{i(\theta + 2\pi k)}) = \underbrace{\ln r}_{\vpot} + i\underbrace{\theta + 2\pi k}_{\sfn}. 
 \end{displaymath}
 
 Attention cependant: l'angle n'est défini qu'à un terme $2\pi k$ près, et c'est crucial. 
@@ -226,7 +226,7 @@ On vérifie qu'il s'agit d'un champ divergent, symmétrique autour de l'origine,
 \end{figure}
 
 
-Sur la figure \ref{fig:potential source}, on repère les lignes de courant en train plain. On se rappelle que le débit volumique est donné par la différence entre deux valeurs de la fonction de courant. C'est ici que le terme $2\pi k$  est important, et crée une ambiguité sur la valeur de la fonction de courant. $k$ doit être choisi de façon à ne pas créer d'anomalie lorsqu'on passe de 359 à 360 degrés. Cela explicite le fait que la fonciton $\ln z$ n'est pas définie de façon unique sur tout le domaine. Ce qui est défini est sa différence entre deux points du domaine (c'est un cas de \cindex{spirale de Riemann}). 
+Sur la figure \ref{fig:potential-source}, on repère les lignes de courant en train plain. On se rappelle que le débit volumique est donné par la différence entre deux valeurs de la fonction de courant. C'est ici que le terme $2\pi k$  est important, et crée une ambiguité sur la valeur de la fonction de courant. $k$ doit être choisi de façon à ne pas créer d'anomalie lorsqu'on passe de 359 à 360 degrés. Cela explicite le fait que la fonciton $\ln z$ n'est pas définie de façon unique sur tout le domaine. Ce qui est défini est sa différence entre deux points du domaine (c'est un cas de \cindex{spirale de Riemann}). 
 
 \paragraph{Vortex ponctuel}
 
@@ -271,7 +271,7 @@ Les composantes horizontales et verticales de la vitesse sont fournies par les p
 
 \begin{equation}
   \begin{split}
-    u + iv = U (1 - \frac{R^2}{z z} &= U(1 - R^2\frac{ {z^\star}^2}{|z|^4})
+    u + iv = U \left(1 - \frac{R^2}{z z}\right) &= U\left(1 - R^2\frac{ {z^\star}^2}{|z|^4}\right)
                                &= U (1 - R^2\frac{ (x^2 - y^2 - 2i xy )}{r^4} )
   \end{split}
 \end{equation}
