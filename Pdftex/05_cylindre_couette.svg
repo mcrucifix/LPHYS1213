@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="3.7946873"
-     inkscape:cx="236.7784"
-     inkscape:cy="78.135555"
+     inkscape:zoom="0.94867183"
+     inkscape:cx="141.77716"
+     inkscape:cy="-84.855477"
      inkscape:window-width="1920"
      inkscape:window-height="1129"
      inkscape:window-x="-8"
@@ -40,6 +40,11 @@
      width="84.10561mm" />
   <defs
      id="defs2">
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#Strips1_1"
+       id="pattern12897"
+       patternTransform="matrix(0.3583421,-0.34573288,-43.345774,-44.926627,3.0678856,-0.97615065)" />
     <marker
        style="overflow:visible"
        id="Arrow2Lend"
@@ -68,11 +73,6 @@
          d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path6417" />
     </marker>
-    <pattern
-       inkscape:collect="always"
-       xlink:href="#Strips1_1"
-       id="pattern8881"
-       patternTransform="matrix(-0.59543947,-0.06327465,-5.1194571,48.176165,0,0)" />
     <pattern
        inkscape:collect="always"
        patternUnits="userSpaceOnUse"
@@ -111,23 +111,80 @@
      transform="translate(-43.077946,-92.536592)">
     <path
        id="path846"
-       style="fill:#008000;stroke:#000000;stroke-width:0.265372"
+       style="fill:#6f918a;stroke:#000000;stroke-width:0.265372"
        d="m 86.838629,101.16953 c 12.253114,1e-5 22.186221,16.07211 22.186241,35.89807 -2e-5,19.82596 -9.933127,35.89806 -22.186241,35.89807 -0.894916,-0.005 -4.403656,0.1796 -5.291667,0 11.157043,-2.14257 22.177838,-17.7189 22.186238,-35.89807 -0.008,-18.17917 -11.029198,-33.7555 -22.186238,-35.89807 0.888011,-0.1796 4.396751,0.005 5.291667,0 z m -5.291667,9.833 c 0.87881,0.004 1.755929,0.12492 2.622577,0.3607 -7.757971,2.10895 -13.439893,12.97578 -13.440005,25.70437 1.09e-4,12.72859 5.682032,23.59543 13.440005,25.70438 -0.866648,0.23578 -1.743767,0.35642 -2.622577,0.3607 -8.896821,4e-5 -16.109125,-11.66972 -16.109095,-26.06508 -2e-5,-14.39535 7.212277,-26.06511 16.109095,-26.06507 z"
        sodipodi:nodetypes="cccccccccccccc" />
-    <path
-       id="path1184"
-       style="fill:#008000;stroke:#000000;stroke-width:0.265372"
-       d="M 81.546962,101.16953 A 22.186254,35.898116 0 0 1 103.7332,137.0676 22.186254,35.898116 0 0 1 81.546962,172.96567 22.186254,35.898116 0 0 1 59.360717,137.0676 22.186254,35.898116 0 0 1 81.546962,101.16953 Z m 0,9.833 A 16.109054,26.064998 0 0 0 65.437867,137.0676 16.109054,26.064998 0 0 0 81.546962,163.13268 16.109054,26.064998 0 0 0 97.656055,137.0676 16.109054,26.064998 0 0 0 81.546962,111.00253 Z" />
-    <path
-       id="path1083"
-       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.265, 0.53;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 76.09687,118.64033 -5.754661,-17.85561 m 12.02988,16.04277 -0.197212,-19.000947"
-       sodipodi:nodetypes="cccc" />
     <path
        style="fill:#0000ff;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart)"
        d="m 74.089221,100.78472 18.994444,-0.01"
        id="path1327"
        sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="77.394386"
+       y="95.522804"
+       id="text28698"><tspan
+         sodipodi:role="line"
+         id="tspan28696"
+         style="font-size:3.88056px;fill:#0000ff;stroke-width:0.264583"
+         x="77.394386"
+         y="95.522804">$\tau_{rx}(r+\dif r) 2\pi (r+\dif r)\dif x$ </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="96.564301"
+       y="101.94489"
+       id="text42122"><tspan
+         sodipodi:role="line"
+         id="tspan42120"
+         style="font-size:3.52778px;fill:#ff0000;stroke-width:0.264583"
+         x="96.564301"
+         y="101.94489">$-p(x + \dif x) 2\pi r \dif r $</tspan></text>
+    <path
+       id="path12935"
+       style="fill:#93aca7;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.265372"
+       d="M 81.546962,101.16953 A 22.186254,35.898116 0 0 1 103.7332,137.0676 22.186254,35.898116 0 0 1 81.546962,172.96567 22.186254,35.898116 0 0 1 59.360717,137.0676 22.186254,35.898116 0 0 1 81.546962,101.16953 Z m 0,9.833 A 16.109054,26.064998 0 0 0 65.437867,137.0676 16.109054,26.064998 0 0 0 81.546962,163.13268 16.109054,26.064998 0 0 0 97.656055,137.0676 16.109054,26.064998 0 0 0 81.546962,111.00253 Z" />
+    <path
+       id="path1184"
+       style="fill:url(#pattern12897);fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.265372"
+       d="M 81.546962,101.16953 A 22.186254,35.898116 0 0 1 103.7332,137.0676 22.186254,35.898116 0 0 1 81.546962,172.96567 22.186254,35.898116 0 0 1 59.360717,137.0676 22.186254,35.898116 0 0 1 81.546962,101.16953 Z m 0,9.833 A 16.109054,26.064998 0 0 0 65.437867,137.0676 16.109054,26.064998 0 0 0 81.546962,163.13268 16.109054,26.064998 0 0 0 97.656055,137.0676 16.109054,26.064998 0 0 0 81.546962,111.00253 Z" />
+    <path
+       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart)"
+       d="m 84.2657,112.42645 -18.994444,-0.01"
+       id="path6686"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="42.810951"
+       y="104.86591"
+       id="text37508"><tspan
+         sodipodi:role="line"
+         id="tspan37506"
+         style="font-size:3.52778px;fill:#ff0000;stroke-width:0.264583"
+         x="42.810951"
+         y="104.86591">$p(x)2\pi r \dif r$</tspan></text>
+    <path
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
+       d="M 57.592578,108.21269 H 77.812735"
+       id="path26602" />
+    <path
+       style="fill:#e9afaf;stroke:#e9afaf;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.793749, 0.264583;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
+       d="M 99.778751,105.1448 H 79.558597"
+       id="path37788" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="28.726566"
+       y="115.0457"
+       id="text37086"><tspan
+         sodipodi:role="line"
+         id="tspan37084"
+         style="font-size:3.88056px;fill:#0000ff;stroke-width:0.264583"
+         x="28.726566"
+         y="115.0457"
+         rotate="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">$-\tau_{xr}(r)r\dif\theta\dif x$ </tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -139,67 +196,5 @@
          style="font-size:3.88056px;stroke-width:0.264583"
          x="74.885864"
          y="125.96011">$\tau_{rx} = \mu\od{u}{r}$</tspan></text>
-    <path
-       style="fill:#0000ff;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart)"
-       d="m 84.2657,112.42645 -18.994444,-0.01"
-       id="path6686"
-       sodipodi:nodetypes="cc" />
-    <path
-       id="path6787"
-       style="fill:url(#pattern8881);fill-opacity:1;stroke:#000000;stroke-width:0.265372"
-       d="m 81.546958,101.16953 a 22.186254,35.898116 0 0 0 -9.849008,3.74913 l 2.851504,8.69559 a 16.109054,26.064998 0 0 1 6.997504,-2.61172 16.109054,26.064998 0 0 1 0.6935,0.0269 l -0.04858,-9.82421 a 22.186254,35.898116 0 0 0 -0.644922,-0.0357 z" />
-    <path
-       style="fill:#ff0000;stroke:#ff0000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
-       d="M 57.592578,108.21269 H 77.812735"
-       id="path26602" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="77.394386"
-       y="95.522804"
-       id="text28698"><tspan
-         sodipodi:role="line"
-         id="tspan28696"
-         style="font-size:3.88056px;fill:#0000ff;stroke-width:0.264583"
-         x="77.394386"
-         y="95.522804">$\tau_{rx}(r+\dif r)r\dif\theta\dif x$ </tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="52.293507"
-       y="118.39249"
-       id="text37086"><tspan
-         sodipodi:role="line"
-         id="tspan37084"
-         style="font-size:3.88056px;fill:#0000ff;stroke-width:0.264583"
-         x="52.293507"
-         y="118.39249"
-         rotate="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">$-\tau_{xr}(r)r\dif\theta\dif x$ </tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="42.810951"
-       y="104.86591"
-       id="text37508"><tspan
-         sodipodi:role="line"
-         id="tspan37506"
-         style="font-size:3.52778px;fill:#ff0000;stroke-width:0.264583"
-         x="42.810951"
-         y="104.86591">$p(x)r\dif r \dif \theta$</tspan></text>
-    <path
-       style="fill:#e9afaf;stroke:#e9afaf;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.793749, 0.264583;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
-       d="M 99.778751,105.1448 H 79.558597"
-       id="path37788" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="96.564301"
-       y="101.94489"
-       id="text42122"><tspan
-         sodipodi:role="line"
-         id="tspan42120"
-         style="font-size:3.52778px;fill:#ff0000;stroke-width:0.264583"
-         x="96.564301"
-         y="101.94489">$-p(x + \dif x)r\dif r \dif \theta$</tspan></text>
   </g>
 </svg>

@@ -167,53 +167,47 @@ Q = \int_0^h u_x(y) \, \dif y = -\frac{C h^3}{12\mu}.
 \label{sec:poiseuille_cylindre}
 
 \subsection{Deux approches pour dériver l'équation}
-Pour étudier un écoulement dans un cylindre de rayon $a$, deux approches sont possibles :
-\begin{itemize}
-    \item Approche directe : Utiliser l'équation de Navier-Stokes en coordonnées cylindriques.
-    \item Approche par bilan de forces : Analyser l'équilibre des forces sur un anneau de fluide.
-\end{itemize}
 
-TODO: réarranger. 
-
-\subsubsection{Approche directe}
-En coordonnées cylindriques, l'équation de Navier-Stokes pour un écoulement stationnaire, axisymétrique et incompressible se réduit à :
+En coordonnées cylindriques, l'équation de Navier-Stokes pour un écoulement stationnaire ($\pd{}{t}=0$), axisymétrique ($p=p(r)$; $u_x=u_x(r)$, $u_r=0$)) et incompressible se réduit à :
 \begin{displaymath}
 0 = -\od{p}{x} + \frac{\mu}{r} \od{}{r}\left( r \od{u_x}{r}\right).
 \end{displaymath}
 
-La solution de cette équation, avec la condition aux limites $u_x(a) = 0$, est :
-\begin{displaymath}
-u_x(r) = \frac{a^2 - r^2}{4\mu} \od{p}{x}.
-\end{displaymath}
+On peut retrouver cette équation en exprimant les opérateurs différentiels en coordonnées cylindriques, mais nous pouvons également la retrouver en raisonnant sur un bilan de forces. 
 
-\subsubsection{Approche par bilan de forces}
-Considérons un anneau de fluide de rayon $r$ et d'épaisseur $\dif r$ (figure~\ref{fig:anneau_cylindre}).
+Considérons, le long de l'écoulement,  un anneau de fluide de rayon $r$ et d'épaisseur $\dif r$ (figure~\ref{fig:anneau_cylindre}).
 
 \begin{figure}[h]
-\centering
+  \begin{minipage}[b]{0.55\textwidth}
 \input{Pdftex/05_cylindre_couette.pdf_tex}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.4\textwidth}
 \caption{Schéma d'un anneau de fluide dans un cylindre. Les forces de pression et de cisaillement sont indiquées.}
 \label{fig:anneau_cylindre}
+\end{minipage}
 \end{figure}
 
 Les forces agissant sur cet anneau sont :
 \begin{itemize}
     \item Force de pression : $-2\pi r \od{p}{x} \dif r$.
-    \item Force visqueuse : La contrainte de cisaillement $\tau_{rx} = \mu \od{u_x}{r}$ agit sur les surfaces interne et externe de l'anneau. La différence de force visqueuse est (TODO: VERIFIER - il manque un R du cote de la pression)
+    \item Force visqueuse : La contrainte de cisaillement $\tau_{rx} = \mu \od{u_x}{r}$ agit sur les surfaces interne et externe de l'anneau. La force nette est
     \begin{displaymath}
-    2\pi r \dif x \left( \tau_{rx}(r+\dif r) - \tau_{rx}(r) \right) = 2\pi r \dif x \mu \od{}{r}\left( r \od{u_x}{r}\right) \dif r.
+    2\pi \dif x \left( \tau_{rx}(r+\dif r)(r + \dif r) - \tau_{rx}(r) r \right) = 2\pi \dif x  \od{}{r}\left( r \mu \od{u_x}{r}\right) \dif r.
     \end{displaymath}
 \end{itemize}
 
+L'écriture  $\tau_{rx}(r+\dif r)(r + \dif r)$ est ambiguë: elle exprime $\tau_{rx}$ évaluée en $r + \dif r$, multipliée par la longueur $r + \dif r$. 
+
 L'équilibre des forces donne:
 \begin{displaymath}
-0 = -2\pi r \od{p}{x} + 2\pi r \mu \od{}{r}\left( r \od{u_x}{r}\right).
+0 = -2\pi r \od{p}{x} + 2\pi \mu \od{}{r}\left( r \od{u_x}{r}\right), 
 \end{displaymath}
 
-Cette équation est identique à celle obtenue par l'approche directe.
+ce qui est bien notre équation. Nous pouvons maintenant la résoudre. 
 
 \subsection{Solution et débit}
-La solution pour $u_x(r)$ est :
+
+La solution de cette équation, avec la condition aux limites $u_x(a) = 0$, est :
 \begin{displaymath}
 u_x(r) = \frac{a^2 - r^2}{4\mu} \od{p}{x}.
 \end{displaymath}
