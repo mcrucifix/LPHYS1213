@@ -121,7 +121,7 @@ TODO: modifier. utiliser les termes stationnaires et reprendre l'équation d'Eul
 0 = -\pd{p}{x} + \mu \pd[2]{u_x}{y}.
 \end{displaymath}
 
-De même, dans la direction $y$, l'équilibre des forces donne :
+De même, dans la direction $y$, l'équilibre des forces donne:
 \begin{displaymath}
 0 = -\pd{p}{y}.
 \end{displaymath}
@@ -198,16 +198,16 @@ Considérons un anneau de fluide de rayon $r$ et d'épaisseur $\dif r$ (figure~\
 
 Les forces agissant sur cet anneau sont :
 \begin{itemize}
-    \item Force de pression : $-\pi r^2 \od{p}{x} \dif x$.
-    \item Force visqueuse : La contrainte de cisaillement $\tau_{rx} = \mu \od{u_x}{r}$ agit sur les surfaces interne et externe de l'anneau. La différence de force visqueuse est :
+    \item Force de pression : $-2\pi r \od{p}{x} \dif r$.
+    \item Force visqueuse : La contrainte de cisaillement $\tau_{rx} = \mu \od{u_x}{r}$ agit sur les surfaces interne et externe de l'anneau. La différence de force visqueuse est (TODO: VERIFIER - il manque un R du cote de la pression)
     \begin{displaymath}
     2\pi r \dif x \left( \tau_{rx}(r+\dif r) - \tau_{rx}(r) \right) = 2\pi r \dif x \mu \od{}{r}\left( r \od{u_x}{r}\right) \dif r.
     \end{displaymath}
 \end{itemize}
 
-L'équilibre des forces donne :
+L'équilibre des forces donne:
 \begin{displaymath}
-0 = -\pi r^2 \od{p}{x} + 2\pi r \mu \od{}{r}\left( r \od{u_x}{r}\right).
+0 = -2\pi r \od{p}{x} + 2\pi r \mu \od{}{r}\left( r \od{u_x}{r}\right).
 \end{displaymath}
 
 Cette équation est identique à celle obtenue par l'approche directe.

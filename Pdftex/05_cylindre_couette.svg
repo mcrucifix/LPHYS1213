@@ -25,8 +25,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="3.7946873"
-     inkscape:cx="193.56008"
-     inkscape:cy="99.481187"
+     inkscape:cx="236.7784"
+     inkscape:cy="78.135555"
      inkscape:window-width="1920"
      inkscape:window-height="1129"
      inkscape:window-x="-8"
@@ -138,7 +138,7 @@
          id="tspan2804"
          style="font-size:3.88056px;stroke-width:0.264583"
          x="74.885864"
-         y="125.96011">$\tau_{xr} = \mu\od{u}{r}$</tspan></text>
+         y="125.96011">$\tau_{rx} = \mu\od{u}{r}$</tspan></text>
     <path
        style="fill:#0000ff;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart)"
        d="m 84.2657,112.42645 -18.994444,-0.01"
@@ -162,10 +162,10 @@
          id="tspan28696"
          style="font-size:3.88056px;fill:#0000ff;stroke-width:0.264583"
          x="77.394386"
-         y="95.522804">$\tau_{xr}(r+\dif r)\dif\theta$ </tspan></text>
+         y="95.522804">$\tau_{rx}(r+\dif r)r\dif\theta\dif x$ </tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;word-spacing:0px;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="52.293507"
        y="118.39249"
        id="text37086"><tspan
@@ -173,7 +173,8 @@
          id="tspan37084"
          style="font-size:3.88056px;fill:#0000ff;stroke-width:0.264583"
          x="52.293507"
-         y="118.39249">$-\tau_{xr}r\dif\theta$ </tspan></text>
+         y="118.39249"
+         rotate="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0">$-\tau_{xr}(r)r\dif\theta\dif x$ </tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:3.52778px;line-height:1.25;font-family:sans-serif;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.264583"
