@@ -29,7 +29,7 @@ Considérons un \cindex{volume de fluide}. Deux types de \cindex{forces externes
   \item les forces qui dérivent d’un \cindex{potentiel}, comme les forces gravitationnelles ou magnétiques, et qui s’expriment comme le \cindex{gradient d’un potentiel}. Ainsi, pour chaque élément de fluide $\rho \, \dif V$, nous avons un élément de force $-\rho \, \grad \varphi$. Dans la majorité des cas, le seul potentiel dont on tiendra compte est le \cindex{géopotentiel}, qui exprime la combinaison de l’attraction terrestre et de la (pseudo-)force centrifuge. Le gradient $\grad \gpot$ définit la verticale ;
   \item les forces qui s’exercent à l’\cindex{interface} du volume et de son environnement. Lorsqu’elles travaillent, ces forces génèrent un transfert de \cindex{moment cinétique} entre l’environnement et le volume considéré.
 \end{itemize}
-Nous verrons au chapitre~XX que les forces exercées à l’interface d’un volume et de son environnement se modélisent au moyen d’un \cindex{tenseur}, le \cindex{tenseur des contraintes}. Dans un premier temps, nous allons utiliser un concept plus simple et déjà connu : la \cindex{pression statique}.
+Nous verrons au chapitre \ref{ch:newtonien} que les forces exercées à l’interface d’un volume et de son environnement se modélisent au moyen d’un \cindex{tenseur}, le \cindex{tenseur des contraintes}. Dans un premier temps, nous allons utiliser un concept plus simple et déjà connu : la \cindex{pression statique}.
 Lorsqu’un fluide est à l’\cindex{équilibre statique}, on observe qu’une \cindex{force} s’exerce perpendiculairement sur chaque élément de \cindex{surface}, quelle que soit sa direction. Cette force mesure l’effet macroscopique d’un grand nombre de \cindex{collisions} entre les \cindex{molécules} du fluide et la surface témoin.
 
 Sur cette base, on peut aisément exprimer la première loi de Newton pour établir la relation hydrostatique :
@@ -62,9 +62,16 @@ c’est-à-dire que les isobares sont horizontales. Le fluide est dit \cindex{ba
 
 \subsection{Poussée d'Archimède}
 
-TODO: integrale du gradient de pression : poussée d'archimèe égale au poids du volume déplacé
-TODO: raisonner sur le moment de force. On démontre la position centroïde du centre de possée
+Considérons un countour tracé dans domaine occupé par le fluide. 
+
+
+TODO: integrale du gradient de pression : poussée d'archimède égale au poids du volume déplacé
+TODO: raisonner sur le moment de force. On démontre la position centroïde du centre de poussée
 TODO: illustrer avec bateau et intéret d'avoir un centre de poussée en dessous du centre de gravité. 
+
+TODO: illustrer conséquence pour corps flottant
+TODO: conséquence pour la fonte des glaces
+TODO: donner l'exemple du densitomètre
 
 \section{Equation d'Euler}
 
@@ -160,7 +167,8 @@ Reprenons l'équation d'Euler~\eqref{eq:euler}. Vérifiez en exercice qu'elle es
 Cette propriété est due au terme d'advection. On peut donc espérer que tant que l'advection est relativement \emph{faible} --- c'est une notion qu'il faudra préciser --- l'écoulement sera raisonnablement linéaire. Lorsqu'il est plus important, l'écoulement peut devenir turbulent \index{écoulement turbulent} et la recherche d'une solution particulière à l'équation du mouvement n'est généralement plus possible, voire pertinente.
 \end{key}
 
-\section{Description eulérienne du champ de vitesse}
+\chapter{Description du champ de vitesse}
+\section{Description Eulérienne}
 \subsection{Hypothèse de l'écoulement laminaire}
 Nous allons un instant laisser en suspens les développements de l'équation du mouvement pour aborder la description du champ de vitesse.
 Considérons un champ de vitesse qui, en toute généralité, dépend du temps : $\vec{u}(\vec{x}, t)$.
