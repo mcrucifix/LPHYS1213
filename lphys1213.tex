@@ -28,6 +28,31 @@
 % better display of volume integrals
 \usepackage{esint}
 
+
+% my "red margin" for difficult study material
+% Define the redmargin environment
+\newtcolorbox{redmargin}[1][]{%
+    enhanced,
+    breakable,
+    colback=white,
+    colframe=white,
+    boxrule=0pt,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    overlay={%
+        \draw[red, line width=2pt]
+            ([xshift=-1cm]frame.north west) --
+            ([xshift=-1cm]frame.south west);
+    },
+    before skip=0pt,
+    after skip=0pt,
+    #1 % Allow additional options
+}
+
+
+
 % pdf_tex integration
 \graphicspath{{Pdftex/}{Figures/}}
 

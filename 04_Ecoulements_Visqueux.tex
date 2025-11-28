@@ -1,4 +1,4 @@
-\chapter{Écoulement laminaire dans un fluide newtonien}
+
 \label{ch:newtonien}
 
 \section{Equation de Navier-Stokes pour fluide Newtonien, incompressible}
@@ -27,6 +27,7 @@ Cette équation sera suffisante pour décrire la plupart des écoulements étudi
 
 Cependant, pour une compréhension plus profonde, nous allons maintenant dériver cette équation de manière rigoureuse, en partant des principes fondamentaux de la mécanique des milieux continus.
 
+\begin{redmargin}
 \section{Dérivation formelle de l'équation de Navier-Stokes}
 
 Dans le chapitre~\ref{ch:euler}, nous avons utilisé la \cindex{pression statique} pour décrire les forces normales s'exerçant sur un élément de volume de fluide. Nous avions écrit explicitement :
@@ -90,6 +91,190 @@ En développant ce terme pour un fluide incompressible et en utilisant l'approxi
   \label{eq:ns_incompressible}
 \end{equation}
 Cette équation décrit la dynamique des fluides visqueux et sera la base de nos prochains développements, notamment pour l'étude des écoulements laminaires comme celui de Poiseuille.
+\end{redmargin}
+
+\section{Écoulement dans un plan}
+\label{sec:ecoulement_plan}
+
+\subsection{Objectif : Développer une intuition physique}
+Pour comprendre comment la viscosité influence un écoulement et développer une intuition physique du sens du terme $\mu\lapl\u$, commençons par étudier un cas simple : un écoulement stationnaire et plan (dans le plan $(x,y)$), où la vitesse $\u$ ne dépend que de $y$ ($u_x = u_x(y)$). Nous négligeons ici les effets de la gravité ($\grad \gpot = 0$).
+
+\subsubsection{Équation du mouvement pour un élément de volume}
+Considérons un petit élément de volume de fluide, de dimensions $\dif x$, $\dif y$, et d'épaisseur unitaire (figure~\ref{fig:element_volume_plan}).
+
+\begin{figure}[h]
+\centering
+%\includegraphics[width=0.6\textwidth]{Figures/element_volume_plan.pdf}
+TODO: FIGURE
+\caption{Schéma d'un élément de volume dans un écoulement plan. Les forces de cisaillement $\tau_{yx}$ agissent sur les faces supérieure et inférieure.}
+\label{fig:element_volume_plan}
+\end{figure}
+
+Les forces agissant sur cet élément sont :
+\begin{itemize}
+    \item Les forces de pression : $-(\pd{p}{x}\dif x)\dif y$ dans la direction $x$.
+    \item Les forces visqueuses : La contrainte de cisaillement $\tau_{yx} = \mu \pd{u_x}{y}$ agit sur les faces supérieure et inférieure. La différence de contrainte entre ces deux faces est $\left(\tau_{yx}(y+\dif y) - \tau_{yx}(y)\right)\dif x = \mu \pd[2]{u_x}{y} \dif x \dif y$.
+\end{itemize}
+
+TODO: modifier. utiliser les termes stationnaires et reprendre l'équation d'Euler ( En appliquant la deuxième loi de Newton à cet élément, on obtient :)
+\begin{displaymath}
+0 = -\pd{p}{x} + \mu \pd[2]{u_x}{y}.
+\end{displaymath}
+
+De même, dans la direction $y$, l'équilibre des forces donne :
+\begin{displaymath}
+0 = -\pd{p}{y}.
+\end{displaymath}
+
+Ainsi, la pression ne dépend pas de $y$ : $p = p(x)$.
+
+\subsubsection{Solution générale}
+En intégrant deux fois l'équation pour $u_x(y)$, on obtient :
+\begin{displaymath}
+\mu u_x(y) = \frac{y^2}{2} \pd{p}{x} + A y + B,
+\end{displaymath}
+où $A$ et $B$ sont des constantes d'intégration.
+
+\subsection{Cas particuliers}
+\subsubsection{Écoulement de Couette ($\pd{p}{x} = 0$)}
+Si le gradient de pression est nul ($\pd{p}{x} = 0$), l'équation se réduit à :
+\begin{displaymath}
+\mu u_x(y) = A y + B.
+\end{displaymath}
+
+Supposons que le fluide est confiné entre deux plaques parallèles, l'une fixe ($u_x(0) = 0$) et l'autre en mouvement ($u_x(h) = U$). Les conditions aux limites donnent :
+\begin{displaymath}
+B = 0, \quad A = \frac{\mu U}{h}.
+\end{displaymath}
+
+La solution est donc un profil linéaire :
+\begin{displaymath}
+u_x(y) = \frac{U}{h} y.
+\end{displaymath}
+
+\subsubsection{Écoulement de Poiseuille plan ($\pd{p}{x} = C$, $u_x(0) = u_x(h) = 0$)}
+Si le gradient de pression est constant ($\pd{p}{x} = C$) et que les deux plaques sont fixes, les conditions aux limites imposent $B = 0$ et $A = 0$. Le profil de vitesse est alors parabolique :
+\begin{displaymath}
+u_x(y) = \frac{C}{2\mu} (y^2 - h y).
+\end{displaymath}
+
+Le débit volumique par unité de largeur est :
+\begin{displaymath}
+Q = \int_0^h u_x(y) \, \dif y = -\frac{C h^3}{12\mu}.
+\end{displaymath}
+
+\section{Écoulement de Poiseuille dans un cylindre}
+\label{sec:poiseuille_cylindre}
+
+\subsection{Deux approches pour dériver l'équation}
+Pour étudier un écoulement dans un cylindre de rayon $a$, deux approches sont possibles :
+\begin{itemize}
+    \item Approche directe : Utiliser l'équation de Navier-Stokes en coordonnées cylindriques.
+    \item Approche par bilan de forces : Analyser l'équilibre des forces sur un anneau de fluide.
+\end{itemize}
+
+TODO: réarranger. 
+
+\subsubsection{Approche directe}
+En coordonnées cylindriques, l'équation de Navier-Stokes pour un écoulement stationnaire, axisymétrique et incompressible se réduit à :
+\begin{displaymath}
+0 = -\od{p}{x} + \frac{\mu}{r} \od{}{r}\left( r \od{u_x}{r}\right).
+\end{displaymath}
+
+La solution de cette équation, avec la condition aux limites $u_x(a) = 0$, est :
+\begin{displaymath}
+u_x(r) = \frac{a^2 - r^2}{4\mu} \od{p}{x}.
+\end{displaymath}
+
+\subsubsection{Approche par bilan de forces}
+Considérons un anneau de fluide de rayon $r$ et d'épaisseur $\dif r$ (figure~\ref{fig:anneau_cylindre}).
+
+\begin{figure}[h]
+\centering
+\input{Pdftex/05_cylindre_couette.pdf_tex}
+\caption{Schéma d'un anneau de fluide dans un cylindre. Les forces de pression et de cisaillement sont indiquées.}
+\label{fig:anneau_cylindre}
+\end{figure}
+
+Les forces agissant sur cet anneau sont :
+\begin{itemize}
+    \item Force de pression : $-\pi r^2 \od{p}{x} \dif x$.
+    \item Force visqueuse : La contrainte de cisaillement $\tau_{rx} = \mu \od{u_x}{r}$ agit sur les surfaces interne et externe de l'anneau. La différence de force visqueuse est :
+    \begin{displaymath}
+    2\pi r \dif x \left( \tau_{rx}(r+\dif r) - \tau_{rx}(r) \right) = 2\pi r \dif x \mu \od{}{r}\left( r \od{u_x}{r}\right) \dif r.
+    \end{displaymath}
+\end{itemize}
+
+L'équilibre des forces donne :
+\begin{displaymath}
+0 = -\pi r^2 \od{p}{x} + 2\pi r \mu \od{}{r}\left( r \od{u_x}{r}\right).
+\end{displaymath}
+
+Cette équation est identique à celle obtenue par l'approche directe.
+
+\subsection{Solution et débit}
+La solution pour $u_x(r)$ est :
+\begin{displaymath}
+u_x(r) = \frac{a^2 - r^2}{4\mu} \od{p}{x}.
+\end{displaymath}
+
+Le débit volumique $Q$ est obtenu en intégrant sur la section du cylindre :
+\begin{displaymath}
+Q = \int_0^a u_x(r) 2\pi r \, \dif r = -\frac{\pi a^4}{8\mu} \od{p}{x}.
+\end{displaymath}
+
+% \subsection{Validité de l'approximation}
+% Cette solution suppose un écoulement laminaire et pleinement développé. En pratique, elle est valable si :
+% \begin{itemize}
+%     \item Le nombre de Reynolds est faible ($Re \ll 1$).
+%     \item Le tuyau est suffisamment long pour que les effets d'entrée soient négligeables.
+% \end{itemize}
+%
+Une analyse des ordres de grandeur permet de déterminer à quelle distance de l'entrée du tuyau ces hypothèses sont satisfaites.
 
 
-\section{Ecoulement de Poiseuille}
+% \section{Ecoulement dans un plan}
+%
+% but: développer une intuiton. 
+%
+% D'abord montrer sur un element de volume. Bien montrer comment le $\pd[2]{u}{x}$ apparaît (c'est la différence de stress entre haut et bas, et le stress lui même est fonction de la dérivée). 
+%
+% Ecoulement stationnaire, dans le plan (x,y), $u_x$ est constant, dont pas de terme d'advection. On écrit l'équation pour $u_x$ en faisant l'hypothèse $u_x=u_x(y)$. Il vient que l'équation se réduit à  (on ne tient pas compte du gradient de géopotentiel)
+%
+% TODO: faire une figure
+%
+% \begin{align*}
+%   0 = -\pd{p}{x} + \od[2]{u}{y}
+%   0 = -\pd{p}{y} 
+% \end{align*}
+%
+% La solution est donc $p$ constant selon y, et en intrégrant deux fois la première équation on a: 
+%
+% \begin{displaymath}
+%   A y + B = -\frac{y^2}{2} \od{p}{x} + \mu u
+% \end{displaymath}
+%
+% Montrer plusieurs cas de figure: $\pd{p}{x}=0$ mais différence de vitesse (écoulement de couette), ensuite $\pd{p}{x}=C$ mais vitesse nulle aux bords (profile parabolique - écoulement de Poiseuille plan). 
+%
+%
+% \section{Ecoulement de Poiseuille dans un cylindre}
+%
+% Ensuite attaquer le flux dans un cylindre. Dire qu'il y a deux approches. On prend brutalement l'expression de l'équation de la vitesse en coordonnées cylindriques : ça va tout seul. Ou bien on prend le temps de voir que la différence de pression sur un anneau doit compenser la différence de stress entre l'extérieur de l'anneau et l'intérieur. Les deux raisonnements aboutissent à la même équaiton
+%
+% \begin{displaymath}
+%   0 = -\od{p}{x} + \frac{\mu}{r} \od{}{r}\left( r \od{u}{r}\right)
+% \end{displaymath}
+%
+% avec la solution
+%
+% \begin{displaymath}
+%   u(r) = \frac{r^2-a^2}{4\mu}\od{p}{x}
+% \end{displaymath}
+%
+%
+% On calcule le débit 
+% \begin{displaymath}
+%   \int_{0}^{a}u(r) 2\pi\, r\,\dif r=-\frac{\pi a^4}{8\mu}\od{p}{x}
+% \end{displaymath}
+%
+% si pertinent on peut ensuite se demander 'à quelle profondeur du tuyau' tout cela est acceptable. Cela introduit une première analyse des ordres de grandeur. 
