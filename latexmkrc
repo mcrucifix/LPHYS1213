@@ -42,7 +42,7 @@ sub xp2eepic{
 }
 
 sub svg2pdftex{
-  system("inkscape --export-filename= Pdftex/$_[0].pdf --export-filename=$_[0].svg");
+  system("inkscape --export-filename=$_[0].pdf --export-latex $_[0].svg");
 }
 
 

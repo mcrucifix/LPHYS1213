@@ -80,11 +80,11 @@ En insérant cette expression dans l'équation du mouvement, on remplace la forc
   \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \Div{\tensor{T}}.
   \label{eq:ns}
 \end{equation}
-La divergence du tenseur $\tensor{T}$ est définie par :
+La divergence du tenseur $\tensor{T}$ est définie par composante par composante. La composante $i$ répond à
 \begin{displaymath}
-  \Div{\tensor{T}}_i = \sum_j \pd{T_{ij}}{x_j}.
+  (\Div{\tensor{T}})_i = \sum_j \pd{T_{ij}}{x_j}.
 \end{displaymath}
-En développant ce terme pour un fluide incompressible et en utilisant l'approximation de Stokes, on retrouve l'équation de Navier-Stokes incompressible :
+En développant ce terme pour un fluide incompressible et en utilisant l'approximation de Stokes, on retrouve (après un peu de calcul) l'équation de Navier-Stokes incompressible :
 \begin{equation}
   \rho \Dt{\u} = -\grad p - \rho \grad \gpot + \mu \lapl \u.
   \label{eq:ns_incompressible}

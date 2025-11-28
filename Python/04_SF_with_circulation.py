@@ -5,7 +5,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-figure_directory =  "Figures"
+figure_directory =  ""
 
 # --- 🎯 LaTeX Integration Setup ---
 fig_width_in = 8.0 
@@ -108,16 +108,9 @@ def plot_stream_and_potential(ax, Gamma, filename=None, show_ylabel=True):
     
 
 # plot 1 (No circulation)
-filename = Path(figure_directory) / "zero_circulation.pdf"
-fig, axes = plt.subplots(1, 1, sharex=True, sharey=True)
-plot_stream_and_potential(ax=axes, Gamma = 0., filename="zero_circulation_quiver.pdf")
-
-plt.savefig(filename, bbox_inches='tight')
-plt.close(fig)
-
 fig, axes = plt.subplots(1, 3, sharex=True, sharey=True)
 Gamma_values = [2., 4., 12.]
-filename = Path(figure_directory) / "three_circulation_quivers.pdf"
+filename = Path(figure_directory) / "04_SF_with_circulation.pdf"
 
 # Create a figure with 1 row and 3 columns of subplots
 fig, axes = plt.subplots(1, 3, sharex=True, sharey=True)

@@ -2,11 +2,12 @@
 \label{ch:euler}
 
 \section{Théorème de Gauss - Ostrogradsky pour un gradient}
-Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section~XX, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde \textbf{ce} volume :
-\begin{equation*}
-  \iiint_V \Div F = \iint_A \vec{n}\cdot F\, \dif A.
-\end{equation*}
-Si on l'applique au cas particulier d'un champ $F(\vec{x})=f(\vec{x})\vec{c}$, où $f$ est un champ scalaire, et $\vec{c}$ un vecteur constant sur le domaine, on obtient
+Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section~XX, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde ce volume :
+\begin{equation}
+  \iiint_V \Div \vec{F} = \iint_A \vec{n}\cdot \vec{F}\, \dif A.
+  \label{eq:gauss}
+\end{equation}
+Si on l'applique au cas particulier d'un champ $\vec{F}(\vec{x})=f(\vec{x})\vec{c}$, où $f$ est un champ scalaire, et $\vec{c}$ un vecteur constant sur le domaine, on obtient
 \begin{equation*}
   \iiint_V \grad f\cdot\vec{c} = \iiint_V \Div f\vec{c} = \iint_A f \vec{n}\cdot \vec{c}\, \dif A.
 \end{equation*}
@@ -62,16 +63,111 @@ c’est-à-dire que les isobares sont horizontales. Le fluide est dit \cindex{ba
 
 \subsection{Poussée d'Archimède}
 
-Considérons un countour tracé dans domaine occupé par le fluide. 
+Considérons un countour $V$ tracé dans domaine occupé par le fluide. 
+La \cindex{poussée d'Archimède} est la résultate de toutes les forces de pression s'exerçant sur le contour. Il vaut, selon l'équilibre hydorstatique établit dans la rel. \eqref{eq:hydrostat_int}:
+
+\begin{displaymath}
+  \begin{split}
+    - \int_A p\n\, \dif A &= - \int_V \grad p\, \dif V = 
+                          &=  \int_V \rho \grad \gpot\, \dif V = 
+  \end{split}
+\end{displaymath}
+
+Si l'on se rappelle que $\rho\grad\gpot\,\dif V$ est le poids d'un élément de fluide, on trouve que la poussée correspond au poids du volume de fluide qu'elle encercle. En particulier, si $\grad\gpot = -g\ez$ est constant, on trouve
+
+\begin{displaymath}
+  \begin{split}
+    \text{Poussée} & =   g \ez \int_V\rho \, \dif V  \\
+                   & = - \vec{P}_f = g \rho V, 
+  \end{split}
+\end{displaymath}
+
+où, pour la dernière étape, on a en plus supposé que $\rho$ est constant, et où on a nommé $P_f$ le poids du fluide encerclé. 
+
+Si à présent on tente l'expérience mentale de remplacer le fluide encerclé par un autre corps, quelle que soit sa densité, la poussé, qui dépend de la pression autour du corps, sera parfaitement inchangée. Donc la poussée que nous venons de calculer s'applique la partie submergée de tout corps, quelle qu'il soit. 
+
+Nous aboutissons au fameux 
+
+\begin{key}{Principe d'Archimède}
+Tout corps plongé dans un fluide subit une poussée opposée au poids du volume de fluide déplacé. 
+\end{key}
+
+Ce qui est somme toute intuitif: en plongeant le corps, on a du "soulever" une quantité équivalente de fluide. 
+
+Interessons nous maintenant au \cindex{moment de force} résultat. Qu'elle que soit l'origine choisie: 
+
+\begin{displaymath}
+  \begin{split}
+    \text{Moment} &=  \int_A \vec{r} \cross (-p)\n\, \dif A \\
+  \end{split}
+\end{displaymath}
+
+On peut démontrer que 
+\begin{displaymath}
+  \int_A p (\vec{r} \times \n)\, \dif A = \int_V \vec{r}\times(\grad p)\, \dif V
+\end{displaymath}
+
+La démonstration est un peu fastidieuse\footnote{Elle implique de calculer les composantse de $\vec{r}\times \n$ une à une. Par exemple, la composante selon $\ex$ est $yn_z - zn_y$. Si on prend pour fonction $\vec{F}$ (dans \eqref{eq:gauss}) $\vec{F}=p(y\ez - z\ey)$, on démontre $\int_A p(yn_z-zn_y)\,\dif A = int_V(y \pd{p}{z} - z \pd{p}{y}\, \dif V$. On travaillant composante par composante, on trouve le résultat énoncé.} mais le résultat on va le voir est très intuitif: en utilisant la relation hydrostatique $\grad p = - \rho \grad\gpot$ on trouve: 
+
+\begin{displaymath}
+  \begin{split}
+    \text{Moment} &=  \int_V \rho \vec{r}\times(\grad \gpot)\, \dif V \\ 
+                  &= - \int_V \rho \vec{r}\,\dif V \times(-\grad \gpot)
+  \end{split}
+\end{displaymath}
 
 
-TODO: integrale du gradient de pression : poussée d'archimède égale au poids du volume déplacé
-TODO: raisonner sur le moment de force. On démontre la position centroïde du centre de poussée
-TODO: illustrer avec bateau et intéret d'avoir un centre de poussée en dessous du centre de gravité. 
 
-TODO: illustrer conséquence pour corps flottant
-TODO: conséquence pour la fonte des glaces
-TODO: donner l'exemple du densitomètre
+Elle implique que le moment de force exercé par la poussée correspond, en sens opposé, au moment de force associé au poids du fluide déplacé. localisée en $\vec{R}$ tel que $M\vec{R} = \int_V \rho \vec{r}\,\dif V$ exercerait, par son poids, une force et un moment de force opposée à la poussée : ($\text{Moment} = \vec{R} \times \vec{P}_f$). 
+
+Nous pouvons donc désormais compléter notre principe d'Archimède: 
+
+\begin{key}{Principe d'Archimède (complété)}
+Tout corps plongé dans un fluide subit une poussée opposée au poids du volume de fluide déplacé, et qui s'appliquerait
+au centroïde du coprs (en supposant un fluide de masse volumique constante). 
+\end{key}
+
+
+\begin{application}{Équilibre des barques}
+    \input{Pdftex/poussee.pdf_tex}
+    % Use \captionof to generate the figure number and caption
+    \captionof{figure}{Les bateaux et barques sont construits de façon à élever le plus possible le centre de pousée (centroïde de la partie immergée), de façon à le plasser au dessus du centre de gravité de bâteau, de façon assurer sa stabilité. Lorsque le bateau s'incline, le moment de force exercé par la poussée et le poids du bateau s'applique de façon à redresser le bateau. \label{fig:poussee}}
+\end{application}
+
+\begin{studentinvestigation}{La fonte de glace de mer}
+Expliquez pourquoi la fonte de glace de mer ne génère pas de hausse de niveau des mers (mais la fonte des glaciers, bien)
+\end{studentinvestigation}
+
+\begin{application}
+  On trouve une autre application du principe d'Archimède dans le fonctionnement du densitomètre. Un densitomètre est un cylindre lesté au fond et de masse volumique inférieure à celle du fluide dont on désire mesurer la masse volumique. Comme le fait un bateau, le cylindre s'enfoncera davantage dans un fluide moins dense, le rapport entre le volume imergé et la masse du cylindre donnant la masse volumique du fluide mesuré.  TODO: faire une figure. 
+\end{application}
+
+\begin{studentinvestigation}{Le profil de pression atmosphérique}
+
+On modélise l’atmosphère comme un fluide à masse volumique $\rho(z)$ soumis à la
+pesanteur.  
+On suppose que l’air vérifie l’équation d’état des gaz parfaits :
+\[
+P = \rho R T,
+\]
+où $P$ est la pression, $\rho$ la masse volumique, $T$ la température et $R$ la
+constante des gaz parfaits pour l’air.
+
+On admet qu’au voisinage du sol la température décroît linéairement avec
+l’altitude, selon un gradient thermique moyen d’un degré Celsius tous les
+$180\,\text{m}$ :
+\[
+  T(z) = T_0 - \dfrac{z}{180,\text{mw}}\,.
+\]
+
+\medskip
+
+En utilisant l’équilibre hydrostatique et l’équation d’état
+ci-dessus, établir l’expression du \cindex{profil vertical de pression atmosphérique}
+$P(z)$.
+
+\end{studentinvestigation}
+
 
 \section{Equation d'Euler}
 
@@ -446,13 +542,13 @@ Autrement dit, le paramètre qui permet de se déplacer le long de la courbe est
   \vec{s}(t_0) = \phi^{t_0, t}(\vec{x}_0),
   \label{eq:streakline_flot}
 \end{equation}
-Le paramètrè de la courbe est cette fois $t_0$, et non $t$. 
+Le paramètre de la courbe est cette fois $t_0$, et non $t$. 
 En parcourant la courbe, on explore les positions actuelles des particules émises successivement depuis la source $\vec{x}_0$ à différents instants passés.
 
 Ainsi, dans un écoulement non stationnaire, les lignes de courant, les lignes de chemin et les lignes de trace ne coïncident pas nécessairement : chacune décrit un aspect distinct du mouvement du fluide.
 
 \begin{figure}
-  \includegraphics{Python/01_vortex_streamlines.pdf}
+  \includegraphics[width=\textwidth]{Python/01_vortex_streamlines.pdf}
   \caption{Illustration des lignes de courant (traits pleins), trajectoire (bleue) et ligne de trace (rouge) pour un vortex se déplaçant de gauche à droite. Code interactif sur [XXX]}
   \label{fig:vortex_stream}
 \end{figure}
