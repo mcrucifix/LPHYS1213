@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{sidenotes}    % for marginfigure
+\usepackage{caption}      % optional: for controlling caption style
+\usepackage{lipsum}
+
+\begin{document}
+
+Here is some text in the main flow.
+
+\lipsum{3}
+
+\begin{marginfigure}
+  \scalebox{0.4}{\input{Pdftex/02_ecoulement_libre.pdf_tex}}
+  \caption{A margin figure with its own caption}
+  \label{fig:side}
+\end{marginfigure}
+
+\lipsum{3}
+More text continues here.
+
+\end{document}
+
