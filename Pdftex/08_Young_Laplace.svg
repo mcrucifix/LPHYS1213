@@ -188,7 +188,7 @@
          id="tspan24602"
          style="font-size:3.88056px;fill:#0000ff;stroke-width:0.264583"
          x="99.493027"
-         y="190.99901">$F_z(x) = -\F\|\od{z}{x}$</tspan></text>
+         y="190.99901">$F_z(x) = -\|F\|\od{z}{x}$</tspan></text>
     <circle
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:0.265, 0.53;stroke-dashoffset:0"
        id="path32716"
@@ -226,7 +226,7 @@
          id="tspan39812"
          style="font-size:3.88056px;stroke-width:0.264583"
          x="32.861984"
-         y="196.4223">$\Sum F_z = \gamma\diff y $\left(-\od{z}{x}(x+\diff x) +\od{z}{x}(x)\right)$</tspan></text>
+         y="196.4223">$\Sum F_z = \gamma\dif y $\left(-\od{z}{x}(x+\dif x) +\od{z}{x}(x)\right)$</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:3.88056px;line-height:1.25;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
