@@ -35,3 +35,11 @@ lphys1213.bcf-SAVE-ERROR
 lphys1213.blg
 lphys1213.nlo
 *.log
+01_Milieu_Continu.aux
+01_Milieu_Continu.aux
+02_Equation_du_Mvt.aux
+03_Ecoulements_incompressibles.fdb_latexmk
+03_Ecoulements_incompressibles.fls
+lphys1213.glo
+lphys1213.ist
+lphys1213.nls
