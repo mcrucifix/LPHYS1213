@@ -9,8 +9,8 @@ int main() {
 
   char str_buffer[5];
 
-  bounding_box(P(-1.2,-1.5), P(1.2,1.5));
-  picture(2.4,3);
+  bounding_box(P(-1.1,-1.2), P(1.1,1.2));
+  picture(2.2,2.2);
   unitlength("90pt");
 
   begin();
