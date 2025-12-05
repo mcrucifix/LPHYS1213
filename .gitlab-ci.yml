@@ -1,0 +1,11 @@
+stages:
+  - build
+
+build_pdf:
+  stage: build
+  script:
+    - echo "Running LaTeX build on local runner..."
+    - latexmk -pdf -interaction=nonstopmode 
+  only:
+    - main        # optional: run only on main branch
+  when: manual    # job must be triggered manually
