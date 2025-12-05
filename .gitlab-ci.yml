@@ -4,6 +4,7 @@ stages:
 build_pdf:
   stage: build
   script:
+    - git submodule update --init --recursive # Fetches and checks out submodule content
     - echo "Running LaTeX build on local runner..."
     - latexmk -pdf -interaction=nonstopmode 
   only:
