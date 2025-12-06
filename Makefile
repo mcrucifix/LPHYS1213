@@ -60,14 +60,15 @@ $(XP_DIR)/%.eepic: $(XP_DIR)/%.xp
 pdftex: $(SVG_PDFS) $(SVG_PDF_TEXS)
 
 # Pattern rule for SVG files (uses Inkscape for export-latex)
-# This rule generates both the .pdf and .pdf_tex files from the .svg.
 $(PDFTEX_DIR)/%.pdf $(PDFTEX_DIR)/%.pdf_tex: $(PDFTEX_DIR)/%.svg
 	@echo "--- Generating PDF/PDF_TEX from SVG file: $< using Inkscape ---"
-	@BASE_FILENAME=$$(basename $<); \
-	cd $(PDFTEX_DIR) && \
-	inkscape --export-filename=$$(notdir $$BASE_FILENAME).pdf \
+	# Execute all commands in a single shell block
+	@cd $(PDFTEX_DIR) && \
+	SVG_FILE=$$(basename $<); \
+	BASE_NAME=$$(basename $$SVG_FILE .svg); \
+	inkscape --export-filename=$$BASE_NAME.pdf \
 	--export-latex \
-	$$(notdir $<)
+	$$SVG_FILE
 
 # ----------------------------------------------------
 # 5. Cleanup
