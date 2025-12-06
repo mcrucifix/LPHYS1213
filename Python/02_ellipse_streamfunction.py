@@ -66,7 +66,7 @@ contour = plt.contour(X, Y, v, 50, colors='blue', linewidths=0.8)
 # Highlight the obstacle boundary
 obstacle_boundary = plt.contour(X, Y, OBSTACLE_MASK, levels=[0.5], colors='red', linewidths=2)
 
-plt.title(f'Stream Function ($\psi$) Around Elliptical Obstacle (Iterations: {MAX_ITER})')
+plt.title(f'Stream Function ($\\psi$) Around Elliptical Obstacle (Iterations: {MAX_ITER})')
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.axis('equal')
