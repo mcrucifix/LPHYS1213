@@ -6,7 +6,7 @@ build_pdf:
   script:
     - git submodule update --init --recursive # Fetches and checks out submodule content
     - echo "Running LaTeX build on local runner..."
-    - latexmk -pdf -interaction=nonstopmode 
+    - make
   only:
     - main        # optional: run only on main branch
   when: manual    # job must be triggered manually
