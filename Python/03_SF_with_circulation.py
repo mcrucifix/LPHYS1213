@@ -22,23 +22,6 @@ plt.rcParams.update({
 })
 # -----------------------------------
 
-# Parameters
-U = 1.0          # free-stream velocity
-R = 1.0          # cylinder radius
-N = 400          # resolution
-
-# Cartesian grid
-x = np.linspace(-3*R, 3*R, N)
-y = np.linspace(-3*R, 3*R, N)
-X, Y = np.meshgrid(x, y)
-
-# Polar coordinates
-r = np.sqrt(X**2 + Y**2)
-theta = np.arctan2(Y, X)
-
-# Mask inside the cylinder
-mask = (r < R)
-
 
 def plot_stream_and_potential(Gamma, filename="Out.pdf"):
     """Plot streamfunction (solid) and potential (dashed) for given circulation Gamma."""
