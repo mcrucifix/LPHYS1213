@@ -27,14 +27,16 @@ create_release:
   needs:
     - job: build_pdf # Ensures this job runs after build_pdf and inherits its artifacts
   script:
-    # 1. Construct the complete URL
-    - PDF_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${PDF_JOB_ID}/artifacts/file/lphys1213.pdf"
-    #
+    # 1. Get the Job ID (Assuming you have a variable set by a previous script/environment)
+    # The Job ID is needed to build the artifact URL. Assuming PDF_JOB_ID is passed or defined.
+    # FIX: Use single $ for shell variable access (PDF_JOB_ID will be empty if not defined, which might cause the error)
+    - echo "hello"
+    - export PDF_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${PDF_JOB_ID}/artifacts/file/lphys1213.pdf"
     # 2. Print the URL (for verification in logs)
-    - echo "PDF Artifact URL: ${PDF_URL}"
-    #
+    - echo "PDF Artifact URL':'' ${PDF_URL}"
     # 3. Create the release with the link in the description
-    - release-cli create --name "LPHYS-1213 Release $CI_COMMIT_SHORT_SHA" --tag-name $CI_COMMIT_REF_SLUG --description "The PDF artifact is available here: [Download lphys1213.pdf](${PDF_URL})"
+    - release-cli create --name "LPHYS-1213 Release ${CI_COMMIT_SHORT_SHA}" --tag-name "${CI_COMMIT_REF_SLUG}" --description "The PDF artifact is available here':'' [Download lphys1213.pdf](${PDF_URL})"
   only:
     - main
   when: manual # Make this manual to control when a release is made
+
