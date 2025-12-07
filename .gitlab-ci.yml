@@ -52,7 +52,11 @@ create_release:
     # 2. Print the URL (for verification in logs)
     - echo "PDF Artifact URL':'' ${PDF_URL}"
     # 3. Create the release with the link in the description
-    - release-cli create --name "LPHYS-1213 Release ${CI_COMMIT_SHORT_SHA}" --tag-name "${CI_COMMIT_REF_SLUG}" --description "The PDF artifact is available here':'' [Download lphys1213.pdf](${PDF_URL})"
+    - |
+      glab release create "${CI_COMMIT_REF_SLUG}" \
+        --name "LPHYS-1213 Release ${CI_COMMIT_SHORT_SHA}" \
+        --notes "The PDF artifact is available here: [Download lphys1213.pdf](${PDF_URL})" \
+        --assets-link "{\"name\":\"lphys1213.pdf\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
   only:
     - main
   when: manual # Make this manual to control when a release is made

@@ -5,3 +5,7 @@
 - Autres nombres adimensionels
 - referencer les binder
 - séparer le chapitre 2 en partie cinématique et dynamique. Créer un binder / jupyter pour illustrer lignes de courant, streaklines etc. 
+
+
+- ajouter viscosité obstacle dans écoulement laminaire avec l'équtaino de NS. Formule du cx
+- écoulement turbulent ! important pour la viscosité, obstacle, et problème de sédimentation
