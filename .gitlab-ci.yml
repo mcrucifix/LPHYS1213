@@ -1,12 +1,40 @@
 stages:
   - build
+  - release # New stage
 
 build_pdf:
   stage: build
   script:
-    - git submodule update --init --recursive # Fetches and checks out submodule content
+    - git submodule update --init --recursive
     - echo "Running LaTeX build on local runner..."
     - make
+    # NEW: Save the job ID to an environment file
+    - echo "PDF_JOB_ID=$CI_JOB_ID" > artifacts_vars.env 
+  artifacts:
+    paths:
+      - lphys1213.pdf
+      - artifacts_vars.env # NEW: Archive the variable file
+    reports:
+      dotenv: artifacts_vars.env # NEW: Make variables available to subsequent jobs
+    expire_in: 1 week
   only:
-    - main        # optional: run only on main branch
-  when: manual    # job must be triggered manually
+    - main
+  when: manual
+
+create_release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  needs:
+    - job: build_pdf # Ensures this job runs after build_pdf and inherits its artifacts
+  script:
+    # 1. Construct the complete URL
+    - PDF_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${PDF_JOB_ID}/artifacts/file/lphys1213.pdf"
+    
+    # 2. Print the URL (for verification in logs)
+    - echo "PDF Artifact URL: ${PDF_URL}"
+    
+    # 3. Create the release with the link in the description
+    - release-cli create --name "LPHYS-1213 Release $CI_COMMIT_SHORT_SHA" --tag-name $CI_COMMIT_REF_SLUG --description "The PDF artifact is available here: [Download lphys1213.pdf](${PDF_URL})"
+  only:
+    - main
+  when: manual # Make this manual to control when a release is made
