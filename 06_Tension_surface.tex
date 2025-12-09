@@ -1,4 +1,4 @@
-\chapter{Conditions aux frontières}
+\chapter{Tension de surface}
 
 A l'intérieur d'un fluide, nous l'avons vu, les intéractions entre les atomes ou les molécules se manifestent, à l'échelle macroscopique, par de la \emph{viscosité}, et dans les fluides courants tels que l'air, l'eau, l'huile on peut admettre que la vicosité est isotrope et linéaire. C'est l'hypothèse Newtonienne. A l'échelle microscopique, nous le savons, les intéractions resultent de la combinaison de forces répulsives, à courte distance et associées à l'interpénétration des couches électroniques, et des forces attractives  telles que les forces de Van der Waals et les ponts hydrogène, qui agissent à plus grande distance.
 
@@ -8,10 +8,53 @@ Points à mentionner:
 
 - Cependant il faut expliquer que la tension de surface est parallèle à l'interface. 
 
-Refs: 
 
 
+\begin{displaymath}
+  \Delta p = \int_A \gamma \Div \n\,dA
+\end{displaymath}
 
-\input{Pdftex/07_tension_1.pdf_tex}
+Loi de Jurin
 
-\input{Pdftex/08_Young_Laplace.pdf_tex}
+Application: ondes de surface
+
+à merger
+
+\subsection{Argument thermodynamique}
+
+Une molécule dans la masse de fluide (le \emph{bulk}) est liée à ses voisines par  un potentiel de Lenard-Jones, négatif. Une molécule en \emph{surface} du fluide est liée à moins de molécules voisines. On en conclut donc que son \cindex{potentiel de liaison} est moins négatif qu'une molécule éloignée de la surface. Ainsi, on voit que, pour une même masse de fluide, agrandir l'interface requiert de rompre des liaison, ou encore d'augmenter l'énergie libre de la masse de fluide. Voici un premier argument thermodynamique simple qui permet d'attribuer une énergie libre proportionnelle à la surface de fluide, et de comprendre que toute autre contrainte mise à part, le fluide évolue de façon à minimiser la surface. 
+
+On peut noter $\gamma$ le coefficient de \cindex{tension du surface}, correspondant au rapport entre la variation d'énergie libre et d'aire de l'interface avec le vide
+
+\begin{displaymath}
+  H = \gamma A;\quad \dif H = \gamma \dif A
+\end{displaymath}
+
+
+\subsection{Argument mécanique}
+
+Expérimentalement, on constate que pour augmenter la surface de contact d'un fluide (par exemple, un film mince), il faut exercer une force parallèle à l'interface. (ici donner des détails sur l'expérience). A priori, cet argument est cohérente avec l'approche thermodynamique: un travail obtenu par un déplacement parallèle à la force exercée confère l'énergie nécessaire au système pour élever son énergie libre. 
+
+Pour une double interface vide -- liquide -- vide présentant un côté $L$, 
+
+\begin{displaymath}
+  \dif H = 2 \gamma L \dif x = F \dif x \Longrightarrow  F = 2 \gamma L.
+\end{displaymath}
+
+Cependant, à y réfléchir, ce raisonnement aboutit à un paradoxe. Dans un premier temps, nous admettons que les molécules à la surface sont tirées par leurs voisines du dessous, sans voisines du dessus pour les retenir. La force nette qu'elles subissent devraient donc être dirigée vers le bas. Hors, dans la seconde étape du raisonnement, nous argumentons que la tension de surface s'exerce parallèlement --- et non perpendiculairement --- à l'interface. 
+
+Pour résoudre ce paradoxe, il est nécesasire de bien réfléchir à l'ensemble de molécules sur lequel la force s'exerce. Considérons un fluide avec une interface que nous divisons, mentalement, en deux. La tension de surface qui nous intéresse est la force nette qu'exerce disons le bloc de droite, sur le bloc de gauche. Dans la masse du fluide, chaque molécule est soumise à des forces attractives et répulsives qui, dans l'ensemble, sont isotropes et s'annulent. En profondeur, collectivement, les molécules du bloc de droite exercent ces forces répulsives et attractives sur le bloc de gauche, mais ces forces se compensent. Près de la surface le bilan évolue. 
+
+Comme nous l'avons écrit, les molécules exercent entre elles des forces répulsives et attractives. Les forces répulsives résultent d'intéractions à courte portée. On peut les interpréter comme l'expression des chocs intermoléculaires qui se redistribuent de façon isotrope. [verifier le papier de Barry -- pression negative ] L'intensité de ces intéractions diminue
+
+Considérons maintenant les molécules en surface. Si on se concentre sur une molécule en particulier, en effet, la somme des forces est dirigée vers le bas. Cette molécule est accélérée vers le bas, mais d'autres molécules remontent. 
+
+relire car je pense qu'il y a une différence entre le papier de Marchand et de Berry 
+
+Berry: équilibre dynamique. Il faut prendre en compte l'advection de momentum entre la surface et l'interface. On a les forces attractives qui diminent d'intensité; les forces attractives à mon avis qui restent les mêmes, mais si on regarde le long d'une ligne imaginaire ces forces + le transfert de momentum se compensent. Donc pour expliquer cela il faut déjà expliquer que du point de vue Eulérien l'advection agit effectivement comme une force. 
+
+Sur l'horizontal: les forces attractives restent les mêmes, mais les forces à courte portée diminuent. Donc il y a une force nette le long de l'horizontal. 
+
+Tandis que Marchand prétent que les forces attractives n'ont pas la même intensité dans la direction horizontale et la direction verticale. 
+
+
