@@ -23,7 +23,7 @@ $makeindex = $nomencl_run; # Set the general makeindex variable to handle the cu
 @default_files = ($mainfile);
 $root_filename = $mainfile;
 
-$biber = '~/.venvs/auto/bin/python3 makebib.py && biber %O %S';
+$biber = 'biber %O %S';
 # Use LuaLaTeX instead of pdfLaTeX
 $pdflatex = 'lualatex --synctex=1 %O %S';
 $pdf_mode = 1;    # produce PDF
