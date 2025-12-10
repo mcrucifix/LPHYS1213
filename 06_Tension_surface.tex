@@ -2,25 +2,46 @@
 
 A l'intérieur d'un fluide, nous l'avons vu, les intéractions entre les atomes ou les molécules se manifestent, à l'échelle macroscopique, par de la \emph{viscosité}, et dans les fluides courants tels que l'air, l'eau, l'huile on peut admettre que la vicosité est isotrope et linéaire. C'est l'hypothèse Newtonienne. A l'échelle microscopique, nous le savons, les intéractions resultent de la combinaison de forces répulsives, à courte distance et associées à l'interpénétration des couches électroniques, et des forces attractives  telles que les forces de Van der Waals et les ponts hydrogène, qui agissent à plus grande distance.
 
-Points à mentionner: 
+De façon un peu schématiques, nous pouvons considérer que les forces attractives se manifestent la plus part du temps, alors que les forces répulsives se manifestent lorsque les molécules s'entrechoquent. On pourrait comparer ces dernières aux rebonds élastiques entre des billes qui se percutent. 
 
-- accéleration positive nette des molécules en surface; l'équilibre est dynamique (les molécules sont constamment remplacées)
+Adoptons maintenant un point de vu plus macroscopique. Nous savons que si nous plaçon une surface témoin à l'intérieur du fluide, cette dernière va subir une force proportiennelle à la surface exposée. En grande partie cette force exprime l'échange de quantité de mouvement causée par le choc des molécules. C'est la pression cinématique, $p_k$, que l'on peut estimer en physique statistique $p_k = \rho k T$. 
 
-- Cependant il faut expliquer que la tension de surface est parallèle à l'interface. 
+Dans les liquides, cette pression est modifiée par les intéractions intermoléculaires dominées par des phénomènes d'attraction. 
+
+On peut donc écrire \cite{berry71aa}:
+
+\begin{equation}
+  p = p_k + p_f, 
+  \label{eq:pression}
+\end{equation}
+
+où $p_f$ est la pression dite "statique", associée au intéractions intermoléculaires d'attraction. 
+On imagine une surface témoin: la pression "statique" résulte de la force exercée \emph{par} les molécules d'un côté de la surface (disons, à gauche) \emph{sur} les molécules de l'autre côté de la surface. Cette pression statique est généralement négative (il y a bien attraction). C'est uniquement dans le cas de pression extrêmems, ou la distance intermoléculaire est réduite, que la pression statitique devient également positive. 
 
 
+A l'intérieur du fluide, loin de la surface ou de l'interface avec d'autres matériaux, nous pouvons faire l'hypothèse que le milieu est \cindex{isotrope} et c'est d'ailleurs pour cette raison que les forces exercées contre une surface témoin sont indépendantes de la surface témoin.
 
-\begin{displaymath}
-  \Delta p = \int_A \gamma \Div \n\,dA
-\end{displaymath}
+Près de la surface, l'isotropie est rompue. Il faut donc définir une pression "normale" $p_n$, qui s'exercerait sur une surface témoin perpendiculaire a l'interface, et la distinguer d'une pression "tangentielle" $p_k$. 
 
-Loi de Jurin
 
-Application: ondes de surface
+\subsection{Point de vue macroscopique : pression statique et dynamique}
 
-à merger
+Le point de vue macroscopique nous amène à réfléchir à la distribution de la pression. L'hypothèse centrale ici est que la pression cinématique est fonction de la densité du fluide; cette densité diminue près de la surface, du fait de l'équilibre dynamique entre la phase liquide et la phase vapeur. Nous faisons aussi l'hypothèse que la pression cinématique, qui résulte des chocs de molécules, est isotrope. Nous venons de déduire que $p_k$ diminue près de la surface. 
 
-\subsection{Argument thermodynamique}
+D'autre part, le fluide est au repos, il n'y a pas d'accélération verticale à l'échelle macroscopique. Il en résulte que $\partial{p_n}{z}=0$. Comme $p_k$ diminue près de la surface, $p_{f,n}$, la composante normale de la pression statique, doit être moins négative; donc augmenter en valeur absolue. 
+
+Explique que c'est cohérent (figure 7 de \cite{marchand11aa}) : si on considère une surface témoin horizontale, vu que les attractions sont long range, il y a moins de molécules à 'tirer' au fur et à mesure qu'on se rapproche de la surface (ou encore, ce qui est équivalent, so on s'intéresse à la force exercée sur la surface supérieure: il y a moins de molécules qui tirent). 
+
+En revanche, la symmétrie des forces d'attractions est préservée dans la directions tangentielle: $p_{f,t}$ n'a aucune raison de varier quand on s'approche de la surface. Donc, $p_{k,k}$ diminue (les forces "répulsives"), mais $p_{f,t}$ reste constant: c'est équivalent à dire qu'il y une force tangentielle nette qui s'exerce sur un élément de volume en surface, dans toutes  les directions. 
+
+TODO: donner l'expression de la force, avec proportionalité $\gamma$. 
+
+\subsection{Point de vue microscopique : accélération verticale des molécules}
+
+Du point de vue microscopique, une molécule sera attirée par des molécules en dessous d'elle, mais elle n'a pas de voisine au dessus pour la retenir. On déduit donc que, la plupart du temps, elle sera soumise à une accélération vers le bas. Cependant, une  balle élastique qui seraient lâchée  à la surface de la terre et soumise au géopotentiel, elle subit des choces repulsifs lorsqu'elle rencontre ses voisines de de l'étage inférieur. En moyenne, nous pouvons donc considérer sa position comme stationnaire, et les forces, en moyenne, se compensens le long de la vericale. 
+
+
+\subsection{Point de vue thermodynamique : tension de surface}
 
 Une molécule dans la masse de fluide (le \emph{bulk}) est liée à ses voisines par  un potentiel de Lenard-Jones, négatif. Une molécule en \emph{surface} du fluide est liée à moins de molécules voisines. On en conclut donc que son \cindex{potentiel de liaison} est moins négatif qu'une molécule éloignée de la surface. Ainsi, on voit que, pour une même masse de fluide, agrandir l'interface requiert de rompre des liaison, ou encore d'augmenter l'énergie libre de la masse de fluide. Voici un premier argument thermodynamique simple qui permet d'attribuer une énergie libre proportionnelle à la surface de fluide, et de comprendre que toute autre contrainte mise à part, le fluide évolue de façon à minimiser la surface. 
 
@@ -30,31 +51,42 @@ On peut noter $\gamma$ le coefficient de \cindex{tension du surface}, correspond
   H = \gamma A;\quad \dif H = \gamma \dif A
 \end{displaymath}
 
+travail pour agrandir une surface = H. 
 
-\subsection{Argument mécanique}
-
-Expérimentalement, on constate que pour augmenter la surface de contact d'un fluide (par exemple, un film mince), il faut exercer une force parallèle à l'interface. (ici donner des détails sur l'expérience). A priori, cet argument est cohérente avec l'approche thermodynamique: un travail obtenu par un déplacement parallèle à la force exercée confère l'énergie nécessaire au système pour élever son énergie libre. 
-
-Pour une double interface vide -- liquide -- vide présentant un côté $L$, 
+On en déduit la force de façon cohérente.Pour une double interface vide -- liquide -- vide présentant un côté $L$, 
 
 \begin{displaymath}
   \dif H = 2 \gamma L \dif x = F \dif x \Longrightarrow  F = 2 \gamma L.
 \end{displaymath}
 
-Cependant, à y réfléchir, ce raisonnement aboutit à un paradoxe. Dans un premier temps, nous admettons que les molécules à la surface sont tirées par leurs voisines du dessous, sans voisines du dessus pour les retenir. La force nette qu'elles subissent devraient donc être dirigée vers le bas. Hors, dans la seconde étape du raisonnement, nous argumentons que la tension de surface s'exerce parallèlement --- et non perpendiculairement --- à l'interface. 
+Mais alors, comment les insectes font pour tenir sur la surface si la force est tangentielle ? Comme on va le voir: parce qu'ils courbent la surface (analogue à la tension dans une corde)
 
-Pour résoudre ce paradoxe, il est nécesasire de bien réfléchir à l'ensemble de molécules sur lequel la force s'exerce. Considérons un fluide avec une interface que nous divisons, mentalement, en deux. La tension de surface qui nous intéresse est la force nette qu'exerce disons le bloc de droite, sur le bloc de gauche. Dans la masse du fluide, chaque molécule est soumise à des forces attractives et répulsives qui, dans l'ensemble, sont isotropes et s'annulent. En profondeur, collectivement, les molécules du bloc de droite exercent ces forces répulsives et attractives sur le bloc de gauche, mais ces forces se compensent. Près de la surface le bilan évolue. 
+\subsection{Surface courbe}
 
-Comme nous l'avons écrit, les molécules exercent entre elles des forces répulsives et attractives. Les forces répulsives résultent d'intéractions à courte portée. On peut les interpréter comme l'expression des chocs intermoléculaires qui se redistribuent de façon isotrope. [verifier le papier de Barry -- pression negative ] L'intensité de ces intéractions diminue
+\begin{figure}
+  \begin{center}
+    \input{Pdftex/07_tension_1.pdf}
+  \end{center}
+  \caption{Légende à écrire}\label{fig:07_tension_1}
+\end{figure}
 
-Considérons maintenant les molécules en surface. Si on se concentre sur une molécule en particulier, en effet, la somme des forces est dirigée vers le bas. Cette molécule est accélérée vers le bas, mais d'autres molécules remontent. 
-
-relire car je pense qu'il y a une différence entre le papier de Marchand et de Berry 
-
-Berry: équilibre dynamique. Il faut prendre en compte l'advection de momentum entre la surface et l'interface. On a les forces attractives qui diminent d'intensité; les forces attractives à mon avis qui restent les mêmes, mais si on regarde le long d'une ligne imaginaire ces forces + le transfert de momentum se compensent. Donc pour expliquer cela il faut déjà expliquer que du point de vue Eulérien l'advection agit effectivement comme une force. 
-
-Sur l'horizontal: les forces attractives restent les mêmes, mais les forces à courte portée diminuent. Donc il y a une force nette le long de l'horizontal. 
-
-Tandis que Marchand prétent que les forces attractives n'ont pas la même intensité dans la direction horizontale et la direction verticale. 
+\begin{figure}
+  \begin{center}
+    \input{Pdftex/08_Young_Laplace.svg}
+  \end{center}
+  \caption{Légende à écrire}\label{fig:07_tension_1}
+\end{figure}
 
 
+On aboutit à la formule: 
+
+\begin{displaymath}
+  \Delta p = \gamma \pd[2]{z(x)}{x}. 
+\end{displaymath}
+
+Montrer ce que ça donne pour une sphère, et une bulle. 
+
+\subsection{Interfaces triples: Young - Laplace}
+
+
+\subsection{Loi de Jurin}
