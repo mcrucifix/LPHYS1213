@@ -1,0 +1,20 @@
+\begin{tikzpicture}[scale=2.2] % adjust scale so total width ≈ 6 cm
+  \tikzset{plate/.style={fill=green!70!black, draw=none}}
+  
+  % Lower plate: from (-0.6,-0.1) to (2.6,0.1)
+  \draw[plate] (-0.6,-0.1) rectangle (2.6,0.1);
+  
+  % Upper plate: from (-0.6,0.9) to (2.6,1.1)
+  \draw[plate] (-0.6,0.9) rectangle (2.6,1.1);
+
+  % Flow arrows at y = 0.2,0.4,0.6,0.8
+  \draw[->, thick] (0,0.2) -- (0.2,0.2);
+  \draw[->, thick] (0,0.4) -- (0.4,0.4);
+  \draw[->, thick] (0,0.6) -- (0.6,0.6);
+  \draw[->, thick] (0,0.8) -- (0.8,0.8);
+
+  % Velocity arrow on the right side of the upper plate
+  % Length approx = 1.0
+  \draw[->, thick] (2.6,1.0) -- ++(1.0,0) node[right] {$\vec{U}$};
+\end{tikzpicture}
+
