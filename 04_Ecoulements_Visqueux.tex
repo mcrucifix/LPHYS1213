@@ -3,15 +3,70 @@
 
 \section{Equation de Navier-Stokes pour fluide Newtonien, incompressible}
 
-Dans le chapitre~\ref{ch:euler}, nous avons établi l'équation d'Euler pour un fluide parfait, en négligeant les effets de la viscosité. Cependant, dans la réalité, les fluides réels (comme l'eau ou l'air) présentent une résistance interne au mouvement, due aux frottements entre couches de fluide. Cette résistance se manifeste comme une diffusion de la quantité de mouvement, analogue à la diffusion de la chaleur dans un solide. En ajoutant ce terme diffusif à l'équation d'Euler, on obtient immédiatement l'\cindex{équation de Navier-Stokes} pour un fluide incompressible :
+Dans le chapitre~\ref{ch:euler}, nous avons établi l'équation d'Euler pour un fluide parfait, en négligeant les effets de la viscosité. Cependant, dans la réalité, les fluides réels (comme l'eau ou l'air) présentent une résistance interne au mouvement, due aux frottements entre couches de fluide. 
+
+
+\begin{figure}
+  \begin{center}
+    \input{Tikz/couette_plane.tikz}
+  \end{center}
+  \caption{Expérience idéalisée représentant la viscosité d'un fluide entre deux plaques présentant entre elles un différentiel de vitesse  $U$ sur une épaisseur $h$. La force par unité de surface ($A$) à exercer sur la plaque supérieure en régime stationnaire est $\od{\vec{F}}{A}= \mu U/h$}\label{fig:couette}
+\end{figure}
+
+On aborde la notion de viscosité dans le régime laminaire par l'expérience de l'écoulement de Couette. Soit une couche de fluide prise entre deux plaques présentant entre elles une différence de vitesse $\vec{U}$. Si le fluide est suffisament visqueux, la couche suffisament fine, et la vitesse suffisament petite (ce sont des éléments que nous allons préciser), la vitesse du fluide adopte un profil linéaire, sans glissement par rapport aux deux parois mobiles, et la force par unité d'aire ($A$) à exercer sur la plaque supérieure pour conserver un régime stationnaire  est $\od{\vec{F}}{A}=\mu \vec{U}/h$, ce qui est équivalent à affirmer que la force par unité d'aire exercée par le fluide sur cette plaque est $-\od{\vec{F}}{A}$. 
+
+L'expérience est idéalisée à beaucoup d'égards et il ne faut pas se laisser distraire par les intéractions spécifiques entre le fluide et la plaque. Le point important est que le fluide présente une \emph{résistance au cisaillement}. Nous pouvons formaliser le phénomène à l'échelle d'un élement fluide. Considérons trois éléments, empilé selon l'axe $\ez$, caractérisés par une vitesse horizontale $U(z)$. A l'échelle de ce volume élémentaire, l'expression linéaire adoptée pour l'écoulement de Couette suggère que le bloc supérieur exerce une force de composante horizontale  $\dif F_x = -\mu \od{U}{z}(z+\frac{1}{2}\dif z)\dif x\dif y$ sur le bloc intermédiaire, et le bloc inférieur exerce une force de composante horizontale $\dif F_x = \mu \od{U}{z}(z-\frac{1}{2}\dif z)\dif x\dif y$. 
+
+On peut donc modéliser la somme des forces de viscosité, par unité de volume, dans cet écoulement laminaire $U(z)$ par 
+
+\begin{equation}
+  \dif F_x = \od{}{z} \mu \od{U}{z} \dif V =  \mu \od[2]{U}{z} \dif V. 
+  \label{eq:newtonnien}
+\end{equation}
+
+
+On est donc tenté de compléter le raisonnement qui a a abouti à l'équatieur d'Euler \eqref{eq:euler} pour y intégrer ce phénomène de viscosité. Considérons d'abord exclusivement l'effet d'un cisaillement selon $\ez$, sur la composante $\ex$ de la vitesse:
+
+\begin{displaymath}
+  \rho \, \Dt{u_x} = - \rho \, \grad \gpot - \grad p + \mu \od[2]{u_x}{z} 
+\end{displaymath}
+
+Par symmétrie, un cisaillement selon $\ey$ aura le même effet, qui doit donc être ajouté à la même équation
+
+\begin{displaymath}
+  \rho \, \Dt{u_x} = - \rho \, \grad \gpot - \grad p + \mu ( \od[2]{u_x}{x} + \od[2]{u_x}{y} )
+\end{displaymath}
+
+Avec un peu d'audace, nous pourrions suggérer qu'un différentiel de vitessse selon l'axe $\ex$ génère une force que l'on peut paramétriser de la même manière (résistance à l'étirement):
+
+\begin{equation}
+  \rho \, \Dt{u_x} = - \rho \, \grad \gpot - \grad p + \mu ( \od[2]{u_x}{x} + \od[2]{u_x}{y} +  \od[2]{u_x}{z} )
+  \label{eq:diffusion_ux}
+\end{equation}
+
+On peut justifier notre audace en reconnaissant, dans l'équation \eqref{eq:diffusion_ux} un analogue à l'équation de la chaleur. De la même façon que l'énergie se diffuse par l'effet cumulé des chocs moléculaires, la quantité de mouvement de \emph{diffuse}, également par échange lors des collisions. L'analogie est très imparfaite car en réalité les force d'attractions jouent un rôle majeur dans le phénomène de diffusion. Nous allons donc admettre cette équation. Elle est bien correcte. C'est l'équation de Navier-Stokes pour un fluide newtonien incompressible, mais elle doit être justifiée plus soigneusement. C'est l'objet de la section \ref{sect:ns}. 
+
+\begin{figure}
+  \begin{center}
+    \input{Tikz/04_elementary_volume.tikz}
+  \end{center}
+  \caption{Bilan des forces de viscosité causées par le cisaillement sur un volume élémentaire}
+\end{figure}
+
+
+En trois dimensions, cette équation de Navier-Stokes devient: 
+
 \begin{displaymath}
   \rho \Dt{\u} = -\grad p - \rho \grad \gpot + \mu \lapl \u,
 \end{displaymath}
-où $\lapl \u = (\lapl u_x, \lapl u_y, \lapl u_z)$ est le \cindex{laplacien} du champ de vitesse, et $\mu$ le \cindex{coefficient de viscosité dynamique}. Ce coefficient caractérise la résistance du fluide au cisaillement. Voici quelques valeurs typiques pour différents fluides à température ambiante :
+où $\lapl \u = (\lapl u_x, \lapl u_y, \lapl u_z)$ est le \cindex{laplacien} du champ de vitesse, et $\mu$ le \cindex{coefficient de viscosité}. 
+
+TODO: ATTENTION: Definir viscosité cinématique: $\nu = \mu/\rho$.  CHECK UNITÉS !!! Quelques valeurs typiques pour différents fluides à température ambiante :
+
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
-Fluide & $\mu$ (Pa$\cdot$s) & Conditions \\
+Fluide & $\nu$ (Pa$\cdot$s) & Conditions \\
 \hline
 Eau & $10^{-3}$ & 20$^\circ$C \\
 \hline
@@ -25,21 +80,34 @@ Miel & $10$ & 20$^\circ$C \\
 \end{center}
 Cette équation sera suffisante pour décrire la plupart des écoulements étudiés dans ce cours, y compris l'\cindex{écoulement de Poiseuille}.
 
-Cependant, pour une compréhension plus profonde, nous allons maintenant dériver cette équation de manière rigoureuse, en partant des principes fondamentaux de la mécanique des milieux continus.
 
-\begin{redmargin}
-\section{Dérivation formelle de l'équation de Navier-Stokes}
+
+
+
+\section{Tenseur des contraintes}
 
 Dans le chapitre~\ref{ch:euler}, nous avons utilisé la \cindex{pression statique} pour décrire les forces normales s'exerçant sur un élément de volume de fluide. Nous avions écrit explicitement :
 \begin{displaymath}
   \dif\vec{f} = p \vec{n} \dif A.
 \end{displaymath}
-Cette expression suppose que la force est purement normale à la surface, ce qui est valable pour un fluide parfait. Pour un fluide visqueux, il faut généraliser cette expression en introduisant un \cindex{tenseur des contraintes} $\tensor{\tau}$, tel que :
-\begin{displaymath}
-  \dif\vec{f} = \tensor{\tau} \vec{n} \dif A.
-\end{displaymath}
-Ce tenseur permet de prendre en compte non seulement les forces normales (pression), mais aussi les forces tangentielles (cisaillement). Le cas particulier du fluide parfait est retrouvé pour $\tau_{ij} = -p \delta_{ij}$, soit $\tensor{\tau} = -p \tensor{\delta}$.
+Cette expression suppose que la force est purement normale à la surface, ce qui est valable pour un fluide parfait.
+Or, nous l'avons vu, la viscosité se manifeste par des forces \emph{tengentielles} à la surface témoin. Ces forces sont proportionnelles à la surface témoin (comme les forces de pressions) mais il nous faut un formalisme mathématique qui permette d'exprimer leur caractère directionnel. C'est l'objet du \cindex{tenseur des contraintes}, $\tensor{\tau}$. La force associée à ce tenseur est maintenant directionnelle (contrairement à sa forme dans \eqref{eq:hydrostat_int} et \eqref{eq:hydrostat_diff}:
 
+
+\begin{displaymath}
+  \dif\vec{F} = \tensor{\tau} \vec{n} \dif A.
+\end{displaymath}
+
+Ce tenseur permet de prendre en compte non seulement les forces normales (pression), mais aussi les forces tangentielles (cisaillement). 
+
+On retrouve le fluide parfait pour  $\tau_{ij} = -p \delta_{ij}$, soit $\tensor{\tau} = -p \tensor{\delta}$.
+
+\todo{donner un exemple deux 2 des contraintes dans une dimension . ou alors laisser ça au modèle de Stokes}
+
+L'enjeu est de développer une expression de $\tau$ pour le fluide Newtonien. C'est l'objet de la section suivante. 
+
+\begin{redmargin}
+  \section{Dérivation formelle de l'équation de Navier-Stokes \label{sect:ns}}
 
 Pour paramétrer $\tensor{\tau}$, nous partons du \cindex{tenseur des déformations} $\tensor{e}$, défini comme la partie symétrique du gradient de vitesse :
 \begin{displaymath}
@@ -217,14 +285,16 @@ Le débit volumique $Q$ est obtenu en intégrant sur la section du cylindre :
 Q = \int_0^a u_x(r) 2\pi r \, \dif r = -\frac{\pi a^4}{8\mu} \od{p}{x}.
 \end{displaymath}
 
-% \subsection{Validité de l'approximation}
-% Cette solution suppose un écoulement laminaire et pleinement développé. En pratique, elle est valable si :
-% \begin{itemize}
-%     \item Le nombre de Reynolds est faible ($Re \ll 1$).
-%     \item Le tuyau est suffisamment long pour que les effets d'entrée soient négligeables.
-% \end{itemize}
+\subsection{Validité de l'approximation}
+
+ICI: c'est le moment d'attirer l'attention sur les conditions relatives à la symmétrie, et l'absence de termes d'advection. Nous avons donc considérer que la symmétrie du problème se reflète dans la symmétrie des lignes de courant, ce qui génère $\pd{u}{x}=0$ et $\pd{u}{r}=0$  donc annihile tous les termes d'advection. En pratique c'est ce qu'on appelle un écoulement laminaire et developpé. 
+
+ \begin{itemize}
+     \item Le nombre de Reynolds est faible ($Re \ll 1$) (ATTENTION: PAS ENCORE DEFINI).
+     \item Le tuyau est suffisamment long pour que les effets d'entrée soient négligeables.
+ \end{itemize}
 %
-Une analyse des ordres de grandeur permet de déterminer à quelle distance de l'entrée du tuyau ces hypothèses sont satisfaites.
+TODO: Une analyse des ordres de grandeur permet de déterminer à quelle distance de l'entrée du tuyau ces hypothèses sont satisfaites.
 
 
 % \section{Ecoulement dans un plan}
@@ -272,3 +342,9 @@ Une analyse des ordres de grandeur permet de déterminer à quelle distance de l
 % \end{displaymath}
 %
 % si pertinent on peut ensuite se demander 'à quelle profondeur du tuyau' tout cela est acceptable. Cela introduit une première analyse des ordres de grandeur. 
+
+\section{Ecoulement très visqueux outour d'une sphère}
+
+Formule de stokes \cite[][sect. 7. p.223]{acheson01aa}
+
+Implication pour la sédimentation
