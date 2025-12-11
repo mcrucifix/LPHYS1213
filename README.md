@@ -7,6 +7,11 @@
 
 This repository is a course template that uses the shared `latex-tools` submodule.
 
+```
+git submodule init 
+git submodule update
+```
+
 ## Setup
 
 **epix** is used for creating mathematical figures.  
