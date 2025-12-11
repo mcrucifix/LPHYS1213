@@ -49,7 +49,7 @@ node[above] {$\mu\,\frac{\mathrm dU}{\mathrm dz}\!\left(z+\frac{1}{2} \dif z\rig
 
 % --- Dimension markers ---
 % Height = dz
-\draw[<->] (-1.2,0. ) -- (-2.2,1. )
+\draw[<->] (-1.2,0. ) -- (-1.2,1. )
   node[midway,left] {$\dif z$};
 
 % Length = dx

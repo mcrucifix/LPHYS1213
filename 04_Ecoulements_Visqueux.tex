@@ -15,6 +15,17 @@ Dans le chapitre~\ref{ch:euler}, nous avons établi l'équation d'Euler pour un 
 
 On aborde la notion de viscosité dans le régime laminaire par l'expérience de l'écoulement de Couette. Soit une couche de fluide prise entre deux plaques présentant entre elles une différence de vitesse $\vec{U}$. Si le fluide est suffisament visqueux, la couche suffisament fine, et la vitesse suffisament petite (ce sont des éléments que nous allons préciser), la vitesse du fluide adopte un profil linéaire, sans glissement par rapport aux deux parois mobiles, et la force par unité d'aire ($A$) à exercer sur la plaque supérieure pour conserver un régime stationnaire  est $\od{\vec{F}}{A}=\mu \vec{U}/h$, ce qui est équivalent à affirmer que la force par unité d'aire exercée par le fluide sur cette plaque est $-\od{\vec{F}}{A}$. 
 
+Cette force par unité de surface porte le nom de contrainte, et il s'agit plus particulièrement ici d'une \cindex{contrainte tangentielle}, notée $\tau_{xz}$:
+
+
+\begin{displaymath}
+  \tau_{xz} = \mu U/h
+\end{displaymath}
+
+Le premier indice, $x$, fait référence à la direction de la force (par unité de surface). L'indice $z$ fait référence s'exerce sur la face supérieure du fluide, dont la nomale est dirigée dans la direction de l'aexe $\ez$. Nous verrons dans peu de temps que $\tau_{xz}$ est la composante d'un \cindex{tenseur des contraintes}. 
+
+\todo{dans le schéma, utiliser la notation $\tau$}
+
 L'expérience est idéalisée à beaucoup d'égards et il ne faut pas se laisser distraire par les intéractions spécifiques entre le fluide et la plaque. Le point important est que le fluide présente une \emph{résistance au cisaillement}. Nous pouvons formaliser le phénomène à l'échelle d'un élement fluide. Considérons trois éléments, empilé selon l'axe $\ez$, caractérisés par une vitesse horizontale $U(z)$. A l'échelle de ce volume élémentaire, l'expression linéaire adoptée pour l'écoulement de Couette suggère que le bloc supérieur exerce une force de composante horizontale  $\dif F_x = -\mu \od{U}{z}(z+\frac{1}{2}\dif z)\dif x\dif y$ sur le bloc intermédiaire, et le bloc inférieur exerce une force de composante horizontale $\dif F_x = \mu \od{U}{z}(z-\frac{1}{2}\dif z)\dif x\dif y$. 
 
 On peut donc modéliser la somme des forces de viscosité, par unité de volume, dans cet écoulement laminaire $U(z)$ par 
@@ -23,8 +34,6 @@ On peut donc modéliser la somme des forces de viscosité, par unité de volume,
   \dif F_x = \od{}{z} \mu \od{U}{z} \dif V =  \mu \od[2]{U}{z} \dif V. 
   \label{eq:newtonnien}
 \end{equation}
-
-\todo{introduire la notation $\tau$}
 
 On est donc tenté de compléter le raisonnement qui a a abouti à l'équatieur d'Euler \eqref{eq:euler} pour y intégrer ce phénomène de viscosité. Considérons d'abord exclusivement l'effet d'un cisaillement selon $\ez$, sur la composante $\ex$ de la vitesse:
 
@@ -62,12 +71,12 @@ En trois dimensions, cette équation de Navier-Stokes devient:
 \end{displaymath}
 où $\lapl \u = (\lapl u_x, \lapl u_y, \lapl u_z)$ est le \cindex{laplacien} du champ de vitesse, et $\mu$ le \cindex{coefficient de viscosité}. 
 
-TODO: ATTENTION: Definir viscosité cinématique: $\nu = \mu/\rho$.  CHECK UNITÉS !!! Quelques valeurs typiques pour différents fluides à température ambiante :
+Quelques valeurs typiques pour différents fluides à température ambiante :
 
 \begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
-Fluide & $\nu$ (Pa$\cdot$s) & Conditions \\
+Fluide & $\mu$ (Pa$\cdot$s) & Conditions \\
 \hline
 Eau & $10^{-3}$ & 20$^\circ$C \\
 \hline
@@ -96,12 +105,12 @@ Or, nous l'avons vu, la viscosité se manifeste par des forces \emph{tengentiell
 
 
 \begin{displaymath}
-  \dif\vec{F} = \tensor{\tau} \vec{n} \dif A.
+  \dif\vec{f} = \tensor{\tau} \vec{n} \dif A.
 \end{displaymath}
 
 Ce tenseur permet de prendre en compte non seulement les forces normales (pression), mais aussi les forces tangentielles (cisaillement). 
 
-On retrouve le fluide parfait pour  $\tau_{ij} = -p \delta_{ij}$, soit $\tensor{\tau} = -p \tensor{\delta}$.
+On retrouve le fluide parfait pour  $T_{ij} = -p \delta_{ij}$, soit $\tensor{T} = -p \tensor{\delta}$.
 
 \todo{donner un exemple deux 2 des contraintes dans une dimension . ou alors laisser ça au modèle de Stokes}
 
@@ -162,7 +171,12 @@ En développant ce terme pour un fluide incompressible et en utilisant l'approxi
 Cette équation décrit la dynamique des fluides visqueux et sera la base de nos prochains développements, notamment pour l'étude des écoulements laminaires comme celui de Poiseuille.
 \end{redmargin}
 
-\subsubsection{Écoulement de Poiseuille plan ($\pd{p}{x} = C$, $u_x(0) = u_x(h) = 0$)}
+\section{Écoulements de Poiseuille}
+
+\subsection{Écoulement de Poiseuille plan ($\pd{p}{x} = C$, $u_x(0) = u_x(h) = 0$)}
+
+\todo{remettre contexte}
+
 Si le gradient de pression est constant ($\pd{p}{x} = C$) et que les deux plaques sont fixes, les conditions aux limites imposent $B = 0$ et $A = 0$. Le profil de vitesse est alors parabolique :
 \begin{displaymath}
 u_x(y) = \frac{C}{2\mu} (y^2 - h y).
@@ -173,10 +187,8 @@ Le débit volumique par unité de largeur est :
 Q = \int_0^h u_x(y) \, \dif y = -\frac{C h^3}{12\mu}.
 \end{displaymath}
 
-\section{Écoulement de Poiseuille dans un cylindre}
+\subsection{Écoulement de Poiseuille dans un cylindre}
 \label{sec:poiseuille_cylindre}
-
-\subsection{Deux approches pour dériver l'équation}
 
 En coordonnées cylindriques, l'équation de Navier-Stokes pour un écoulement stationnaire ($\pd{}{t}=0$), axisymétrique ($p=p(r)$; $u_x=u_x(r)$, $u_r=0$)) et incompressible se réduit à :
 \begin{displaymath}
@@ -214,8 +226,6 @@ L'équilibre des forces donne:
 \end{displaymath}
 
 ce qui est bien notre équation. Nous pouvons maintenant la résoudre. 
-
-\subsection{Solution et débit}
 
 La solution de cette équation, avec la condition aux limites $u_x(a) = 0$, est :
 \begin{displaymath}
