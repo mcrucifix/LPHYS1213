@@ -5,7 +5,7 @@
   outer/.style={dotted, draw=black, line width=0.4pt},
   middle/.style={draw=black, line width=1.5pt},
   force/.style={->, thick, blue!70!black},
-  vel/.style={->, line width=2pt},
+  vel/.style={->, line width=1pt},
 }
 
 % --- Three rectangles ---
@@ -24,8 +24,8 @@
 
 % --- Velocity vectors on middle block ---
 % Coordinates of centers of top and bottom faces of middle block
-\coordinate (bottomcenter) at (0.7,0);
-\coordinate (topcenter)    at (0.7,1);
+\coordinate (bottomcenter) at (0.7,-0.1);
+\coordinate (topcenter)    at (0.7,1.1);
 \coordinate (bottomright) at (2.3,0);
 \coordinate (topright)    at (2.3,1.0);
 
@@ -37,10 +37,10 @@
   node[right] {$U\!\left(z+\tfrac12 \,\mathrm dz\right)$};
 
 % Force vectors (dark green)
-\draw[force] (bottomcenter) -- ++(0.5,-0.1)
-node[below] {$\mu\,\frac{\mathrm dU}{\mathrm dz}\!\left(z-\frac{1}{2} \mathrm \dif z \right)$};
+\draw[force] (bottomcenter) -- ++(0.5,0.0)
+node[below] {$\mu\,\frac{\mathrm dU}{\mathrm dz}\!\left(z-\frac{1}{2} \dif z \right)$};
 
-\draw[force] (topcenter) -- ++(-0.5,+0.1)
+\draw[force] (topcenter) -- ++(-0.5,+0.0)
 node[above] {$\mu\,\frac{\mathrm dU}{\mathrm dz}\!\left(z+\frac{1}{2} \dif z\right)$};
 
 % Dots at centers
@@ -49,8 +49,8 @@ node[above] {$\mu\,\frac{\mathrm dU}{\mathrm dz}\!\left(z+\frac{1}{2} \dif z\rig
 
 % --- Dimension markers ---
 % Height = dz
-\draw[<->] (-2.2,0. ) -- (-2.2,1. )
-  node[midway,right] {$\dif z$};
+\draw[<->] (-1.2,0. ) -- (-2.2,1. )
+  node[midway,left] {$\dif z$};
 
 % Length = dx
 \draw[<->] (-1.0,-1.3) -- (2.0,-1.3)

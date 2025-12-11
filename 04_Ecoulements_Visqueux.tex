@@ -24,6 +24,7 @@ On peut donc modéliser la somme des forces de viscosité, par unité de volume,
   \label{eq:newtonnien}
 \end{equation}
 
+\todo{introduire la notation $\tau$}
 
 On est donc tenté de compléter le raisonnement qui a a abouti à l'équatieur d'Euler \eqref{eq:euler} pour y intégrer ce phénomène de viscosité. Considérons d'abord exclusivement l'effet d'un cisaillement selon $\ez$, sur la composante $\ex$ de la vitesse:
 
@@ -160,65 +161,6 @@ En développant ce terme pour un fluide incompressible et en utilisant l'approxi
 \end{equation}
 Cette équation décrit la dynamique des fluides visqueux et sera la base de nos prochains développements, notamment pour l'étude des écoulements laminaires comme celui de Poiseuille.
 \end{redmargin}
-
-\section{Écoulement dans un plan}
-\label{sec:ecoulement_plan}
-
-\subsection{Objectif : Développer une intuition physique}
-Pour comprendre comment la viscosité influence un écoulement et développer une intuition physique du sens du terme $\mu\lapl\u$, commençons par étudier un cas simple : un écoulement stationnaire et plan (dans le plan $(x,y)$), où la vitesse $\u$ ne dépend que de $y$ ($u_x = u_x(y)$). Nous négligeons ici les effets de la gravité ($\grad \gpot = 0$).
-
-\subsubsection{Équation du mouvement pour un élément de volume}
-Considérons un petit élément de volume de fluide, de dimensions $\dif x$, $\dif y$, et d'épaisseur unitaire (figure~\ref{fig:element_volume_plan}).
-
-\begin{figure}[h]
-\centering
-%\includegraphics[width=0.6\textwidth]{Figures/element_volume_plan.pdf}
-TODO: FIGURE
-\caption{Schéma d'un élément de volume dans un écoulement plan. Les forces de cisaillement $\tau_{yx}$ agissent sur les faces supérieure et inférieure.}
-\label{fig:element_volume_plan}
-\end{figure}
-
-Les forces agissant sur cet élément sont :
-\begin{itemize}
-    \item Les forces de pression : $-(\pd{p}{x}\dif x)\dif y$ dans la direction $x$.
-    \item Les forces visqueuses : La contrainte de cisaillement $\tau_{yx} = \mu \pd{u_x}{y}$ agit sur les faces supérieure et inférieure. La différence de contrainte entre ces deux faces est $\left(\tau_{yx}(y+\dif y) - \tau_{yx}(y)\right)\dif x = \mu \pd[2]{u_x}{y} \dif x \dif y$.
-\end{itemize}
-
-TODO: modifier. utiliser les termes stationnaires et reprendre l'équation d'Euler ( En appliquant la deuxième loi de Newton à cet élément, on obtient :)
-\begin{displaymath}
-0 = -\pd{p}{x} + \mu \pd[2]{u_x}{y}.
-\end{displaymath}
-
-De même, dans la direction $y$, l'équilibre des forces donne:
-\begin{displaymath}
-0 = -\pd{p}{y}.
-\end{displaymath}
-
-Ainsi, la pression ne dépend pas de $y$ : $p = p(x)$.
-
-\subsubsection{Solution générale}
-En intégrant deux fois l'équation pour $u_x(y)$, on obtient :
-\begin{displaymath}
-\mu u_x(y) = \frac{y^2}{2} \pd{p}{x} + A y + B,
-\end{displaymath}
-où $A$ et $B$ sont des constantes d'intégration.
-
-\subsection{Cas particuliers}
-\subsubsection{Écoulement de Couette ($\pd{p}{x} = 0$)}
-Si le gradient de pression est nul ($\pd{p}{x} = 0$), l'équation se réduit à :
-\begin{displaymath}
-\mu u_x(y) = A y + B.
-\end{displaymath}
-
-Supposons que le fluide est confiné entre deux plaques parallèles, l'une fixe ($u_x(0) = 0$) et l'autre en mouvement ($u_x(h) = U$). Les conditions aux limites donnent :
-\begin{displaymath}
-B = 0, \quad A = \frac{\mu U}{h}.
-\end{displaymath}
-
-La solution est donc un profil linéaire :
-\begin{displaymath}
-u_x(y) = \frac{U}{h} y.
-\end{displaymath}
 
 \subsubsection{Écoulement de Poiseuille plan ($\pd{p}{x} = C$, $u_x(0) = u_x(h) = 0$)}
 Si le gradient de pression est constant ($\pd{p}{x} = C$) et que les deux plaques sont fixes, les conditions aux limites imposent $B = 0$ et $A = 0$. Le profil de vitesse est alors parabolique :

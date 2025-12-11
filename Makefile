@@ -8,6 +8,7 @@ LATEX_DEPENDENCIES = lphys1213.tex latexmkrc
 PYTHON_DIR = Python
 XP_DIR = Xp
 PDFTEX_DIR = Pdftex
+TIKZ_DIR  = Tikz
 
 # --- Discover Files Dynamically ---
 PYTHON_SCRIPTS := $(wildcard $(PYTHON_DIR)/0*.py)
@@ -16,6 +17,7 @@ PYTHON_PDFS := $(patsubst $(PYTHON_DIR)/%.py, $(PYTHON_DIR)/%.pdf, $(PYTHON_SCRI
 XP_FILES := $(wildcard $(XP_DIR)/*.xp)
 XP_EEPIC := $(patsubst $(XP_DIR)/%.xp, $(XP_DIR)/%.eepic, $(XP_FILES))
 
+TIKZ_FILES := $(wildcard $(TIKZ_DIR/*.tikz))
 SVG_FILES := $(wildcard $(PDFTEX_DIR)/*.svg)
 SVG_PDFS := $(patsubst $(PDFTEX_DIR)/%.svg, $(PDFTEX_DIR)/%.pdf, $(SVG_FILES))
 SVG_PDF_TEXS := $(patsubst $(PDFTEX_DIR)/%.svg, $(PDFTEX_DIR)/%.pdf_tex, $(SVG_FILES))
@@ -30,7 +32,7 @@ GENERATED_DEPENDENCIES = $(PYTHON_PDFS) $(XP_EEPIC) $(SVG_PDFS) $(SVG_PDF_TEXS)
 # ----------------------------------------------------
 all: $(MAIN_TARGET)
 
-$(MAIN_TARGET): $(LATEX_DEPENDENCIES) $(GENERATED_DEPENDENCIES)
+$(MAIN_TARGET): $(LATEX_DEPENDENCIES) $(GENERATED_DEPENDENCIES) $(TIKZ_FILES)
 	@echo "--- Running latexmk on $< ---"
 	latexmk
 
