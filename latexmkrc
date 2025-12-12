@@ -17,11 +17,17 @@ $mainfile .= '.tex' unless $mainfile =~ /\.tex$/;
 # Debug message
 print ">> Using main file: $mainfile\n";
 
-$nomencl_run = 'makeindex -s nomencl.ist -o %D %S';
-$makeindex = $nomencl_run; # Set the general makeindex variable to handle the custom files
-add_cus_dep('nlo', 'nls', 0, 'makeindex -s nomencl.ist -o "$root.nls" "$root.nlo"');
+# Define the custom makeindex command for nomencl
+$nomencl_run = 'makeindex %D -s nomencl.ist -o %S';
+$makeindex = $nomencl_run;
 
-
+# Explicitly declare the dependency
+# 1. Define the subroutine that runs the command
+sub make_nomencl {
+    system "makeindex $_[0].nlo -s nomencl.ist -o $_[0].nls";
+}
+#
+add_cus_dep( 'nlo', 'nls', 0, 'make_nomencl' );
 
 
 @default_files = ($mainfile);
