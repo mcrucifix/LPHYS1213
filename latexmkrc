@@ -19,6 +19,10 @@ print ">> Using main file: $mainfile\n";
 
 $nomencl_run = 'makeindex -s nomencl.ist -o %D %S';
 $makeindex = $nomencl_run; # Set the general makeindex variable to handle the custom files
+add_cus_dep('nlo', 'nls', 0, 'makeindex -s nomencl.ist -o "$root.nls" "$root.nlo"');
+
+
+
 
 @default_files = ($mainfile);
 $root_filename = $mainfile;
@@ -27,6 +31,8 @@ $biber = 'biber %O %S';
 # Use LuaLaTeX instead of pdfLaTeX
 $pdflatex = 'lualatex --synctex=1 %O %S';
 $pdf_mode = 1;    # produce PDF
+
+
 
 # Custom dependency to run the Python script to generate figures
 ### add_cus_dep('py', 'pdf', 0, 'py2pdf');
