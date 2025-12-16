@@ -22,9 +22,7 @@ build_pdf:
     policy: pull-push # Default behavior: pull the cache before script, push after script
   script:
     - git submodule update --init --recursive
-    - echo "Running LaTeX build on local runner..."
     - make
-    # NEW: Save the job ID to an environment file
     - echo "PDF_JOB_ID=$CI_JOB_ID" > artifacts_vars.env 
   artifacts:
     paths:
@@ -46,14 +44,13 @@ create_release:
     # 1. Get the Job ID (Assuming you have a variable set by a previous script/environment)
     # The Job ID is needed to build the artifact URL. Assuming PDF_JOB_ID is passed or defined.
     # FIX: Use single $ for shell variable access (PDF_JOB_ID will be empty if not defined, which might cause the error)
-    - echo "hello"
     - export PDF_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${PDF_JOB_ID}/artifacts/file/lphys1213.pdf"
     # 2. Print the URL (for verification in logs)
     - echo "PDF Artifact URL':'' ${PDF_URL}"
     # 3. Create the release with the link in the description
     - |
       glab release create "${CI_COMMIT_REF_SLUG}" \
-        --name "LPHYS-1213 Release ${CI_COMMIT_SHORT_SHA}" \
+        --name "LPHYS1213 Release ${CI_COMMIT_SHORT_SHA}" \
         --notes "The PDF artifact is available here: [Download lphys1213.pdf](${PDF_URL})" \
         --assets-link "{\"name\":\"lphys1213.pdf\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
   only:
