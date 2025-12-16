@@ -48,7 +48,7 @@ Considérons un petit élément de volume de fluide, de dimensions $\dif x$, $\d
 \begin{figure}[h]
 \centering
 %\includegraphics[width=0.6\textwidth]{Figures/element_volume_plan.pdf}
-TODO: FIGURE
+\missingfigure{}
 \caption{Schéma d'un élément de volume dans un écoulement plan. Les forces de cisaillement $\tau_{yx}$ agissent sur les faces supérieure et inférieure.}
 \label{fig:element_volume_plan}
 \end{figure}
@@ -58,8 +58,7 @@ Les forces agissant sur cet élément sont :
     \item Les forces de pression : $-(\pd{p}{x}\dif x)\dif y$ dans la direction $x$.
     \item Les forces visqueuses : La contrainte de cisaillement $\tau_{yx} = \mu \pd{u_x}{y}$ agit sur les faces supérieure et inférieure. La différence de contrainte entre ces deux faces est $\left(\tau_{yx}(y+\dif y) - \tau_{yx}(y)\right)\dif x = \mu \pd[2]{u_x}{y} \dif x \dif y$.
 \end{itemize}
-
-TODO: modifier. utiliser les termes stationnaires et reprendre l'équation d'Euler ( En appliquant la deuxième loi de Newton à cet élément, on obtient :)
+\todo[inline]{modifier. utiliser les termes stationnaires et reprendre l'équation d'Euler ( En appliquant la deuxième loi de Newton à cet élément, on obtient :)}
 \begin{displaymath}
 0 = -\pd{p}{x} + \mu \pd[2]{u_x}{y}.
 \end{displaymath}

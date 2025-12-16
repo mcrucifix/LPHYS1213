@@ -268,10 +268,10 @@ Cette formule est correcte, mais on peut l'obtenir de façon un peu plus formell
   
 La troisième intégrale de l'expression est une intégrale sur la surface qui borde le volume. Elle forme le pendant deux deux derniers termes qui apparaissent dans  l'équation \eqref{eq:leibniz_general} et exprime le flux de $F$ passant à travers la frontière du volume $\Vol(t)$. Dans de nombreux livres la surface $A$ est notée $\partial V$ en référence à la notation habituelle en géométrie différentielle. 
 
-Si on considère que le volume $\Vol(t)$ est un volume matériel (fini), alors la vitesse à la frontière $\vec{u}_A$ est egale à la vitesse du fluide. On notera alors simplement $\vec{u}$. Par convention, on peut utiliser aussi la notation $\Dif_t$ ou $\Dt{}$ devant la première intégrale pour insister sur le fait qu'il s'agit d'une dérivée temporelle d'un élément matériel. On écrit dès lors: 
+Si on considère que le volume $\Vol(t)$ est un volume matériel (fini), alors la vitesse à la frontière $\vec{u}_A$ est egale à la vitesse du fluide. On notera alors simplement $\vec{u}$. On écrit dès lors: 
 
 \begin{equation}
-  \Dt{}
+  \odt{}
   \iiint_{\vol(t)} F(\vec{x},t)\,\dif V = 
   \iiint_{\vol(t)} \pd{F}{t}(\vec{x},t)\,\dif V +
   \iint_{A(t)} F(\vec{x},t) \dif \vec{A} \cdot \vec{u}
@@ -283,32 +283,44 @@ Cette équation porte le nom de \cindex{théorème du transport de Reynolds}.
 On peut homogénéiser l'écriture en remplaçant l'intégrale sur la surface par une intégrale, sur le volume, de la divergence (théorème de Gauss) --- à nouveau une manipulation similaire à celle déjà effectuée en 1D: 
 
 \begin{equation*}
-  \Dt{}
+  \odt{}
   \iiint_{\vol(t)} F(\vec{x},t)\,\dif V = 
   \iiint_{\vol(t)} \pd{F}{t}(\vec{x},t)\,\dif V +
-  \iiint_{\vol(t)} \Div F(\vec{x},t)\,\dif V
+  \iiint_{\vol(t)} \Div (F(\vec{x},t)\u)\,\dif V
   \label{eq:reynolds}
 \end{equation*}
  
-Commençons par un cas particulier: $f=\rho$. Le membre de droite s'annule s'il y a conservation de la masse. Il reste le membre de gauche et, toujours selon le raisonnement 1-D, on peut faire "sauter" l'intégrale qui est valable pour tout volume fini pour exprimer l'équation de ontinuité sous sa forme différentielle: 
 
-\begin{equation*}
-  \pd{F}{t}(\vec{x},t)\,\dif V = - 
-  \Div F(\vec{x},t)\,\dif V
-\end{equation*}
- 
-Nous allons appliquer cette relation à des variables intensives, exprimées par unité de masse, comme, par exemple, l'énergie interne massique $e$. De façon générique, écrivons $F=\rho f$ et remplaçons dans l'équation \eqref{eq:reynolds}. On développe les dérivées de produit pour obtenir (exercice):
+TODO ! 
+
+
+A faire: prendre $F=\rho$. 
+
 
 \begin{equation}
-  \Dt{}\iiint_{\vol(t)} \rho f = \iiint_{\vol(t)} \rho \Dt{f}\,\dif\vol
-  \label{eq:reynolds_def}
+  \text{EQ DE CONTINUITE}
+  \label{eq:continuite}
 \end{equation}
 
-C'est la version la plus aboutie du théorème de transport de Reynolds. La dérivée temporelle d'une propriété extensive sur tout un volume matériel fini, peut s'exprimer comme l'intégrale de la dérivée matérielle de la propriété intensive, multipliée par la densité. 
+Montrer l'équation de continuité. Ensuite prendre $F=f\rho$ et montrer l'equivalence entre deux écritures
 
+\begin{equation}
+  \begin{split}
+  \text{source} = \pd{\rho f} + \Div{\rho \u f}
+  \ldots        = \rho \Dt{f}
+  \end{split}
+    \label{eq:grad_vs_cons}
+\end{equation}
 
+\todo[inline]{Insister sur la dualité: l'écriture "Lagrangienne" avec un $\Dt{}$ s'applique à des variables intensives, exprimées par unité de masse. L'écriture avec une divergence visualise la conservation de quantité extensive, exprimées par unité de volume. Bien vérifier qu'on a établi la convention minuscule et majuscule}
 
-A FAIRE ICI: PREMIERE LOI DE LA THERMODYNAMIQUE ? 
+% Commençons par un cas particulier: $f=\rho$. Le membre de droite s'annule s'il y a conservation de la masse. Il reste le membre de gauche et, toujours selon le raisonnement 1-D, on peut faire "sauter" l'intégrale qui est valable pour tout volume fini pour exprimer l'équation de ontinuité sous sa forme différentielle: 
+%
+% \begin{equation*}
+%   \pd{F}{t}(\vec{x},t)\,\dif V = - 
+%   \Div F(\vec{x},t)\,\dif V
+% \end{equation*}
+%
 
 
 

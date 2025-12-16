@@ -117,7 +117,8 @@ On retrouve le fluide parfait pour  $T_{ij} = -p \delta_{ij}$, soit $\tensor{T} 
 L'enjeu est de développer une expression de $\tau$ pour le fluide Newtonien. C'est l'objet de la section suivante. 
 
 \begin{redmargin}
-  \section{Dérivation formelle de l'équation de Navier-Stokes \label{sect:ns}}
+
+\section{Dérivation formelle de l'équation de Navier-Stokes \label{sect:ns}}
 
 Pour paramétrer $\tensor{\tau}$, nous partons du \cindex{tenseur des déformations} $\tensor{e}$, défini comme la partie symétrique du gradient de vitesse :
 \begin{displaymath}
@@ -144,7 +145,7 @@ La partie déviatorique du tenseur (de trace nulle) est associée au cisaillemen
 \end{displaymath}
 L'\cindex{approximation de Stokes} suppose que $p = \bar{p}$, ce qui implique $\lambda = -\frac{2}{3}\mu$. Dans ce cas, le tenseur des contraintes se simplifie en :
 \begin{equation}
-  T_{ij} = - p \delta_{ij} + 2\mu e_{ij} - \frac{2}{3}\mu \Div \u \delta_{ij}.
+  T_{ij} = - p \delta_{ij} + \underbrace{2\mu e_{ij} - \frac{2}{3}\mu \Div \u \delta_{ij}}{\tau_{ij}}.
   \label{eq:tenseur_contraintes_stokes}
 \end{equation}
 Pour un fluide incompressible ($\Div \u = 0$), cette expression se réduit à :
@@ -169,6 +170,7 @@ En développant ce terme pour un fluide incompressible et en utilisant l'approxi
   \label{eq:ns_incompressible}
 \end{equation}
 Cette équation décrit la dynamique des fluides visqueux et sera la base de nos prochains développements, notamment pour l'étude des écoulements laminaires comme celui de Poiseuille.
+
 \end{redmargin}
 
 \section{Écoulements de Poiseuille}
@@ -232,14 +234,14 @@ Q = \int_0^a u_x(r) 2\pi r \, \dif r = -\frac{\pi a^4}{8\mu} \od{p}{x}.
 
 \subsection{Validité de l'approximation}
 
-TODO ! ICI: c'est le moment d'attirer l'attention sur les conditions relatives à la symmétrie, et l'absence de termes d'advection. Nous avons donc considérer que la symmétrie du problème se reflète dans la symmétrie des lignes de courant, ce qui génère $\pd{u}{x}=0$ et $\pd{u}{r}=0$  donc annihile tous les termes d'advection. En pratique c'est ce qu'on appelle un écoulement laminaire et developpé. 
+\todo[inline]{c'est le moment d'attirer l'attention sur les conditions relatives à la symmétrie, et l'absence de termes d'advection. Nous avons donc considérer que la symmétrie du problème se reflète dans la symmétrie des lignes de courant, ce qui génère $\pd{u}{x}=0$ et $\pd{u}{r}=0$  donc annihile tous les termes d'advection. En pratique c'est ce qu'on appelle un écoulement laminaire et developpé. }
 
  \begin{itemize}
      \item Le nombre de Reynolds est faible ($Re \ll 1$) (ATTENTION: PAS ENCORE DEFINI).
      \item Le tuyau est suffisamment long pour que les effets d'entrée soient négligeables.
  \end{itemize}
 %
-TODO: Une analyse des ordres de grandeur permet de déterminer à quelle distance de l'entrée du tuyau ces hypothèses sont satisfaites.
+ \todo[inline]{Une analyse des ordres de grandeur permet de déterminer à quelle distance de l'entrée du tuyau ces hypothèses sont satisfaites.}
 
 \begin{studentinvestigation}{Singing in the rain...}
   Sur Terre, à partir de quel diamètre une goutte devrait s'applatir sous l'effet de la gravité ? 
@@ -248,15 +250,15 @@ TODO: Une analyse des ordres de grandeur permet de déterminer à quelle distanc
 
 \section{Nombre de Reynolds}
 
-TODO: expliquer qu'on est à Re $\ll$1 ;  On va outrageusement négliger tous les termes d'advection. Ici c'est clairement une approximation car les lignes de courant sont courbes. 
+\todo[inline]{expliquer qu'on est à Re $\ll$1 ;  On va outrageusement négliger tous les termes d'advection. Ici c'est clairement une approximation car les lignes de courant sont courbes. }
 
 C'est aussi l'occasion d'introduire le raisonnemnet sur les ordres de grandeur
 
 \section{Ecoulement très visqueux outour d'une sphère}
 
-TODO: dire qu'on considère un écoulement tel que $\u=U\ex$ loin de la sphère, la sphère de rayon $a$, et vitesse nulle autour de la sphère. 
+\todo[inline]{dire qu'on considère un écoulement tel que $\u=U\ex$ loin de la sphère, la sphère de rayon $a$, et vitesse nulle autour de la sphère. }
 
-L'équation pour un écoulement visqueux stationnaire à nombre de Reynolds très petit est  (TODO: montrer que c'est équivalent à $\lapl\u$ quand $\Div\u=0$). 
+L'équation pour un écoulement visqueux stationnaire à nombre de Reynolds très petit est  \todo[inline]{montrer que c'est équivalent à $\lapl\u$ quand $\Div\u=0$).}
 
 \begin{equation}
   \grad p = - \mu \curl(\curl\u). 
@@ -275,7 +277,7 @@ Dans ces conditions, on peut construire une fonction de courant $\sfn_\varphi$ q
   \label{eq:potentiel_spherique}
 \end{equation}
 
-Ce choix garanti $\Div \u=0$ (TODO: ajouter page avec opérateurs pour coordonnées curvilinéaires). 
+Ce choix garanti $\Div \u=0$ \todo[inline]{ajouter page avec opérateurs pour coordonnées curvilinéaires}
 
 Avec un peu de calcul, on montre que 
 

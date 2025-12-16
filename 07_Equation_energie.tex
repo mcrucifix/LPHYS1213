@@ -1,9 +1,6 @@
 \chapter{Conservation de l'énergie}
 
-\section{Forme intégrale de la conservation de l'énergie mécanique}
-
-
-\subsection{Mécanique et thermodynamique}
+\section{Equation de conservation de la quantité de mouvement}
 
 L'équation de \cindex{conservation} de l'énergie mécanique est  prenant le produit scalaire de la conservation de la quantité de mouvement avec la vitesse. 
 
@@ -11,37 +8,81 @@ En mécanique du point:
 
 \begin{displaymath}
   \begin{split}
-    \od{m\u} \dot u &= \sum F \dot u  \\
-    m \frac{1}{2} \od{u^2} &= \sum F \dot u 
+    \odt{m\u} \dot u &= \sum F \dot u  \\
+    m \frac{1}{2} \odt{u^2} &= \sum F \dot u 
   \end{split}
 \end{displaymath}
 
-On obtient une equation analogue en mécanique du milieu continu, pour une intégrale sur un \cindex{volume matériel}: 
+On obtient une equation analogue en mécanique du milieu continu.  Cependant il faut repartir de sa forme différentielle exprimée par l'équation de Navier-Stokes (\eqref{eq:ns}):
 
- 
+\todo{vérifier qu'on introduit cette forme dans la section VISQ}
+
 \begin{displaymath}
-  \od{}{t} \int_\vol \frac{1}{2}\rho \u^2 = \int_\vol \grad \gpot \cdot \u + \int_A \u \cdot \tensor{T}\cdot \n\, \dif A. 
+  \rho\Dt{\u} = - \rho \grad \gpot + \div \tensor{T}
 \end{displaymath}
 
-TODO: a travailler
+Il faut préfixer les deux membres de l'équation par $\u\cdot$. Le mieux est de décomposer l'expression par indice. On trouve, pour l'indice $i$, avec une somme sur les indices $j$:
+
+\begin{displaymath}
+  \begin{split}
+    u_i  \rho (\pd{u_i}{t} + u_j \rho\pd{u_i}{x_j}) &= - \rho u_i \vpot_i + u_i \pd{T_{ij}}{x_j}  \\
+    \rho (\pd{}{t}(\frac{1}{2}u_i^2) + u_j \rho\pd{}{x_j}(\frac{1}{2}u_i^2) &= \ldots \\
+    \rho \Dt{\frac{1}{2}u_i^2}  &= \ldots \\
+    \rho \Dt{\underbrace{\frac{1}{2}u^2}_{k}}  &= \rho \u \cdot \grad \vpot + \u \cdot \Div \tensor{T}
+  \end{split}
+\end{displaymath}
+
+où, pour la dernière étape, on a sommé sur les indices $i$. 
+
+\todo{Aussi observer $\u \cdot \grad \vpot = \Dt \vpot$ car $\pd{\vpot}{t} = 0 \,\rightarrow\,$ équation de conservation. }
+
+
+Comme nous l'avons vu (eq. \ref{eq:tenseur_contraintes_stokes}), $\tensor{T}$ est la somme des contraintes de pression, isotropes, et des contraintes de cisaillement. Le travail contre ces contraintes se retrouve dans le second terme du membre de droite de la dernière équation. Tentons de le préciser. 
+
+Enfin: On va d'abord un peu arbitrairement écrire:
+
+\begin{displaymath}
+  \u \cdot \tensor{T} = \Div {\u \cdot \tensor{\tau}} + p (\Div \u) - \mathcal{D}
+\end{displaymath}
+
+où 
+
+\begin{displaymath}
+  \mathcal{D} \eqdef 2\mu e_{ij}e_{ij} - \frac{2}{3}\mu(\Div u)^2
+\end{displaymath}
+
+est la dissipation visqueuse. 
+
+
+La signification de ce terme de dissipation va prendre tout son sens lorsqu'on va écrire le premier principe de la thermodynamique. 
 
 
 
+(note moins importante)
+Comme nous l'avons déjà fait (eq. \ref{eq:grad_vs_cons}) nous pouvons utiliser l'équation de conservation de la masse \eqref{eq:continuite}, mais dans l'autre sens, pour produire une version extensive ($K=\rho k$). 
+
+\todo[inline]{définir $k$ et $K$ dans la nomenclature. }
+
+\begin{equation}
+\pd{K}{t} + \Div (\u K) = \rho \grad \gpot + \u \cdot \Div \tensor{T}. 
+\end{equation}
+
+\section{Forme intégrale de la conservation de l'énergie mécanique}
+
+\todo[inline]{Forme intégrale de la cons. énergie mécanique} 
 
 \section{Forme intégrale du premier principe de la thermodynamique}
 
 \cite[p. 108]{kundu04aa}
 
-(sommation d'indices implicite)
-
 \begin{equation}
-\Dt{}\int_\vol \rho (e + \frac{1}{2}u_i^2} \diff \vol = 
-\int_\vol \rho \grad\gpot \cdot \u +
-\int_A (\tensor{T}\cdot u)\cdot n \, \dif A -
-\int_A \vec{q} \cdot n \, \dif A
+\Dt{}\int_\vol \rho (e + k + \gpot) \dif \vol = 
+\int_A (\tensor{T}\cdot \u)\cdot \n \, \dif A -
+\int_A \vec{q} \cdot \n \, \dif A
   \label{eq:energy}
 \end{equation}
 
+montrer le sens ici que prend $\mathcal{D}$ en soustrayant l'énergie mécanique. 
 
 \section{Hypothèse de Bousinesq}
 
@@ -54,14 +95,11 @@ TODO: a travailler
 Rapport ontre les deux termes dan l'équation de continuité
 
 \begin{displaymath}
-  \frac{(1/\rho)(\Dt(\rho)}{\Div \u} \sim 
+  \frac{(1/\rho)(\Dt{\rho}}{\Div \u} \sim 
   \frac{(1/\rho) u \pd{\rho}{x}}{\pd{u}{x}} \sim
   \frac{(U/\rho)(\delta \rho / L )}{U/L} =
   \frac{\delta \rho}{\rho} = \alpha \delta T \ll 1. 
 \end{displaymath}
 
 
-\subsection{Equation de conservation de la quantité de mouvement}
 
-
-Montrer ce qu'il en advient
