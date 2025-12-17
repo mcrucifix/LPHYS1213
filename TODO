@@ -1,11 +1,11 @@
-- approximation de Bousinesq... et ses conséquences perverses sur l'équation de conservation d'énergie
+- équation de la chaleur
+- approximation de Bousinesq... et ses conséquences perverses sur l'équation de conservation d'énergie (terminer)
 - Nombre de péclet
 - Nombres adimensionels
-- Thermodynamique
 - Autres nombres adimensionels
 - referencer les binder
-- séparer le chapitre 2 en partie cinématique et dynamique. Créer un binder / jupyter pour illustrer lignes de courant, streaklines etc. 
-
-
-- ajouter viscosité obstacle dans écoulement laminaire avec l'équtaino de NS. Formule du cx
-- écoulement turbulent ! important pour la viscosité, obstacle, et problème de sédimentation
+- relire ch. 1 et 2 : adapter style
+- illustrations pour ch. 1 
+- mieux définir fonction flot pour ch. 2. 
+- écoulement turbulent ! important pour la viscosité, obstacle, et problème de sédimentation -> introduire
+- couche limite
