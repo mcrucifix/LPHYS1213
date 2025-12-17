@@ -26,7 +26,7 @@ Il faut préfixer les deux membres de l'équation par $\u\cdot$. Le mieux est de
 \begin{displaymath}
   \begin{split}
     u_i  \rho (\pd{u_i}{t} + u_j \rho\pd{u_i}{x_j}) &= - \rho u_i \vpot_i + u_i \pd{T_{ij}}{x_j}  \\
-    \rho (\pd{}{t}(\frac{1}{2}u_i^2) + u_j \rho\pd{}{x_j}(\frac{1}{2}u_i^2) &= \ldots \\
+    \rho \left( \pd{}{t}(\frac{1}{2}u_i^2) + u_j \pd{}{x_j}(\frac{1}{2}u_i^2) \right) &= \ldots \\
   \rho \Dt{}\left(\frac{1}{2}u_i^2\right)  &= \ldots \\
 \sum_i \rightarrow \rho \Dt{}\underbrace{\left(\frac{1}{2}u^2\right)}_{k}  &= \rho \u \cdot \grad \vpot + \u \cdot \Div \tensor{T}
   \end{split}
@@ -99,6 +99,20 @@ montrer le sens ici que prend $\mathcal{D}$ en soustrayant l'énergie mécanique
   \item on néglige les variations de $\rho$, sauf dans le terme qui implique le géopotentiel. 
 \end{itemize}
 
+
+\tikzset{
+  % Define your custom style here
+  boussinesq/.style={
+    fill=none, 
+    pattern={Lines[angle=45,distance=6pt,line width=1pt]}, 
+    pattern color=gray,
+    draw=none, 
+    above offset=4.0ex,
+    below offset=-3.0ex,
+  },
+}
+
+
 Techniquement: 
 
 On écrit d'abord: $p=p_0+p^\prime$ et $\rho = \rho_0 + \rho^\prime$. $p_0$ et $\rho_0$ sont liés par l'équilibre hydrostatique.  L'équation de NS devient: 
@@ -106,7 +120,7 @@ On écrit d'abord: $p=p_0+p^\prime$ et $\rho = \rho_0 + \rho^\prime$. $p_0$ et $
 \subsection{Equation de continuité}
 
 \begin{equation}
-  \pdt{\rho^\prime} + u \cdot \grad \rho^\prime + \rho_0 ( 1 + \\frac{\rho^\prime}{\rho_0} \Div \u
+  \tikzmarkin[boussinesq]{m:b01} \pdt{\rho^\prime} \tikzmarkend{m:b01} + \tikzmarkin[boussinesq]{m:b02} u \cdot \grad \rho^\prime \tikzmarkend{m:b02} + \rho_0 \left( 1 + \tikzmarkin[boussinesq]{m:b03}\frac{\rho^\prime}{\rho_0}\tikzmarkend{m:b03}\right) \Div \u = 0. 
 \end{equation}
 
 Expliquer quels termes on  détruit
@@ -116,10 +130,8 @@ Expliquer quels termes on  détruit
 On fait également l'approximation d'incompressibilité pour le stress, donc on utilise \eqref{eq:ns_incompressible}. \todo{vérifier que l'équation \eqref{eq:ns_incompressible} utilise la notation $\nu\lapl \u$}
 
 
-
-
 \begin{equation}
-  \left( 1 + \frac{\rho^\prime}{\rho_0} \right) \Dt{\u} = -\frac{1}{\rho}\grad p^\prime + \frac{\rho^\prime}{\rho_0} \grad \phi  + \nu \lapl \u. 
+  \left( 1 + \tikzmarkin[boussinesq]{m:b2}\frac{\rho^\prime}{\rho_0}\tikzmarkend{m:b2} \right) \Dt{\u} = -\frac{1}{\rho}\grad p^\prime + \frac{\rho^\prime}{\rho_0} \grad \phi  + \nu \lapl \u. 
   \label{eq:ns_bousinesq}
 \end{equation}
 
