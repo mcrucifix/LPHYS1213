@@ -7,8 +7,6 @@
 
 \section{L'hypothèse du milieu continu}
 
-Chères étudiantes, chers étudiants qui abordez ce cours de \cindex{physique des fluides},
-
 Vous êtes maintenant des experts de la \cindex{mécanique du point}. Vous connaissez les équations de la \cindex{mécanique classique} et vous savez que la somme des \cindex{forces} appliquées à un objet produit une \cindex{accélération}. Vous avez également bénéficié d’un cours de \cindex{thermodynamique}. Vous savez qu’à un volume de \cindex{gaz} ou de \cindex{liquide}, on peut attribuer une \cindex{température}, une \cindex{pression} et même une \cindex{entropie}, si ce gaz est à l’\cindex{équilibre thermodynamique}. Cette notion d’\cindex{équilibre thermodynamique} suppose qu’on a affaire à un très grand nombre de \cindex{molécules}, qui échangent de l’\cindex{énergie} et du \cindex{moment cinétique} entre elles tellement fréquemment qu’on peut se contenter d’une description \cindex{statistique} de l’ensemble.
 
 Nous allons maintenant rassembler ces deux types de raisonnement. L’objet de notre étude est un \cindex{milieu continu} qui n’est pas nécessairement à l’\cindex{équilibre thermodynamique}. Les notions de \cindex{température}, \cindex{pression}, \cindex{masse volumique} et même de \cindex{vitesse} doivent être adaptées de telle façon qu’on puisse exprimer leurs variations en fonction de la position et du temps. 
@@ -298,21 +296,35 @@ A faire: prendre $F=\rho$.
 
 
 \begin{equation}
-  \text{EQ DE CONTINUITE}
+  \pdt{\rho} + \Div (\rho\cdot \u) = 0.
   \label{eq:continuite}
 \end{equation}
 
+Équivalent à 
+
 Montrer l'équation de continuité. Ensuite prendre $F=f\rho$ et montrer l'equivalence entre deux écritures
+
+Donc écriture alternative de l'équation de continuité: 
+
+\begin{equation}
+  \Dt{\rho} + \Div (\u) = 0.
+  \label{eq:continuite}
+\end{equation}
+
+et on a: 
+
 
 \begin{equation}
   \begin{split}
-  \text{source} = \pd{\rho f} + \Div{\rho \u f}
+  \text{source} = \pdt{\rho f} + \Div{\rho \u f} \\
   \ldots        = \rho \Dt{f}
   \end{split}
     \label{eq:grad_vs_cons}
 \end{equation}
 
 \todo[inline]{Insister sur la dualité: l'écriture "Lagrangienne" avec un $\Dt{}$ s'applique à des variables intensives, exprimées par unité de masse. L'écriture avec une divergence visualise la conservation de quantité extensive, exprimées par unité de volume. Bien vérifier qu'on a établi la convention minuscule et majuscule}
+
+
 
 % Commençons par un cas particulier: $f=\rho$. Le membre de droite s'annule s'il y a conservation de la masse. Il reste le membre de gauche et, toujours selon le raisonnement 1-D, on peut faire "sauter" l'intégrale qui est valable pour tout volume fini pour exprimer l'équation de ontinuité sous sa forme différentielle: 
 %

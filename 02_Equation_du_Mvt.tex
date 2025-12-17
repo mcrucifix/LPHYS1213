@@ -129,9 +129,10 @@ au centroïde du coprs (en supposant un fluide de masse volumique constante).
 
 
 \begin{application}{Équilibre des barques}
+    \captionsetup{type=figure}
     \input{Pdftex/poussee.pdf_tex}
     % Use \captionof to generate the figure number and caption
-    \captionof{figure}{Les bateaux et barques sont construits de façon à élever le plus possible le centre de pousée (centroïde de la partie immergée), de façon à le plasser au dessus du centre de gravité de bâteau, de façon assurer sa stabilité. Lorsque le bateau s'incline, le moment de force exercé par la poussée et le poids du bateau s'applique de façon à redresser le bateau. \label{fig:poussee}}
+    \caption{figure}{Les bateaux et barques sont construits de façon à élever le plus possible le centre de pousée (centroïde de la partie immergée), de façon à le plasser au dessus du centre de gravité de bâteau, de façon assurer sa stabilité. Lorsque le bateau s'incline, le moment de force exercé par la poussée et le poids du bateau s'applique de façon à redresser le bateau. \label{fig:poussee}}
 \end{application}
 
 \begin{studentinvestigation}{La fonte de glace de mer}
@@ -517,7 +518,7 @@ Si le flux est non-divergent $\Div\u_h = 0$ soit, en développant
 où l'on a posé $\uh=u\ex + v\ey$. Cette équation est automatiquement rencontrée si $\u_h$ dérive d'un \cindex{potentiel vecteur}. Soit: $\uh = \curl (\sfn_z \ez) = \grad \sfn_z \times \ez$, on a: 
 
 \begin{displaymath}
-  u = \pd{\sfn_z}{y}\quad et v = -\pd{\sfn_z}{x}. 
+  u = \pd{\sfn_z}{y}\quad \text{et} v = -\pd{\sfn_z}{x}. 
 \end{displaymath}
 
 L'équation de continuité est satisfaite par $\pd[2]{\sfn_z}{xy} = \pd[2]{\sfn_z}{yx}$. 

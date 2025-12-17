@@ -157,7 +157,7 @@ Pour un fluide incompressible ($\Div \u = 0$), cette expression se réduit à :
 
 En insérant cette expression dans l'équation du mouvement, on remplace la force de pression par la divergence du tenseur des contraintes :
 \begin{equation}
-  \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \Div{\tensor{T}}.
+  \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot + \Div{\tensor{T}}.
   \label{eq:ns}
 \end{equation}
 La divergence du tenseur $\tensor{T}$ est définie par composante par composante. La composante $i$ répond à
@@ -175,7 +175,9 @@ Cette équation décrit la dynamique des fluides visqueux et sera la base de nos
 
 \section{Écoulements de Poiseuille}
 
-\subsection{Écoulement de Poiseuille plan ($\pd{p}{x} = C$, $u_x(0) = u_x(h) = 0$)}
+\subsection{Écoulement de Poiseuille plan}
+
+$\pd{p}{x} = C$, $u_x(0) = u_x(h) = 0$
 
 \todo{remettre contexte}
 

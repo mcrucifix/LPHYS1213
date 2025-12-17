@@ -27,8 +27,8 @@ Il faut préfixer les deux membres de l'équation par $\u\cdot$. Le mieux est de
   \begin{split}
     u_i  \rho (\pd{u_i}{t} + u_j \rho\pd{u_i}{x_j}) &= - \rho u_i \vpot_i + u_i \pd{T_{ij}}{x_j}  \\
     \rho (\pd{}{t}(\frac{1}{2}u_i^2) + u_j \rho\pd{}{x_j}(\frac{1}{2}u_i^2) &= \ldots \\
-    \rho \Dt{\frac{1}{2}u_i^2}  &= \ldots \\
-    \rho \Dt{\underbrace{\frac{1}{2}u^2}_{k}}  &= \rho \u \cdot \grad \vpot + \u \cdot \Div \tensor{T}
+  \rho \Dt{}\left(\frac{1}{2}u_i^2\right)  &= \ldots \\
+\sum_i \rightarrow \rho \Dt{}\underbrace{\left(\frac{1}{2}u^2\right)}_{k}  &= \rho \u \cdot \grad \vpot + \u \cdot \Div \tensor{T}
   \end{split}
 \end{displaymath}
 
@@ -71,7 +71,8 @@ Comme nous l'avons déjà fait (eq. \ref{eq:grad_vs_cons}) nous pouvons utiliser
 
 \todo[inline]{Forme intégrale de la cons. énergie mécanique} 
 
-\section{Forme intégrale du premier principe de la thermodynamique}
+\section{Équations thermodynamique}
+\subsection{Forme intégrale du premier principe de la thermodynamique}
 
 \cite[p. 108]{kundu04aa}
 
@@ -84,22 +85,60 @@ Comme nous l'avons déjà fait (eq. \ref{eq:grad_vs_cons}) nous pouvons utiliser
 
 montrer le sens ici que prend $\mathcal{D}$ en soustrayant l'énergie mécanique. 
 
-\section{Hypothèse de Bousinesq}
+\subsection{Équation de la chaleur}
+
+
+\section{Hypothèse de Boussinesq}
+
+\subsection{Définition et contexte}
+
+\cite[sect 4.18,  p. 108]{kundu04aa}. Boussinesq 1903. Formal justification in Spiegel and Veronis (1960). 
+
+\begin{itemize}
+  \item $\Div \u = 0$ (pour l'équation de continuité, l'écoulement est incopmressible)
+  \item on néglige les variations de $\rho$, sauf dans le terme qui implique le géopotentiel. 
+\end{itemize}
+
+Techniquement: 
+
+On écrit d'abord: $p=p_0+p^\prime$ et $\rho = \rho_0 + \rho^\prime$. $p_0$ et $\rho_0$ sont liés par l'équilibre hydrostatique.  L'équation de NS devient: 
+
+\subsection{Equation de continuité}
+
+\begin{equation}
+  \pdt{\rho^\prime} + u \cdot \grad \rho^\prime + \rho_0 ( 1 + \\frac{\rho^\prime}{\rho_0} \Div \u
+\end{equation}
+
+Expliquer quels termes on  détruit
+
+\subsection{Equation du mouvement}
+
+On fait également l'approximation d'incompressibilité pour le stress, donc on utilise \eqref{eq:ns_incompressible}. \todo{vérifier que l'équation \eqref{eq:ns_incompressible} utilise la notation $\nu\lapl \u$}
+
+
+
+
+\begin{equation}
+  \left( 1 + \frac{\rho^\prime}{\rho_0} \right) \Dt{\u} = -\frac{1}{\rho}\grad p^\prime + \frac{\rho^\prime}{\rho_0} \grad \phi  + \nu \lapl \u. 
+  \label{eq:ns_bousinesq}
+\end{equation}
+
 
 \begin{displaymath}
   \frac{\delta \rho}{\rho} = - \alpha \delta T 
 \end{displaymath}
 
-\subsection{Equation de continuité}
 
-Rapport ontre les deux termes dan l'équation de continuité
+Rapport entre les deux termes dans l'équation de continuité
 
 \begin{displaymath}
-  \frac{(1/\rho)(\Dt{\rho}}{\Div \u} \sim 
+  \frac{(1/\rho)(\Dt{\rho}}{\Div \u)} \sim 
   \frac{(1/\rho) u \pd{\rho}{x}}{\pd{u}{x}} \sim
   \frac{(U/\rho)(\delta \rho / L )}{U/L} =
   \frac{\delta \rho}{\rho} = \alpha \delta T \ll 1. 
 \end{displaymath}
 
 
+
+\subsection{Implication sur l'équation de conservation d'énergie}
 
