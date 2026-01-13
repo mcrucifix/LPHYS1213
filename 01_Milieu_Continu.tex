@@ -289,42 +289,47 @@ On peut homogénéiser l'écriture en remplaçant l'intégrale sur la surface pa
 \end{equation*}
  
 
-TODO ! 
-
-
-A faire: prendre $F=\rho$. 
-
+\todo{Prendre $F=\rho$. Le terme de gauche devient alors la masse totale du volume matériel, qu'on estime conservée au cours du temps. Il vient}
 
 \begin{equation}
-  \pdt{\rho} + \Div (\rho\cdot \u) = 0.
+  \pdt{\rho} + \Div (\rho \u) = 0.
   \label{eq:continuite}
 \end{equation}
 
-Équivalent à 
+Par ailleurs:
 
-Montrer l'équation de continuité. Ensuite prendre $F=f\rho$ et montrer l'equivalence entre deux écritures
 
-Donc écriture alternative de l'équation de continuité: 
+\begin{displaymath}
+  \begin{split}
+    \Div (\rho \u) &= \grad \rho \cdot \u + \rho  \Div \u \\
+                   &= \Dt{\rho} - \pdt{\rho} + \rho  \Div \u
+  \end{split}
+\end{displaymath}
+
+Aboutissant à une formulation Lagrangienne
+
 
 \begin{equation}
   \Dt{\rho} + \Div (\u) = 0.
-  \label{eq:continuite}
+  \label{eq:continuite_lagr}
 \end{equation}
 
-et on a: 
-
+\begin{key}{Equation de conservation sous formes eulérienne et lagrangienne}
+On reprend \eqref{eq:reynolds} mais pour $F=\rho f$. On a 
 
 \begin{equation}
-  \begin{split}
-  \text{source} = \pdt{\rho f} + \Div{\rho \u f} \\
-  \ldots        = \rho \Dt{f}
-  \end{split}
+\begin{split}
+  \text{source} &= \pdt{F} + \Div{(\u F)} && \textrm{forme eulérienne} \\
+  \ldots        &= \rho \Dt{f}                 && \textrm{forme lagrangienne} \\
+\end{split}
     \label{eq:grad_vs_cons}
 \end{equation}
 
 \todo[inline]{Insister sur la dualité: l'écriture "Lagrangienne" avec un $\Dt{}$ s'applique à des variables intensives, exprimées par unité de masse. L'écriture avec une divergence visualise la conservation de quantité extensive, exprimées par unité de volume. Bien vérifier qu'on a établi la convention minuscule et majuscule}
 
+\end{key}
 
+\todo{faire reference à des endroits plus tard dans le texte où on utilise cette expression: conservation de la qté de mouvement; énergie mécanie et thermodynamique}
 
 % Commençons par un cas particulier: $f=\rho$. Le membre de droite s'annule s'il y a conservation de la masse. Il reste le membre de gauche et, toujours selon le raisonnement 1-D, on peut faire "sauter" l'intégrale qui est valable pour tout volume fini pour exprimer l'équation de ontinuité sous sa forme différentielle: 
 %
@@ -333,15 +338,4 @@ et on a:
 %   \Div F(\vec{x},t)\,\dif V
 % \end{equation*}
 %
-
-
-
-
---
-
-dans la partie conservation du moment: il faudra être soigneux et définir la pression. Sans doute commencer par un fluide parfait. 
-
-
-
-
 

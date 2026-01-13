@@ -144,13 +144,22 @@ La partie déviatorique du tenseur (de trace nulle) est associée au cisaillemen
   T_{ij} = - \bar{p} \delta_{ij} + \left( 2 \mu e_{ij} - \frac{2}{3}\mu \Div \u \delta_{ij} \right).
 \end{displaymath}
 L'\cindex{approximation de Stokes} suppose que $p = \bar{p}$, ce qui implique $\lambda = -\frac{2}{3}\mu$. Dans ce cas, le tenseur des contraintes se simplifie en :
+\begin{displaymath}
+  T_{ij} = - p \delta_{ij} + \underbrace{2\mu e_{ij} - \frac{2}{3}\mu \Div \u \delta_{ij}}_{\tau_{ij}}, 
+\end{displaymath}
+
+que l'on peut réexprimer sous la forme plus synthétique:
+
+\begin{key}{Approximation de Stokes}
 \begin{equation}
-  T_{ij} = - p \delta_{ij} + \underbrace{2\mu e_{ij} - \frac{2}{3}\mu \Div \u \delta_{ij}}{\tau_{ij}}.
+  \tensor{T} = \tensor{\tau} - \tensor{1}p, \quad\text{avec}\   \tensor{\tau} = 2\mu (\tensor{e} - \frac{1}{3} \Div\u \tensor{1})
   \label{eq:tenseur_contraintes_stokes}
 \end{equation}
+\end{key}
+
 Pour un fluide incompressible ($\Div \u = 0$), cette expression se réduit à :
 \begin{equation}
-  \tensor{T} = - p \tensor{\delta} + 2 \mu \tensor{e}.
+  \tensor{T} = - \tensor{1}p + 2 \mu \tensor{e}.
   \label{eq:tenseur_contraintes_stokes_incompressible}
 \end{equation}
 

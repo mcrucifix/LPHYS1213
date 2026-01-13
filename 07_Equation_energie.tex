@@ -8,8 +8,8 @@ En mécanique du point:
 
 \begin{displaymath}
   \begin{split}
-    \odt{m\u} \dot u &= \sum F \dot u  \\
-    m \frac{1}{2} \odt{u^2} &= \sum F \dot u 
+    \sum F \dot u &= \odt{}(m\u) \dot u &= \sum F \dot u  \\
+                  &= m \frac{1}{2} \odt{u^2}. 
   \end{split}
 \end{displaymath}
 
@@ -18,58 +18,110 @@ On obtient une equation analogue en mécanique du milieu continu.  Cependant il 
 \todo{vérifier qu'on introduit cette forme dans la section VISQ}
 
 \begin{displaymath}
-  \rho\Dt{\u} = - \rho \grad \gpot + \div \tensor{T}
+  \rho\Dt{\u} = - \rho \grad \gpot + \Div \tensor{T}
 \end{displaymath}
 
-Il faut préfixer les deux membres de l'équation par $\u\cdot$. Le mieux est de décomposer l'expression par indice. On trouve, pour l'indice $i$, avec une somme sur les indices $j$:
+Pour obtenir l'équation de conservation d'énergie mécanique il faut préfixer les deux membres de l'équation par $\u\cdot$. Le mieux est de décomposer l'expression par indice. On trouve, pour l'indice $i$, avec une somme sur les indices $j$:
 
 \begin{displaymath}
   \begin{split}
-    u_i  \rho (\pd{u_i}{t} + u_j \rho\pd{u_i}{x_j}) &= - \rho u_i \vpot_i + u_i \pd{T_{ij}}{x_j}  \\
+    u_i  \rho (\pd{u_i}{t} + u_j \rho\pd{u_i}{x_j}) &= - \rho u_i \gpot_i + u_i \pd{T_{ij}}{x_j}  \\
     \rho \left( \pd{}{t}(\frac{1}{2}u_i^2) + u_j \pd{}{x_j}(\frac{1}{2}u_i^2) \right) &= \ldots \\
   \rho \Dt{}\left(\frac{1}{2}u_i^2\right)  &= \ldots \\
-\sum_i \rightarrow \rho \Dt{}\underbrace{\left(\frac{1}{2}u^2\right)}_{k}  &= \rho \u \cdot \grad \vpot + \u \cdot \Div \tensor{T}
+  \sum_i: \hspace{4em}  \rho \Dt{}\underbrace{\left(\frac{1}{2}u^2\right)}_{k}  &= \rho \u \cdot \grad \gpot + \u \cdot \Div \tensor{T}
   \end{split}
 \end{displaymath}
 
-où, pour la dernière étape, on a sommé sur les indices $i$. 
+où, pour la dernière étape, on a sommé sur les indices $i$. On définit $k$ l'énergie cinétique massique (par unité de masse), et $K=\rho k$. On peut gagner en clarté en remarquant que $\Dt \gpot = u\cdot\grad\gpot$ car $\pdt{\gpot}=0$. L'équation thermodynamique prend alors une forme conservative plus intuitive: 
 
-\todo{Aussi observer $\u \cdot \grad \vpot = \Dt \vpot$ car $\pd{\vpot}{t} = 0 \,\rightarrow\,$ équation de conservation. }
+\begin{equation}
+  \Dt{}(k+\gpot) = \u \cdot\Div\tensor{T}
+  \label{eq:emaca}
+\end{equation}
 
+L'écriture est intuitive car elle exprime que la variation totale d'énergie mécanique d'une particule Lagrangienne est déterminée par le travail mécanique exercé sur elle. 
 
 Comme nous l'avons vu (eq. \ref{eq:tenseur_contraintes_stokes}), $\tensor{T}$ est la somme des contraintes de pression, isotropes, et des contraintes de cisaillement. Le travail contre ces contraintes se retrouve dans le second terme du membre de droite de la dernière équation. Tentons de le préciser. 
 
-Enfin: On va d'abord un peu arbitrairement écrire:
+On va d'abord, semble-t-il arbitrairement, réécrire
 
-\begin{displaymath}
-  \u \cdot \tensor{T} = \Div {\u \cdot \tensor{\tau}} + p (\Div \u) - \mathcal{D}
-\end{displaymath}
-
-où 
-
-\begin{displaymath}
-  \mathcal{D} \eqdef 2\mu e_{ij}e_{ij} - \frac{2}{3}\mu(\Div u)^2
-\end{displaymath}
-
-est la dissipation visqueuse. 
-
-
-La signification de ce terme de dissipation va prendre tout son sens lorsqu'on va écrire le premier principe de la thermodynamique. 
-
-
-
-(note moins importante)
-Comme nous l'avons déjà fait (eq. \ref{eq:grad_vs_cons}) nous pouvons utiliser l'équation de conservation de la masse \eqref{eq:continuite}, mais dans l'autre sens, pour produire une version extensive ($K=\rho k$). 
-
-\todo[inline]{définir $k$ et $K$ dans la nomenclature. }
-
-\begin{equation}
-\pd{K}{t} + \Div (\u K) = \rho \grad \gpot + \u \cdot \Div \tensor{T}. 
-\end{equation}
-
+% Comme nous l'avons déjà fait (eq. \ref{eq:grad_vs_cons}) nous pouvons utiliser l'équation de conservation de la masse \eqref{eq:continuite}, mais dans l'autre sens, pour produire une version extensive ($K=\rho k$). 
+%
+% \todo[inline]{définir $k$ et $K$ dans la nomenclature. }
+%
+% \begin{equation}
+% \pd{K}{t} + \Div (\u K) = \rho \grad \gpot + \u \cdot \Div \tensor{T}. 
+% \end{equation}
+%
 \section{Forme intégrale de la conservation de l'énergie mécanique}
 
-\todo[inline]{Forme intégrale de la cons. énergie mécanique} 
+On fait usage de l'équivalence issue du théorème de Reynolds \eqref{eq:grad_vs_cons}:
+
+\begin{displaymath}
+  \rho \Dt{}(k+\gpot) = \pdt{}(K+\rho\gpot) + \Div(\u (K + \rho\gpot)) = \u\cdot\Div\tensor{T}
+\end{displaymath}
+
+On intègre sur un volume matériel
+
+\begin{displaymath}
+	\underbrace{\int_\vol \pdt{}(K+\rho\gpot)\,\dif\vol 
+	+  \int_A (K+\rho\gpot)\u\cdot\n\,\dif A}_{\odt{}\int_\vol \rho(k+\gpot)\, \dif\vol}
+	= 
+	\int_\vol \u \cdot \Div \tensor{T}\ \dif \vol
+\end{displaymath}
+
+%% POUR RAPPEL:
+%% T = tau - p  et tau = 2mu (e - 1/3 div u )
+%% avec e_ij = 1/2 (uij + uji) 
+%% et div u = uii
+On voudrait bien faire apparaître une divergence dans l'intégrale de droite, de façon à introduire une intégrale sur la frontière. 
+
+On utilie pour cela:
+
+\newcommand\T{\tensor{T}}
+
+ \begin{displaymath}
+   \begin{split}
+	   \u \cdot (\Div \tensor{T}) &= \Div (\u \cdot \T)  - (\Div \u) \cdot \T \\
+	   \ldots                     &= \Div (\u \cdot \T) - (\Div \u) \cdot \tensor{\tau} + p \Div \u \\
+   \end{split}
+ \end{displaymath}
+
+\tikzset{emark/.style={ above offset=3.0ex, below offset=-2.0ex, },}
+\tikzset{e1/.style={ emark, draw=blue, fill=blue!10 },}
+\tikzset{e2/.style={ emark, draw=orange, fill=orange!10 },}
+\tikzset{e3/.style={ emark, draw=green, fill=green!10 },}
+
+L'équation de conservation de l'énergie mécanique prend maintenant une forme qui nous rappel que l'énérgie mécanique d'un système varie en réponse au travail des forces externes \emph{et} de celui des forces internes:
+
+\begin{key}{Conservation de l'énergie mécanique}
+\begin{equation}
+	\begin{alignat}{2}
+	&\int_\vol \pdt{}(K+\rho\gpot)\,\dif\vol 
+	&& +  \int_A (K+\rho\gpot)\u\cdot\n\,\dif A \\
+		= & \tikzmarkin[e1]{m:e1} \int_A \u \cdot \T \cdot \n \, \dif A \tikzmarkend{m:e1} 
+		  &&\text{\color{blue} Travail des forces extérieures}\\
++ & \tikzmarkin[e2]{m:e2} \int_\vol p \Div \u\, \dif \vol \tikzmarkend{m:e2} 
+  &&\text{\color{red} Travail de la pression à l'intérieur du volume}\\
+\\
++ & \tikzmarkin[e3]{m:e3} \int_\vol (\Div \u)\cdot \tensor{\tau}, \dif \vol \tikzmarkend{m:e3} 
+  &&\text{\color{green!40!black} \parbox{9cm}{Travail des forces de viscositéà l'intérieur du volume}}\\
+\end{alignat}
+\label{eq:energiemecanique}
+\end{equation}
+
+Le dernier terme est un terme dissipatif, que l'on peut réécrire comme 
+
+\begin{displaymath}
+	\int_\vol \mathcal{D}\, \dif \vol\,\text{avec}\, 
+  \mathcal{D} \eqdef 2\mu e_{ii}e_{ij} - \frac{2}{3}\mu(\Div u)^2
+\end{displaymath}
+
+
+est la dissipation visqueuse. 
+\end{key}
+
+\todo{check this is $e_{ii}$ and not $e_{ij}$}
 
 \section{Équations thermodynamique}
 \subsection{Forme intégrale du premier principe de la thermodynamique}
@@ -77,15 +129,46 @@ Comme nous l'avons déjà fait (eq. \ref{eq:grad_vs_cons}) nous pouvons utiliser
 \cite[p. 108]{kundu04aa}
 
 \begin{equation}
-\Dt{}\int_\vol \rho (e + k + \gpot) \dif \vol = 
-\int_A (\tensor{T}\cdot \u)\cdot \n \, \dif A -
+\odt{}\int_\vol \rho (e + k + \gpot) \dif \vol = 
+\int_A (u\cdot\tensor{T})\cdot \n \, \dif A -
 \int_A \vec{q} \cdot \n \, \dif A
   \label{eq:energy}
 \end{equation}
 
-montrer le sens ici que prend $\mathcal{D}$ en soustrayant l'énergie mécanique. 
+On soustrait \eqref{eq:energiemecanique} pour obtenir une équation pour l'énergie interne: 
+
+\begin{displaymath}
+\odt{}\int_\vol E \dif \vol = 
+- \int_\vol p \Div \u\, \dif \vol 
+-  \int_\vol \mathcal{D} \dif \vol\,
++ \int_A \vec{q} \cdot \n \, \dif A
+  \label{eq:energy_euler}
+\end{displaymath}
+
+On réécrit le dernier terme sous la forme $\int_\vol \Div \vec{q} \,\dif\vol$ pour obtenir la conservation de l'énergie interne sous la forme lagrangienne: 
+
+\begin{equation}
+	\Dt{E} = - p \Div \u - \mathcal{D} + \Div\vec{q}
+	\label{eq:energy_lagrange}
+\end{equation}
+
+La variation d'énergie interne est causée par la divergence du flux de chaleur $\Div\vec{q}$, moins le travail. 
+Le travail des forces internes comporte une contribution irréversible associée à la dissipation visqueuse.
+Si le terme de dissipation s’annule, le travail se réduit à la contribution réversible -p \Div \u, qui est l’analogue local de $-p\Delta V$ en thermodynamique classique. En effet, l’intégrale volumique de \Div \u représente la variation du volume matériel.
+
+Si le terme de dissipation s'annule, alors le travail s'identifie à la forme réversible $-p \Div \u$, qui est l'équivalent de la forme $-p \Delta V$ en thermodynamique (l'intégrale sur le volume de $\Div\u$ est la variation de volume matérielle). 
+
+Ainsi, l’équation locale de l’énergie interne retrouve exactement la structure du premier principe de la thermodynamique, avec une séparation claire entre contributions réversibles et irréversibles. Cette correspondance était loin d’être évidente a priori : nous n’avons pas exigé que le travail prenne, de manière aussi naturelle, une forme distinguant explicitement une contribution réversible et une contribution irréversible. Le terme de pression joue ici son juste rôle. L’équation à laquelle nous avons abouti constitue un aboutissement théorique significatif, révélant la cohérence profonde entre la mécanique des milieux continus et la thermodynamique.
+
+
+% La signification de ce terme de dissipation prendra tout son sens lorsqu'on passera à une formulation intégrale, sur un volume matériel. 
+
+
+% montrer le sens ici que prend $\mathcal{D}$ en soustrayant l'énergie mécanique. 
 
 \subsection{Équation de la chaleur}
+
+\todo{Si gaz ou fluide parfait, alors $E=C_v T$  (ok) mais aussi  $\Div q = -\kappa \Delta T$. A travailler.}
 
 
 \section{Hypothèse de Boussinesq}
@@ -121,6 +204,7 @@ On écrit d'abord: $p=p_0+p^\prime$ et $\rho = \rho_0 + \rho^\prime$. $p_0$ et $
 
 \begin{equation}
   \tikzmarkin[boussinesq]{m:b01} \pdt{\rho^\prime} \tikzmarkend{m:b01} + \tikzmarkin[boussinesq]{m:b02} u \cdot \grad \rho^\prime \tikzmarkend{m:b02} + \rho_0 \left( 1 + \tikzmarkin[boussinesq]{m:b03}\frac{\rho^\prime}{\rho_0}\tikzmarkend{m:b03}\right) \Div \u = 0. 
+  \label{eq:continuite_boussinesq}
 \end{equation}
 
 Expliquer quels termes on  détruit
@@ -149,7 +233,6 @@ Rapport entre les deux termes dans l'équation de continuité
   \frac{(U/\rho)(\delta \rho / L )}{U/L} =
   \frac{\delta \rho}{\rho} = \alpha \delta T \ll 1. 
 \end{displaymath}
-
 
 
 \subsection{Implication sur l'équation de conservation d'énergie}
