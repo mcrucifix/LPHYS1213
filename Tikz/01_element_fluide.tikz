@@ -1,0 +1,38 @@
+\begin{tikzpicture}[scale=1.0]
+
+% Define coordinates
+\coordinate (O) at (0,0,0);
+\coordinate (X) at (3,0,0);
+\coordinate (Y) at (0,2,0);
+\coordinate (Z) at (0,0,1.5);
+\coordinate (C) at (1.5,1,0.75);
+
+% Draw cube edges
+\draw[thick] (O) -- (X);
+\draw[thick] (O) -- (Y);
+\draw[thick] (O) -- (Z);
+
+\draw[thick] (X) -- ++(0,2,0);
+\draw[thick] (X) -- ++(0,0,1.5);
+
+\draw[thick] (Y) -- ++(3,0,0);
+\draw[thick] (Y) -- ++(0,0,1.5);
+
+\draw[thick] (Z) -- ++(3,0,0);
+\draw[thick] (Z) -- ++(0,2,0);
+
+% Dimension labels
+\draw[<->] (0,-0.4,0) -- (3,-0.4,0)
+  node[midway,below] {$\delta x$};
+
+\draw[<->] (-0.4,0,0) -- (-0.4,2,0)
+  node[midway,left] {$\delta y$};
+
+\draw[<->] (-0.4,0,0) -- (-0.4,0,1.5)
+  node[midway,left] {$\delta z$};
+
+% Center labels
+\node at (C) {$\rho$};
+\node at (1.5,1,-0.6) {$\delta M = \rho\,\delta V$};
+
+\end{tikzpicture}

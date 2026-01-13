@@ -7,7 +7,8 @@
 
 \section{L'hypothèse du milieu continu}
 
-Vous êtes maintenant des experts de la \cindex{mécanique du point}. Vous connaissez les équations de la \cindex{mécanique classique} et vous savez que la somme des \cindex{forces} appliquées à un objet produit une \cindex{accélération}. Vous avez également bénéficié d’un cours de \cindex{thermodynamique}. Vous savez qu’à un volume de \cindex{gaz} ou de \cindex{liquide}, on peut attribuer une \cindex{température}, une \cindex{pression} et même une \cindex{entropie}, si ce gaz est à l’\cindex{équilibre thermodynamique}. Cette notion d’\cindex{équilibre thermodynamique} suppose qu’on a affaire à un très grand nombre de \cindex{molécules}, qui échangent de l’\cindex{énergie} et du \cindex{moment cinétique} entre elles tellement fréquemment qu’on peut se contenter d’une description \cindex{statistique} de l’ensemble.
+Nous pouvons construire en cadre pour étudier les milieux continus en s'appuyant sur deux paradigmes que vous connaissez déjà. 
+En \cindex{mécanique classique},  la somme des \cindex{forces} appliquées à un objet produit une \cindex{accélération}. En \cindex{thermodynamique}, on définit les notions de température, de pression et d'entropie pour les appliquer à des volumes de liquide ou de gaz. Ces notions s'appliquent à la condition que le gaz est à l’\cindex{équilibre thermodynamique}. Cette notion d’\cindex{équilibre thermodynamique} suppose qu’on a affaire à un très grand nombre de \cindex{molécules}, qui échangent de l’\cindex{énergie} et du \cindex{moment cinétique} entre elles tellement fréquemment qu’on peut se contenter d’une description \cindex{statistique} de l’ensemble.
 
 Nous allons maintenant rassembler ces deux types de raisonnement. L’objet de notre étude est un \cindex{milieu continu} qui n’est pas nécessairement à l’\cindex{équilibre thermodynamique}. Les notions de \cindex{température}, \cindex{pression}, \cindex{masse volumique} et même de \cindex{vitesse} doivent être adaptées de telle façon qu’on puisse exprimer leurs variations en fonction de la position et du temps. 
 
@@ -52,6 +53,12 @@ M(t) = \iiint_V \rho(\vec{x}, t) \, \dif V
 \end{equation}
 La masse d’un volume est bien l’intégrale de la masse volumique prise sur ce volume.  
 
+\begin{figure}
+\input{Tikz/01_element_fluide.tikz}
+\caption{Élément de fluide représenté comme un parallélépipède rectangle de volume $\delta V = \delta x\,\delta y\,\delta z$.}
+\end{figure}
+
+
 \section{Dérivées eulérienne et lagrangiennne}
 
 Considérons un élément de fluide de température $T$, de position $\vec{x}=(x,y,z)$ et de vitesse $\vec{u}=(u,v,w)$.  
@@ -75,27 +82,28 @@ En utilisant la notation du \cindex{gradient}, on peut aussi l’écrire :
 \label{eq:material_derivative_gradient}
 \end{equation}
 
-Au membre de gauche, nous avons la dérivée matérielle (ou lagrangienne) de la propriété $T$.  
-À droite, nous voyons apparaître deux termes :  
-\begin{itemize}
-\item le premier, $\partial T / \partial t$, est la variation locale du champ $T$ mesurée par un observateur fixe par rapport au champ. C’est la \cindex{dérivée eulérienne} ;  
-\item le second, $\vec{u} \cdot \nabla T$, exprime la variation due au transport du champ par le mouvement du fluide : c’est le terme d’\cindex{advection}.  
-\end{itemize}
+Au membre de gauche, nous avons la dérivée matérielle (ou lagrangienne) de la propriété $T$.  Elle correspond à ce qu’observerait un passager « emporté par le fluide », comme un observateur dans une montgolfière. 
+A droite, nous voyons apparaître $\partial T / \partial t$, la variation locale du champ $T$ mesurée par un observateur fixe par rapport au champ. C’est la \cindex{dérivée eulérienne}. 
 
-On peut donc écrire la relation entre les deux dérivées comme :
+En réecrivant la relation sous la forme
+
 \begin{equation}
 \frac{\partial T}{\partial t} = \frac{\Dif T}{\Dif t} - \vec{u} \cdot \nabla T
 \label{eq:eulerianagrangian}
 \end{equation}
-Ainsi, la dérivée eulérienne est égale à la dérivée lagrangienne moins le terme d’advection.
 
-On peut conceptualiser, comme nous l’avons dit, la \cindex{dérivée eulérienne} comme la variation du champ mesurée par un observateur fixe. La \cindex{dérivée lagrangienne} correspondrait à ce qu’observerait un passager « emporté par le fluide », comme un observateur dans une montgolfière. Le terme d’advection exprime la variation du champ mesurée par l’observateur causée par le transport des propriétés : il est nul si la vitesse du fluide est nulle.
+on fait apparaître, à droite,  terme d’advection, $-\vec{u}\cdot\nabla T$. Il  exprime la variation du champ mesurée par l’observateur causée par le transport des propriétés : il est nul si la vitesse du fluide est nulle.
 
 On en a une illustration parlante en \cindex{météorologie} : supposons qu’un observateur à Louvain-la-Neuve mesure d’un jour à l’autre une chute de température (description eulérienne). On peut décrire deux situations limites:
 \begin{itemize}
 \item soit nous sommes dans le cas d’une masse d’air stagnante (par exemple en situation anticyclonique) qui subit une transformation physique, typiquement une perte d’énergie interne par rayonnement. C’est donc une transformation qui s’applique sur la parelle  d’air, et qui se traduit par une variation mesurée localement par l’observateur : le premier terme du membre de droite domine ;
 \item soit les parcelles d’air sont en mouvement et ne subissent pas de transformation physique notable, mais le vent transporte des masses d’air froides vers l’observateur. Celui-ci mesure alors le remplacement d’une masse d’air chaude par une masse d’air froide. La tendance est donc causée par le mouvement ($\vec{u} \neq 0$) dans un champ inhomogène ($\nabla T \neq 0$). Le terme d’advection traduit bien ce « venir avec » : le vent amène de nouvelles masses d’air, ce qui est mesuré par l’observateur eulérien.
 \end{itemize}
+
+\begin{figure}
+  \includegraphics{Figures/euler_lagrange.png}
+  \caption{Figure illustrant (imparfaitement) deux perspectives différentes. M. Lagrange mesure l'évolution des propriétés le long de l'écoulement, au fur et à mesure que la parcelle matérielle subit des transformations phyisques. M. Euler est statique et  mesure l'évolution de propriétés physiques dans le temps. Il ne suit pas l'écoulement.}
+\end{figure}
 
 \section{La vitesse comme dérivée matérielle des coordonnées}
 

@@ -1,0 +1,46 @@
+\chapter*{Remarques préliminaires}
+
+\section{Un cours en deux sections}
+
+a physique des fluides s'enseigne aux étudiants en physique à l'UCLouvain depuis de nombreuses années, motivée en son temps par le professeur André Berger qui y voyait une matière essentielle pour aborder la dynamique des atmosphères et des océans. En effet, des phénomènes tels que les marées, les tsunamis, les anticyclones mettent en jeu des mouvements à grande échelle que l'on ne peut pas appréhender avec les seuls outils donnés par la mécanique du point. La physique des fluides est évidemment pertinente à des plus petites échelles : dynamique d'une goutte d'eau, aérodynamique, acoustique\ldots Le champ d'application est immense. 
+
+L'ouvrage "Fluid Dynamics" de P. Kundu, I. Cohen et R. Dowling fait référence dans le monde occidental et a largement inspiré ce cours. Il en est à sa 7\textsuperscript{e} édition \cite{kundu24aa} — les éditions successives ne gagnant malheureusement pas toujours en clarté. L'exposé des applications aérodynamiques a également été inspiré[e] de \cite{acheson01aa}, une référence toute britannique. La dynamique des fluides en rotation est bien sûr essentielle pour toutes les applications géophysiques. Cette matière sera vue pendant la seconde partie du cours par le Prof. Deleersnijder et n'est pas couverte par ces notes. On doit aux professeurs Cushman-Roisin et Beckers (deux Belges) un excellent ouvrage d'introduction à la dynamique des fluides géophysiques qui vous servira de référence. La seconde édition date de 2011 \cite{cushman-roisin11aa}.
+
+Au risque de caricaturer, on pourrait esquisser à traits grossiers que la dynamique des fluides à l'Ouest du rideau de fer a été fortement couplée aux progrès en matière de calcul numérique, stimulée notamment par des investissements dans les technologies nécessaires à l'aéronautique. Du côté soviétique, les outils numériques n'ont pas pénétré les universités de la même manière, si bien que l'approche, par exemple, de l'ouvrage de Landau et Lifshitz est concise et mathématiquement "efficace", mobilisant notamment fortement les lois d'échelle (Chapitre~XX). À beaucoup d'égards, l'emblématique ouvrage de Batchelor (Cambridge, \cite{batchelor00aa}), témoin d'une école européenne, est également très attentif à la rigueur mathématique.
+
+La tradition propre à l'École de physique de l'UCLouvain est de présenter la matière de façon à ce que les étudiantes et étudiants prennent bien conscience de la puissance des raisonnements analytiques, et de la force que l'on peut dégager de la rigueur conceptuelle. Nous tentons ici d'être fidèles à cette approche. Il nous a cependant semblé indispensable, pour consolider l'intuition physique, de mettre à disposition plusieurs notebooks Python qui permettent d'expérimenter la réponse des écoulements dans quelques cas simples. Une séance de laboratoire permettra également d'illustrer quelques concepts fondamentaux d'hydrostatique.
+
+La recherche en dynamique et la physique des fluides donne l'illustration parfaite d'une discipline qui nécessite la synthèse d'une approche théorique, computationnelle, et expérimentale. Nous espérons développer le volet expérimental d'année en année, notamment en collaboration avec l'EPL de l'UCLouvain. 
+
+
+\section{La dynamique des fluides est contre-intuitive}
+
+Dans  l'introduction de leur ouvrage, \cite{kundu24aa} donnent huit exemples de comportements contre-intuitifs, dont nous citons ici les 7 premiers (listés dans la troisième édition \cite{kundu04aa} pp. xxiii : 
+
+\begin{itemize}
+  \item Des causes infiniment infimes peuvent causer des grands effets (paradoxe de d'Alembert)
+  \item Des problèmes symmétriques peuvent avoir des soultions non-symmétriques
+  \item La friction peut rendre le débit plus rapide et le refroidir 
+  \item Rendre une surface plus rugueuse peut réduire sa traînée 
+  \item Introduire de la chaleur dans un écoulement peut réduire sa température
+  \item La friction peut déstabiliser un écoulement stable
+  \item Sans friction, les oiseaux (et les avions) ne pourraient pas voler
+\end{itemize}
+
+Comme le champ de ce cours est moins ambitieux que celui de Kundu, nous ne résoudrons pas tous ces paradoxes... mais certaiens apparaîtront en creux dans la théorie et les exercices. Je vous invite, à la fin de ce cours, à les relire en espérant que vous en aurez résolu quelques uns. 
+
+\section{Préparer votre assistance au cours}
+
+La pédagogie s'inspire du mouvement de ``slow teaching'' : on préfère se donner le temps de travailler les concepts en profondeur que de chercher à couvrir une grande quantité de matière. Le syllabus fait quand même de 130 pages ! Le cours est donné au tableau, interrompu par des petits exercices. Chaque séance de cours correspond \emph{grosso modo} à un chapitre (voir le calendrier sur Moodle). Vous êtes fortement encouragés à lire le chapitre avant de venir au cours. Cela rendra la science théorique beaucoup plus fluide et vous permettra de vous concentrer sur la compréhension de la matière. Le temps que vous consacrerez à la préparation du cours en amont sera gagné deux fois: vous tirerez davantage parti de la séance de cours, et grâce à cela, vous appréhenderez plus facilement les exercices: cela réduira d'autant votre temps d'étude.
+
+\subsection{Évaluation}
+
+Cette partie compte pour la moitié des points (autre partie du Prof. Deleersnijder comptant pour l'autre moitié). 
+Un devoir (à réaliser par groupes... à définir) à défendre comptera pour 3 points dans l'évaluation continue. 
+Le rapport écrit est évalué et compte pour un quart de la note finale. Il ne peut donner lieu à une
+représentation. L'examen écrit est organisé pendant la session d'examen. Il comportera
+deux exercices, et une questions de théorie. 
+
+\subsection{Calendrier}
+
+Le calendrier du cours est disponible sur Moodle.
