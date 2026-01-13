@@ -2,6 +2,7 @@
 \newcommand{\smass}{s}
 \newcommand{\vol}{\mathcal{V}}
 \newcommand{\Vol}{V}  % finite volume
+\newcommand{\Dvol}{\mathcal{A}}  % finite volume
 
 \chapter{L'équation de continuité}
 
@@ -12,15 +13,15 @@ En \cindex{mécanique classique},  la somme des \cindex{forces} appliquées à u
 
 Nous allons maintenant rassembler ces deux types de raisonnement. L’objet de notre étude est un \cindex{milieu continu} qui n’est pas nécessairement à l’\cindex{équilibre thermodynamique}. Les notions de \cindex{température}, \cindex{pression}, \cindex{masse volumique} et même de \cindex{vitesse} doivent être adaptées de telle façon qu’on puisse exprimer leurs variations en fonction de la position et du temps. 
 
-Ces propriétés deviennent des \cindex{champs} : $T = T(\vec{x},t)$.
+Ces propriétés deviennent des \cindex{champs} : $F = F(\vec{x},t)$.
 
-Il faut bien comprendre ce que cela implique. Les outils conceptuels que nous avons à notre disposition font référence à un corps homogène, isotrope et à l'équilibre ; et nous voulons décrire un \cindex{milieu} qui ne l’est pas. Lorsque nous parlons des variations d’une fonction, mathématiquement, nous faisons référence à sa \cindex{dérivée}. L’incrément différentiel d’une propriété $T$ s’écrit (avec $\vec{x} = (x,y,z)$) :
+Il faut bien comprendre ce que cela implique. Les outils conceptuels que nous avons à notre disposition font référence à un corps homogène, isotrope et à l'équilibre ; et nous voulons décrire un \cindex{milieu} qui ne l’est pas. Lorsque nous parlons des variations d’une fonction, mathématiquement, nous faisons référence à sa \cindex{dérivée}. L’incrément différentiel d’une propriété $F$ s’écrit (avec $\vec{x} = (x,y,z)$) :
 
 \begin{equation}
-\dif T = \frac{\partial T}{\partial x} \dif x + 
- \frac{\partial T}{\partial y} \dif y + 
- \frac{\partial T}{\partial z} \dif z + 
- \frac{\partial T}{\partial t} \dif t 
+\dif F = \frac{\partial F}{\partial x} \dif x + 
+ \frac{\partial F}{\partial y} \dif y + 
+ \frac{\partial F}{\partial z} \dif z + 
+ \frac{\partial F}{\partial t} \dif t 
 \label{eq:increment_temperature}
 \end{equation}
 
@@ -67,18 +68,18 @@ Le fait que la particule fluide soit en mouvement implique que ses coordonnées 
 
 En appliquant la règle de dérivation en chaîne, on obtient la \cindex{dérivée matérielle} (ou \cindex{dérivée lagrangienne}) :
 \begin{equation}
-\frac{\Dif T}{\Dif t} = 
-\frac{\partial T}{\partial t} +
-u \frac{\partial T}{\partial x} +
-v \frac{\partial T}{\partial y} +
-w \frac{\partial T}{\partial z}
+\frac{\Dif F}{\Dif t} = 
+\frac{\partial F}{\partial t} +
+u \frac{\partial F}{\partial x} +
+v \frac{\partial F}{\partial y} +
+w \frac{\partial F}{\partial z}
 \label{eq:material_derivative}
 \end{equation}
 
 Cette équation est l’une des relations les plus fondamentales de la \cindex{mécanique des fluides}.  
 En utilisant la notation du \cindex{gradient}, on peut aussi l’écrire :
 \begin{equation}
-\frac{\Dif T}{\Dif t} = \frac{\partial T}{\partial t} + \vec{u} \cdot \nabla T
+\frac{\Dif F}{\Dif t} = \frac{\partial F}{\partial t} + \vec{u} \cdot \nabla F
 \label{eq:material_derivative_gradient}
 \end{equation}
 
@@ -88,11 +89,11 @@ A droite, nous voyons apparaître $\partial T / \partial t$, la variation locale
 En réecrivant la relation sous la forme
 
 \begin{equation}
-\frac{\partial T}{\partial t} = \frac{\Dif T}{\Dif t} - \vec{u} \cdot \nabla T
+\frac{\partial F}{\partial t} = \frac{\Dif F}{\Dif t} - \vec{u} \cdot \nabla F
 \label{eq:eulerianagrangian}
 \end{equation}
 
-on fait apparaître, à droite,  terme d’advection, $-\vec{u}\cdot\nabla T$. Il  exprime la variation du champ mesurée par l’observateur causée par le transport des propriétés : il est nul si la vitesse du fluide est nulle.
+on fait apparaître, à droite,  terme d’advection, $-\vec{u}\cdot\nabla F$. Il  exprime la variation du champ mesurée par l’observateur causée par le transport des propriétés : il est nul si la vitesse du fluide est nulle.
 
 On en a une illustration parlante en \cindex{météorologie} : supposons qu’un observateur à Louvain-la-Neuve mesure d’un jour à l’autre une chute de température (description eulérienne). On peut décrire deux situations limites:
 \begin{itemize}
@@ -120,10 +121,9 @@ La démonstration est laissée en exercice. Le mieux est de chercher la dérivé
 
 \section{Volume matériel}
 
-Toute la force théorique du concept de \cindex{dérivée lagrangienne} réside dans le fait qu’on peut l’utiliser pour décrire les lois physiques de conservation que nous connaissons déjà. Il en sera ainsi de la conservation de la quantité de mouvement et de l'énergie interne. Il y a quand même quelques pièges et il faut évoluer avec prudence. 
+Toute la force théorique du concept de \cindex{dérivée lagrangienne} réside dans le fait qu’on peut l’utiliser pour décrire les lois physiques de conservation que nous connaissons déjà. Il en sera ainsi de la conservation de la quantité de mouvement (Ch. \ref{ch:euler}) et de l'énergie interne (Ch. \ref{ch:energie}). Commençons par la conservation de la masse. 
 
-Commençons par illustrer le propos un exemple qui fonctionne plutôt bien: la conservation de la masse. 
-Imaginons un volume fini $\Vol$ de masse $M$ qui évolue au gré du temps. 
+Soit un volume fini $\Vol$ de masse $M$ qui évolue au gré du temps. 
 
 \begin{equation}
   \frac{\dif M}{\dif t} = \frac{\dif}{\dif t} \iiint_{\Vol(t)} \rho(\vec{x},t). 
@@ -144,32 +144,39 @@ F\bigl(a(t),t\bigr)\,\frac{\dif a}{\dif t}
 \label{eq:leibniz_general}
 \end{equation}
 
-\section{Analogie du trafic routier}
+\section{Conservation de la Masse 1-D}
 
-Pour pouvoir utiliser sur l'équation de Leibniz telle quelle, nous allons faire l'effort d'imaginer un fluide à une dimension. On pourrait considérer un fin tuyau dans lequel circule un fluide compressible mais nous allons tenter une analogie automobile. 
+Pour pouvoir utiliser sur l'équation de Leibniz telle quelle, nous allons faire l'effort d'imaginer un fluide à une dimension. On pourrait considérer un fin tuyau dans lequel circule un fluide compressible mais nous allons tenter une analogie automobile (Figure \ref{fig:traficroutier}). 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.95\textwidth]{Figures/01_trafic_routier.png}
+  \end{center}
+  \caption{}\label{fig:traficroutier}
+\end{figure}
+
 
 Considérons une route droite (que nous mesurerons sur la droite $\mathbb{R}$) qui soutient d'un trafic automobile. Ce qui va tenir lieu de masse volumique est le nombre de véhicules par unité de longueur (disons, par kilomètre). 
 
-Ce qui tient lieu de "volume matériel" est, dans cette analogie, un convoi de véhicules. Si on veut qu'il soit de "masse constante", on dira simplement que le nombre de véhicules est fixe. Imaginons donc un convoi de, par exemple, cinq véhicules. Le premier véhicule est en position $x_1(t)$, et le dernier, en position $x_2(t)$. 
+Ce qui tient lieu de "volume matériel" est, dans cette analogie, un convoi de véhicules. Si on veut qu'il soit de "masse constante", on dira simplement que le nombre de véhicules est fixe. Imaginons donc un convoi de, par exemple, cinq véhicules. Le premier véhicule est en position $x_a(t)$, et le dernier, en position $x_b(t)$. 
 
 Reprenons alors l'intégrale de Leibniz.
-On recherche l'analogie avec un volume matériel, dont les frontières évoluent selon la vitesse du fluide. Dans notre analogie automobile, nous pouvons écrire que les bornes $a$ et $b$ de l'intégrale sont les positions $x_1(t)$ et $x_2(t)$ des extrémités de notre convoi automobile. 
-$\frac{\dif{x_2}}{\dif t}$ est la vitesse du véhicule le plus à droite $u_2(t)$, et 
-$\frac{\dif{x_1}}{\dif t}$ celle de celui  le plus à gauche. 
+On recherche l'analogie avec un volume matériel, dont les frontières évoluent selon la vitesse du fluide. Dans notre analogie automobile, nous pouvons écrire que les bornes $a$ et $b$ de l'intégrale sont les positions $x_a(t)$ et $x_b(t)$ des extrémités de notre convoi automobile. 
+$\frac{\dif{x_a}}{\dif t}$ est la vitesse du véhicule le plus à droite $u_b(t)$, et 
+$\frac{\dif{x_b}}{\dif t}$ celle de celui  le plus à gauche. 
 
-Substituons à $F$ la variable $\rho$, 
-le nombre de véhicules par unité de longueur. 
+Substituons à $F$ la variable $\rho$, le nombre de véhicules par unité de longueur. 
 
 On a : 
 
 \begin{equation}
 \frac{\dif}{\dif t} \int_{x_1(t)}^{x_2(t)} \rho(x,t)\, \dif x
 =
-\int_{x_1(t)}^{x_2(t)} \frac{\partial \rho}{\partial t}(x,t)\, \dif x
+\int_{x_b(t)}^{x_a(t)} \frac{\partial \rho}{\partial t}(x,t)\, \dif x
 +
-\rho\bigl(x_2(t),t\bigr)\,\frac{\dif x_2}{\dif t}
+\rho\bigl(x_a(t),t\bigr)\,\frac{\dif x_a}{\dif t}
 -
-\rho\bigl(x_1(t),t\bigr)\,\frac{\dif x_1}{\dif t}
+\rho\bigl(x_b(t),t\bigr)\,\frac{\dif x_b}{\dif t}
 \label{eq:leibniz_rho}
 \end{equation}
 
@@ -177,12 +184,12 @@ On peut retravailler le dernier terme, par exemple en faisant référence aux in
 
 \begin{equation}
   \begin{split}
-\rho\bigl(x_2(t),t\bigr)\,\frac{\dif x_2}{\dif t}
+\rho\bigl(x_a(t),t\bigr)\,\frac{\dif x_a}{\dif t}
 -
-\rho\bigl(x_1(t),t\bigr)\,\frac{\dif x_1}{\dif t}
+\rho\bigl(x_b(t),t\bigr)\,\frac{\dif x_b}{\dif t}
 &= 
-    \left. (\rho u\right)|_{x_1(t)}^{x_2(t)}\\ &=
-    \int_{x_1(t)}^{x_2(t)}\frac{\partial}{\partial x} \bigl(\rho(x,t) u(x,t)\bigr)\,\dif x
+    \left. (\rho u\right)|_{x_b(t)}^{x_a(t)}\\ &=
+    \int_{x_b(t)}^{x_a(t)}\frac{\partial}{\partial x} \bigl(\rho(x,t) u(x,t)\bigr)\,\dif x
 \label{eq:leibniz_rho2}
   \end{split}
 \end{equation}
@@ -192,12 +199,12 @@ Notre forme intégrale de la conservation de la masse prend donc la forme:
 \begin{equation}
 \frac{\dif}{\dif t} \int_{x_1(t)}^{x_2(t)} \rho(x,t)\, \dif x
 =
-\int_{x_1(t)}^{x_2(t)} \frac{\partial \rho}{\partial t}(x,t)\, \dif x
-+ \int_{x_1(t)}^{x_2(t)} \frac{\partial}{\partial x} \bigl(\rho(x,t) u(x,t)\bigr)\,\dif x
+\int_{x_b(t)}^{x_a(t)} \frac{\partial \rho}{\partial t}(x,t)\, \dif x
++ \int_{x_b(t)}^{x_a(t)} \frac{\partial}{\partial x} \bigl(\rho(x,t) u(x,t)\bigr)\,\dif x
 \label{eq:cons_massineique_integrale}
 \end{equation}
 
-Maintenant que nous avons une écriture bien homogène, on peut se permettre de dire que la forme doit être valable \emph{pour tout segment matériel}, donc pour tout segment défini par $x_1(t)$ et $x_2(t)$, et c'est exactement cela que l'on entend lorsqu'on exprime la forme différentielle: 
+Maintenant que nous avons une écriture bien homogène, on peut se permettre de dire que la forme doit être valable \emph{pour tout segment matériel}, donc pour tout segment défini par $x_b(t)$ et $x_a(t)$, et c'est exactement cela que l'on entend lorsqu'on exprime la forme différentielle: 
 
 \begin{equation}
   \frac{\dif (\delta M)}{\dif t}
@@ -209,7 +216,7 @@ Maintenant que nous avons une écriture bien homogène, on peut se permettre de 
 
 La seule exigence, pour interpréter cette équation, est que la dérivée temporelle, à gauche, doit s'entendre sur un élément matériel, dont les frontières évoluent avec la vitesse du fluide. 
 
-Plaçons nous dans le cas de figure sans doute le plus commun où la masse est conservée. Dans notre analogie, cela implique simplement qu'il n'y a pas pas de destruction au de génération spontanée de véhicules. Dans ce cas, le membre de gauche s'annule et  il reste: 
+Plaçons nous dans le cas de figure sans doute le plus commun où la masse est conservée. Dans notre analogie, cela implique simplement qu'il n'y a pas de destruction au de génération spontanée de véhicules. Dans ce cas, le membre de gauche s'annule et  il reste: 
 
 \begin{equation}
 \frac{\partial \rho}{\partial t}(x,t)
@@ -221,7 +228,7 @@ C'est l'\cindex{équation de continuité}. Pour aboutir à cette expression nous
 
 \begin{itemize}
   \item
-La forme eulérienne d'abord. Pour conserver l'\cindex{analogie routière}, plaçons deux points de péages $x_a$ et $x_b$, cette fois, fixes. On intègre \eqref{eq:cons_massineique_integrale} et on voit que la variation du nombre de véhicules entre les deux points de péage, par unité de temps,  exactement égale au flux de véhicules passant par par le péage $x_b$ (le flux est donné par une densité multipliée par une vitesse), auquel on retranche le flux de véhicules entrant par le péage de gauche $x_a$. 
+La forme eulérienne d'abord. Pour conserver l'\cindex{analogie routière}, plaçons deux points de péages $x_a$ et $x_b$, cette fois, fixes. On intègre \eqref{eq:cons_massineique_integrale} et on voit que la variation du nombre de véhicules entre les deux points de péage, par unité de temps,  exactement égale au flux de véhicules passant par par le péage $x_a$ (le flux est donné par une densité multipliée par une vitesse), auquel on retranche le flux de véhicules entrant par le péage de gauche $x_b$. 
 
 \item La forme lagrangienne maintenant. Observons que
 
@@ -239,20 +246,19 @@ u  \frac{\partial \rho}{\partial x} (x,t)  =  -
 \rho \frac{\partial u}{\partial x}(x,t) 
 \end{displaymath}
 
-Cette fois, dans le membre de gauche, nous retrouvons notre la dérivée lagrangienne, mais à la sauce 1-D
+Nous retrouvons, dans le membre de gauche, la dérivée lagrangienne sous sa forme 1-D:
 
 \begin{displaymath}
-\Dif_t \rho (x,t) = \rho \frac{\partial u}{\partial x} (x,t)
+\Dif_t \rho (x,t) = \rho \frac{\partial u}{\partial x} (x,t). 
 \label{eq:cons_continuite_lineique_lagrange}
 \end{displaymath}
 
-et cette équation se prête à une interprétation toute lagrangienne: la variation de densité d'une particule fluide en mouvement est causée par le mouvement de ces frontières: $\frac{\partial u}{\partial x}(x,t)$ n'est autre que la version 1-D de la divergence. 
+et cette équation se prête à une interprétation toute lagrangienne: la variation de densité d'une particule fluide en mouvement est causée par le mouvement de ses frontières. En effet,  $\frac{\partial u}{\partial x}(x,t)\dif x$ et bien la différence entre la vitesse à droite et à gauche d'une particule 1-D dde longueur $\dif x$, qui occuperait la position $x$. 
 \end{itemize} 
 
-Finalement, notre bravoure s'est avérée bien placée. On peut se permettre  d'utiliser la dérivée lagrangienne pour exprimer une loi de conservation de façon somme toute assez intuitive.
-Dans la suite du cours, nous allons remplacer $F$ par d'autres propriétés, et progressivement dériver les lois des conservation de l'energie et du moment cinétique. Avant cela, nous devons faire l'effort de repasser, proprement, à trois dimensions. 
+Nous venons de montrer comment la la dérivée lagrangienne se prête bien pour  exprimer une loi de conservation. Dans la suite du cours, nous allons remplacer $F$ par d'autres propriétés, et progressivement dériver les lois des conservation du moment cinétique (Ch. \ref{ch:euler}) et de l'énergie (Ch. \ref{ch:energie}).  Avant cela, nous devons faire l'effort de repasser, proprement, à trois dimensions. 
 
-Intuitivement les choses peuvent se voir de la façon suivante. Le raisonnement eulérien qui permet d'intérpréter l'équation \eqref{eq:cons_continuite_lineique} peut s'extrapoler dans les trois directions de l'espace. Si on a non pas une route mais une boîte, il faut faire le bilan des flux dans la direction Est-Ouest, plus Nord-Sud, plus avant-arrière et on peut prédire que la relation aura la forme: 
+Les choses peuvent se concevoir de la façon suivante. Le raisonnement qui nous a permis de générer l'équation \eqref{eq:cons_continuite_lineique} peut se généraliser dans les trois directions de l'espace. Si on a non pas une route bordée de deux points de péage, mais une boîte 3-D, il faut faire le bilan des flux dans la direction Est-Ouest, plus Nord-Sud, plus avant-arrière. On peut prédire que la relation aura la forme: 
 
 \begin{equation}
 \frac{\partial \rho}{\partial t}(\vec{x},t)
@@ -269,10 +275,10 @@ Cette formule est correcte, mais on peut l'obtenir de façon un peu plus formell
   \od{}{t}
   \iiint_{\Vol(t)} F(\vec{x},t)\,\dif V = 
   \iiint_{\Vol(t)} \pd{F}{t}(\vec{x},t)\,\dif V +
-  \iint_{A(t)} F(\vec{x},t) \dif \vec{A} \cdot \vec{u}_A 
+  \iint_{\Dvol(t)} F(\vec{x},t) \dif \vec{A} \cdot \vec{u}_A 
 \end{equation}
   
-La troisième intégrale de l'expression est une intégrale sur la surface qui borde le volume. Elle forme le pendant deux deux derniers termes qui apparaissent dans  l'équation \eqref{eq:leibniz_general} et exprime le flux de $F$ passant à travers la frontière du volume $\Vol(t)$. Dans de nombreux livres la surface $A$ est notée $\partial V$ en référence à la notation habituelle en géométrie différentielle. 
+La troisième intégrale de l'expression est une intégrale sur la surface qui borde le volume matériel, notée $\Dvol$. Elle est le pendant à 3 dimensions des deux derniers termes qui apparaissent dans  l'équation \eqref{eq:leibniz_general}. Elle exprime le flux de $F$ passant à travers la frontière du volume $\Vol(t)$. Dans de nombreux livres la surface $\Dvol$ est notée $\partial V$ en référence à la notation habituelle en géométrie différentielle. 
 
 Si on considère que le volume $\Vol(t)$ est un volume matériel (fini), alors la vitesse à la frontière $\vec{u}_A$ est egale à la vitesse du fluide. On notera alors simplement $\vec{u}$. On écrit dès lors: 
 
