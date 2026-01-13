@@ -2,7 +2,7 @@
 \newcommand{\smass}{s}
 \newcommand{\vol}{\mathcal{V}}
 \newcommand{\Vol}{V}  % finite volume
-\newcommand{\Dvol}{\mathcal{A}}  % finite volume
+\newcommand{\dvol}{\mathcal{A}}  % finite volume boundary
 
 \chapter{L'équation de continuité}
 
@@ -103,7 +103,7 @@ On en a une illustration parlante en \cindex{météorologie} : supposons qu’un
 
 \begin{figure}
   \includegraphics{Figures/euler_lagrange.png}
-  \caption{Figure illustrant (imparfaitement) deux perspectives différentes. M. Lagrange mesure l'évolution des propriétés le long de l'écoulement, au fur et à mesure que la parcelle matérielle subit des transformations phyisques. M. Euler est statique et  mesure l'évolution de propriétés physiques dans le temps. Il ne suit pas l'écoulement.}
+  \caption{La dérivée Lagrangienne mesure l'évolution des propriétés le long de l'écoulement, au fur et à mesure que la parcelle matérielle subit des transformations phyisques. On peut imaginer M. Lagrange mesurant l'évolution de la température dans un montgolfière. La dérivée eulérienne mesure l'évolution du champ à un endroit fixe (par exemple, sur une station météorologique). }
 \end{figure}
 
 \section{La vitesse comme dérivée matérielle des coordonnées}
@@ -144,7 +144,7 @@ F\bigl(a(t),t\bigr)\,\frac{\dif a}{\dif t}
 \label{eq:leibniz_general}
 \end{equation}
 
-\section{Conservation de la Masse 1-D}
+\section{Analogie du traffic routier}
 
 Pour pouvoir utiliser sur l'équation de Leibniz telle quelle, nous allons faire l'effort d'imaginer un fluide à une dimension. On pourrait considérer un fin tuyau dans lequel circule un fluide compressible mais nous allons tenter une analogie automobile (Figure \ref{fig:traficroutier}). 
 
@@ -169,7 +169,7 @@ Substituons à $F$ la variable $\rho$, le nombre de véhicules par unité de lon
 On a : 
 
 \begin{equation}
-\frac{\dif}{\dif t} \int_{x_1(t)}^{x_2(t)} \rho(x,t)\, \dif x
+\frac{\dif}{\dif t} \int_{x_b(t)}^{x_a(t)} \rho(x,t)\, \dif x
 =
 \int_{x_b(t)}^{x_a(t)} \frac{\partial \rho}{\partial t}(x,t)\, \dif x
 +
@@ -255,6 +255,8 @@ Nous retrouvons, dans le membre de gauche, la dérivée lagrangienne sous sa for
 et cette équation se prête à une interprétation toute lagrangienne: la variation de densité d'une particule fluide en mouvement est causée par le mouvement de ses frontières. En effet,  $\frac{\partial u}{\partial x}(x,t)\dif x$ et bien la différence entre la vitesse à droite et à gauche d'une particule 1-D dde longueur $\dif x$, qui occuperait la position $x$. 
 \end{itemize} 
 
+\section{Équation de la conservation de la masse (3D)}
+
 Nous venons de montrer comment la la dérivée lagrangienne se prête bien pour  exprimer une loi de conservation. Dans la suite du cours, nous allons remplacer $F$ par d'autres propriétés, et progressivement dériver les lois des conservation du moment cinétique (Ch. \ref{ch:euler}) et de l'énergie (Ch. \ref{ch:energie}).  Avant cela, nous devons faire l'effort de repasser, proprement, à trois dimensions. 
 
 Les choses peuvent se concevoir de la façon suivante. Le raisonnement qui nous a permis de générer l'équation \eqref{eq:cons_continuite_lineique} peut se généraliser dans les trois directions de l'espace. Si on a non pas une route bordée de deux points de péage, mais une boîte 3-D, il faut faire le bilan des flux dans la direction Est-Ouest, plus Nord-Sud, plus avant-arrière. On peut prédire que la relation aura la forme: 
@@ -274,10 +276,12 @@ Cette formule est correcte, mais on peut l'obtenir de façon un peu plus formell
   \od{}{t}
   \iiint_{\Vol(t)} F(\vec{x},t)\,\dif V = 
   \iiint_{\Vol(t)} \pd{F}{t}(\vec{x},t)\,\dif V +
-  \iint_{\Dvol(t)} F(\vec{x},t) \dif \vec{A} \cdot \vec{u}_A 
+  \iint_{A(t)} F(\vec{x},t) \dif \vec{A} \cdot \vec{u}
 \end{equation}
   
-La troisième intégrale de l'expression est une intégrale sur la surface qui borde le volume matériel, notée $\Dvol$. Elle est le pendant à 3 dimensions des deux derniers termes qui apparaissent dans  l'équation \eqref{eq:leibniz_general}. Elle exprime le flux de $F$ passant à travers la frontière du volume $\Vol(t)$. Dans de nombreux livres la surface $\Dvol$ est notée $\partial V$ en référence à la notation habituelle en géométrie différentielle. 
+La troisième intégrale de l'expression est une intégrale sur la surface qui borde le volume matériel, notée $\dvol$. 
+L'expression $\dif\vec{A}\cdot\vec{U}$ exprime en produit scalaire entre un vecteur de longeur $\dif A$ et orienté perpendiculairement à la surface, et le vecteur vitesse. Il exprime donc le flux à travers $\dif A$. 
+Ainsi, l'intégrale sur $\dvol$ est l'équivalent, à 3 dimensions,  des deux derniers termes de  l'équation \eqref{eq:leibniz_general}. Elle exprime le flux de $F$ passant à travers la frontière du volume $\Vol(t)$. La surface $\dvol$ est souvent notée $\partial V$ en référence à la notation habituelle en géométrie différentielle. 
 
 Si on considère que le volume $\Vol(t)$ est un volume matériel (fini), alors la vitesse à la frontière $\vec{u}_A$ est egale à la vitesse du fluide. On notera alors simplement $\vec{u}$. On écrit dès lors: 
 
@@ -285,7 +289,7 @@ Si on considère que le volume $\Vol(t)$ est un volume matériel (fini), alors l
   \odt{}
   \iiint_{\vol(t)} F(\vec{x},t)\,\dif V = 
   \iiint_{\vol(t)} \pd{F}{t}(\vec{x},t)\,\dif V +
-  \iint_{A(t)} F(\vec{x},t) \dif \vec{A} \cdot \vec{u}
+  \iint_{\dvol(t)} F(\vec{x},t) \dif \vec{A} \cdot \vec{u}
   \label{eq:reynolds}
 \end{equation}
  
@@ -301,54 +305,51 @@ On peut homogénéiser l'écriture en remplaçant l'intégrale sur la surface pa
   \label{eq:reynolds}
 \end{equation*}
  
-
-\todo{Prendre $F=\rho$. Le terme de gauche devient alors la masse totale du volume matériel, qu'on estime conservée au cours du temps. Il vient}
-
-\begin{equation}
-  \pdt{\rho} + \Div (\rho \u) = 0.
-  \label{eq:continuite}
-\end{equation}
-
-Par ailleurs:
-
-
-\begin{displaymath}
-  \begin{split}
-    \Div (\rho \u) &= \grad \rho \cdot \u + \rho  \Div \u \\
-                   &= \Dt{\rho} - \pdt{\rho} + \rho  \Div \u
-  \end{split}
-\end{displaymath}
-
-Aboutissant à une formulation Lagrangienne
-
-
-\begin{equation}
-  \Dt{\rho} + \Div (\u) = 0.
-  \label{eq:continuite_lagr}
-\end{equation}
-
-\begin{key}{Equation de conservation sous formes eulérienne et lagrangienne}
-On reprend \eqref{eq:reynolds} mais pour $F=\rho f$. On a 
-
-\begin{equation}
-\begin{split}
-  \text{source} &= \pdt{F} + \Div{(\u F)} && \textrm{forme eulérienne} \\
-  \ldots        &= \rho \Dt{f}                 && \textrm{forme lagrangienne} \\
-\end{split}
-    \label{eq:grad_vs_cons}
-\end{equation}
-
-\todo[inline]{Insister sur la dualité: l'écriture "Lagrangienne" avec un $\Dt{}$ s'applique à des variables intensives, exprimées par unité de masse. L'écriture avec une divergence visualise la conservation de quantité extensive, exprimées par unité de volume. Bien vérifier qu'on a établi la convention minuscule et majuscule}
-
-\end{key}
-
-\todo{faire reference à des endroits plus tard dans le texte où on utilise cette expression: conservation de la qté de mouvement; énergie mécanie et thermodynamique}
-
-% Commençons par un cas particulier: $f=\rho$. Le membre de droite s'annule s'il y a conservation de la masse. Il reste le membre de gauche et, toujours selon le raisonnement 1-D, on peut faire "sauter" l'intégrale qui est valable pour tout volume fini pour exprimer l'équation de ontinuité sous sa forme différentielle: 
+% Si on prend, comme nous l'avons fait en 1-D, $F=\rho$, l'intégrale de gauche est la masse totale du volume matériel, dont la dérivée est nulle si la masse est conservée. Comme la relation est valable pour tout volume matériel, elle se ramène à 
 %
-% \begin{equation*}
-%   \pd{F}{t}(\vec{x},t)\,\dif V = - 
-%   \Div F(\vec{x},t)\,\dif V
-% \end{equation*}
+% \begin{equation}
+%   \pdt{\rho} + \Div (\rho \u) = 0.
+%   \label{eq:continuite}
+% \end{equation}
 %
+% Par ailleurs:
+%
+%
+% \begin{displaymath}
+%   \begin{split}
+%     \Div (\rho \u) &= \grad \rho \cdot \u + \rho  \Div \u \\
+%                    &= \Dt{\rho} - \pdt{\rho} + \rho  \Div \u
+%   \end{split}
+% \end{displaymath}
+%
+% Aboutissant à une formulation Lagrangienne
+%
+%
+\begin{equation}
+   \Dt{\rho} + \Div \u = 0.
+   \label{eq:continuite_lagr}
+\end{equation}
+
+\section{Equation de conservation sous formes eulérienne et lagrangienne}
+
+ Considérons une  quelconque $F$, qui s'exprime par unité de volume. La \cindex{source de $F$}, dans un volume $\vol(t)$, est l'intégrale $\iiint_{\vol(t)} F(\vec{x},t)\,\dif V$. Nous l'avons considérée nulle pour la masse $(F=\rho)$, mais elle ne l'est pas nécessairement. On obtient donc: 
+
+
+\begin{equation}
+\text{source par unit\'e de volume} = \pd{F}{t} + \Div(\vec{u}F) \quad  (\textrm{forme eulérienne})
+\label{eq:conservation_euler}
+\end{equation}
+
+Cette équation accepte une interprétation eulérienne: on voit que la source de $F$ à une position $\vec{x}$ est la somme de la variation eulérienne de $F$, plus la divergence qui exprime le flux de $F$ à travers les frontières de l'élément différentiel autour de $\vec{x}$. 
+
+\begin{studentinvestigation}{Équations de conservation sous forme eulérienne et lagragienne}
+  Montrez qu'en combinant les équation \eqref{eq:conservation_euler} et \eqref{eq:continuite}, en notant $F=\rho f$. On a 
+
+\begin{equation}
+  \text{source par unité de volume} = \rho \Dt{f}                 \quad \textrm{(forme lagrangienne)} 
+  \label{eq:grad_vs_cons}
+\end{equation}
+
+Quelle intuition physique se dégage de l'équivalence entre \eqref{eq:conservation_euler} et \eqref{eq:grad_vs_cons} ? Quelle est la signification de $f$ ? 
+\end{studentinvestigation}
 
