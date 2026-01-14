@@ -102,22 +102,24 @@ On en a une illustration parlante en \cindex{météorologie} : supposons qu’un
 \end{itemize}
 
 \begin{figure}
-  \includegraphics{Figures/euler_lagrange.png}
-  \caption{La dérivée Lagrangienne mesure l'évolution des propriétés le long de l'écoulement, au fur et à mesure que la parcelle matérielle subit des transformations phyisques. On peut imaginer M. Lagrange mesurant l'évolution de la température dans un montgolfière. La dérivée eulérienne mesure l'évolution du champ à un endroit fixe (par exemple, sur une station météorologique). }
+  \includegraphics[width=\textwidth]{Figures/euler_lagrange.png}
+  \caption{La dérivée lagrangienne mesure l'évolution des propriétés le long de l'écoulement, au fur et à mesure que la parcelle matérielle subit des transformations phyisques. On peut imaginer M. Lagrange mesurant l'évolution de la température dans un montgolfière. La dérivée eulérienne mesure l'évolution du champ à un endroit fixe (par exemple, sur une station météorologique). }
 \end{figure}
 
 \section{La vitesse comme dérivée matérielle des coordonnées}
 
 Nous allons, tout au long du cours, retrouver le concept de \cindex{particule fluide}: un volume élémentaire, formalisé en faisant référence à des infinitésimaux, de masse volume $\rho$. Une description lagrangienne du mouvement consiste à analyser le mouvement de ces particules fluides. 
 
-Par exemple, la dérivée matérielle de la position d'une particle fluide n'est autre que sa vitesse: 
+\begin{exercice}
+  Montrez que la dérivée matérielle de la position d'une particule fluide n'est autre que sa vitesse: 
 
 \begin{equation}
-  Dt{\vec{x}}=\vec{u}
+  \Dt{\vec{x}}=\vec{u}
   \label{eq:derivee_position}
 \end{equation}
 
-La démonstration est laissée en exercice. Le mieux est de chercher la dérivée matérielle de chacune des trois coordonnées, en se rappelant que les dérivées partielles de coordonnéest indépendantes sont nullles, i.e.,  $\pd{x_i}{x_j}=\delta_{ij}$ et $\pd{x_i}{t}=0$. 
+(Le mieux est de chercher la dérivée matérielle de chacune des trois coordonnées, en se rappelant que les dérivées partielles de coordonnéest indépendantes sont nullles, i.e.,  $\pd{x_i}{x_j}=\delta_{ij}$ et $\pd{x_i}{t}=0$. )
+\end{exercice}
 
 \section{Volume matériel}
 

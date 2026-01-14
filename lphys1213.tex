@@ -82,7 +82,6 @@
 \addbibresource{bibtex.bib}
 \usepackage{silence}
 \WarningFilter{hyperref}{removing}
-% Define a custom environment for student investigation topics
 \title{\TITLE \\ \COURSECODE \\ \ACADEMICYEAR}
 \author{\AUTHOR}
 \school{\SCHOOL}
@@ -90,11 +89,6 @@
 \academicyear{\ACADEMICYEAR}
 \coursecode{\COURSECODE}
 \coursetitle{\COURSETITLE}
-
-%\usepackage{siunitx}
-%\includeonly{Session_1_Elementary_Notions}
-%\includeonly{Session_2_Gravity_Waves}
-%\includeonly{Session_3_Poincare_and_Kelvin_Waves}
 
 \makenomenclature
 
@@ -105,8 +99,9 @@
 \tableofcontents
 \printnomenclature
 
+% print automatically all section names in format 0*.tex and all appendices in format A_*
+
 \begin{luacode*}
-  -- tex.print(-1, "\\begin{verbatim}")
   files = {}
   for file in lfs.dir(".") do
   if file:match("^0%d_.*%.tex$") then
@@ -119,20 +114,9 @@
   for _, f in ipairs(files) do
     tex.print(-1, "\\include{" .. f .. "}")
   end
-  -- tex.print(-1, "\\end{verbatim}")
 
 \end{luacode*}
 
-% \include{00_Introduction.tex}
-% \include{01_Milieu_Continu.tex}
-% \include{02_Equation_du_Mvt.tex}
-% \include{03_Description_champ_vitesse.tex}
-% \include{04_Ecoulements_incompressibles.tex}
-% \include{05_Ecoulements_Visqueux.tex}
-% \include{06_ModelesEcoulements.tex}
-% \include{07_Tension_surface.tex}
-% \include{08_Equation_energie.tex}
-% %
 \appendix
 
 \begin{luacode}
