@@ -62,7 +62,7 @@ La masse d’un volume est bien l’intégrale de la masse volumique prise sur c
 
 \section{Dérivées eulérienne et lagrangiennne}
 
-Considérons un élément de fluide de température $T$, de position $\vec{x}=(x,y,z)$ et de vitesse $\vec{u}=(u,v,w)$.  
+Considérons un élément de fluide avec une propriété $F$ (température, pression\ldots), de position $\vec{x}=(x,y,z)$ et de vitesse $\vec{u}=(u,v,w)$.  
 On voudrait quantifier l’évolution de la température de l'élément, en la conceptualisant comme un objet en mouvement. Dans ce cas particulier, on peut le qualifier d'\cindex{élément matériel} ou parfois de particule fluide. 
 Le fait que la particule fluide soit en mouvement implique que ses coordonnées $x,y,z$ sont elles-mêmes des fonctions du temps, que l’on peut déduire du champ de vitesse.
 
@@ -83,8 +83,8 @@ En utilisant la notation du \cindex{gradient}, on peut aussi l’écrire :
 \label{eq:material_derivative_gradient}
 \end{equation}
 
-Au membre de gauche, nous avons la dérivée matérielle (ou lagrangienne) de la propriété $T$.  Elle correspond à ce qu’observerait un passager « emporté par le fluide », comme un observateur dans une montgolfière. 
-A droite, nous voyons apparaître $\partial T / \partial t$, la variation locale du champ $T$ mesurée par un observateur fixe par rapport au champ. C’est la \cindex{dérivée eulérienne}. 
+Au membre de gauche, nous avons la dérivée matérielle (ou lagrangienne) de la propriété $F$.  Elle correspond à ce qu’observerait un passager « emporté par le fluide », comme un observateur dans une montgolfière. 
+A droite, nous voyons apparaître $\partial F / \partial t$, la variation locale du champ $F$ mesurée par un observateur fixe par rapport au champ. C’est la \cindex{dérivée eulérienne}. 
 
 En réecrivant la relation sous la forme
 
@@ -98,7 +98,7 @@ on fait apparaître, à droite,  terme d’advection, $-\vec{u}\cdot\nabla F$. I
 On en a une illustration parlante en \cindex{météorologie} : supposons qu’un observateur à Louvain-la-Neuve mesure d’un jour à l’autre une chute de température (description eulérienne). On peut décrire deux situations limites:
 \begin{itemize}
 \item soit nous sommes dans le cas d’une masse d’air stagnante (par exemple en situation anticyclonique) qui subit une transformation physique, typiquement une perte d’énergie interne par rayonnement. C’est donc une transformation qui s’applique sur la parelle  d’air, et qui se traduit par une variation mesurée localement par l’observateur : le premier terme du membre de droite domine ;
-\item soit les parcelles d’air sont en mouvement et ne subissent pas de transformation physique notable, mais le vent transporte des masses d’air froides vers l’observateur. Celui-ci mesure alors le remplacement d’une masse d’air chaude par une masse d’air froide. La tendance est donc causée par le mouvement ($\vec{u} \neq 0$) dans un champ inhomogène ($\nabla T \neq 0$). Le terme d’advection traduit bien ce « venir avec » : le vent amène de nouvelles masses d’air, ce qui est mesuré par l’observateur eulérien.
+\item soit les parcelles d’air sont en mouvement et ne subissent pas de transformation physique notable, mais le vent transporte des masses d’air froides vers l’observateur. Celui-ci mesure alors le remplacement d’une masse d’air chaude par une masse d’air froide. La tendance est donc causée par le mouvement ($\vec{u} \neq 0$) dans un champ inhomogène ($\nabla F \neq 0$). Le terme d’advection traduit bien ce « venir avec » : le vent amène de nouvelles masses d’air, ce qui est mesuré par l’observateur eulérien.
 \end{itemize}
 
 \begin{figure}
