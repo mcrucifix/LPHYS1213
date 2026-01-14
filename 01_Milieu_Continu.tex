@@ -277,6 +277,7 @@ Cette formule est correcte, mais on peut l'obtenir de façon un peu plus formell
   \iiint_{\Vol(t)} F(\vec{x},t)\,\dif V = 
   \iiint_{\Vol(t)} \pd{F}{t}(\vec{x},t)\,\dif V +
   \iint_{A(t)} F(\vec{x},t) \dif \vec{A} \cdot \vec{u}
+  \label{eq:leibniz3d}
 \end{equation}
   
 La troisième intégrale de l'expression est une intégrale sur la surface qui borde le volume matériel, notée $\dvol$. 
@@ -305,34 +306,43 @@ On peut homogénéiser l'écriture en remplaçant l'intégrale sur la surface pa
   \label{eq:reynolds}
 \end{equation*}
  
-% Si on prend, comme nous l'avons fait en 1-D, $F=\rho$, l'intégrale de gauche est la masse totale du volume matériel, dont la dérivée est nulle si la masse est conservée. Comme la relation est valable pour tout volume matériel, elle se ramène à 
-%
-% \begin{equation}
-%   \pdt{\rho} + \Div (\rho \u) = 0.
-%   \label{eq:continuite}
-% \end{equation}
-%
-% Par ailleurs:
-%
-%
-% \begin{displaymath}
-%   \begin{split}
-%     \Div (\rho \u) &= \grad \rho \cdot \u + \rho  \Div \u \\
-%                    &= \Dt{\rho} - \pdt{\rho} + \rho  \Div \u
-%   \end{split}
-% \end{displaymath}
-%
-% Aboutissant à une formulation Lagrangienne
-%
+\begin{figure}
+  \begin{center}
+   \input{Figures/volume_element.pdf_tex}
+  \end{center}
+  \caption{Volume matériel $vol$ et un élément de surface $\dvol$, et le vecteur associé pointant vers l'extérieur, perpendiculairement à la surface. C'est ce vecteur qui apparaît dans les équations \eqref{eq:leibniz3d} et \eqref{eq:reynolds}.  }\label{fig:volumelemt}
+\end{figure}
+
+ Si on prend, comme nous l'avons fait en 1-D, $F=\rho$, l'intégrale de gauche est la masse totale du volume matériel, dont la dérivée est nulle si la masse est conservée. Comme la relation est valable pour tout volume matériel, elle se ramène à 
+
+ \begin{equation}
+   \pdt{\rho} + \Div (\rho \u) = 0.
+   \label{eq:continuite}
+ \end{equation}
+
+ Par ailleurs:
+
+
+ \begin{displaymath}
+   \begin{split}
+     \Div (\rho \u) &= \grad \rho \cdot \u + \rho  \Div \u \\
+                    &= \Dt{\rho} - \pdt{\rho} + \rho  \Div \u
+   \end{split}
+ \end{displaymath}
+
+ Aboutissant à une formulation Lagrangienne
+
 %
 \begin{equation}
    \Dt{\rho} + \Div \u = 0.
    \label{eq:continuite_lagr}
 \end{equation}
 
+Ces deux équations, \ref{eq:continuite} et \ref{eq:continuite_lagr} sont deux expressions équivalentes de la conservation de la masse. Elles portent le nom d'équations de continuité. 
+
 \section{Equation de conservation sous formes eulérienne et lagrangienne}
 
- Considérons une  quelconque $F$, qui s'exprime par unité de volume. La \cindex{source de $F$}, dans un volume $\vol(t)$, est l'intégrale $\iiint_{\vol(t)} F(\vec{x},t)\,\dif V$. Nous l'avons considérée nulle pour la masse $(F=\rho)$, mais elle ne l'est pas nécessairement. On obtient donc: 
+Pour généraliser ce résultat, considérons une quantité  quelconque $F$, qui s'exprime par unité de volume. La \cindex{source de $F$}, dans un volume $\vol(t)$, est l'intégrale $\iiint_{\vol(t)} F(\vec{x},t)\,\dif V$. Nous l'avons considérée nulle pour la masse $(F=\rho)$, mais elle ne l'est pas nécessairement. On obtient donc: 
 
 
 \begin{equation}

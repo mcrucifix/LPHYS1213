@@ -1,0 +1,40 @@
+\chapter{Transformations des tenseurs de Rang 2 \label{ch:a_tenseurs}}
+
+\section{Transformation des coordonnées}
+Un tenseur de rang 2, comme le gradient de vitesse $\grad\vec{u}$, n'est pas une simple matrice de chiffres ; c'est un opérateur linéaire dont les composantes dépendent de la base choisie. 
+
+Si l'on passe d'une base orthonormée $\mathcal{B}$ à une nouvelle base $\mathcal{B}'$ via une matrice de rotation $\tensor{R}$ (où $\tensor{R}^{-1} = \tensor{R}^T$), les composantes d'un vecteur se transforment selon $\vec{u}' = \tensor{R}\vec{u}$. Pour qu'une relation physique telle que $\vec{y} = \tensor{T}\vec{x}$ reste valide dans toutes les bases, les composantes du tenseur doivent suivre la règle de transformation suivante :
+\begin{equation}
+    \tensor{T}' = \tensor{R} \tensor{T} \tensor{R}^T
+\end{equation}
+En notation indicielle (convention de sommation d'Einstein), cela s'écrit :
+\begin{equation}
+    T'_{ij} = R_{ik}R_{jl}T_{kl}
+\end{equation}
+
+
+\section{Invariants scalaires}
+Puisque la transformation ci-dessus est une transformation de similitude, certaines propriétés de la matrice restent inchangées quel que soit le système de coordonnées. Ces \textbf{invariants} ont souvent une signification physique:
+
+\begin{itemize}
+    \item \textbf{La Trace :} $\text{Tr}(\grad\vec{u}) = \pd{u}{x} + \pd{v}{y} + \pd{w}{z} = \text{div}(\vec{u})$ représente le taux de dilatation volumique local (somme des valeurs propres). Pour un fluide incompressible, cet invariant est nul partout.
+    \item \textbf{Le Déterminant :} $\det(\grad\vec{u})$ caractérise le changement de volume du domaine fluide sous l'action du flot (produit des valeurs propres). 
+\end{itemize}
+
+\section{Décomposition Symétrique et Antisymétrique}
+Tout tenseur de rang 2 peut être décomposé de manière unique en une partie symétrique $\tensor{S}$ et une partie antisymétrique $\tensor{\Omega}$ :
+\begin{equation}
+    \grad\vec{u} = \underbrace{\frac{1}{2}\left( \grad\vec{u} + (\grad\vec{u})^T \right)}_{\tensor{S} \text{ (Tenseur des taux de déformation)}} + \underbrace{\frac{1}{2}\left( \grad\vec{u} - (\grad\vec{u})^T \right)}_{\tensor{\Omega} \text{ (Tenseur de rotation/vorticité)}}
+\end{equation}
+Cette décomposition est elle-même invariante. Cela signifie que l'existence de dilation $\tensor{S}$ ou de rotation $\tensor{\Omega}$ ne dépend pas de l'observateur. On peut montrer que 
+\begin{displaymath}
+  (\grad\vec{u})'= S^\prime + \Omega^\prime,
+\end{displaymath}
+avec $S^\prime = \tensor{R}\tensor{S}\tensor{R}^T$ et 
+$omega^\prime = \tensor{R}\tensor{omega}\tensor{R}^T$. 
+
+  % + : si un élément fluide subit une rotation pure dans un repère, il la subit dans tous les repères.
+
+\begin{studentinvestigation}{Invariance de la trace}
+  Vérifier l'invariante de la trace pour une rotation $\tensor{R}$ quelconque, satisfaisant $R^T R = I$, équivalent à $R^T = R^{-1}$. Astuce: on peut utiliser la notation d'Einstein. 
+\end{studentinvestigation}

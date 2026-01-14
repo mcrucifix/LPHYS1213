@@ -140,7 +140,10 @@ Expliquez pourquoi la fonte de glace de mer ne génère pas de hausse de niveau 
 \end{studentinvestigation}
 
 \begin{application}{Densitomètre}
-  On trouve une autre application du principe d'Archimède dans le fonctionnement du \cindex{densitomètre}. Il s'agit d'un cylindre lesté, et de masse volumique inférieure à celle du fluide dont on désire mesurer la masse volumique. Comme le fait un bateau, le cylindre s'enfoncera davantage dans un fluide moins dense, le rapport entre la masse du cylindre et le volume immergé donnant la masse volumique du fluide mesuré.  TODO: faire une figure. 
+  \parbox[b]{0.65\textwidth}{
+  On trouve une autre application du principe d'Archimède dans le fonctionnement du \cindex{densitomètre}. Il s'agit d'un cylindre lesté, et de masse volumique inférieure à celle du fluide dont on désire mesurer la masse volumique. Comme le fait un bateau, le cylindre s'enfoncera davantage dans un fluide moins dense, le rapport entre la masse du cylindre et le volume immergé donnant la masse volumique du fluide mesuré. Si on écrit le volume imergé comme une fonction (monotone croissante) de la hauteur $h$ entre la base du cylindre lesté et la surface de liquide, de masse volumique $\rho$, et que la masse du densitomètre est notée $M_d$, on peut calibrer une relation entre $h$ et $\rho$ via la relation $\rho g V(h) = M_d$. }
+  \hfill
+  \parbox[b]{0.30\textwidth}{\includegraphics{Figures/02_densitometre.png}}
 \end{application}
 
 \begin{studentinvestigation}{Le profil de pression atmosphérique}
@@ -158,7 +161,7 @@ On admet qu’au voisinage du sol la température décroît linéairement avec
 l’altitude, selon un gradient thermique moyen d’un degré Celsius tous les
 $180\,\text{m}$ :
 \[
-  T(z) = T_0 - \dfrac{z}{180,\text{w}}\,.
+  T(z) = T_0 - \dfrac{z}{180\,\text{m}}\,.
 \]
 
 \medskip
@@ -200,7 +203,7 @@ C’est la célèbre \cindex{équation d’Euler}.
 
 Nous retrouvons ici la pleine puissance de la notion de \cindex{particule Lagrangienne} : un élément infinitésimal de fluide soumis aux équations du mouvement. L'équation~\eqref{eq:euler} met en scène une particule matérielle, c'est-à-dire un volume élémentaire de masse volumique $\rho$, soumis à la résultante des forces de pression $-\grad p$, et aux forces de volume extérieures $-\rho\grad \gpot$.
 
-\begin{key}{L'advection de la vitesse génère un tenseur}
+\subsection{L'advection de la vitesse génère un tenseur}
 Nous devons décortiquer l'expression $\Dt{\vec{u}}$ pour comprendre ce qu'elle implique.
 La dérivée matérielle de la vitesse d'une particule fluide correspond à son \cindex{accélération}.
 Le plus simple est de considérer les composantes selon les trois axes séparément :
@@ -240,15 +243,21 @@ La notation $\grad\vec{u}$ peut paraître inhabituelle : vous êtes plus familie
 Lorsqu’on généralise la notion de gradient à un champ vectoriel, on obtient un \cindex{tenseur} de rang~2.
 De la même façon qu’un vecteur peut être représenté par ses coordonnées dans une base (sous forme de matrice colonne), un tenseur de rang~2 est représenté par une matrice $n \times n$, avec $n=3$ en trois dimensions.
 Le tenseur est une notion d’importance fondamentale en mécanique des milieux continus.
-Ses composantes obéissent à des règles de transformation lorsqu’on change la base de référence (voir annexe~XX).
+Ses composantes obéissent à des règles de transformation lorsqu’on change la base de référence (voir annexe~\ref{ch:a_tenseurs}). 
 Dans ce cours, nous supposerons que les bases sont orthonormées, ce qui nous dispense d’introduire les notions de coordonnées covariantes et contravariantes.
 En revanche, il est essentiel d’introduire dès maintenant la notion d’\cindex{invariant scalaire}.
 Il s’agit de propriétés de la matrice associée au tenseur qui ne dépendent pas du système de coordonnées.
 En particulier, la \emph{trace} et le \emph{déterminant} sont des invariants scalaires.
 Nous verrons plus tard que ces invariants peuvent être associés à des grandeurs physiques bien connues.
-\end{key}
 
-TODO: expliquer que l'advection, d'un point de vue "Eulérien", apparaît un peu comme un force. L'advection de momentum peut, par exemple, contrebalancer une force ou induire une accélération. 
+\subsection{Interprétation physique de l'advection de quantité de mouvement}
+
+L'advection peut être interprétée comme le flux de quantité de mouvement transporté par l'écoulement lui-même à travers les parois d'un volume de contrôle fixe. D'un point de vue eulérien, ce terme $(\vec{u} \cdot \grad)\vec{u}$ agit comme une force apparente qui modifie la vitesse locale en un point donné de l'espace. Dans un écoulement stationnaire, par exemple, cette contribution advective peut contrebalancer exactement un gradient de pression ou une force visqueuse, maintenant ainsi un \cindex{équilibre dynamique}. Inversement, une accélération locale peut être générée sans changement temporel de la vitesse, simplement parce qu'une particule fluide pénètre dans une zone de convergence du champ de vitesse. C'est cette subtilité qui fait de l'advection un générateur de non-linéarité, et qui constitue un élément des équations d'Euler. Il joue un rôle important dans les écoulements les plus complexes, en particulier les écoulements turbulents que nous aborderons dans la section XX. 
+
+\begin{studentinvestigation}{L'équation du mouvement est non-linéaire}
+Reprenons l'équation d'Euler~\eqref{eq:euler}. Vérifiez en exercice qu'elle est non-linéaire : la somme de deux solutions n'est généralement pas une solution de l'équation ; une solution multipliée par un facteur constant (autre que $1$ ou $-1$) n'est généralement pas une solution.
+Cette propriété est due au terme d'advection. On peut donc espérer que tant que l'advection est relativement \emph{faible} --- c'est une notion qu'il faudra préciser --- l'écoulement sera raisonnablement linéaire. Lorsqu'il est plus important, l'écoulement peut devenir turbulent \index{écoulement turbulent} et la recherche d'une solution particulière à l'équation du mouvement n'est généralement plus possible. 
+\end{studentinvestigation}
 
 \subsection{Équation du mouvement sous forme conservative}
 
@@ -258,12 +267,4 @@ En travaillant la forme du tenseur d'advection, on peut le ré-écrire de la fa�
   (\u \cdot \grad)\u = (\curl \u)\cross u + \grad(\frac{1}{2}\u^2)
   \label{eq:euler_conserv}
 \end{equation}
-
-
-
-\begin{studentinvestigation}{L'équation du mouvement est non-linéaire}
-Reprenons l'équation d'Euler~\eqref{eq:euler}. Vérifiez en exercice qu'elle est non-linéaire : la somme de deux solutions n'est généralement pas une solution de l'équation ; une solution multipliée par un facteur constant (autre que $1$ ou $-1$) n'est généralement pas une solution.
-Cette propriété est due au terme d'advection. On peut donc espérer que tant que l'advection est relativement \emph{faible} --- c'est une notion qu'il faudra préciser --- l'écoulement sera raisonnablement linéaire. Lorsqu'il est plus important, l'écoulement peut devenir turbulent \index{écoulement turbulent} et la recherche d'une solution particulière à l'équation du mouvement n'est généralement plus possible, voire pertinente.
-\end{studentinvestigation}
-
 
