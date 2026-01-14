@@ -27,18 +27,18 @@ Nous allons dans cette section établir notre première \cindex{équation du mou
 \]
 Considérons un \cindex{volume de fluide}. Deux types de \cindex{forces externes} peuvent s’exercer sur ce fluide et générer une \cindex{accélération} de son centre de masse :
 \begin{itemize}
-  \item les forces qui dérivent d’un \cindex{potentiel}, comme les forces gravitationnelles ou magnétiques, et qui s’expriment comme le \cindex{gradient d’un potentiel}. Ainsi, pour chaque élément de fluide $\rho \, \dif V$, nous avons un élément de force $-\rho \, \grad \varphi$. Dans la majorité des cas, le seul potentiel dont on tiendra compte est le \cindex{géopotentiel}, qui exprime la combinaison de l’attraction terrestre et de la (pseudo-)force centrifuge. Le gradient $\grad \gpot$ définit la verticale ;
+  \item les forces qui dérivent d’un \cindex{potentiel}, comme les forces gravitationnelles ou magnétiques, et qui s’expriment comme le \cindex{gradient d’un potentiel}. Ainsi, pour chaque élément de fluide $\rho \, \dif V$, nous avons une force $-\rho \, \grad \gpot$. Dans la majorité des cas, le seul potentiel dont on tiendra compte est le \cindex{géopotentiel}, qui exprime la combinaison de l’attraction terrestre et de la (pseudo-)force centrifuge. Le gradient $\grad \gpot$ définit la verticale ;
   \item les forces qui s’exercent à l’\cindex{interface} du volume et de son environnement. Lorsqu’elles travaillent, ces forces génèrent un transfert de \cindex{moment cinétique} entre l’environnement et le volume considéré.
 \end{itemize}
 Nous verrons au chapitre \ref{ch:newtonien} que les forces exercées à l’interface d’un volume et de son environnement se modélisent au moyen d’un \cindex{tenseur}, le \cindex{tenseur des contraintes}. Dans un premier temps, nous allons utiliser un concept plus simple et déjà connu : la \cindex{pression statique}.
-Lorsqu’un fluide est à l’\cindex{équilibre statique}, on observe qu’une \cindex{force} s’exerce perpendiculairement sur chaque élément de \cindex{surface}, quelle que soit sa direction. Cette force mesure l’effet macroscopique d’un grand nombre de \cindex{collisions} entre les \cindex{molécules} du fluide et la surface témoin.
+Lorsqu’un fluide est à l’\cindex{équilibre statique}, on observe qu’une \cindex{force} s’exerce perpendiculairement sur chaque élément de surface, quelle que soit sa direction. Cette force mesure l’effet macroscopique d’un grand nombre de collisions entre les molécules du fluide et la surface témoin.
 
-Sur cette base, on peut aisément exprimer la première loi de Newton pour établir la relation hydrostatique :
+Sur cette base, on peut aisément exprimer la première loi de Newton pour établir la \cindex{relation hydrostatique} :
 \begin{equation}
 \int_V - \rho \, \grad \gpot \, \dif V \; - \; \int_A p \, \vec{n} \, \dif A = 0
 \label{eq:hydrostat_int}
 \end{equation}
-La somme des forces dues au \cindex{potentiel} et à la \cindex{pression} à la surface du volume est égale à zéro dans le cas statique.
+La somme des forces dues au potentiel et à la pression à la surface du volume est égale à zéro dans le cas statique.
 
 En utilisant le \cindex{théorème de Gauss}, on simplifie la relation :
 \begin{equation}
