@@ -87,12 +87,12 @@ On utilie pour cela:
    \end{split}
  \end{displaymath}
 
-\tikzset{emark/.style={ above offset=3.0ex, below offset=-2.0ex, },}
-\tikzset{e1/.style={ emark, draw=blue, fill=blue!10 },}
-\tikzset{e2/.style={ emark, draw=orange, fill=orange!10 },}
-\tikzset{e3/.style={ emark, draw=green, fill=green!10 },}
+\tikzset{emark/.style={ above offset=3.0ex, below offset=-2.0ex, }}
+\tikzset{e1/.style={ emark, draw=blue, fill=blue!10 }}
+\tikzset{e2/.style={ emark, draw=orange, fill=orange!10 }}
+\tikzset{e3/.style={ emark, draw=green, fill=green!10 }}
 
-L'équation de conservation de l'énergie mécanique prend maintenant une forme qui nous rappel que l'énérgie mécanique d'un système varie en réponse au travail des forces externes \emph{et} de celui des forces internes:
+L'équation de conservation de l'énergie mécanique prend maintenant une forme qui nous rappèle que l'énérgie mécanique d'un système varie en réponse au travail des forces externes \emph{et} de celui des forces internes:
 
 \begin{key}{Conservation de l'énergie mécanique}
 %\begin{equation}
@@ -102,10 +102,10 @@ L'équation de conservation de l'énergie mécanique prend maintenant une forme 
 		= & \tikzmarkin[e1]{m:e1} \int_A \u \cdot \T \cdot \n \, \dif A \tikzmarkend{m:e1} 
 		  &&\text{\color{blue} Travail des forces extérieures}\\
 + & \tikzmarkin[e2]{m:e2} \int_\vol p \Div \u\, \dif \vol \tikzmarkend{m:e2} 
-  &&\text{\color{red} Travail de la pression à l'intérieur du volume}\\
+  &&{\text{\color{red} Travail de la pression à l'intérieur du volume}}\\
 \\
-+ & \tikzmarkin[e3]{m:e3} \int_\vol (\Div \u)\cdot \tensor{\tau}, \dif \vol \tikzmarkend{m:e3} 
-  &&\text{\color{green!40!black} \parbox{9cm}{Travail des forces de viscositéà l'intérieur du volume}}\\
++ & \tikzmarkin[e3]{m:e3} \int_\vol (\Div \u)\cdot \tensor{\tau}\, \dif \vol \tikzmarkend{m:e3} 
+  &&{\text{\color{green!40!black} \parbox{9cm}{Travail des forces de viscosité à l'intérieur du volume}}}\\
 \label{eq:energiemecanique}
 \end{alignat}
 %\end{equation}
@@ -114,14 +114,12 @@ Le dernier terme est un terme dissipatif, que l'on peut réécrire comme
 
 \begin{displaymath}
 	\int_\vol \mathcal{D}\, \dif \vol\,\text{avec}\, 
-  \mathcal{D} \eqdef 2\mu e_{ii}e_{ij} - \frac{2}{3}\mu(\Div u)^2
+  \mathcal{D} \eqdef 2\mu e_{ij}e_{ij} - \frac{2}{3}\mu(\Div u)^2
 \end{displaymath}
 
 
 est la dissipation visqueuse. 
 \end{key}
-
-\todo{check this is $e_{ii}$ and not $e_{ij}$}
 
 \section{Équations thermodynamique}
 \subsection{Forme intégrale du premier principe de la thermodynamique}
@@ -228,7 +226,7 @@ On fait également l'approximation d'incompressibilité pour le stress, donc on 
 Rapport entre les deux termes dans l'équation de continuité
 
 \begin{displaymath}
-  \frac{(1/\rho)(\Dt{\rho}}{\Div \u)} \sim 
+  \frac{(1/\rho)\Dt{\rho}}{\Div \u)} \sim 
   \frac{(1/\rho) u \pd{\rho}{x}}{\pd{u}{x}} \sim
   \frac{(U/\rho)(\delta \rho / L )}{U/L} =
   \frac{\delta \rho}{\rho} = \alpha \delta T \ll 1. 

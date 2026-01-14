@@ -1,5 +1,9 @@
 \chapter{Tension de surface}
 
+\section{Origine de la tension de surface}
+
+\section{Point de vue macroscopique}
+
 À l'intérieur d'un fluide, comme nous l'avons vu, les \cindex{interactions} entre les atomes ou les molécules se manifestent, à l'échelle macroscopique, par de la \emph{viscosité}. Dans les fluides courants tels que l'air, l'eau ou l'huile, on peut admettre que la viscosité est isotrope et linéaire : c'est l'hypothèse newtonienne. À l'échelle microscopique, les interactions résultent de la combinaison de forces répulsives, à courte distance et associées à l'interpénétration des couches électroniques, et de forces attractives telles que les forces de Van der Waals et les ponts hydrogène, qui agissent à plus grande distance.
 
 De façon un peu schématique, nous pouvons considérer que les forces attractives se manifestent la plupart du temps, alors que les forces répulsives se manifestent lorsque les molécules s'entrechoquent. On pourrait comparer ces dernières aux rebonds élastiques entre des billes qui se percutent.
@@ -17,7 +21,8 @@ Considérons une surface témoin : la pression "statique" résulte de la force e
 
 À l'intérieur du fluide, loin de la surface ou de l'interface avec d'autres matériaux, nous pouvons faire l'hypothèse que le milieu est \cindex{isotrope}. C'est d'ailleurs pour cette raison que les forces exercées contre une surface témoin sont indépendantes de l'orientation de cette surface. Près de la surface, l'isotropie est rompue. Il faut donc définir une pression "normale" $p_n$, qui s'exerce sur une surface témoin perpendiculaire à l'interface, et la distinguer d'une pression "tangentielle" $p_t$.
 
-\subsection{Point de vue macroscopique : pression statique et dynamique}
+\section{Point de vue macroscopique : pression statique et dynamique}
+
 Le point de vue macroscopique nous amène à réfléchir à la distribution de la pression. L’hypothèse centrale est que la pression cinétique $p_k$ dépend de la densité du fluide. Or, cette densité diminue près de la surface, en raison de l’équilibre dynamique entre les phases liquide et vapeur. Nous supposons également que $p_k$, qui résulte des chocs moléculaires, reste isotrope.
 
 Nous avons déduit que $p_k$ diminue près de la surface. Par ailleurs, le fluide étant au repos, il n’y a pas d’accélération verticale macroscopique. Par conséquent, la dérivée partielle de la pression normale par rapport à $z$ est nulle : $\partial p_n / \partial z = 0$. Comme $p_k$ diminue près de la surface, $p_{f,n}$, la composante normale de la pression statique, doit être moins négative, donc augmenter en valeur absolue.
@@ -28,18 +33,20 @@ En revanche, la symétrie des forces d'attraction est préservée dans la direct
 
 \begin{key}{Force de tension de surface}
 Considérons un élément de surface $\dif S$ à l'interface entre un liquide et un gaz (par exemple, l'air). La tension de surface $\gamma$ agit tangentiellement à cette interface, et la force résultante par unité de longueur est $\gamma$. Pour un contour fermé de longueur $L$ délimitant une surface, la force totale due à la tension de surface est donc :
-\[
+\begin{displaymath}
   \vec{F} = \gamma L \vec{t}
-\]
+\end{displaymath}
 où $\vec{t}$ est un vecteur unitaire tangent à la surface, perpendiculaire au contour $L$.
 
 \end{key}
 
-\subsection{Point de vue microscopique : accélération verticale des molécules}
+\section{Point de vue microscopique : accélération verticale des molécules}
+
 Du point de vue microscopique, une molécule en surface est attirée par les molécules situées en dessous d’elle, mais elle n’a pas de voisine au-dessus pour la retenir. On en déduit qu’elle subit, en moyenne, une accélération dirigée vers le bas. Cependant, les chocs répulsifs avec les molécules voisines (analogues à des collisions élastiques) compensent cette attraction, de sorte que sa position moyenne reste stationnaire.
 
-\subsection{Point de vue thermodynamique : tension de surface}
-Une molécule dans la masse du fluide (le \emph{bulk}) est liée à ses voisines par un potentiel de Lenard-Jones, négatif. Une molécule en {surface du fluide est liée à moins de molécules voisines. On en conclut donc que son \cindex{potentiel de liaison} est moins négatif qu'une molécule éloignée de la surface. Ainsi, pour une même masse de fluide, agrandir l'interface requiert de rompre des liaisons, ou encore d'augmenter l'énergie libre de la masse de fluide.
+\section{Point de vue thermodynamique : tension de surface}
+
+Une molécule dans la masse du fluide (le \emph{bulk}) est liée à ses voisines par un potentiel de Lenard-Jones, négatif. Une molécule en surface du fluide est liée à moins de molécules voisines. On en conclut donc que son \cindex{potentiel de liaison} est moins négatif qu'une molécule éloignée de la surface. Ainsi, pour une même masse de fluide, agrandir l'interface requiert de rompre des liaisons, ou encore d'augmenter l'énergie libre de la masse de fluide.
 
 On note $\gamma$ le coefficient de \cindex{tension de surface}, défini comme le rapport entre la variation d’énergie libre $\dif H$ et la variation d’aire $\dif A$ de l’interface avec le vide :
 
@@ -54,7 +61,8 @@ Pour une double interface vide -- liquide -- vide présentant un côté $L$, on 
   \dif H = 2 \gamma L \dif x = F \dif x \Longrightarrow  F = 2 \gamma L.
 \end{displaymath}
 
-\subsection{Surface courbe}
+\section{Surface courbe}
+
 \begin{figure}
   \begin{center}
     \input{Pdftex/07_tension_1.pdf_tex}
@@ -80,7 +88,10 @@ Cette équation montre que $\Delta p$ est proportionnelle à la courbure locale 
 
 \todo[inline]{Montrer ce que ça donne pour une sphère, et une bulle. }
 
-\subsection{Interfaces triples: Young - Laplace}
+\section{Interfaces triples: Young - Laplace}
 
 
-\subsection{Loi de Jurin}
+\section{Loi de Jurin}
+
+
+\todo[inline]{A faire}

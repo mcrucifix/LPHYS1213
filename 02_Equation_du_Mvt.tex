@@ -2,7 +2,7 @@
 \label{ch:euler}
 
 \section{Théorème de Gauss - Ostrogradsky pour un gradient}
-Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section~XX, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde ce volume :
+Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section~\ref{sec:masse}, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde ce volume :
 \begin{equation}
   \iiint_V \Div \vec{F} = \iint_A \vec{n}\cdot \vec{F}\, \dif A.
   \label{eq:gauss}
@@ -16,7 +16,7 @@ Comme cette équation demeure valable quel que soit $\vec{c}$, on obtient plus g
  \iiint_V \grad f = \iint_A f \vec{n}\, \dif A.
  \label{eq:integral_of_gradient}
 \end{equation}
-Cette équation peut être vue comme une généralisation du théorème intégral de Leibniz $\int_a^b \odd{f}{x} = f(b)-f(a)$. Le terme de gauche est l'intégrale d'une dérivée (sur la \textbf{droite} dans le cas 1D, dans l'espace dans le cas 3D) ; le terme de droite est une généralisation de la "différence" de $f$ évaluée aux bornes du domaine intégré.
+Cette équation peut être vue comme une généralisation du théorème intégral de Leibniz $\int_a^b \odd{f}{x} = f(b)-f(a)$. Le terme de gauche est l'intégrale d'une dérivée (sur la droite dans le cas 1D, dans l'espace dans le cas 3D) ; le terme de droite est une généralisation de la "différence" de $f$ évaluée aux bornes du domaine intégré.
 
 \section{Hydrostatique}
 
@@ -175,6 +175,7 @@ $P(z)$.
 
 \section{Equation d'Euler}
 
+\subsection{Bilan des forces sur un élément matériel}
 Supposons maintenant que le fluide est suffisamment lent pour que le gradient de pression continue à décrire correctement les forces internes au fluide. En pratique, cela implique qu’il n’y a pas d’effets de \cindex{compression élastique}, ni de \cindex{friction}.
 
 Dans ce cas, nous pouvons généraliser. La variation de la quantité de mouvement du volume matériel fini vaut :

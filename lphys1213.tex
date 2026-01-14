@@ -11,6 +11,7 @@
 \usepackage{dutchcal}
 \usepackage{caption}
 \usepackage{hf-tikz}
+\usepackage{luacode}
 % \usepackage{unicode-math}
 
 % Set the main (text) font
@@ -103,17 +104,51 @@
 \titlepage
 \tableofcontents
 \printnomenclature
-\include{00_Introduction}
-\include{01_Milieu_Continu}
-\include{02_Equation_du_Mvt}
-\include{03_Description_champ_vitesse}
-\include{03_Ecoulements_incompressibles}
-\include{05_Ecoulements_Visqueux}
-\include{07_Tension_surface}
-\include{08_Equation_energie}
-\appendix
-\include{A_tenseurs}
 
+\begin{luacode*}
+  -- tex.print(-1, "\\begin{verbatim}")
+  files = {}
+  for file in lfs.dir(".") do
+  if file:match("^0%d_.*%.tex$") then
+      table.insert(files, (file:gsub("%.tex$", "")))
+    end
+  end
+
+  table.sort(files)
+
+  for _, f in ipairs(files) do
+    tex.print(-1, "\\include{" .. f .. "}")
+  end
+  -- tex.print(-1, "\\end{verbatim}")
+
+\end{luacode*}
+
+% \include{00_Introduction.tex}
+% \include{01_Milieu_Continu.tex}
+% \include{02_Equation_du_Mvt.tex}
+% \include{03_Description_champ_vitesse.tex}
+% \include{04_Ecoulements_incompressibles.tex}
+% \include{05_Ecoulements_Visqueux.tex}
+% \include{06_ModelesEcoulements.tex}
+% \include{07_Tension_surface.tex}
+% \include{08_Equation_energie.tex}
+% %
+\appendix
+
+\begin{luacode}
+  files = {}
+  for file in lfs.dir(".") do
+    if file:match("^A_.*%.tex$") then
+      table.insert(files, (file:gsub("%.tex$", "")))
+    end
+  end
+
+  table.sort(files)
+
+  for _, f in ipairs(files) do
+    tex.print(-1, "\\include{" .. f .. "}")
+  end
+\end{luacode}
 
 % template
 % hypothese des milieux continus -> done
