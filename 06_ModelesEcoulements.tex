@@ -1,20 +1,249 @@
-\chapter{Modèles d'écoulements et  similarité dynamique}
+\chapter{Modèles d'écoulements et similarité dynamique}
 
-Idées à développer: equation NS = beacoup de termes, principalement advection, diffusion, pression..
+\section{Analyse dimensionnelle}
 
-on fait une analyse d'échelle
+\subsection{Exemple du pendule simple}
+Écartons-nous un instant de la physique des fluides pour nous concentrer sur un exemple simple : un pendule de masse $m$, de longueur $l$, et lâché avec un angle $\alpha$. Les frottements sont négligeables, et le pendule est soumis à la force de gravité. On cherche à déterminer la période $p$ de ses oscillations.
 
-nombre de reynolds = nombre adimensionel
+L’un des principes fondamentaux de la physique est que le comportement d’un système ne doit pas dépendre du système d’unités utilisé pour le décrire, car celui-ci est conventionnel. Ainsi, que l’on utilise des grammes, des kilogrammes ou des onces pour mesurer la masse, la période $p$ doit être indépendante de ces choix.
 
-principe de similarité dynamique
+On vérifie cette contrainte en s’assurant de la cohérence dimensionnelle dans la construction des grandeurs physiques. Dans ce problème, nous avons trois unités indépendantes :
+\begin{itemize}
+  \item une longueur $[l] = L$,
+  \item une masse $[m] = M$,
+  \item une accélération de gravité $[g] = L/T^2$.
+\end{itemize}
+On cherche à exprimer un temps $[p] = T$.
 
-écoulements turbulents vs laminaires
+Comme la masse $m$ n’intervient pas dans la combinaison dimensionnelle pour $T$, la période ne dépend pas de $m$. La seule combinaison possible pour créer un temps $T$ à partir de $L$ et $L/T^2$ est donc :
+\begin{displaymath}
+  T = \sqrt{\frac{L}{L/T^2}} = \sqrt{\frac{[l]}{[g]}}.
+\end{displaymath}
 
-comment on crée une couche limite
+On en déduit que la période $p$ doit être proportionnelle à $\sqrt{l/g}$ :
+\begin{equation}
+  p = \sqrt{\frac{l}{g}} \, f(\alpha).
+  \label{eq:pendule}
+\end{equation}
 
-drag crée dans une couche très petite 
+Nous obtenons ce résultat sans résoudre l’équation de Newton, simplement en imposant la cohérence dimensionnelle. Bien que la fonction $f$ ne soit pas connue, nous pouvons déjà prévoir que pour construire, sur la Lune ($g_l = g/6$), un pendule de même période qu’un pendule de longueur $l$ sur Terre, il faut réduire sa longueur d’un facteur 6. Nous avons aussi prédit que la période d’oscillation du pendule ne dépend pas de sa masse.
+
+\subsection{Théorème de Buckingham et nombres adimensionnels}
+Une approche équivalente, bien que plus formelle, consiste à dire que le comportement physique ne peut dépendre que de combinaisons adimensionnelles. Construisons ces nombres pour le pendule. Nous avons cinq grandeurs physiques :
+\begin{itemize}
+  \item une masse (unité $M$),
+  \item une longueur (unité $L$),
+  \item une accélération de gravité (unité $L/T^2$),
+  \item une période (unité $T$),
+  \item un angle $\alpha$ (sans dimension).
+\end{itemize}
+
+Nous cherchons à construire une variable adimensionnelle $\Pi$ de la forme :
+\begin{displaymath}
+  \Pi = m^a l^b g^c p^d \alpha^e.
+\end{displaymath}
+
+Pour que $\Pi$ soit adimensionnel, ses exposants doivent annuler les dimensions de $M$, $L$ et $T$. On exprime cette contrainte par les équations suivantes :
+\begin{equation}
+  \begin{split}
+    0 &= a \quad \text{(pour $M$)}, \\
+    0 &= b + c \quad \text{(pour $L$)}, \\
+    0 &= -2c + d \quad \text{(pour $T$)}.
+  \end{split}
+  \label{eq:dimensional_system}
+\end{equation}
+
+Le système admet pour solutions $a = 0$, $b = -c$, et $d = 2c$. L’exposant $e$ reste indéterminé, car $\alpha$ est déjà adimensionnel. Ce problème est donc décrit par deux nombres adimensionnels indépendants :
+\begin{equation}
+  \begin{split}
+    \Pi^{(1)} &= l^{-1/2} g^{1/2} p, \\
+    \Pi^{(2)} &= \alpha.
+  \end{split}
+  \label{eq:pendule_adim}
+\end{equation}
+
+Le nombre de nombres adimensionnels est donné par le \cindex{théorème de Buckingham} : avec 5 quantités physiques ($m$, $l$, $g$, $p$, $\alpha$) et 3 unités indépendantes ($M$, $L$, $T$), on forme $5-3 = 2$ nombres adimensionnels. On peut donc s’attendre à une relation de la forme $F(\Pi^{(1)}, \Pi^{(2)}) = 0$, ou de façon équivalente $\Pi^{(1)} = f(\Pi^{(2)})$. En remplaçant $\Pi^{(1)}$ et $\Pi^{(2)}$ par leurs expressions, on retrouve la relation~\eqref{eq:pendule}.
+
+\subsection{Similarité dynamique et applications}
+Voici comment utiliser ce raisonnement en pratique. Supposons que les équations du pendule soient complexes et non résolubles analytiquement, mais que nous souhaitons prédire son comportement. Nous savons que le système est caractérisé par deux nombres adimensionnels. Nous pouvons les interpréter physiquement :
+\begin{itemize}
+  \item $\Pi^{(1)}$ est lié à la structure du système (longueur, gravité, période).
+  \item $\Pi^{(2)}$ dépend de l’angle initial $\alpha$.
+\end{itemize}
+
+Si nous voulons prédire la période d’un grand pendule, nous pouvons construire un modèle réduit de même forme, calibrer la fonction $f$ pour différentes valeurs de $\alpha$, puis appliquer la relation~\eqref{eq:pendule} au grand pendule. On peut par exemple s'attendre à ce que $\Pi^{(1)}$ dépende de la façon dont la masse est répartie le long de l'axe du pendule, dont nous n'avons toujours rien dit. 
+
+On dit que deux systèmes ayant les mêmes nombres adimensionnels sont dans une relation de \cindex{similarité dynamique}. Cette notion est fondamentale pour prédire le comportement de systèmes physiques complexes (comme un avion) à partir de tests en soufflerie avec des modèles réduits.
+
+\subsection{Prise en compte de la rotation terrestre}
+Supposons maintenant que la vitesse angulaire de rotation $\Omega$ de la Terre soit pertinente. C’est une nouvelle variable, mais elle n’introduit pas de nouvelle dimension (son unité est $T^{-1}$). Nous créons donc une nouvelle variable adimensionnelle $\Pi^{(3\star)} = p\Omega$. Cependant, comme $p$ apparaît déjà dans $\Pi^{(1)}$, il est judicieux de construire une variable indépendante de $p$ :
+
+\begin{displaymath}
+  \Pi^{(3)} = \frac{\Pi^{(3\star)}}{\Pi^{(1)}} = \Omega \sqrt{\frac{l}{g}}.
+\end{displaymath}
+
+Notre nouvelle relation devient :
+\begin{equation}
+  p = \sqrt{\frac{l}{g}} \, f\left(\Omega \sqrt{\frac{l}{g}}, \alpha\right).
+  \label{eq:grand_pendule}
+\end{equation}
+
+En pratique, on constate presque toujours que dès qu’un nombre adimensionnel est soit très petit (disons, $\ll 0.01$) ou très grand ($\gg 100$), la valeur exacte qu’il prend perd son importance. C’est le fait qu’il soit très petit ou très grand qui est pertinent. Pour un petit pendule, tel qu’on pourrait le construire dans une salle de classe, $\Pi^{(3)} \sim 2 \cdot 10^{-5}$. On peut en déduire que si la vitesse de rotation de la Terre était deux fois plus rapide, l’expérience ne serait pas fortement modifiée. De même, on prédit que pour $\alpha$ très petit, la valeur précise de $\alpha$ perd son importance. 
+
+On peut aussi estimer la longueur typique d’un pendule compatible avec des effets visibles de la rotation terrestre, c’est-à-dire la longueur qu’il faudrait pour mesurer commodément $\Omega$. En imposant $\Pi^{(3)} = 1$, on trouve $l \approx 1800~\textrm{km}$. C’est la longueur typique des \cindex{oscillations d’inertie} visibles dans l’océan.
+
+Dans ce raisonnement, nous avons utilisé des dimensions typiques ($l \sim 1~\textrm{m}$, $g = 9.81~\textrm{m}/\textrm{s}^2$, etc.) pour prédire l’ordre de grandeur de $p$ ou l’importance relative d’effets physiques. C’est le cœur de l’analyse dimensionnelle.
+
+Notons enfin qu’il est souvent plus pertinent d’utiliser des vitesses angulaires que des périodes ou des fréquences. Par exemple, pour un oscillateur harmonique de pulsation $\omega$, l’équation du mouvement s’écrit $\ddot{x} + \omega^2 x = 0$. La dérivée temporelle fait apparaître $\omega$ naturellement, ce qui rend son utilisation plus directe que celle de la période $T = 2\pi/\omega$. 
+
+D'ailleurs, pour un pendule de masse ponctuelle, et en utiliant la formule \eqref{eq:pendule_adim}, la théorie Newtonienne pour des angles $\alpha$ petits prédit $\Pi^{(1)}=2\pi$,  alors qu'on définissant, de façon plus astucieuse, $\Pi^{(1)}=l^{-1/2}g^{1/2}\omega^{-1}$, on a $\Pi^{(1)}$.
 
 
-taille typique du vortex = XXX 
+\section{Analyse dimensionnelle de l'équation de Navier-Stokes}
 
-voir aussi Kundu ch. 8 
+\subsection{Nombres adimensionnels et équation de Navier-Stokes}
+Reprenons l'\cindex{équation de Navier-Stokes} pour un fluide incompressible, en négligeant les forces de volume (comme la gravité) :
+\begin{displaymath}
+  \rho \left( \pd{\vec{u}}{t} + (\vec{u} \cdot \grad) \vec{u} \right) = -\grad p + \mu \lapl \vec{u}.
+\end{displaymath}
+Nous allons rendre cette équation adimensionnelle en normalisant chaque terme par des échelles caractéristiques du problème. Soit :
+\begin{itemize}
+  \item $U$ une vitesse caractéristique (par exemple, la vitesse à l’infini pour un écoulement autour d’un obstacle),
+  \item $L$ une longueur caractéristique (par exemple, la taille de l’obstacle),
+  \item $T = L/U$ un temps caractéristique (temps mis par le fluide pour parcourir la distance $L$),
+  \item $P$ une pression caractéristique (à déterminer).
+\end{itemize}
+
+Nous définissons les variables adimensionnelles suivantes :
+\begin{displaymath}
+  \vec{u}^* = \frac{\vec{u}}{U}, \quad \vec{x}^* = \frac{\vec{x}}{L}, \quad t^* = \frac{t}{T} = \frac{t U}{L}, \quad p^* = \frac{p}{P}, \quad {\grad}^* = L \grad, \quad {\lapl}^* = L^2 \lapl.
+\end{displaymath}
+
+En substituant ces variables dans l’équation de Navier-Stokes, nous obtenons :
+\begin{displaymath}
+  \rho \frac{U^2}{L} \left( \pd{\vec{u}^*}{t^*} + (\vec{u}^* \cdot {\grad}^*) \vec{u}^* \right) = -\frac{P}{L} {\grad}^* p^* + \mu \frac{U}{L^2} {\lapl}^* \vec{u}^*.
+\end{displaymath}
+
+Pour équilibrer les termes inertiels (à gauche) et visqueux (à droite), nous choisissons $P = \rho U^2$. L’équation devient alors :
+\begin{displaymath}
+  \pd{\vec{u}^*}{t^*} + (\vec{u}^* \cdot \grad^*) \vec{u}^* = -\grad^* p^* + \frac{1}{\cindex{nombre de Reynolds}} {\lapl}^* \vec{u}^*,
+\end{displaymath}
+où le \cindex{nombre de Reynolds} est défini par :
+\begin{displaymath}
+  \Rey = \frac{\rho U L}{\mu}.
+\end{displaymath}
+
+Cette équation montre que le comportement de l’écoulement est entièrement déterminé par la géométrie du problème et la valeur du nombre de Reynolds $\Rey$, qui compare les forces inertielles ($\rho U^2/L$) aux forces visqueuses ($\mu U/L^2$).
+
+
+\subsection{Régimes laminaires et turbulents}
+Le nombre de Reynolds permet de distinguer deux régimes d’écoulement :
+\begin{itemize}
+  \item Pour $\Rey \ll 1$ : les forces visqueuses dominent. L’écoulement est \cindex{laminaire}, régulier et prévisible. Les lignes de courant sont lisses, et les perturbations sont amorties par la viscosité.
+  \item Pour $\Rey \gg 1$ : les forces inertielles dominent. L’écoulement peut devenir \cindex{turbulent}, caractérisé par des fluctuations chaotiques de vitesse et de pression. La transition vers la turbulence dépend aussi de la géométrie et des conditions aux limites, mais $\Rey$ en est le paramètre clé.
+\end{itemize}
+
+\begin{key}{Exemple : Écoulement autour d’une sphère}
+Pour une sphère de diamètre $D$ dans un écoulement de vitesse $U$ :
+\begin{itemize}
+  \item Si $\Rey = \frac{\rho U D}{\mu} \lesssim 1$, l’écoulement est laminaire (ex. : chute d’une bille dans de l’huile).
+  \item Si $\Rey \gtrsim 1000$, une \cindex{couche limite turbulente} se développe à l’arrière de la sphère, et un sillage tourbillonnaire apparaît (ex. : balle de tennis en mouvement).
+\end{itemize}
+\end{key}
+
+\subsection{Prédiction de la couche limite par analyse dimensionnelle}
+Considérons un écoulement autour d’un obstacle de longueur caractéristique $L$. Près de la paroi, la vitesse du fluide doit s’annuler (condition de non-glissement). La viscosité y joue donc un rôle dominant, même si $\Rey \gg 1$ globalement.
+
+Nous cherchons l’épaisseur $\delta$ de la \cindex{couche limite}, où les effets visqueux sont significatifs. Dans cette région, les termes inertiels et visqueux dans l’équation de Navier-Stokes doivent être du même ordre de grandeur. En notant $U$ la vitesse caractéristique à l’extérieur de la couche limite, nous avons :
+\begin{itemize}
+  \item Terme inertiel : $\rho \vec{u} \cdot \grad \vec{u} \sim \rho \frac{U^2}{L}$,
+  \item Terme visqueux : $\mu \lapl \vec{u} \sim \mu \frac{U}{\delta^2}$.
+\end{itemize}
+
+L’équilibre entre ces termes donne :
+\begin{displaymath}
+  \rho \frac{U^2}{L} \sim \mu \frac{U}{\delta^2} \quad \Longrightarrow \quad \delta \sim L \sqrt{\frac{\mu}{\rho U L}} = \frac{L}{\sqrt{\Rey}}.
+\end{displaymath}
+
+Ainsi, l’analyse dimensionnelle prédit que :
+\begin{itemize}
+  \item L’épaisseur de la couche limite $\delta$ décroît comme $1/\sqrt{\Rey}$.
+  \item Pour $\Rey \to \infty$, $\delta \to 0$ : la couche limite devient de plus en plus fine, et l’écoulement peut être traité comme non visqueux en dehors de cette région (approximation de \cindex{Prandtl}).
+\end{itemize}
+
+Cette prédiction explique pourquoi, à haut nombre de Reynolds, la viscosité ne joue un rôle significatif que dans une fine couche près des parois, tandis que l’écoulement est essentiellement non visqueux ailleurs. Cela justifie aussi l’utilisation de modèles simplifiés (comme la théorie des écoulements potentiels) en dehors de la couche limite.
+
+
+\subsection{Applications et limites}
+L’analyse dimensionnelle permet de :
+\begin{itemize}
+  \item Comprendre pourquoi les écoulements à grand $\Rey$ (avions, navires) sont souvent modulés par des couches limites minces.
+  \item Expliquer l’importance de la rugosité des surfaces (même une petite rugosité peut perturber la couche limite si $\delta$ est très fin).
+  \item Prédire l’apparition de la turbulence lorsque les perturbations dans la couche limite deviennent instables (pour $\Rey$ critique dépendant de la géométrie).
+\end{itemize}
+
+Cependant, cette analyse reste qualitative. Pour une description quantitative, il faut résoudre les équations de la couche limite (équations de Prandtl), qui sortent du cadre de ce cours.
+
+\subsection{Limites des simulations numériques directes (DNS)}
+L’analyse dimensionnelle permet non seulement de comprendre les régimes d’écoulement, mais aussi d’estimer les ressources computationnelles nécessaires pour les simuler numériquement. Considérons un écoulement autour d’un obstacle (comme un avion) à grand nombre de Reynolds $\Rey$.
+
+\subsubsection{Échelle de la grille et nombre de mailles}
+Pour résoudre les équations de Navier-Stokes sans modèle de turbulence (simulation directe, ou DNS), il faut capturer toutes les échelles de l’écoulement, y compris les plus petites, où la dissipation visqueuse domine. Dans la couche limite, l’épaisseur $\delta$ des structures visqueuses est donnée par :
+\begin{displaymath}
+  \delta \sim \frac{L}{\sqrt{\Rey}},
+\end{displaymath}
+où $L$ est la taille caractéristique de l’obstacle (ex. : envergure d’une aile).
+
+Pour résoudre ces structures, la taille des mailles $\Delta x$ de la grille numérique doit être de l’ordre de $\delta$ :
+\begin{displaymath}
+  \Delta x \sim \delta \sim \frac{L}{\sqrt{\Rey}}.
+\end{displaymath}
+
+Dans un domaine 3D de taille $L^3$, le nombre total de mailles $N$ est donc :
+\begin{displaymath}
+  N \sim \left(\frac{L}{\Delta x}\right)^3 \sim \left(\sqrt{\Rey}\right)^3 = \Rey^{3/2}.
+\end{displaymath}
+
+\subsubsection{Coût temporel et critère CFL}
+Le pas de temps $\Delta t$ d’une simulation explicite est contraint par le **critère de stabilité CFL** (Courant-Friedrichs-Lewy), qui impose :
+\begin{displaymath}
+  \Delta t \lesssim \frac{\Delta x}{U},
+\end{displaymath}
+où $U$ est la vitesse caractéristique de l’écoulement. Le nombre total de pas de temps $N_t$ pour simuler un temps physique $T$ est donc :
+\begin{displaymath}
+  N_t \sim \frac{T}{\Delta t} \sim \frac{T U}{\Delta x} \sim T U \sqrt{\Rey}.
+\end{displaymath}
+
+Le coût computationnel total $C$ (proportionnel à $N \times N_t$) croît ainsi comme :
+\begin{displaymath}
+  C \sim \Rey^{3/2} \times \Rey^{1/2} = \Rey^2.
+\end{displaymath}
+
+\subsubsection{Implications pratiques}
+Pour des écoulements réalistes (ex. : avion en vol, $\Rey \sim 10^7$–$10^9$), une DNS devient **prohibitive** :
+\begin{itemize}
+  \item Pour $\Rey = 10^6$, $N \sim 10^{9}$ mailles et $N_t \sim 10^6$ pas de temps, soit un coût $\sim 10^{15}$ opérations.
+  \item Les supercalculateurs modernes (ex. : $\sim 10^{18}$ op/s) mettraient des **jours** à simuler quelques secondes physiques.
+\end{itemize}
+
+\begin{key}{Conséquences pour la modélisation}
+Cette analyse justifie l’utilisation de modèles de turbulence (LES, RANS) pour les écoulements à grand $\Rey$ :
+\begin{itemize}
+  \item Les **Large Eddy Simulations (LES)** résolvent les grandes échelles et modélisent les petites.
+  \item Les **Reynolds-Averaged Navier-Stokes (RANS)** moyennent les équations et modélisent entièrement la turbulence.
+\end{itemize}
+Ces approches réduisent drastiquement le coût computationnel, au prix d’une perte de précision sur les petites échelles.
+\end{key}
+
+\subsubsection{Exemple : Simulation d’un avion}
+Pour un avion de taille $L \sim 10~\textrm{m}$ volant à $U \sim 250~\textrm{m/s}$ dans l’air ($\nu \sim 1.5 \cdot 10^{-5}~\textrm{m}^2/\textrm{s}$), le nombre de Reynolds est :
+\begin{displaymath}
+  \Rey = \frac{UL}{\nu} \sim \frac{250 \times 10}{1.5 \cdot 10^{-5}} \sim 1.7 \cdot 10^8.
+\end{displaymath}
+Une DNS nécessiterait donc :
+\begin{itemize}
+  \item $\sim (1.7 \cdot 10^8)^{3/2} \sim 10^{12}$ mailles,
+  \item $\sim 10^{12} \times 10^4 = 10^{16}$ opérations pour simuler 1 seconde de vol.
+\end{itemize}
+C’est hors de portée des capacités actuelles, même avec les supercalculateurs.
+

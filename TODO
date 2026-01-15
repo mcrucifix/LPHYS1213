@@ -1,13 +1,13 @@
-- équation de la chaleur
+- équation de la chaleur  -> DONE
 - approximation de Bousinesq... et ses conséquences perverses sur l'équation de conservation d'énergie (terminer)
-- Nombre de péclet
-- Nombres adimensionels
-- Autres nombres adimensionels
+- Nombres adimensionels -> Reynolds only
+- Autres nombres adimensionels -> TODO
+- TODO: ne pas parler du problème de Reynolds dans le chap. sur les écoulemenst visqueux. Mais en revanche parler du problème de sédimentation. 
 - referencer les binder
-- relire ch. 1 et 2 : adapter style
-- illustrations pour ch. 1 
-- mieux définir fonction flot pour ch. 2. 
-- écoulement turbulent ! important pour la viscosité, obstacle, et problème de sédimentation -> introduire
-- couche limite
-
-- éventuellement un chap. sur dynamical similarity et exemple glaciaire avec nombre péclet
+- relire ch. 1 et 2 : adapter style -> OK
+- illustrations pour ch. 1  -> OK
+- mieux définir fonction flot pour ch. 2.  -> TODO
+- couche limite -> PREMIERE EBAUCHE. RELIRE
+- éventuellement un chap. sur dynamical similarity -> OK
+- et exemple glaciaire avec nombre péclet (A REFLECHIR)
+- terminer tension de surface + expliquer que c'est la base pour les ondes de surface (riddles)
