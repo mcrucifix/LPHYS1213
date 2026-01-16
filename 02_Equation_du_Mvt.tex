@@ -4,19 +4,19 @@
 \section{Théorème de Gauss - Ostrogradsky pour un gradient}
 Le \cindex{théorème de Gauss - Ostrogradsky}, que nous avons déjà rencontré dans la section~\ref{sec:masse}, établit une équivalence entre une intégrale de la divergence sur un volume, et l'intégrale d'un flux pris sur la surface qui borde ce volume :
 \begin{equation}
-  \iiint_V \Div \vec{F} = \iint_A \vec{n}\cdot \vec{F}\, \dif A.
+  \iiint_V \Div \vec{F} = \iint_A \vec{n} \cdot \vec{F}\, \dif A.
   \label{eq:gauss}
 \end{equation}
-Si on l'applique au cas particulier d'un champ $\vec{F}(\vec{x})=f(\vec{x})\vec{c}$, où $f$ est un champ scalaire, et $\vec{c}$ un vecteur constant sur le domaine, on obtient
+Si on l'applique au cas particulier d'un champ $\vec{F}(\vec{x}) = f(\vec{x})\vec{c}$, où $f$ est un champ scalaire et $\vec{c}$ un vecteur constant sur le domaine, on obtient :
 \begin{equation*}
-  \iiint_V \grad f\cdot\vec{c} = \iiint_V \Div f\vec{c} = \iint_A f \vec{n}\cdot \vec{c}\, \dif A.
+  \iiint_V \grad f \cdot \vec{c} = \iiint_V \Div (f\vec{c}) = \iint_A f \vec{n} \cdot \vec{c}\, \dif A.
 \end{equation*}
 Comme cette équation demeure valable quel que soit $\vec{c}$, on obtient plus généralement :
 \begin{equation}
- \iiint_V \grad f = \iint_A f \vec{n}\, \dif A.
- \label{eq:integral_of_gradient}
+  \iiint_V \grad f = \iint_A f \vec{n}\, \dif A.
+  \label{eq:integral_of_gradient}
 \end{equation}
-Cette équation peut être vue comme une généralisation du théorème intégral de Leibniz $\int_a^b \odd{f}{x} = f(b)-f(a)$. Le terme de gauche est l'intégrale d'une dérivée (sur la droite dans le cas 1D, dans l'espace dans le cas 3D) ; le terme de droite est une généralisation de la "différence" de $f$ évaluée aux bornes du domaine intégré.
+Cette équation peut être vue comme une généralisation du théorème intégral de Leibniz $\int_a^b \frac{\dif f}{\dif x} \dif x = f(b) - f(a)$. Le terme de gauche est l'intégrale d'une dérivée (sur la droite dans le cas 1D, dans l'espace dans le cas 3D) ; le terme de droite est une généralisation de la "différence" de $f$ évaluée aux bornes du domaine intégré.
 
 \section{Hydrostatique}
 
@@ -30,179 +30,159 @@ Considérons un \cindex{volume de fluide}. Deux types de \cindex{forces externes
   \item les forces qui dérivent d’un \cindex{potentiel}, comme les forces gravitationnelles ou magnétiques, et qui s’expriment comme le \cindex{gradient d’un potentiel}. Ainsi, pour chaque élément de fluide $\rho \, \dif V$, nous avons une force $-\rho \, \grad \gpot$. Dans la majorité des cas, le seul potentiel dont on tiendra compte est le \cindex{géopotentiel}, qui exprime la combinaison de l’attraction terrestre et de la (pseudo-)force centrifuge. Le gradient $\grad \gpot$ définit la verticale ;
   \item les forces qui s’exercent à l’\cindex{interface} du volume et de son environnement. Lorsqu’elles travaillent, ces forces génèrent un transfert de \cindex{moment cinétique} entre l’environnement et le volume considéré.
 \end{itemize}
-Nous verrons au chapitre \ref{ch:newtonien} que les forces exercées à l’interface d’un volume et de son environnement se modélisent au moyen d’un \cindex{tenseur}, le \cindex{tenseur des contraintes}. Dans un premier temps, nous allons utiliser un concept plus simple et déjà connu : la \cindex{pression statique}.
+Nous verrons au chapitre~\ref{ch:newtonien} que les forces exercées à l’interface d’un volume et de son environnement se modélisent au moyen d’un \cindex{tenseur}, le \cindex{tenseur des contraintes}. Dans un premier temps, nous allons utiliser un concept plus simple et déjà connu : la \cindex{pression statique}.
+
 Lorsqu’un fluide est à l’\cindex{équilibre statique}, on observe qu’une \cindex{force} s’exerce perpendiculairement sur chaque élément de surface, quelle que soit sa direction. Cette force mesure l’effet macroscopique d’un grand nombre de collisions entre les molécules du fluide et la surface témoin.
 
 Sur cette base, on peut aisément exprimer la première loi de Newton pour établir la \cindex{relation hydrostatique} :
 \begin{equation}
-\int_V - \rho \, \grad \gpot \, \dif V \; - \; \int_A p \, \vec{n} \, \dif A = 0
-\label{eq:hydrostat_int}
+  \int_V - \rho \, \grad \gpot \, \dif V \; - \; \int_A p \, \vec{n} \, \dif A = 0
+  \label{eq:hydrostat_int}
 \end{equation}
 La somme des forces dues au potentiel et à la pression à la surface du volume est égale à zéro dans le cas statique.
 
 En utilisant le \cindex{théorème de Gauss}, on simplifie la relation :
 \begin{equation}
-\int_V - \rho \, \grad \gpot \, \dif V \; - \; \int_V \grad p \, \dif V = 0
-\label{eq:hydrostat_gauss}
+  \int_V - \rho \, \grad \gpot \, \dif V \; - \; \int_V \grad p \, \dif V = 0
+  \label{eq:hydrostat_gauss}
 \end{equation}
 Comme l’expression est valable pour tout volume, on peut la réduire à sa forme différentielle :
 \begin{equation}
-- \rho \, \grad \gpot = \grad p
-\label{eq:hydrostat_diff}
+  - \rho \, \grad \gpot = \grad p
+  \label{eq:hydrostat_diff}
 \end{equation}
 C’est la relation bien connue de l’\cindex{équilibre hydrostatique}.
 
 Si le seul potentiel de force de volume considéré est le \cindex{géopotentiel}, alors $-\grad \gpot = - g \, \ez$ : le gradient du géopotentiel est vertical. On remarque que, dans cet équilibre hydrostatique, le gradient de pression sera strictement vertical pour autant que la \cindex{masse volumique} ne varie que selon la verticale, donc selon la pression.
 
-De façon plus générale, on démontre (exercice) que si $\rho = \rho(p)$, alors :
+\begin{studentinvestigation}{Fluide barotrope}
+Démontrez que si $\rho = \rho(p)$, alors :
 \begin{equation}
-\grad p \times \grad \gpot = 0,
-\label{eq:barotrope}
+  \grad p \times \grad \gpot = 0,
+  \label{eq:barotrope}
 \end{equation}
-c’est-à-dire que les isobares sont horizontales. Le fluide est dit \cindex{barotrope}.
+c’est-à-dire que les isobares --- courbes d'égale pression --- sont alignées avec les iso-courbes de géopotentiel. Le fluide est alors dit \cindex{barotrope}.
+\end{studentinvestigation}
 
 \subsection{Poussée d'Archimède}
-
-Considérons un countour $V$ tracé dans domaine occupé par le fluide. 
-La \cindex{poussée d'Archimède} est la résultate de toutes les forces de pression s'exerçant sur le contour. Il vaut, selon l'équilibre hydorstatique établit dans la rel. \eqref{eq:hydrostat_int}:
-
+Considérons un contour $V$ tracé dans un domaine occupé par le fluide.
+La \cindex{poussée d'Archimède} est la résultante de toutes les forces de pression s'exerçant sur le contour. Elle vaut, selon l'équilibre hydrostatique établi dans la relation~\eqref{eq:hydrostat_int} :
 \begin{displaymath}
   \begin{split}
-    - \int_A p\n\, \dif A &= - \int_V \grad p\, \dif V = 
-                          &=  \int_V \rho \grad \gpot\, \dif V = 
+    - \int_A p \vec{n}\, \dif A &= - \int_V \grad p\, \dif V  \\
+                                &= \int_V \rho \grad \gpot\, \dif V.
   \end{split}
 \end{displaymath}
 
-Si l'on se rappelle que $\rho\grad\gpot\,\dif V$ est le poids d'un élément de fluide, on trouve que la poussée correspond au poids du volume de fluide qu'elle encercle. En particulier, si $\grad\gpot = -g\ez$ est constant, on trouve
-
+Si l'on se rappelle que $\rho \grad \gpot\, \dif V$ est le poids d'un élément de fluide, on trouve que la poussée correspond au poids du volume de fluide qu'elle encercle. En particulier, si $\grad \gpot = -g \ez$ est constant, on trouve :
 \begin{displaymath}
   \begin{split}
-    \text{Poussée} & =   g \ez \int_V\rho \, \dif V  \\
-                   & = - \vec{P}_f = g \rho V, 
+    \text{Poussée} &= - \int_V \rho g \ez\, \dif V  \\
+                    &= g \ez \int_V \rho \, \dif V  \\
+                    &= - \vec{P}_f = g \rho V,
   \end{split}
 \end{displaymath}
+où, pour la dernière étape, on a en plus supposé que $\rho$ est constant, et où on a nommé $\vec{P}_f$ le poids du fluide encerclé.
 
-où, pour la dernière étape, on a en plus supposé que $\rho$ est constant, et où on a nommé $P_f$ le poids du fluide encerclé. 
+Si à présent on tente l'expérience mentale de remplacer le fluide encerclé par un autre corps, quelle que soit sa densité, la poussée, qui dépend de la pression autour du corps, sera inchangée. Donc la poussée que nous venons de calculer s'applique à la partie submergée de tout corps, quel qu'il soit.
 
-Si à présent on tente l'expérience mentale de remplacer le fluide encerclé par un autre corps, quelle que soit sa densité, la poussé, qui dépend de la pression autour du corps, sera parfaitement inchangée. Donc la poussée que nous venons de calculer s'applique la partie submergée de tout corps, quelle qu'il soit. 
-
-Nous aboutissons au fameux 
-
+Nous aboutissons au fameux :
 \begin{key}{Principe d'Archimède}
-Tout corps plongé dans un fluide subit une poussée opposée au poids du volume de fluide déplacé. 
+Tout corps plongé dans un fluide subit une poussée opposée au poids du volume de fluide déplacé.
 \end{key}
 
-Ce qui est somme toute intuitif: en plongeant le corps, on a du "soulever" une quantité équivalente de fluide. 
+Ce qui est somme toute intuitif : en plongeant le corps, on a dû "soulever" une quantité équivalente de fluide.
 
-Interessons nous maintenant au \cindex{moment de force} résultat. Qu'elle que soit l'origine choisie: 
-
+Intéressons-nous maintenant au \cindex{moment de force} résultant. Quelle que soit l'origine choisie :
 \begin{displaymath}
   \begin{split}
-    \text{Moment} &=  \int_A \vec{r} \cross (-p)\n\, \dif A \\
+    \text{Moment} &= \int_A \vec{r} \cross (-p \vec{n})\, \dif A.
   \end{split}
 \end{displaymath}
 
-On peut démontrer que 
+On peut démontrer que :
 \begin{displaymath}
-  \int_A p (\vec{r} \times \n)\, \dif A = \int_V \vec{r}\times(\grad p)\, \dif V
+  \int_A p (\vec{r} \times \vec{n})\, \dif A = \int_V \vec{r} \times (\grad p)\, \dif V.
 \end{displaymath}
 
-La démonstration est un peu fastidieuse\footnote{Elle implique de calculer les composantse de $\vec{r}\times \n$ une à une. Par exemple, la composante selon $\ex$ est $yn_z - zn_y$. Si on prend pour fonction $\vec{F}$ (dans \eqref{eq:gauss}) $\vec{F}=p(y\ez - z\ey)$, on démontre $\int_A p(yn_z-zn_y)\,\dif A = int_V(y \pd{p}{z} - z \pd{p}{y}\, \dif V$. On travaillant composante par composante, on trouve le résultat énoncé.} mais le résultat on va le voir est très intuitif: en utilisant la relation hydrostatique $\grad p = - \rho \grad\gpot$ on trouve: 
-
+La démonstration est un peu fastidieuse. Elle implique de calculer les composantes de $\vec{r} \times \vec{n}$ une à une. Par exemple, la composante selon $\ex$ est $yn_z - zn_y$. Si on prend pour fonction $\vec{F}$ (dans~\eqref{eq:gauss}) $\vec{F} = p(y\ez - z\ey)$, on démontre $\int_A p(yn_z - zn_y)\,\dif A = \int_V (y \pd{p}{z} - z \pd{p}{y})\, \dif V$. En travaillant composante par composante, on trouve le résultat énoncé. Le résultat, cependant,  est très intuitif : en utilisant la relation hydrostatique $\grad p = -\rho \grad \gpot$, on trouve :
 \begin{displaymath}
   \begin{split}
-    \text{Moment} &=  \int_V \rho \vec{r}\times(\grad \gpot)\, \dif V \\ 
-                  &= - \int_V \rho \vec{r}\,\dif V \times(-\grad \gpot)
+    \text{Moment} &= \int_V \rho \vec{r} \times (\grad \gpot)\, \dif V \\
+                   &= - \int_V \rho \vec{r}\, \dif V \times (-\grad \gpot).
   \end{split}
 \end{displaymath}
 
-
-
-Elle implique que le moment de force exercé par la poussée correspond, en sens opposé, au moment de force associé au poids du fluide déplacé. localisée en $\vec{R}$ tel que $M\vec{R} = \int_V \rho \vec{r}\,\dif V$ exercerait, par son poids, une force et un moment de force opposée à la poussée : ($\text{Moment} = \vec{R} \times \vec{P}_f$). 
-
-Nous pouvons donc désormais compléter notre principe d'Archimède: 
+Elle implique que le moment de force exercé par la poussée correspond, en sens opposé, au moment de force associé au poids du fluide déplacé, localisé en $\vec{R}$ tel que $M\vec{R} = \int_V \rho \vec{r}\, \dif V$ : le centroïde du corps. On peut donc compléter notre principe d'Archimède :
 
 \begin{key}{Principe d'Archimède (complété)}
-Tout corps plongé dans un fluide subit une poussée opposée au poids du volume de fluide déplacé, et qui s'appliquerait
-au centroïde du coprs (en supposant un fluide de masse volumique constante). 
+Tout corps plongé dans un fluide subit une poussée opposée au poids du volume de fluide déplacé, et qui s'appliquerait au centroïde du corps (en supposant un fluide de masse volumique constante).
 \end{key}
 
-
 \begin{application}{Équilibre des barques}
-    \captionsetup{type=figure}
-    \input{Pdftex/poussee.pdf_tex}
-    % Use \captionof to generate the figure number and caption
-    \caption{figure}{Les bateaux et barques sont construits de façon à élever le plus possible le centre de pousée (centroïde de la partie immergée), de façon à le plasser au dessus du centre de gravité de bâteau, de façon assurer sa stabilité. Lorsque le bateau s'incline, le moment de force exercé par la poussée et le poids du bateau s'applique de façon à redresser le bateau. \label{fig:poussee}}
+  \captionsetup{type=figure}
+  \input{Pdftex/poussee.pdf_tex}
+  \caption{Les bateaux et barques sont construits de façon à élever le plus possible le centre de poussée (centroïde de la partie immergée), de façon à le placer au-dessus du centre de gravité du bateau, afin d'assurer sa stabilité. Lorsque le bateau s'incline, le moment de force exercé par la poussée et le poids du bateau s'applique de façon à redresser le bateau.\label{fig:poussee}}
 \end{application}
 
 \begin{studentinvestigation}{La fonte de glace de mer}
-Expliquez pourquoi la fonte de glace de mer ne génère pas de hausse de niveau des mers (mais la fonte des glaciers, bien)
+Expliquez pourquoi la fonte de glace de mer ne génère pas de hausse du niveau des mers (mais la fonte des glaciers, si).
 \end{studentinvestigation}
 
 \begin{application}{Densitomètre}
   \parbox[b]{0.65\textwidth}{
-  On trouve une autre application du principe d'Archimède dans le fonctionnement du \cindex{densitomètre}. Il s'agit d'un cylindre lesté, et de masse volumique inférieure à celle du fluide dont on désire mesurer la masse volumique. Comme le fait un bateau, le cylindre s'enfoncera davantage dans un fluide moins dense, le rapport entre la masse du cylindre et le volume immergé donnant la masse volumique du fluide mesuré. Si on écrit le volume imergé comme une fonction (monotone croissante) de la hauteur $h$ entre la base du cylindre lesté et la surface de liquide, de masse volumique $\rho$, et que la masse du densitomètre est notée $M_d$, on peut calibrer une relation entre $h$ et $\rho$ via la relation $\rho g V(h) = M_d$. }
+  On trouve une autre application du principe d'Archimède dans le fonctionnement du \cindex{densitomètre}. Il s'agit d'un cylindre lesté, et de masse volumique inférieure à celle du fluide dont on désire mesurer la masse volumique. Comme le fait un bateau, le cylindre s'enfoncera davantage dans un fluide moins dense, le rapport entre la masse du cylindre et le volume immergé donnant la masse volumique du fluide mesuré. Si on écrit le volume immergé comme une fonction (monotone croissante) de la hauteur $h$ entre la base du cylindre lesté et la surface de liquide, de masse volumique $\rho$, et que la masse du densitomètre est notée $M_d$, on peut calibrer une relation entre $h$ et $\rho$ via la relation $\rho g V(h) = M_d$.
+  }
   \hfill
   \parbox[b]{0.30\textwidth}{\includegraphics{Figures/02_densitometre.png}}
 \end{application}
 
 \begin{studentinvestigation}{Le profil de pression atmosphérique}
-
-On modélise l’atmosphère comme un fluide à masse volumique $\rho(z)$ soumis à la
-pesanteur.  
+On modélise l’atmosphère comme un fluide à masse volumique $\rho(z)$ soumis à la pesanteur.
 On suppose que l’air vérifie l’équation d’état des gaz parfaits :
 \[
 P = \rho R T,
 \]
-où $P$ est la pression, $\rho$ la masse volumique, $T$ la température et $R$ la
-constante des gaz parfaits pour l’air.
+où $P$ est la pression, $\rho$ la masse volumique, $T$ la température et $R$ la constante des gaz parfaits pour l’air.
 
-On admet qu’au voisinage du sol la température décroît linéairement avec
-l’altitude, selon un gradient thermique moyen d’un degré Celsius tous les
-$180\,\text{m}$ :
+On admet qu’au voisinage du sol la température décroît linéairement avec l’altitude, selon un gradient thermique moyen d’un degré Celsius tous les $180\,\text{m}$ :
 \[
-  T(z) = T_0 - \dfrac{z}{180\,\text{m}}\,.
+  T(z) = T_0 - \dfrac{z}{180\,\text{m}}.
 \]
 
 \medskip
 
-En utilisant l’équilibre hydrostatique et l’équation d’état
-ci-dessus, établir l’expression du \cindex{profil vertical de pression atmosphérique}
-$P(z)$.
-
+En utilisant l’équilibre hydrostatique et l’équation d’état ci-dessus, établir l’expression du \cindex{profil vertical de pression atmosphérique} $P(z)$.
 \end{studentinvestigation}
 
-
-\section{Equation d'Euler}
+\section{Équation d'Euler}
 
 \subsection{Bilan des forces sur un élément matériel}
 Supposons maintenant que le fluide est suffisamment lent pour que le gradient de pression continue à décrire correctement les forces internes au fluide. En pratique, cela implique qu’il n’y a pas d’effets de \cindex{compression élastique}, ni de \cindex{friction}.
 
 Dans ce cas, nous pouvons généraliser. La variation de la quantité de mouvement du volume matériel fini vaut :
 \begin{equation}
-\od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{u}(\vec{x},t) \, \dif \vol,
-\label{eq:momentum_balance}
+  \od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{u}(\vec{x},t) \, \dif \vol,
+  \label{eq:momentum_balance}
 \end{equation}
 et doit être égale à la somme des forces externes (les forces internes s’annulant par le principe d’\cindex{action-réaction}). Or, nous avons vu que :
 \begin{equation}
-\od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{u}(\vec{x},t) \, \dif V
-= \int_V \rho(\vec{x},t) \, \Dt {\u}(\vec{x},t) \, \dif \vol
-\label{eq:material_acceleration}
+  \od{}{t} \int_\vol \rho(\vec{x},t) \, \vec{u}(\vec{x},t) \, \dif V = \int_V \rho(\vec{x},t) \, \Dt{\vec{u}}(\vec{x},t) \, \dif \vol
+  \label{eq:material_acceleration}
 \end{equation}
 On obtient donc :
 \begin{equation}
-  \int_\vol \rho \, \Dt{\vec{u}} \, \dif \vol
-= \int_\vol - \rho \, \grad \gpot \, \dif \vol \; - \; \int_\vol \grad p \, \dif \vol
-\label{eq:euler_integral}
+  \int_\vol \rho \, \Dt{\vec{u}} \, \dif \vol = \int_\vol - \rho \, \grad \gpot \, \dif \vol \; - \; \int_\vol \grad p \, \dif \vol
+  \label{eq:euler_integral}
 \end{equation}
 L’intégrale étant valable pour tout volume matériel fini, on peut la réduire à sa forme différentielle :
 \begin{equation}
   \rho \, \Dt{\vec{u}} = - \rho \, \grad \gpot - \grad p.
-\label{eq:euler}
+  \label{eq:euler}
 \end{equation}
 C’est la célèbre \cindex{équation d’Euler}.
 
-Nous retrouvons ici la pleine puissance de la notion de \cindex{particule Lagrangienne} : un élément infinitésimal de fluide soumis aux équations du mouvement. L'équation~\eqref{eq:euler} met en scène une particule matérielle, c'est-à-dire un volume élémentaire de masse volumique $\rho$, soumis à la résultante des forces de pression $-\grad p$, et aux forces de volume extérieures $-\rho\grad \gpot$.
+Nous retrouvons ici la pleine puissance de la notion de \cindex{particule Lagrangienne} : un élément infinitésimal de fluide soumis aux équations du mouvement. L'équation~\eqref{eq:euler} met en scène une particule matérielle, c'est-à-dire un volume élémentaire de masse volumique $\rho$, soumis à la résultante des forces de pression $-\grad p$, et aux forces de volume extérieures $-\rho \grad \gpot$.
 
 \subsection{L'advection de la vitesse génère un tenseur}
 Nous devons décortiquer l'expression $\Dt{\vec{u}}$ pour comprendre ce qu'elle implique.
@@ -210,62 +190,50 @@ La dérivée matérielle de la vitesse d'une particule fluide correspond à son 
 Le plus simple est de considérer les composantes selon les trois axes séparément :
 \begin{displaymath}
   \begin{split}
-    \Dt{u} &= \pdt{u} +  \grad u \cdot\vec{u},\\
-    \Dt{v} &= \pdt{v} +  \grad v \cdot\vec{u},\\
-    \Dt{w} &= \pdt{w} +  \grad w \cdot\vec{u}.
+    \Dt{u} &= \pdt{u} + \grad u \cdot \vec{u},\\
+    \Dt{v} &= \pdt{v} + \grad v \cdot \vec{u},\\
+    \Dt{w} &= \pdt{w} + \grad w \cdot \vec{u}.
   \end{split}
 \end{displaymath}
-Nous pouvons regrouper ces équations sous une forme vectorielle, en introduisant le \cindex{gradient du champ de vitesse} $\grad\vec{u}$ :
+Nous pouvons regrouper ces équations sous une forme vectorielle, en introduisant le \cindex{gradient du champ de vitesse} $\grad \vec{u}$ :
 \begin{displaymath}
   \begin{pmatrix}
     \Dt{u} \\
     \Dt{v} \\
     \Dt{w}
-   \end{pmatrix} =
+  \end{pmatrix} =
   \begin{pmatrix}
     \pdt{u} \\
     \pdt{v} \\
     \pdt{w}
-   \end{pmatrix} +
-   \underbrace{
- \begin{pmatrix}
+  \end{pmatrix} +
+  \underbrace{
+  \begin{pmatrix}
     \pd{u}{x} & \pd{u}{y} & \pd{u}{z} \\
     \pd{v}{x} & \pd{v}{y} & \pd{v}{z} \\
     \pd{w}{x} & \pd{w}{y} & \pd{w}{z}
-\end{pmatrix}}_{\grad\vec{u}}
-\cdot
+  \end{pmatrix}}_{\grad \vec{u}}
+  \cdot
   \begin{pmatrix}
-    {u} \\
-    {v} \\
-    {w}
-   \end{pmatrix}.
+    u \\
+    v \\
+    w
+  \end{pmatrix}.
 \end{displaymath}
-La notation $\grad\vec{u}$ peut paraître inhabituelle : vous êtes plus familiers du gradient appliqué à un champ scalaire.
-Lorsqu’on généralise la notion de gradient à un champ vectoriel, on obtient un \cindex{tenseur} de rang~2.
-De la même façon qu’un vecteur peut être représenté par ses coordonnées dans une base (sous forme de matrice colonne), un tenseur de rang~2 est représenté par une matrice $n \times n$, avec $n=3$ en trois dimensions.
-Le tenseur est une notion d’importance fondamentale en mécanique des milieux continus.
-Ses composantes obéissent à des règles de transformation lorsqu’on change la base de référence (voir annexe~\ref{ch:a_tenseurs}). 
-Dans ce cours, nous supposerons que les bases sont orthonormées, ce qui nous dispense d’introduire les notions de coordonnées covariantes et contravariantes.
-En revanche, il est essentiel d’introduire dès maintenant la notion d’\cindex{invariant scalaire}.
-Il s’agit de propriétés de la matrice associée au tenseur qui ne dépendent pas du système de coordonnées.
-En particulier, la \emph{trace} et le \emph{déterminant} sont des invariants scalaires.
-Nous verrons plus tard que ces invariants peuvent être associés à des grandeurs physiques bien connues.
+La notation $\grad \vec{u}$ peut paraître inhabituelle : vous êtes plus familiers du gradient appliqué à un champ scalaire. Lorsqu’on généralise la notion de gradient à un champ vectoriel, on obtient un \cindex{tenseur} de rang 2.
 
 \subsection{Interprétation physique de l'advection de quantité de mouvement}
+L'advection peut être interprétée comme le flux de quantité de mouvement transporté par l'écoulement lui-même à travers les parois d'un volume de contrôle fixe. D'un point de vue eulérien, ce terme $(\vec{u} \cdot \grad)\vec{u}$ agit comme une force apparente qui modifie la vitesse locale en un point donné de l'espace. Dans un écoulement stationnaire, par exemple, cette contribution advective peut contrebalancer exactement un gradient de pression ou une force visqueuse, maintenant ainsi un \cindex{équilibre dynamique}. Inversement, une accélération locale peut être générée sans changement temporel de la vitesse, simplement parce qu'une particule fluide pénètre dans une zone de convergence du champ de vitesse. C'est cette subtilité qui fait de l'advection un générateur de non-linéarité, et qui constitue un élément clé des équations d'Euler. Elle joue un rôle important dans les écoulements les plus complexes, en particulier les écoulements turbulents que nous aborderons dans la section~\ref{ch:modeles_ecoulement}.
 
-L'advection peut être interprétée comme le flux de quantité de mouvement transporté par l'écoulement lui-même à travers les parois d'un volume de contrôle fixe. D'un point de vue eulérien, ce terme $(\vec{u} \cdot \grad)\vec{u}$ agit comme une force apparente qui modifie la vitesse locale en un point donné de l'espace. Dans un écoulement stationnaire, par exemple, cette contribution advective peut contrebalancer exactement un gradient de pression ou une force visqueuse, maintenant ainsi un \cindex{équilibre dynamique}. Inversement, une accélération locale peut être générée sans changement temporel de la vitesse, simplement parce qu'une particule fluide pénètre dans une zone de convergence du champ de vitesse. C'est cette subtilité qui fait de l'advection un générateur de non-linéarité, et qui constitue un élément des équations d'Euler. Il joue un rôle important dans les écoulements les plus complexes, en particulier les écoulements turbulents que nous aborderons dans la section XX. 
+\subsection{Équation du mouvement sous forme conservative}
+En travaillant la forme du tenseur d'advection, on peut le réécrire de la façon suivante \cite{acheson01aa} :
+\begin{equation}
+  (\vec{u} \cdot \grad)\vec{u} = (\curl \vec{u}) \cross \vec{u} + \grad\left(\frac{1}{2} \vec{u}^2\right).
+  \label{eq:euler_conserv}
+\end{equation}
 
 \begin{studentinvestigation}{L'équation du mouvement est non-linéaire}
 Reprenons l'équation d'Euler~\eqref{eq:euler}. Vérifiez en exercice qu'elle est non-linéaire : la somme de deux solutions n'est généralement pas une solution de l'équation ; une solution multipliée par un facteur constant (autre que $1$ ou $-1$) n'est généralement pas une solution.
-Cette propriété est due au terme d'advection. On peut donc espérer que tant que l'advection est relativement \emph{faible} --- c'est une notion qu'il faudra préciser --- l'écoulement sera raisonnablement linéaire. Lorsqu'il est plus important, l'écoulement peut devenir turbulent \index{écoulement turbulent} et la recherche d'une solution particulière à l'équation du mouvement n'est généralement plus possible. 
+Cette propriété est due au terme d'advection. On peut donc espérer que tant que l'advection est relativement \emph{faible} --- c'est une notion qu'il faudra préciser --- l'écoulement sera raisonnablement linéaire. Lorsqu'il est plus important, l'écoulement peut devenir turbulent \index{écoulement turbulent} et la recherche d'une solution particulière à l'équation du mouvement n'est généralement plus possible.
 \end{studentinvestigation}
-
-\subsection{Équation du mouvement sous forme conservative}
-
-En travaillant la forme du tenseur d'advection, on peut le ré-écrire de la façon suivante \cite{acheson01aa}, p. 9:
-
-\begin{equation}
-  (\u \cdot \grad)\u = (\curl \u)\cross u + \grad(\frac{1}{2}\u^2)
-  \label{eq:euler_conserv}
-\end{equation}
 

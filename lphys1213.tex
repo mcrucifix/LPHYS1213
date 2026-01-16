@@ -28,7 +28,6 @@
 
 % specify language
 \usepackage{polyglossia}  % gestion des langues
-\setmainlanguage{french}  % langue principale du document
 
 
 % better display of volume integrals
@@ -84,6 +83,8 @@
 \addbibresource{bibtex.bib}
 \usepackage{silence}
 \WarningFilter{hyperref}{removing}
+\WarningFilter{latex}{Missing character: There is no ;}
+
 \title{\TITLE \\ \COURSECODE \\ \ACADEMICYEAR}
 \author{\AUTHOR}
 \school{\SCHOOL}
@@ -93,6 +94,8 @@
 \coursetitle{\COURSETITLE}
 
 \makenomenclature
+
+\setmainlanguage{french}  % langue principale du document
 
 \begin{document}
 \input{nomenclature.tex}
@@ -142,14 +145,14 @@
 % description eulerenne et lagrangienne -> done
 % principe de Pascal et existence de la pression (a affiner)
 % tenseur pour vv  -> done
-% hypothese de Bousinesq
-% thermodynamique 
-% onde de pression
-% diffusion / friction
-% equation de Navier Stokes
-% couche limite (aile d'avion ? ) cf. notes
-% adimensionalisation des equations
-% nombres caracteristiques
+% hypothese de Bousinesq -> relire
+% thermodynamique  -> done
+% onde de pression -> on ne le fera pas
+% diffusion / friction (viscosité : done)
+% equation de Navier Stokes -> done
+% couche limite (aile d'avion ? ) cf. notes -> done
+% adimensionalisation des equations -> en cours
+% nombres caracteristiques -
 
 \printindex 
 
