@@ -1,0 +1,36 @@
+\documentclass[border=5mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.5]
+  % Paramètres
+  \def\U{3}      % Vitesse maximale U (échelle arbitraire)
+  \def\h{4}      % Hauteur h entre les plaques
+  \def\nvect{8}  % Nombre de vecteurs par ligne
+
+  % Plaques
+  \draw[thick] (0,0) -- (5,0) node[below left]{$y=0$}; % Plaque inférieure
+  \draw[thick] (0,\h) -- (5,\h) node[above left]{$y=h$}; % Plaque supérieure
+  \fill[pattern=north east lines] (0,0) rectangle (5,-0.2); % Hachures plaque inférieure
+  \fill[pattern=north east lines] (0,\h) rectangle (5,\h+0.2); % Hachures plaque supérieure
+
+  % Vecteurs vitesse
+  \foreach \y in {0.2,0.4,...,3.8} {
+    \pgfmathsetmacro{\ux}{\U*\y/\h} % u_x(y) = U * y / h
+    \foreach \x in {0.5,1.0,...,4.5} {
+      \draw[->, color=blue!70!black] (\x,\y) -- ++({\ux*0.2},0);
+    }
+  }
+
+  % Légende
+  \draw[->, thick] (5.5,0) -- (5.5,\h) node[midway, right]{$y$};
+  \draw[->, thick] (5.5,0) -- ++(\U*0.2,0) node[midway, above]{$U$};
+  \node[blue!70!black, right] at (5.5,2) {$\vec{u}(y) = \frac{U}{h} y$};
+
+  % Titre
+  \node[above] at (2.5,\h+0.5) {Écoulement de cisaillement horizontal};
+\end{tikzpicture}
+\end{document}
+
+

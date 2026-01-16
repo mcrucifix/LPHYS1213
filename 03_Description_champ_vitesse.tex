@@ -1,5 +1,7 @@
 \chapter{Description du champ de vitesse}
+
 \section{Description Eulérienne}
+
 \subsection{Hypothèse de l'écoulement laminaire}
 Nous allons un instant laisser en suspens les développements de l'équation du mouvement pour aborder la description du champ de vitesse.
 Considérons un champ de vitesse qui, en toute généralité, dépend du temps : $\vec{u}(\vec{x}, t)$.
@@ -19,7 +21,7 @@ Supposons, pour fixer les idées, que le champ $\vec{u}$ soit invariant au cours
   \od{\vec{x}}{s} = \vec{u}(\vec{x})\text{, avec $\vec{x}(0)=\vec{x}_0$}.
 \end{displaymath}
 Si on remplace, pour s'aider, le symbole $s$ par le symbole $t$, on voit immédiatement que la courbe $\vec{x}(s)$ répond à la même équation que celle qui détermine le chemin d'une particule de fluide au cours du temps, avec condition initiale $\vec{x}_0$ au temps $t=0$.
-La courbe paramétrique définie par~\eqref{eq:ligne_courant} porte le nom de \cindex{ligne de courant}. Dans le cas particulier d'un champ de vitesse stationnaire, elle se superpose à la trajectoire ou chemin de toute particule passant à un moment donné par $\vec{x}_0$. \todo{dire qu'on en reparlera mais insister pour dire que la ligne de courant est toujours définie}. 
+La courbe paramétrique définie par~\eqref{eq:ligne_courant} porte le nom de \cindex{ligne de courant}. Dans le cas particulier d'un champ de vitesse stationnaire, elle se superpose à la trajectoire ou chemin de toute particule passant à un moment donné par $\vec{x}_0$. Nous reviendrons sur cette distinction, mais soulignons dès à présent que la ligne de courant est toujours définie, même en régime non stationnaire.
 
 \begin{key}{Les lignes de courant sont tangentes à la vitesse en tout point}
 Exprimons l'équation~\eqref{eq:ligne_courant} selon ses composantes cartésiennes :
@@ -47,7 +49,7 @@ ce qui revient simplement à écrire que la courbe décrite par $\vec{x}(s)$ est
 Par l'absurde, cela impliquerait en effet qu'en un point et à un instant $t$, la vitesse peut prendre deux directions différentes, alors que l'hypothèse du milieu continu nous impose une vitesse bien définie en tout point.
 \end{key}
 
-Le cas de vitesse nulle est particulier: une particule de fluide n'atteindra jamais le point de vitesse nulle dans un écoulement stationnaire. Ces points sont des \cindex{points de stagnation}. 
+Le cas de vitesse nulle est particulier : une particule de fluide n'atteindra jamais le point de vitesse nulle dans un écoulement stationnaire. Ces points sont des \cindex{points de stagnation}.
 
 \subsection{Section de lignes de courant dans un écoulement}
 Pour un champ de vitesse bidimensionnel $\vec{u}(x,y)$, considérons un ensemble de conditions initiales ${S}_{ab}(0)$ reliant deux points $a$ et $b$ de façon continue, et tel qu’il intercepte les lignes de courant de manière à ce que les vitesses soient toutes dans la même direction (par exemple, de gauche à droite).
@@ -57,15 +59,14 @@ Pour le voir, introduisons la notion de \cindex{fonction de flot}, notée $\phi^
 \begin{equation}
   \phi^s({S}_{ab}(0)) = {S}_{ab}(s)
   \label{eq:flot_2d}
-\end{equation} 
+\end{equation}
 
 Par conséquent, l’advection d’une section connexe par un flot continu reste connexe : \textbf{aucun trou n’est créé}.
 
 \subsection{Écoulement tri-dimensionnel : tubes de courant}
-
 Pour un champ de vitesse tridimensionnel $\vec{u}(x,y,z)$, nous pouvons définir un anneau ${C}_{ab}(0)$, c’est-à-dire une courbe fermée, dite \emph{simplement connexe}. L’advection de cette courbe selon le flot $\phi^s$ définit alors un \cindex{tube de courant} (Figure~\ref{fig:02_tube_courant}), dont la paroi est continue.
 
-On appelle \emph{tube de courant} la surface formée par l’ensemble des lignes de courant issues d’une courbe fermée ${\partial S}(0)$ dans un champ de vitesse $\vec{u}(x,y,z)$. Autrement dit, si chaque point de $\partial S(0)$ est advecté selon le flot $\phi^s$, la surface latérale engendrée par l’ensemble des trajectoires forme un tube dont les lignes de courant constituent la paroi. 
+On appelle \emph{tube de courant} la surface formée par l’ensemble des lignes de courant issues d’une courbe fermée ${\partial S}(0)$ dans un champ de vitesse $\vec{u}(x,y,z)$. Autrement dit, si chaque point de $\partial S(0)$ est advecté selon le flot $\phi^s$, la surface latérale engendrée par l’ensemble des trajectoires forme un tube dont les lignes de courant constituent la paroi.
 
 Les propriétés topologiques du flot garantissent la continuité de la paroi du tube : aucune ligne de courant ne traverse cette paroi, et donc aucun échange de matière ne se produit entre l’intérieur et l’extérieur du tube. De manière informelle, aucune ligne de courant ne peut s’échapper du tube : toutes restent confinées à l’intérieur de sa paroi.
 
@@ -85,73 +86,21 @@ En notant $Q_m = \int_{{S}} \rho \vec{u} \cdot \vec{n} \, \dif S$ le \cindex{dé
 Q_{m,1} = Q_{m,2}.
 \]
 Ainsi, le débit massique est constant le long du tube de courant en régime stationnaire. Cette propriété est fondamentale pour l’étude des écoulements, et plus particulièrement les écoulements incompressibles car il permet, par exemple, de relier les vitesses moyennes dans des sections de tailles différentes.
-\end{key}
 
-\begin{figure}
   \begin{center}
+   \captionsetup{type=figure}
     \input{Pdftex/02_tube_courant.pdf_tex}
-  \end{center}
   \caption{Le tube de courant est défini comme une surface imaginaire obtenue par l'ensemble continu de lignes de courant générées à partir d'une courbe fermée ${S}_{ab}(0)$. Les sections ${S}_1$ et ${S}_2$ illustrent les surfaces utilisées pour le bilan de masse.}\label{fig:02_tube_courant}
-\end{figure}
+\end{center}
 
 
-% \subsection{Décomposition de Helmholtz d'un champ stationnaire}
-% Soit un champ de vitesse stationnaire $\vec{u}(\vec{x})$ défini dans $\mathbb{R}^3$ ou dans un domaine borné suffisamment régulier.
-% Le \cindex{théorème de Helmholtz} stipule que ce champ peut toujours se décomposer de manière unique (à une constante près) en la somme de trois composantes :
-% \begin{equation}
-% \vec{u} = - \grad \vpot + \curl \vec{\sfn} + \vec{c},
-% \label{eq:helmholtz_decomposition}
-% \end{equation}
-% où :
-% \begin{itemize}
-%   \item $\vpot(\vec{x})$ est un \cindex{potentiel scalaire}, de sorte que $-\grad \vpot$ est \emph{irrotationnel} :
-%         \[
-%           \grad \times (-\grad \vpot) = \vec{0}, \qquad
-%           \grad \cdot (-\grad \vpot) = - \nabla^2 \vpot \neq 0 \text{ en général};
-%         \]
-%   \item $\vec{\sfn}(\vec{x})$ est un \cindex{potentiel vectoriel}, de sorte que $\grad \times \vec{\sfn}$ est \emph{solénoïdal} (divergence nulle) :
-%         \[
-%           \grad \cdot (\grad \times \vec{\sfn}) = 0, \qquad
-%           \grad \times (\grad \times \vec{\sfn}) \neq 0 \text{ en général};
-%         \]
-%   \item $\vec{c}$ est une \cindex{composante constante} du champ, qui n’est ni divergente ni rotationnelle.
-% \end{itemize}
-%
-% \paragraph{Interprétation physique.}
-% \begin{itemize}
-%   \item La composante $-\grad \vpot$ transporte toute la divergence du champ : elle décrit la partie \emph{non rotationnelle}.
-%   \item La composante $\grad \times \vec{\sfn}$ transporte toute la rotation du champ : elle décrit la partie \emph{non divergente}.
-%   \item La constante $\vec{c}$ représente une composante uniforme du champ.
-% \end{itemize}
-%
-% \paragraph{Cas particuliers.}
-% \begin{itemize}
-%   \item Dans un écoulement incompressible ($\grad \cdot \vec{u} = 0$), la composante $-\grad \vpot$ est nulle, et le champ est purement non-divergent ou encore dit \index{écoulement solénoïdal}{solénoïdal}.
-%   \item Si la composante $\grad \times \vec{\sfn}$ est nulle, le champ est purement irrotationnel.
-% \end{itemize}
-%
-% \end{itemize}
-%
-% Nous verrons qu'il existe une classe importante d'ecoulements qui sont à la fois non-divergents et presque partout irrotationnels. 
-%
+\end{key}
 
 \subsection{Écoulements bi-dimensionnels}
 Bien que nous vivions dans un monde tri-dimensionnel, beaucoup d'écoulements se décrivent très bien dans un espace à deux dimensions : les éléments de l'écoulement qui nous intéressent se trouvent dans un plan.
 Ce sera typiquement le cas lorsque l'écoulement est confiné dans un domaine qui présente des dimensions très différentes selon l'horizontale et la verticale. C'est le cas des mers, des océans, ou dans certaines expériences de laboratoire comme celle de \cindex{Rayleigh-Bénard}\footnote{\url{https://www.youtube.com/watch?v=Eud7uG5JHng}}. De tels écoulements sont dits à coefficient d'aspect élevé.
 L'existence d'écoulements à coefficient d'aspect élevé est elle-même liée à des facteurs extérieurs qui renforcent la pertinence d'une description à deux dimensions : la force de gravité induit une forte asymétrie entre l'horizontale et la verticale. On démontre par ailleurs que dans un fluide stationnaire barotrope en rotation (section Deleersnijder), le mouvement est invariant selon l'axe de rotation (\cindex{théorème de Taylor-Proudman}).
 Nous utiliserons la notation $\uh$ pour signifier la composante horizontale du mouvement.
-%
-% \subsection{Potentiels scalaires et vecteurs}
-% Reprenons la décomposition de Helmholtz, mais adaptée au cas bi-dimensionnel. Le potentiel scalaire $\vpot$ est défini dans le plan et on ne prend que son gradient horizontal. Le potentiel vectoriel $\vec{\sfn}$ est un principe à trois dimensions. On peut manipuler l'opérateur rotationnel pour extraire trois composantes :
-% \begin{equation}
-%   \begin{split}
-%      \curl \vec{\sfn} %
-%                      &= \curl ( \sfn_x \ex  + \sfn_y \ey + \sfn_z \ez ) \\
-%                      &= \grad \sfn_x \cross \ex +  \grad \sfn_y \cross \ey +  \grad \sfn_z \cross \ez
-%    \end{split}
-% \end{equation}
-% Chaque composante produit un champ vectoriel dans les trois plans orthogonaux aux vecteurs de base. Si on considère un écoulement horizontal, dans le plan $(\ex, \ey)$, alors il ne faut retenir que le troisième terme.
-%
 
 \subsection{Écoulements 2-D typiques}
 On peut appréhender le monde bi-dimensionnel en se familiarisant avec des écoulements typiques.
@@ -166,63 +115,52 @@ On vérifie (exercice) que $\Div\uh$ vaut dans ce cas $2c$, le facteur~2 étant 
 \paragraph{Rotation solide\label{para:Vortex}}
 Par analogie à l'écoulement divergent, on modélise un \cindex{écoulement rotationnel} par $\uh=\vec{\Omega} \cross \rh$.
 
-En coordonnées polaires, cet écoulement s'écrit simplement: 
-
+En coordonnées polaires, cet écoulement s'écrit simplement:
 \begin{displaymath}
   u_\theta = \Omega r
 \end{displaymath}
 
-Dans l'écoulement 2-D, le vecteur $\vec\Omega$ qui induit la rotation est orthogonal au plan de l'écoulement. On retrouve le vecteur instantané de rotation (la \cindex{vorticité}) en appliquant l'opérateur rotationnel : $\vec\vort \eqdef \curl\uh=2\vec\Omega$. 
+Dans l'écoulement 2-D, le vecteur $\vec\Omega$ qui induit la rotation est orthogonal au plan de l'écoulement. On retrouve le vecteur instantané de rotation (la \cindex{vorticité}) en appliquant l'opérateur rotationnel : $\vec\vort \eqdef \curl\uh=2\vec\Omega$.
 
 On note la composante verticale de vorticité
-
 \begin{displaymath}
   \vort_z = 2 \Omega
 \end{displaymath}
 
 Ce modèle de rotation solide implique des vitesses croissant indéfiniment à mesure que l'on s'éloigne de l'origine.
 
-
-\paragraph{Vortex irrotationel} 
-
-Il est possible de créer un flux circulaire qui est non-rotationnel presque partout! 
+\paragraph{Vortex irrotationnel}
+Il est possible de créer un flux circulaire qui est non-rotationnel presque partout!
 
 Considérons le mouvement dans le plan, en coordonnées polaires:
-
 \begin{displaymath}
   u_\theta = \frac {\Gamma}{2\pi r}
 \end{displaymath}
 
+Cette fois, la vitesse angulaire de rotation n'est plus constante : elle diminue selon une loi de proportionalité inverse.
 
-Cette fois, la vitesse angulaire de rotation n'est plus constante: elle diminue selon une loi de proportionalité inverse. 
-
-Pour calculer le rotationnel, on peut utiliser son expression en coordonnées polaires (seule la composante verticale est non-nulle, puisqu'il s'agit d'un mouvement dans le plan): 
-
+Pour calculer le rotationnel, on peut utiliser son expression en coordonnées polaires (seule la composante verticale est non-nulle, puisqu'il s'agit d'un mouvement dans le plan):
 \begin{displaymath}
   \zeta_z =%
   \frac{1}{r}%
   \left(\pd{(r u_\theta)}{r} - \pd{u_r}{r}\right)
 \end{displaymath}
 
-Si on applique le théorème de la circulation: 
-
+Si on applique le théorème de la circulation:
 \begin{displaymath}
   \oint u_\theta\,r\dif \theta = \Gamma = \iint \vort_z \dif A
 \end{displaymath}
 
-La vorticité est donc nulle partout, sauf au centre où elle se comporte comme un pic de Dirac. 
+La vorticité est donc nulle partout, sauf au centre où elle se comporte comme un pic de Dirac.
 
-Bien que ce type de vortex semble tiré par les cheveux, il est en fait très commade car il permet de créer une circulation tout en étant irrotationnel presque partout. 
+Bien que ce type de vortex semble tiré par les cheveux, il est en fait très courant car il permet de créer une circulation tout en étant irrotationnel presque partout.
 
-TODO: faire des schémas pour les différents types de vortex. 
-
-\paragraph{Vortex exponentiel} 
+\paragraph{Vortex exponentiel}
 Si l'on applique un facteur exponentiel décroissant, on génère une rotation différentielle typique d'un vortex.
 \begin{displaymath}
   \vec{u}_h = e^{-r_h/L} \vec{\Omega}\cross\rh
 \end{displaymath}
 On vérifie que cet écoulement est non-divergent.
-
 
 \paragraph{Cisaillement}
 Le cisaillement $\vec{u}_h = (0,Lx)$ constitue un autre exemple d'écoulement rotationnel, non-divergent (plus généralement, toute forme $(g(y), f(x))$ sera non-divergente).
@@ -240,20 +178,15 @@ Chaque composante produit un champ vectoriel dans les trois plans orthogonaux au
 
 \subsection{Écoulement bi-dimensionnel stationnaire incompressible}
 \subsubsection{Fonction de courant \label{sect:courant}}
-
-Si le flux est non-divergent $\Div\u_h = 0$ soit, en développant 
-
+Si le flux est non-divergent $\Div\u_h = 0$ soit, en développant
 \begin{displaymath}
-  \pd{u}{x} + \pd{u}{y} = 0, 
+  \pd{u}{x} + \pd{u}{y} = 0,
 \end{displaymath}
-
-où l'on a posé $\uh=u\ex + v\ey$. Cette équation est automatiquement rencontrée si $\u_h$ dérive d'un \cindex{potentiel vecteur}. Soit: $\uh = \curl (\sfn_z \ez) = \grad \sfn_z \times \ez$, on a: 
-
+où l'on a posé $\uh=u\ex + v\ey$. Cette équation est automatiquement rencontrée si $\u_h$ dérive d'un \cindex{potentiel vecteur}. Soit: $\uh = \curl (\sfn_z \ez) = \grad \sfn_z \times \ez$, on a:
 \begin{displaymath}
-  u = \pd{\sfn_z}{y}\quad \text{et} v = -\pd{\sfn_z}{x}. 
+  u = \pd{\sfn_z}{y}\quad \text{et} v = -\pd{\sfn_z}{x}.
 \end{displaymath}
-
-L'équation de continuité est satisfaite par $\pd[2]{\sfn_z}{xy} = \pd[2]{\sfn_z}{yx}$. 
+L'équation de continuité est satisfaite par $\pd[2]{\sfn_z}{xy} = \pd[2]{\sfn_z}{yx}$.
 
 La fonction $\sfn_z$ porte le nom de \cindex{fonction de courant}, en anglais \emph{streamfunction}, pour les deux raisons suivantes :
 
@@ -261,9 +194,9 @@ La fonction $\sfn_z$ porte le nom de \cindex{fonction de courant}, en anglais \e
   Sous l'hypothèse d'une masse volumique $\rho$ constante, le flux à travers une section $\mathcal{S}$ quelconque entre deux points vaut
   \begin{displaymath}
     \begin{split}
-      \int_a^b \rho \uh\cdot \vec{n}\, \dif {\mathcal S} &= \rho \int_a^b \uh\cdot(\dif y, -\dif x) \\ 
+      \int_a^b \rho \uh\cdot \vec{n}\, \dif {\mathcal S} &= \rho \int_a^b \uh\cdot(\dif y, -\dif x) \\
                                                          &= \int_a^b \pd{\sfn_z}{y}\dif y + \pd{\sfn_z}{x}\dif x  \\
-                                                         &= \sfn_{z}(b) - \sfn_{z}(a). 
+                                                         &= \sfn_{z}(b) - \sfn_{z}(a).
     \end{split}
   \end{displaymath}
 \end{key}
@@ -287,13 +220,12 @@ La \cindex{ligne de chemin} (\emph{pathline}) est la courbe paramétrique décri
   \od{\vec{p}}{t} = \vec{u}(\vec{p},t), \qquad \vec{p}(t_0) = \vec{p}_0.
   \label{eq:ligne_chemin}
 \end{equation}
-On peut également l’exprimer à l’aide de la \cindex{fonction de flot}. Dans sa version non-stationnaire, la fonction flot est
-indexée par deux paramètres, le temps initial ($t_0$) et le temps cible ($t$), et exprime l'advection d'un domaine pris au temps $t_0$, tel qu'il apparaît au temps $t$. 
+On peut également l’exprimer à l’aide de la \cindex{fonction de flot}. Dans sa version non-stationnaire, la fonction flot est indexée par deux paramètres, le temps initial ($t_0$) et le temps cible ($t$), et exprime l'advection d'un domaine pris au temps $t_0$, tel qu'il apparaît au temps $t$.
 \begin{equation}
   \vec{p}(t) = \phi^{t_0, t }(\vec{x}_0),
   \label{eq:ligne_chemin_flot}
 \end{equation}
-Le paramètre de la courbe est $t$. 
+Le paramètre de la courbe est $t$.
 Chaque ligne de chemin correspond donc à la trajectoire d’une particule donnée, définie par sa position initiale $\vec{x}_0$ et son temps initial $t_0$.
 À chaque instant $t$, la tangente à la ligne de chemin coïncide avec la direction du champ de vitesse $\vec{u}(\vec{x},t)$ en ce point.
 Dans un écoulement laminaire, deux particules lâchées au même instant $t_0$ ne peuvent jamais se collisionner : une telle collision impliquerait qu’en un même point et à un même instant, deux vitesses différentes sont possibles, ce qui contredirait l’hypothèse de continuité du milieu. En revanche, deux lignes de chemins associées à des temps initiaux différents peuvent très bien se croiser.
@@ -306,7 +238,7 @@ Autrement dit, le paramètre qui permet de se déplacer le long de la courbe est
   \vec{s}(t_0) = \phi^{t_0, t}(\vec{x}_0),
   \label{eq:streakline_flot}
 \end{equation}
-Le paramètre de la courbe est cette fois $t_0$, et non $t$. 
+Le paramètre de la courbe est cette fois $t_0$, et non $t$.
 En parcourant la courbe, on explore les positions actuelles des particules émises successivement depuis la source $\vec{x}_0$ à différents instants passés.
 
 Ainsi, dans un écoulement non stationnaire, les lignes de courant, les lignes de chemin et les lignes de trace ne coïncident pas nécessairement : chacune décrit un aspect distinct du mouvement du fluide.
