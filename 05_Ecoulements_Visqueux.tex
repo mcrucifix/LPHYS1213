@@ -5,7 +5,6 @@
 
 Dans le chapitre~\ref{ch:euler}, nous avons établi l'équation d'Euler pour un fluide parfait, en négligeant les effets de la viscosité. Cependant, dans la réalité, les fluides réels (comme l'eau ou l'air) présentent une résistance interne au mouvement, due aux frottements entre couches de fluide. 
 
-
 \begin{figure}
   \begin{center}
     \input{Tikz/couette_plane.tikz}
@@ -73,7 +72,6 @@ où $\lapl \u = (\lapl u, \lapl v, \lapl w)$ est le \cindex{laplacien} du champ 
 
 Ainsi on a, pour différentes fluides, à 20$^\circ$, 1atm:
 
-\begin{center}
 \begin{tabular}{|c|c|}
 \hline
 Fluide & $\mu$ (Pa$\cdot$s) \\
@@ -86,7 +84,7 @@ Huile  d'olive & $0.05$  \\
 Miel & $10$ \\
 \hline
 \end{tabular}
-\end{center}
+
 Cette équation sera suffisante pour décrire la plupart des écoulements étudiés dans ce cours, y compris l'\cindex{écoulement de Poiseuille}.
 
 
@@ -176,6 +174,19 @@ En développant ce terme pour un fluide incompressible et en utilisant l'approxi
   \label{eq:ns_incompressible}
 \end{equation}
 Cette équation décrit la dynamique des fluides visqueux et sera la base de nos prochains développements, notamment pour l'étude des écoulements laminaires comme celui de Poiseuille.
+
+Par ailleurs, sur base de l'identité:
+
+\begin{displaymath}
+\curl(\curl\u) = \grad(\Div{\u}} - \lapl \u
+\end{displaymath}
+
+on aura, pour un écoulement incompressible ($\Div\u=0$) une expression équivalente de l'équation \eqref{eq:ns_incompressible}:
+
+\begin{equation}
+  \rho \Dt{\u} = -\grad p - \rho \grad \gpot + \mu \curl(\curl \u).
+  \label{eq:ns_incompressible_bis}
+\end{equation}
 
 \end{redmargin}
 
@@ -268,16 +279,22 @@ Il nous faudra bien examiner ces hypothèses et ce sera l'objet du chapitre \ref
 
 \section{Ecoulement très visqueux autour d'une sphère (écoulement de Stokes) \label{sect:stokes}}
 
-\todo[inline]{dire qu'on considère un écoulement tel que $\u=U\ex$ loin de la sphère, la sphère de rayon $a$, et vitesse nulle autour de la sphère. }
 
-L'équation pour un écoulement visqueux stationnaire à nombre de Reynolds très petit est  \todo[inline]{montrer que c'est équivalent à $\lapl\u$ quand $\Div\u=0$).}
+Nous allons maintenant montrer qu'il est possible de calculer, analytiquement, la traînée causée par le mouvement d'une sphère dans un fluide. Par action-réaction, cette traînée correspond à la force que le fluide exerce sur la sphère et qui s'oppose à son mouvement. 
+
+La théorie est due à Stokes et n'est valable que si les termes d'advection sont négligés par rapport aux termes de frictions. Nous verrons dans la section \ref{eq:ssec:turbulent} qu'il faut que le \cindex{nombre de Reynolds} soit petit. Nous y reviendrons. 
+
+Malheureusement, les mathématiques nécessaires à la résolution de l'écoulement mobilisent des notions d'\cindex{analyse complexe} qui sont vues à la fin du cours LMAT1222. Nous donnons donc ici la démonstration pour référence. 
+
+\begin{redmargin}
+
+On se base sur la forme \eqref{eq:ns_incompressible_bis} de l'équation de Navier-Stokes, en négligeant le membre de gauche (stationnaire et pas d'advection) et le terme de géopotentiel: 
 
 \begin{equation}
-  \grad p = - \mu \curl(\curl\u). 
+  \grad p = - \mu \curl(\curl\u), 
   \label{eq:viscous}
 \end{equation}
-
-On adopte des coordonnées sphériques $\vec{u}=(u_r, u_\theta, u_\varphi)$ avec l'hypothèse que le flux est axi-symmétrique: $u_\varphi=0$. 
+et adopte des coordonnées sphériques $\vec{u}=(u_r, u_\theta, u_\varphi)$ avec l'hypothèse que le flux est axi-symmétrique: $u_\varphi=0$. 
 
 Dans ces conditions, on peut construire une fonction de courant $\sfn_\varphi$ qui est un scalaire invariant selon $\varphi$, telle que: 
 
@@ -351,6 +368,9 @@ On en déduit la traînée de la sphère, c'est-à-dire la force exercée sur la
 
 C'est la formule de Stokes pour un sphère. Rappelons qu'elle s'applique à un écoulement très visqueux, comme par exemple une bille dans la glycérine. 
 
+\end{margin}
 
-
+\begin{studentinvestigation}
+  La viscosité dynamique ($\mu$) de l'eau est de l'ordre de $1\, \textrm{mPa}\cdot\textrm{s}$. Cherchez sur internet ou ailleurs le diamètre et la densité d'un grain de sable, et d'un grain d'argile. Quelles sont les vitesse verticale de ces deux objets telles que leur poids et équilibré par les forces de frottement ? Combien de temps mettront-ils pour atteindre le fond d'un lac de 10\,m de profondeur ? 
+\end{studentinvestigation}
 
