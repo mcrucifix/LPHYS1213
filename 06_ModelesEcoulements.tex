@@ -101,149 +101,148 @@ D'ailleurs, pour un pendule de masse ponctuelle, et en utiliant la formule \eqre
 
 \section{Analyse dimensionnelle de l'équation de Navier-Stokes}
 
-\subsection{Nombres adimensionnels et équation de Navier-Stokes}
-Reprenons l'\cindex{équation de Navier-Stokes} pour un fluide incompressible, en négligeant les forces de volume (comme la gravité) :
-\begin{displaymath}
-  \rho \left( \pd{\vec{u}}{t} + (\vec{u} \cdot \grad) \vec{u} \right) = -\grad p + \mu \lapl \vec{u}.
-\end{displaymath}
-Nous allons rendre cette équation adimensionnelle en normalisant chaque terme par des échelles caractéristiques du problème. Soit :
+\subsection{Transition vers le régime turbulent \label{ssec:turbulent}}
+
+Reprenons l'équation décrivant l'écoulement dans le plan de Couette \eqref{eq:couette_plan}. Nous avons expliqué  que le terme de transport de moment cinétique s'annule \emph{si la symmétrie des conditions frontières se reflète dans le champ de vitesse}. Rien ne le garantit a priori cependant. Il est possible en principe que l'écoulement que nous avons déterminé se révèle instable. Les conditions de stabilité sont cependant très difficiles à établir analytiquement. C'est un problème de stabilité hydrodynamique qui peut en principe se réduire à sa dimension mathématique: quelles sont les conditions d'instabilité ? Ces conditions ne peuvent pas dépendre du système d'unité utilisé pour décrire l'écoulement. 
+
+Reprenons donc l'équation \eqref{eq:couette_plan} mais en utilisant la \cindex{viscosité cinématique} $\nu = \mu/\rho$, qui a pour avantage de s'exprimer en $\mathrm{m}^2/s$ et nous débarasser des kilogrammes:
+
+\begin{equation}
+u \od{u}{x} = -{C} + \nu \od[2]{u}{x}. 
+\label{eq:couette_cinematique}
+\end{equation}
+
+Le problème, avec ses conditions frontières, met en scène 3 grandeurs : $u$, $h$ (la distance entre les deux plaques), $\nu$, et deux unité indépendantes: l'unité de longueur, exprimée en $m$, et de temps $s$ (les unités de vitesse et la viscosité cinématique sont construites à partir de ces deux unités). La structure de la solution va donc être décrite par \emph{un} nombre adimensionel. 
+
+Il y a \textit{a priori} différentes façons de le construire, mais nous pouvons en chercher une qui a un sens physique bien défini. Reprenons l'équation \eqref{eq:couette_cinematique}. Le membre de gauche (l'advection) a les unités $U\cdot U/L$, où $U$ symbolise l'unité de vitesse, et $L$, d'espace. Cela signifie que si l'on change les dimensions du système, ce terme va rester proportionnel à $u^2/h$. 
+Le membre de droite, qui exprime les forces de viscosité,  est lui proportionnel à $\nu u^2/h$. Nous pouvons former un nombre adimensionnel en mettant en rapport le terme d'advection avec celui faisant intervenir la viscosité. Appelons-le le nombre de Reynolds: 
+
+\begin{equation}
+  \Rey \eqdef \frac{u^2}{h} \cdot \frac{h^2}{\nu u} = \frac{uh}{\nu}. 
+  \label{eq:reynolds_nr}
+\end{equation}
+
+
+
+Les principes de l'analyse dimensionnelle nous garantissent que la condition de stabilité de l'écoulement turbulent ne dépend \emph{que} de ce nombre, pour autant que nous ayons correctement identifié toutes les contraintes physiques du problème. Par ailleurs, notre intuition physique nous permet de prédire que l'écoulement laminaire perdra sa stabilité lorsque les termes d'advection deviennent potentiellement plus importants, suggérant une transition vers en \cindex{écoulement turbulent} \emph{au delà} d'un nombre de Reynolds critique. Ce nombre de Reynolds peut être déterminé par une expérience réalisée par Osborne Reyolds, illustrée p. 71 (Fig. 15) du Vol. II des "Papers on mechanical and physical subjects" \cite{reynolds01aa}.
+
+Dans une conduite cylindrique, la transition s'opère pour des nombre de Reynolds entre 2000 et 3000.  Cette mesure donne lieu à une classification des écoulements qui s'étend bien au delà des conditions particulières de l'écoulement de Poiseuille. 
+
+Ainsi, pour un écoulement caractérisé par une vitesse typique $U$, une dimension typique $L$ et une viscosité cinématique $\nu$, on définit $\Rey = UL/\nu$ et on considère:
+
 \begin{itemize}
-  \item $U$ une vitesse caractéristique (par exemple, la vitesse à l’infini pour un écoulement autour d’un obstacle),
-  \item $L$ une longueur caractéristique (par exemple, la taille de l’obstacle),
-  \item $T = L/U$ un temps caractéristique (temps mis par le fluide pour parcourir la distance $L$),
-  \item $P$ une pression caractéristique (à déterminer).
+  \item $\Rey \lesssim 1$ : les termes d'advection sont dominés par les termes de viscosité. Ce sont les conditions de l'écoulement de Stokes tel que nous l'avons dérivé en section \ref{eq:stokes} et dont nous avons fait l'hypothèse pour le \cindex{problème de sédimentation}
+  \item $5 \lesssim \Rey \lesssim 1000 $: l'écoulement est principalement laminaire mais les forces et dissipations mesurées commencent à s'écarter des conditions de l'écoulement de Stokes. Des tourbillons apparaîssent aux points d'asymmétrie imposés par l'experience, par exemple à l'embouchure du tube, ou, si on considère l'écoulement autour d'une obstacle, à l'arrière de l'obstacle. 
+  \item $2000 \lesssim \Rey \lesssim 3000$ : régime intermittent ou des phases turbulentes succèdent à des phases laminaires;
+  \item $3000 \lesssim \Rey$ : régime turbulent, dont la nature et la complexité peuvent évoluer en fonction de $\Rey$. 
 \end{itemize}
 
-Nous définissons les variables adimensionnelles suivantes :
-\begin{displaymath}
-  \vec{u}^* = \frac{\vec{u}}{U}, \quad \vec{x}^* = \frac{\vec{x}}{L}, \quad t^* = \frac{t}{T} = \frac{t U}{L}, \quad p^* = \frac{p}{P}, \quad {\grad}^* = L \grad, \quad {\lapl}^* = L^2 \lapl.
-\end{displaymath}
+Rappelons que le seuil critique $\Rey \sim 3000$ s'applique à une expérience bien précise. Le problème d'ingéniérie posé aux concepteurs d'engins aéorodynamiques est précisément de concevoir des profils et des matérieux qui font reculer la transition turbulence vers des nombres de Reynolds plus élevés.  
 
-En substituant ces variables dans l’équation de Navier-Stokes, nous obtenons :
-\begin{displaymath}
-  \rho \frac{U^2}{L} \left( \pd{\vec{u}^*}{t^*} + (\vec{u}^* \cdot {\grad}^*) \vec{u}^* \right) = -\frac{P}{L} {\grad}^* p^* + \mu \frac{U}{L^2} {\lapl}^* \vec{u}^*.
-\end{displaymath}
+\subsection{Prédiction de l'épaisseur de la couche limite}
 
-Pour équilibrer les termes inertiels (à gauche) et visqueux (à droite), nous choisissons $P = \rho U^2$. L’équation devient alors :
-\begin{displaymath}
-  \pd{\vec{u}^*}{t^*} + (\vec{u}^* \cdot \grad^*) \vec{u}^* = -\grad^* p^* + \frac{1}{\cindex{nombre de Reynolds}} {\lapl}^* \vec{u}^*,
-\end{displaymath}
-où le \cindex{nombre de Reynolds} est défini par :
-\begin{displaymath}
-  \Rey = \frac{\rho U L}{\mu}.
-\end{displaymath}
-
-Cette équation montre que le comportement de l’écoulement est entièrement déterminé par la géométrie du problème et la valeur du nombre de Reynolds $\Rey$, qui compare les forces inertielles ($\rho U^2/L$) aux forces visqueuses ($\mu U/L^2$).
-
-
-\subsection{Régimes laminaires et turbulents}
-Le nombre de Reynolds permet de distinguer deux régimes d’écoulement :
-\begin{itemize}
-  \item Pour $\Rey \ll 1$ : les forces visqueuses dominent. L’écoulement est \cindex{laminaire}, régulier et prévisible. Les lignes de courant sont lisses, et les perturbations sont amorties par la viscosité.
-  \item Pour $\Rey \gg 1$ : les forces inertielles dominent. L’écoulement peut devenir \cindex{turbulent}, caractérisé par des fluctuations chaotiques de vitesse et de pression. La transition vers la turbulence dépend aussi de la géométrie et des conditions aux limites, mais $\Rey$ en est le paramètre clé.
-\end{itemize}
-
-\begin{key}{Exemple : Écoulement autour d’une sphère}
-Pour une sphère de diamètre $D$ dans un écoulement de vitesse $U$ :
-\begin{itemize}
-  \item Si $\Rey = \frac{\rho U D}{\mu} \lesssim 1$, l’écoulement est laminaire (ex. : chute d’une bille dans de l’huile).
-  \item Si $\Rey \gtrsim 1000$, une \cindex{couche limite turbulente} se développe à l’arrière de la sphère, et un sillage tourbillonnaire apparaît (ex. : balle de tennis en mouvement).
-\end{itemize}
-\end{key}
-
-\subsection{Prédiction de la couche limite par analyse dimensionnelle}
 Considérons un écoulement autour d’un obstacle de longueur caractéristique $L$. Près de la paroi, la vitesse du fluide doit s’annuler (condition de non-glissement). La viscosité y joue donc un rôle dominant, même si $\Rey \gg 1$ globalement.
 
-Nous cherchons l’épaisseur $\delta$ de la \cindex{couche limite}, où les effets visqueux sont significatifs. Dans cette région, les termes inertiels et visqueux dans l’équation de Navier-Stokes doivent être du même ordre de grandeur. En notant $U$ la vitesse caractéristique à l’extérieur de la couche limite, nous avons :
-\begin{itemize}
-  \item Terme inertiel : $\rho \vec{u} \cdot \grad \vec{u} \sim \rho \frac{U^2}{L}$,
-  \item Terme visqueux : $\mu \lapl \vec{u} \sim \mu \frac{U}{\delta^2}$.
-\end{itemize}
+Nous cherchons l’épaisseur $\delta$ de la \cindex{couche limite}, où les effets visqueux sont significatifs. Dans cette région, les termes inertiels et visqueux dans l’équation de Navier-Stokes doivent être du même ordre de grandeur. Ainsi, par rapport au cadre posé dans la section \ref{ssec:turbulent}, où nous cherchions un nombre de Reynolds critique pour la transition vers un régime turbulent, ici nous cherchons la dimension typique pour laquelle les termes inertiels et visqueux peuvent s'équilibrer, étant donné un nombre de Reynolds imposé par l'expérience. 
 
-L’équilibre entre ces termes donne :
+Analysons les les ordres de grandeurs présents dans l'équation de Navier-Stokes. Si $U$ est une vitesse typique, et $L$ une distance caractéristique de l'objet aérodynamique étudié, le terme d'advection sera de l'ordre de $U^2/L$. Dans la couche limite, le terme de viscosité met en scène une dissipation visqueuse sur la distance typique de la couche limite, donc un terme de l'ordre de $\nu U/\delta^2$. La condition est donc: 
+
 \begin{displaymath}
-  \rho \frac{U^2}{L} \sim \mu \frac{U}{\delta^2} \quad \Longrightarrow \quad \delta \sim L \sqrt{\frac{\mu}{\rho U L}} = \frac{L}{\sqrt{\Rey}}.
+  \frac{U^2}{L} \sim \nu \frac{U}{\delta^2},\textrm{ soit} \delta^2 \sim \frac{L^2}{\Rey}. 
 \end{displaymath}
 
-Ainsi, l’analyse dimensionnelle prédit que :
-\begin{itemize}
-  \item L’épaisseur de la couche limite $\delta$ décroît comme $1/\sqrt{\Rey}$.
-  \item Pour $\Rey \to \infty$, $\delta \to 0$ : la couche limite devient de plus en plus fine, et l’écoulement peut être traité comme non visqueux en dehors de cette région (approximation de \cindex{Prandtl}).
-\end{itemize}
-
-Cette prédiction explique pourquoi, à haut nombre de Reynolds, la viscosité ne joue un rôle significatif que dans une fine couche près des parois, tandis que l’écoulement est essentiellement non visqueux ailleurs. Cela justifie aussi l’utilisation de modèles simplifiés (comme la théorie des écoulements potentiels) en dehors de la couche limite.
+Ainsi, l’analyse dimensionnelle prédit que, pour $L$ donné (par la dimension de l'obstacle), l’épaisseur de la couche limite $\delta$ décroît comme $1/\sqrt{\Rey}$. Cette prédiction explique pourquoi, à haut nombre de Reynolds, la viscosité ne joue un rôle significatif que dans une fine couche près des parois, tandis que l’écoulement est essentiellement non visqueux ailleurs. 
 
 
-\subsection{Applications et limites}
-L’analyse dimensionnelle permet de :
-\begin{itemize}
-  \item Comprendre pourquoi les écoulements à grand $\Rey$ (avions, navires) sont souvent modulés par des couches limites minces.
-  \item Expliquer l’importance de la rugosité des surfaces (même une petite rugosité peut perturber la couche limite si $\delta$ est très fin).
-  \item Prédire l’apparition de la turbulence lorsque les perturbations dans la couche limite deviennent instables (pour $\Rey$ critique dépendant de la géométrie).
-\end{itemize}
+\begin{redmargin}
+  Nous avons pris un risque. Nous avons dérivé le terme visqueux en supposant qu'il a la forme donnée dans l'équation \eqref{eq:ns_incompressible} et en estimant que le Laplacien aura bien un ordre de grandeur proportionnel à $\delta^{-2}$. A vrai dire nous n'en savons rien car l'écoulement peut prendre une forme complexe et multidimensionnelle. 
 
-Cependant, cette analyse reste qualitative. Pour une description quantitative, il faut résoudre les équations de la couche limite (équations de Prandtl), qui sortent du cadre de ce cours.
+  La seule chose que nous pouvons dire est ceci. Notre écoulement est maintenant caractérisé par 4 gradeurs imposées par l'expérience : $U$, $L$, $\delta$ et $\nu$, et deux dimesions. Il y a donc deux nombres adimensionnels, que l'on peut construire comme $\Rey$ et $\delta/L$. La physique impose une relation de type $F(\delta/L, \Rey)=0$, dont la résolution peut prendre la forme $\delta/L = f(\Rey)$, soit $\delta = L f(\Rey)$. 
 
-\subsection{Limites des simulations numériques directes (DNS)}
-L’analyse dimensionnelle permet non seulement de comprendre les régimes d’écoulement, mais aussi d’estimer les ressources computationnelles nécessaires pour les simuler numériquement. Considérons un écoulement autour d’un obstacle (comme un avion) à grand nombre de Reynolds $\Rey$.
+  Nous ne connaissons pas à priori la relation $f(\Rey)$ mais nous estimons qu'à la limite d'un régime laminaire il doit prendre la forme $f(\Rey)\propto \Rey^{-0.5}$. Dans un régime plus complexe, on attendra plus généralement $f(\Rey) \propto \Rey^-\alpha$ et, généralement, $\alpha<0.5$, avec une valeur typique de l'ordre de 0.2. 
+\end{redmargin}
 
-\subsubsection{Échelle de la grille et nombre de mailles}
-Pour résoudre les équations de Navier-Stokes sans modèle de turbulence (simulation directe, ou DNS), il faut capturer toutes les échelles de l’écoulement, y compris les plus petites, où la dissipation visqueuse domine. Dans la couche limite, l’épaisseur $\delta$ des structures visqueuses est donnée par :
-\begin{displaymath}
-  \delta \sim \frac{L}{\sqrt{\Rey}},
-\end{displaymath}
-où $L$ est la taille caractéristique de l’obstacle (ex. : envergure d’une aile).
 
-Pour résoudre ces structures, la taille des mailles $\Delta x$ de la grille numérique doit être de l’ordre de $\delta$ :
-\begin{displaymath}
-  \Delta x \sim \delta \sim \frac{L}{\sqrt{\Rey}}.
-\end{displaymath}
+\subsection{Discussion} 
 
-Dans un domaine 3D de taille $L^3$, le nombre total de mailles $N$ est donc :
-\begin{displaymath}
-  N \sim \left(\frac{L}{\Delta x}\right)^3 \sim \left(\sqrt{\Rey}\right)^3 = \Rey^{3/2}.
-\end{displaymath}
+\begin{studentinvestigation}{Simulateur de vol}
+  Soit un avion de $100,\mathrm{m}$, une vitesse de $300\,\mathrm{m}/{s}$, une viscosité cinématique de l'air de $1.5\ 10^{-5}\mathrm{m^2}/\mathrm{s}$. Quel vaut $\Rey$ ? Quel est l'ordre de grandeur de  $\delta$ dans l'hypothèse laminaire ? 
 
-\subsubsection{Coût temporel et critère CFL}
-Le pas de temps $\Delta t$ d’une simulation explicite est contraint par le **critère de stabilité CFL** (Courant-Friedrichs-Lewy), qui impose :
-\begin{displaymath}
-  \Delta t \lesssim \frac{\Delta x}{U},
-\end{displaymath}
-où $U$ est la vitesse caractéristique de l’écoulement. Le nombre total de pas de temps $N_t$ pour simuler un temps physique $T$ est donc :
-\begin{displaymath}
-  N_t \sim \frac{T}{\Delta t} \sim \frac{T U}{\Delta x} \sim T U \sqrt{\Rey}.
-\end{displaymath}
+  Sur cette base, supposons que l'on désire calculer l'écoulement  avec un superordinateur avec la résolution nécessaire pour capture la couche limite. De combien de maille tri-dimensionnelles avons-nous besoin ? 
+\end{studentinvestigation}
 
-Le coût computationnel total $C$ (proportionnel à $N \times N_t$) croît ainsi comme :
-\begin{displaymath}
-  C \sim \Rey^{3/2} \times \Rey^{1/2} = \Rey^2.
-\end{displaymath}
+Si nous tenons compte du critère dit CFL (vu au cours LPHYS1303), nous pouvons aussi calculer la résolution temporelle à laquele l'ordinateur doit calculer. On trouvera .... 20 micro-secondes ! On s'apercevra très vite que résoudre les équations de Navier-Stokes autour d'un avion est impossible. Il faudrait de l'ordre de $10^{16}$ opérations pour simuler une seconde de vol.  Le même constat s'applique aux calcul de flux atmosphériques et océaniques. Les équations de Navier-Stokes doivent  donc être adaptées (modifiées ou tronquées) pour éviter de résoudre dans le détail les écoulements aux échelles les plus petites, et qui, pourtant interviennent dans les bilans d'énergie et de quantité de mouvement. Cela reste une des grands enjeux de la mécanique des fluides contemporaine. 
 
-\subsubsection{Implications pratiques}
-Pour des écoulements réalistes (ex. : avion en vol, $\Rey \sim 10^7$–$10^9$), une DNS devient **prohibitive** :
-\begin{itemize}
-  \item Pour $\Rey = 10^6$, $N \sim 10^{9}$ mailles et $N_t \sim 10^6$ pas de temps, soit un coût $\sim 10^{15}$ opérations.
-  \item Les supercalculateurs modernes (ex. : $\sim 10^{18}$ op/s) mettraient des **jours** à simuler quelques secondes physiques.
-\end{itemize}
-
-\begin{key}{Conséquences pour la modélisation}
-Cette analyse justifie l’utilisation de modèles de turbulence (LES, RANS) pour les écoulements à grand $\Rey$ :
-\begin{itemize}
-  \item Les **Large Eddy Simulations (LES)** résolvent les grandes échelles et modélisent les petites.
-  \item Les **Reynolds-Averaged Navier-Stokes (RANS)** moyennent les équations et modélisent entièrement la turbulence.
-\end{itemize}
-Ces approches réduisent drastiquement le coût computationnel, au prix d’une perte de précision sur les petites échelles.
-\end{key}
-
-\subsubsection{Exemple : Simulation d’un avion}
-Pour un avion de taille $L \sim 10~\textrm{m}$ volant à $U \sim 250~\textrm{m/s}$ dans l’air ($\nu \sim 1.5 \cdot 10^{-5}~\textrm{m}^2/\textrm{s}$), le nombre de Reynolds est :
-\begin{displaymath}
-  \Rey = \frac{UL}{\nu} \sim \frac{250 \times 10}{1.5 \cdot 10^{-5}} \sim 1.7 \cdot 10^8.
-\end{displaymath}
-Une DNS nécessiterait donc :
-\begin{itemize}
-  \item $\sim (1.7 \cdot 10^8)^{3/2} \sim 10^{12}$ mailles,
-  \item $\sim 10^{12} \times 10^4 = 10^{16}$ opérations pour simuler 1 seconde de vol.
-\end{itemize}
-C’est hors de portée des capacités actuelles, même avec les supercalculateurs.
+%
+% L’analyse dimensionnelle permet de :
+% \begin{itemize}
+%   \item Comprendre pourquoi les écoulements à grand $\Rey$ (avions, navires) sont souvent modulés par des couches limites minces.
+%   \item Expliquer l’importance de la rugosité des surfaces (même une petite rugosité peut perturber la couche limite si $\delta$ est très fin).
+%   \item Prédire l’apparition de la turbulence lorsque les perturbations dans la couche limite deviennent instables (pour $\Rey$ critique dépendant de la géométrie).
+% \end{itemize}
+%
+% Cependant, cette analyse reste qualitative. Pour une description quantitative, il faut résoudre les équations de la couche limite (équations de Prandtl), qui sortent du cadre de ce cours.
+%
+% \subsection{Limites des simulations numériques directes (DNS)}
+% L’analyse dimensionnelle permet non seulement de comprendre les régimes d’écoulement, mais aussi d’estimer les ressources computationnelles nécessaires pour les simuler numériquement. Considérons un écoulement autour d’un obstacle (comme un avion) à grand nombre de Reynolds $\Rey$.
+%
+% \subsubsection{Échelle de la grille et nombre de mailles}
+% Pour résoudre les équations de Navier-Stokes sans modèle de turbulence (simulation directe, ou DNS), il faut capturer toutes les échelles de l’écoulement, y compris les plus petites, où la dissipation visqueuse domine. Dans la couche limite, l’épaisseur $\delta$ des structures visqueuses est donnée par :
+% \begin{displaymath}
+%   \delta \sim \frac{L}{\sqrt{\Rey}},
+% \end{displaymath}
+% où $L$ est la taille caractéristique de l’obstacle (ex. : envergure d’une aile).
+%
+% Pour résoudre ces structures, la taille des mailles $\Delta x$ de la grille numérique doit être de l’ordre de $\delta$ :
+% \begin{displaymath}
+%   \Delta x \sim \delta \sim \frac{L}{\sqrt{\Rey}}.
+% \end{displaymath}
+%
+% Dans un domaine 3D de taille $L^3$, le nombre total de mailles $N$ est donc :
+% \begin{displaymath}
+%   N \sim \left(\frac{L}{\Delta x}\right)^3 \sim \left(\sqrt{\Rey}\right)^3 = \Rey^{3/2}.
+% \end{displaymath}
+%
+% \subsubsection{Coût temporel et critère CFL}
+% Le pas de temps $\Delta t$ d’une simulation explicite est contraint par le **critère de stabilité CFL** (Courant-Friedrichs-Lewy), qui impose :
+% \begin{displaymath}
+%   \Delta t \lesssim \frac{\Delta x}{U},
+% \end{displaymath}
+% où $U$ est la vitesse caractéristique de l’écoulement. Le nombre total de pas de temps $N_t$ pour simuler un temps physique $T$ est donc :
+% \begin{displaymath}
+%   N_t \sim \frac{T}{\Delta t} \sim \frac{T U}{\Delta x} \sim T U \sqrt{\Rey}.
+% \end{displaymath}
+%
+% Le coût computationnel total $C$ (proportionnel à $N \times N_t$) croît ainsi comme :
+% \begin{displaymath}
+%   C \sim \Rey^{3/2} \times \Rey^{1/2} = \Rey^2.
+% \end{displaymath}
+%
+% \subsubsection{Implications pratiques}
+% Pour des écoulements réalistes (ex. : avion en vol, $\Rey \sim 10^7$–$10^9$), une DNS devient **prohibitive** :
+% \begin{itemize}
+%   \item Pour $\Rey = 10^6$, $N \sim 10^{9}$ mailles et $N_t \sim 10^6$ pas de temps, soit un coût $\sim 10^{15}$ opérations.
+%   \item Les supercalculateurs modernes (ex. : $\sim 10^{18}$ op/s) mettraient des **jours** à simuler quelques secondes physiques.
+% \end{itemize}
+%
+% \begin{key}{Conséquences pour la modélisation}
+% Cette analyse justifie l’utilisation de modèles de turbulence (LES, RANS) pour les écoulements à grand $\Rey$ :
+% \begin{itemize}
+%   \item Les **Large Eddy Simulations (LES)** résolvent les grandes échelles et modélisent les petites.
+%   \item Les **Reynolds-Averaged Navier-Stokes (RANS)** moyennent les équations et modélisent entièrement la turbulence.
+% \end{itemize}
+% Ces approches réduisent drastiquement le coût computationnel, au prix d’une perte de précision sur les petites échelles.
+% \end{key}
+%
+% \subsubsection{Exemple : Simulation d’un avion}
+% Pour un avion de taille $L \sim 10~\textrm{m}$ volant à $U \sim 250~\textrm{m/s}$ dans l’air ($\nu \sim 1.5 \cdot 10^{-5}~\textrm{m}^2/\textrm{s}$), le nombre de Reynolds est :
+% \begin{displaymath}
+%   \Rey = \frac{UL}{\nu} \sim \frac{250 \times 10}{1.5 \cdot 10^{-5}} \sim 1.7 \cdot 10^8.
+% \end{displaymath}
+% Une DNS nécessiterait donc :
+% \begin{itemize}
+%   \item $\sim (1.7 \cdot 10^8)^{3/2} \sim 10^{12}$ mailles,
+%   \item $\sim 10^{12} \times 10^4 = 10^{16}$ opérations pour simuler 1 seconde de vol.
+% \end{itemize}
+% C’est hors de portée des capacités actuelles, même avec les supercalculateurs.
 

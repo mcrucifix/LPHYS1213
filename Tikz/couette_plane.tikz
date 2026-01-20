@@ -13,6 +13,8 @@
   \draw[->, thick] (0,0.6) -- (0.6,0.6);
   \draw[->, thick] (0,0.8) -- (0.8,0.8);
 
+  \draw[->] (3.,0) -- (3.5,0) node[right] {$\ex$};
+  \draw[->] (3.,0) -- (3.0,0.5) node[above] {$\ez$};
   % Velocity arrow on the right side of the upper plate
   % Length approx = 1.0
   \draw[->, thick] (2.6,1.0) -- ++(1.0,0) node[right] {$\vec{U}$};

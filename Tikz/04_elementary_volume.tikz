@@ -19,8 +19,8 @@
 \draw[outer] (-0.6,1) rectangle (2.4,2);
 
 % --- Axes arrows ---
-\draw[->, thick] (-3.2,0) -- (-3.2,0.4) node[midway,left] {$\mathbf e_z$};
-\draw[->, thick] (-3.2,0) -- (-2.8,0) node[midway,below] {$\mathbf e_x$};
+\draw[->, thick] (-3.2,0) -- (-3.2,1.0) node[midway,left] {$\ez$};
+\draw[->, thick] (-3.2,0) -- (-2.2,0) node[midway,below] {$\ex$};
 
 % --- Velocity vectors on middle block ---
 % Coordinates of centers of top and bottom faces of middle block
