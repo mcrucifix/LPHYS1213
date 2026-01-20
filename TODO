@@ -1,13 +1,16 @@
 - équation de la chaleur  -> DONE
 - approximation de Bousinesq... et ses conséquences perverses sur l'équation de conservation d'énergie (terminer)
-- Nombres adimensionels -> Reynolds only
-- Autres nombres adimensionels -> TODO
-- TODO: ne pas parler du problème de Reynolds dans le chap. sur les écoulemenst visqueux. Mais en revanche parler du problème de sédimentation. 
-- referencer les binder
+- Nombres adimensionels -> Reynolds only -> OK
+- Autres nombres adimensionels -> TODO (pas nécessaire)
+- TODO: ne pas parler du problème de Reynolds dans le chap. sur les écoulemenst visqueux. Mais en revanche parler du problème de sédimentation. -> DONE
+- TODO: mettre en garde: chapitre 4: Zabutinsky trop compliqué. faire référence à lmat mais dire que c'est nécessaire poru résoudre le paradoxe de d"alembert
+- referencer les binder -> DONE
 - relire ch. 1 et 2 : adapter style -> OK
 - illustrations pour ch. 1  -> OK
 - mieux définir fonction flot pour ch. 2.  -> TODO
-- couche limite -> PREMIERE EBAUCHE. RELIRE
-- éventuellement un chap. sur dynamical similarity -> OK
+- couche limite -> PREMIERE EBAUCHE. RELIRE -> DONE
+- éventuellement un chap. sur dynamical similarity -> OK 
 - et exemple glaciaire avec nombre péclet (A REFLECHIR)
 - terminer tension de surface + expliquer que c'est la base pour les ondes de surface (riddles)
+- faire figures pour écoulemenst typiques
+- corriger la très laide figure Poiseuille
