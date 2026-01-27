@@ -55,12 +55,14 @@ create_release:
     # The Job ID is needed to build the artifact URL. Assuming PDF_JOB_ID is passed or defined.
     # FIX: Use single $ for shell variable access (PDF_JOB_ID will be empty if not defined, which might cause the error)
     - export PDF_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${PDF_JOB_ID}/artifacts/file/lphys1213.pdf"
-    # 2. Print the URL (for verification in logs)
-    - echo "PDF Artifact URL':'' ${PDF_URL}"
-    # 3. Create the release with the link in the description
+    - export CI_COMMIT_TAG="build-${CI_COMMIT_SHORT_SHA}"
+    - export BASE_URL="${CI_PROJECT_URL}/-/jobs/${JOB_ID}/artifacts/raw"
+    - ASSETS_JSON='[
+        {"name":"PDF","url":"'${PDF_URL}},
+      ]'
     - |
-      glab release create "${CI_COMMIT_SHORT_SHA}" \
-        --name "LPHYS1213 Release ${CI_SHORT_SHA} at ${CI_COMMIT_TIMESTAMP}" \
-        --notes "The PDF artifact is available here: [Download ${PDF_FILENAME}](${PDF_URL})" \
-        --assets-links "{\"name\":\"${PDF_FILENAME}\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
+      glab release create "${CI_COMMIT_TAG}" \
+           --name "Release ${CI_COMMIT_TAG} with ${CI_COMMIT_SHORT_SHA}" \
+           --notes "Automated build from commit ${CI_COMMIT_SHA}" \
+           --assets-links "${ASSETS_JSON}" \
   when: manual
