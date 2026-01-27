@@ -318,7 +318,9 @@ Il est donc tout à fait possible de calculer la force de pression résultante (
 \vec{F_r} = \oint p\, \vec{n} \, \dif s.
 \]
 
-La suite du calcul, bien que technique, peut être esquissée comme suit. La méthode consiste à exprimer la force résultante d'abord comme un vecteur $(D,L)$, où $D$ représente la \cindex{traînée} (\emph{drag}) et $L$ la \cindex{portance} (\emph{lift}). On calcule le nombre complexe $D - iL$ en voyant que, lors de l'intégrale sur le contour :
+\begin{redmargin}
+La suite du calcul est assez technique. En particulier, elle mobilise des notions d'\cindex{analyse complexe} qui sont vues à la fin du cours LMAT1222. Nous esquissons seulement la démonstration, avec l'objectif de nous concentrer sur le résultat principal et qui nous intéresse ici: le théorème de Kutta-Zhukovsky. 
+La méthode consiste à exprimer la force résultante d'abord comme un vecteur $(D,L)$, où $D$ représente la \cindex{traînée} (\emph{drag}) et $L$ la \cindex{portance} (\emph{lift}). On calcule le nombre complexe $D - iL$ en voyant que, lors de l'intégrale sur le contour :
 \[
 \dif D = -p \dif y \quad \text{et} \quad \dif L = p \dif x.
 \]
@@ -329,10 +331,13 @@ D - iL = \oint p \, \dif z^\star = \frac{1}{2} \left(\od{\vpot}{z}\right)^2 \dif
 Cette première expression correspond au \cindex{théorème de Blasius}.
 
 La dérivée $\left(\od{\vpot}{z}\right)$ est connue et vaut :
-\[
+
+\begin{displaymath}
 U - \frac{R^2}{z^2} + \frac{i\Gamma}{2\pi z}.
-\]
+\end{displaymath}
+
 L'intégrale fait intervenir cette dérivée au carré et se calcule par la méthode des résidus (référence à Arfken). Après calcul, on aboutit au \cindex{théorème de Kutta-Zhukovsky} :
+\end{redmargin}
 
 \begin{key}{Théorème de Kutta-Zhukovsky}
 Pour un écoulement incompressible, irrotationnel (fluide parfait), autour d'un obstacle, avec circulation, les valeurs de traînée et de portance sont données par :

@@ -1,5 +1,6 @@
 stages:
   - build
+  - upload
   - release # New stage
 
 build_pdf:
@@ -34,6 +35,13 @@ build_pdf:
   only:
     - main
   when: manual
+
+upload_pdf:
+  stage: upload
+  needs:
+    - job: build_pdf
+  script:
+    - scp lphys1213.pdf crucifix@aurora:/home/web/crucifix/direct
 
 create_release:
   stage: release
