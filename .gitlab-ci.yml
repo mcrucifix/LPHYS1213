@@ -1,3 +1,6 @@
+variables:
+  PDF_FILENAME: "lphys1213.pdf" # À modifier selon le projet
+
 stages:
   - build
   - upload
@@ -27,7 +30,7 @@ build_pdf:
     - echo "PDF_JOB_ID=$CI_JOB_ID" > artifacts_vars.env 
   artifacts:
     paths:
-      - lphys1213.pdf
+      - ${PDF_FILENAME}
       - artifacts_vars.env # NEW: Archive the variable file
     reports:
       dotenv: artifacts_vars.env # NEW: Make variables available to subsequent jobs
@@ -41,11 +44,13 @@ upload_pdf:
   needs:
     - job: build_pdf
   script:
-    - scp lphys1213.pdf crucifix@aurora:/home/web/crucifix/direct
+    - scp ${PDF_FILENAME} crucifix@aurora:/home/web/crucifix/direct
 
 create_release:
+  rules:
+    - if: $CI_COMMIT_TAG # S'exécute uniquement si un tag est poussé
+      when: on_success   # Automatique (si les jobs précédents réussissent)
   stage: release
-  image: registry.gitlab.com/gitlab-org/release-cli:latest
   needs:
     - job: build_pdf # Ensures this job runs after build_pdf and inherits its artifacts
   script:
@@ -57,11 +62,8 @@ create_release:
     - echo "PDF Artifact URL':'' ${PDF_URL}"
     # 3. Create the release with the link in the description
     - |
-      glab release create "${CI_COMMIT_REF_SLUG}" \
-        --name "LPHYS1213 Release ${CI_COMMIT_SHORT_SHA}" \
-        --notes "The PDF artifact is available here: [Download lphys1213.pdf](${PDF_URL})" \
-        --assets-link "{\"name\":\"lphys1213.pdf\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
-  only:
-    - main
-  when: manual # Make this manual to control when a release is made
+      glab release create "${CI_COMMIT_TAG}" \
+        --name "LPHYS1213 Release ${CI_COMMIT_TAG}" \
+        --notes "The PDF artifact is available here: [Download ${PDF_FILENAME}](${PDF_URL})" \
+        --assets-link "{\"name\":\"${PDF_FILENAME}\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
 
