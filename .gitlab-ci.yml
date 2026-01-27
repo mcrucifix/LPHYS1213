@@ -35,8 +35,10 @@ build_pdf:
     reports:
       dotenv: artifacts_vars.env # NEW: Make variables available to subsequent jobs
     expire_in: 1 week
-  only:
-    - main
+  rules:
+    # On autorise le build sur main OU si on pousse un tag manuellement
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_TAG
   # when: manual
 
 upload_pdf:
@@ -52,7 +54,7 @@ upload_pdf:
 create_release:
   stage: release
   rules:
-    - if: $CI_COMMIT_BRANCH == "main" && $CI_COMMIT_TAG
+    - if: $CI_COMMIT_TAG
   needs:
     - job: build_pdf
       artifacts: true
