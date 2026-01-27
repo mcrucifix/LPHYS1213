@@ -60,12 +60,12 @@ create_release:
     - echo "Creating release for ${MY_RELEASE_TAG}"
     - |
       echo glab release create "${MY_RELEASE_TAG}" \
-        --name "Release ${MY_RELEASE_TAG} with ${CI_COMMIT_SHORT_SHA}" \ 
+        --name "Release ${MY_RELEASE_TAG} with ${CI_COMMIT_SHORT_SHA}" \
         --notes "Automated build from commit ${CI_COMMIT_SHA}" \
         --assets-links "${ASSETS_JSON}"
     - |
       glab release create "${MY_RELEASE_TAG}" \
-        --name "Release ${MY_RELEASE_TAG} with ${CI_COMMIT_SHORT_SHA}" \ 
+        --name "Release ${MY_RELEASE_TAG} with ${CI_COMMIT_SHORT_SHA}" \
         --notes "Automated build from commit ${CI_COMMIT_SHA}" \
         --assets-links "${ASSETS_JSON}"
   when: manual
