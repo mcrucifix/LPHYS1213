@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="42.220608mm"
+   height="67.544899mm"
+   viewBox="0 0 42.220608 67.544899"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="07_goutte.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.78305976"
+     inkscape:cx="-0.63852087"
+     inkscape:cy="349.27091"
+     inkscape:window-width="1920"
+     inkscape:window-height="1129"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         id="path2379" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-65.196056,-63.342775)">
+    <path
+       style="fill:#ff0000;stroke:#666666;stroke-width:0.1;stroke-dasharray:0.1, 0.3"
+       id="path848"
+       sodipodi:type="arc"
+       sodipodi:cx="96.60183"
+       sodipodi:cy="97.255386"
+       sodipodi:rx="31.356573"
+       sodipodi:ry="33.582436"
+       sodipodi:start="1.5148664"
+       sodipodi:end="4.7478876"
+       sodipodi:arc-type="slice"
+       d="M 98.354686,130.78531 A 31.356573,33.582436 0 0 1 69.854065,114.78136 31.356573,33.582436 0 0 1 69.525326,80.318312 31.356573,33.582436 0 0 1 97.714711,63.694108 L 96.60183,97.255386 Z" />
+    <ellipse
+       style="fill:#ffccaa;stroke:#666666;stroke-width:0.100063;stroke-dasharray:0.100063, 0.300189"
+       id="path846"
+       cx="97.703316"
+       cy="97.380409"
+       rx="9.6633148"
+       ry="33.453419" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
+       d="m 96.601829,97.255384 1.11288,-33.561276"
+       id="path2200" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="97.901871"
+       y="87.089592"
+       id="text4630"><tspan
+         sodipodi:role="line"
+         id="tspan4628"
+         style="stroke-width:0.264583"
+         x="97.901871"
+         y="87.089592">$R$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="55.397423"
+       y="107.94346"
+       id="text8159"><tspan
+         sodipodi:role="line"
+         id="tspan8157"
+         style="stroke-width:0.264583"
+         x="55.397423"
+         y="107.94346">$p_{\mathrm{ext}}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+       x="97.295036"
+       y="101.18578"
+       id="text8375"><tspan
+         sodipodi:role="line"
+         id="tspan8373"
+         style="stroke-width:0.264583"
+         x="97.295036"
+         y="101.18578">$p_{\mathrm{int}}$</tspan></text>
+  </g>
+</svg>
