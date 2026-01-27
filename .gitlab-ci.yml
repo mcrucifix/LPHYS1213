@@ -43,6 +43,7 @@ upload_pdf:
   stage: upload
   needs:
     - job: build_pdf
+      optional: true
   script:
     - scp ${PDF_FILENAME} crucifix@aurora:/home/web/crucifix/direct
 
@@ -52,14 +53,15 @@ create_release:
   needs:
     - job: build_pdf
       artifacts: true
+      optional: true
   script:
     - export PDF_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${PDF_JOB_ID}/artifacts/file/${PDF_FILENAME}"
     - export MY_RELEASE_TAG="build-${CI_COMMIT_SHORT_SHA}"
     - ASSETS_JSON="[{\"name\":\"PDF\",\"url\":\"${PDF_URL}\"}]"
     - echo "Creating release for ${MY_RELEASE_TAG}"
     - |
-      glab release create --name "Release ${MY_RELEASE_TAG}" \
-        --name "${MY_RELEASE_TAG}" \ 
+      glab release create "${MY_RELEASE_TAG}" \
+        --name "Release ${MY_RELEASE_TAG} with ${CI_COMMIT_SHORT_SHA}" \ 
         --notes "Automated build from commit ${CI_COMMIT_SHA}" \
         --assets-links "${ASSETS_JSON}"
   when: manual
