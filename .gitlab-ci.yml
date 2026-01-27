@@ -59,7 +59,7 @@ create_release:
     - echo "Creating release for ${MY_RELEASE_TAG}"
     - |
       glab release create --name "Release ${MY_RELEASE_TAG}" \
-        --description "Automated build from commit ${CI_COMMIT_SHA}" \
+        --notes "Automated build from commit ${CI_COMMIT_SHA}" \
         --assets-links "${ASSETS_JSON}"
   when: manual
 
