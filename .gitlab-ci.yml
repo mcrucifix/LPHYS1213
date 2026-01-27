@@ -37,7 +37,7 @@ build_pdf:
     expire_in: 1 week
   only:
     - main
-  when: manual
+  # when: manual
 
 upload_pdf:
   stage: upload
@@ -61,5 +61,5 @@ create_release:
       glab release create "${CI_COMMIT_SHORT_SHA}" \
         --name "LPHYS1213 Release ${CI_SHORT_SHA} at ${CI_COMMIT_TIMESTAMP}" \
         --notes "The PDF artifact is available here: [Download ${PDF_FILENAME}](${PDF_URL})" \
-        --assets-link "{\"name\":\"${PDF_FILENAME}\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
+        --assets-links "{\"name\":\"${PDF_FILENAME}\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
   when: manual
