@@ -47,10 +47,6 @@ upload_pdf:
     - scp ${PDF_FILENAME} crucifix@aurora:/home/web/crucifix/direct
 
 create_release:
-  rules:
-    - if: $CI_COMMIT_TAG # S'exécute uniquement si un tag est poussé
-      when: on_success   # Automatique (si les jobs précédents réussissent)
-  stage: release
   needs:
     - job: build_pdf # Ensures this job runs after build_pdf and inherits its artifacts
   script:
@@ -62,8 +58,8 @@ create_release:
     - echo "PDF Artifact URL':'' ${PDF_URL}"
     # 3. Create the release with the link in the description
     - |
-      glab release create "${CI_COMMIT_TAG}" \
-        --name "LPHYS1213 Release ${CI_COMMIT_TAG}" \
+      glab release create "${CI_COMMIT_SHORT_SHA}" \
+        --name "LPHYS1213 Release ${CI_SHORT_SHA} at ${CI_COMMIT_TIMESTAMP}" \
         --notes "The PDF artifact is available here: [Download ${PDF_FILENAME}](${PDF_URL})" \
         --assets-link "{\"name\":\"${PDF_FILENAME}\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
-
+  only: manual
