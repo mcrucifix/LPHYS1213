@@ -48,21 +48,18 @@ upload_pdf:
 
 create_release:
   stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest # Image recommandée
   needs:
-    - job: build_pdf # Ensures this job runs after build_pdf and inherits its artifacts
+    - job: build_pdf
+      artifacts: true
   script:
-    # 1. Get the Job ID (Assuming you have a variable set by a previous script/environment)
-    # The Job ID is needed to build the artifact URL. Assuming PDF_JOB_ID is passed or defined.
-    # FIX: Use single $ for shell variable access (PDF_JOB_ID will be empty if not defined, which might cause the error)
-    - export PDF_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${PDF_JOB_ID}/artifacts/file/lphys1213.pdf"
-    - export CI_COMMIT_TAG="build-${CI_COMMIT_SHORT_SHA}"
-    - export BASE_URL="${CI_PROJECT_URL}/-/jobs/${JOB_ID}/artifacts/raw"
-    - ASSETS_JSON='[
-        {"name":"PDF","url":"'${PDF_URL}},
-      ]'
+    - export PDF_URL="${CI_SERVER_URL}/${CI_PROJECT_PATH}/-/jobs/${PDF_JOB_ID}/artifacts/file/${PDF_FILENAME}"
+    - export MY_RELEASE_TAG="build-${CI_COMMIT_SHORT_SHA}"
+    - ASSETS_JSON="[{\"name\":\"PDF\",\"url\":\"${PDF_URL}\"}]"
+    - echo "Creating release for ${MY_RELEASE_TAG}"
     - |
-      glab release create "${CI_COMMIT_TAG}" \
-           --name "Release ${CI_COMMIT_TAG} with ${CI_COMMIT_SHORT_SHA}" \
-           --notes "Automated build from commit ${CI_COMMIT_SHA}" \
-           --assets-links "${ASSETS_JSON}" \
+      glab release create --name "Release ${MY_RELEASE_TAG}" \
+        --description "Automated build from commit ${CI_COMMIT_SHA}" \
+        --assets-links "${ASSETS_JSON}"
   when: manual
+
