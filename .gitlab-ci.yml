@@ -46,7 +46,7 @@ upload_pdf:
   script:
     - scp ${PDF_FILENAME} crucifix@aurora:/home/web/crucifix/direct
 
-create_release
+create_release:
   stage: release
   needs:
     - job: build_pdf # Ensures this job runs after build_pdf and inherits its artifacts
