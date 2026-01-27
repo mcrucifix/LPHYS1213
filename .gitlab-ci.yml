@@ -62,4 +62,4 @@ create_release:
         --name "LPHYS1213 Release ${CI_SHORT_SHA} at ${CI_COMMIT_TIMESTAMP}" \
         --notes "The PDF artifact is available here: [Download ${PDF_FILENAME}](${PDF_URL})" \
         --assets-link "{\"name\":\"${PDF_FILENAME}\",\"url\":\"${PDF_URL}\",\"link_type\":\"other\"}"
-  only: manual
+  when: manual
